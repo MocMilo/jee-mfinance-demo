@@ -1,0 +1,14 @@
+.idea/
+mfinance-core/target/
+mfinance-core/logs/
+mfinance-core/src/main/java/com/dmmsoft/app/analyzer/Demo.java
+
+mfinance-web/target/
+mfinance-web/logs/
+*.iml
+*.log
+
+mfinance-core/*.log
+mfinance-web/*.log
+
+
