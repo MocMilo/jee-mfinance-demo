@@ -33,7 +33,8 @@ RUN rm -rf $JBOSS_HOME/standalone/configuration/standalone_xml_history
 
 WORKDIR $JBOSS_HOME
 
-EXPOSE 8081
-EXPOSE 9991
+EXPOSE 8080
+EXPOSE 9990
 
 CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
+
