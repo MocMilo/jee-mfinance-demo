@@ -149,7 +149,7 @@
                     </security>
                 </datasource>
                 <datasource jndi-name="java:/infoshareDatasource" pool-name="WowAuctionsDS">
-                    <connection-url>jdbc:mysql://web-app-db:3306/infoshare</connection-url>
+                    <connection-url>jdbc:mysql://web-app-db:3306/webapp-db</connection-url>
                     <driver>mysql</driver>
                     <security>
                         <user-name>root</user-name>

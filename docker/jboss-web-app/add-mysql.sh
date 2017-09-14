@@ -20,7 +20,7 @@ module add --name=mysql --resources=/mysql-connector-java.jar --dependencies=jav
 
 data-source add \
         --name=infoshareDatasource \
-        --connection-url="jdbc:mysql://web-app-db:3306/infoshare?characterEncoding=utf8" \
+        --connection-url="jdbc:mysql://web-app-db:3306/webapp-db?characterEncoding=utf8" \
         --driver-name="mysql" \
         --jndi-name="java:/infoshareDatasource" \
         --password="root" \

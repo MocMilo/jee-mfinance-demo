@@ -5,7 +5,7 @@ services:
     image: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: infoshare
+      MYSQL_DATABASE: webapp-db
     ports:
       - 3307:3306
     networks:
@@ -65,8 +65,6 @@ services:
       - /home/milo/mfinance/web-api/data/backup/funds:/home/milo/mfinance/bossa/backup/funds
       - /home/milo/mfinance/web-api/data/currencies:/home/milo/mfinance/bossa/currencies
       - /home/milo/mfinance/web-api/data/funds:/home/milo/mfinance/bossa/funds
-
-
 
 networks:
   infoshare_network:
