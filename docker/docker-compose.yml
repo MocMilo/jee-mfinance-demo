@@ -6,6 +6,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: infoshare
+    ports:
+      - 3307:3306
     networks:
       - infoshare_network
     volumes:
@@ -17,6 +19,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: webapi-db
+    ports:
+      - 3306:3306
     networks:
       - infoshare_network
     volumes:
