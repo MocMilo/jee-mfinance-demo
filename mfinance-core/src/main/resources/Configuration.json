@@ -1,16 +1,26 @@
 {
-  "fundFolderPath":{"folderPath":"/home/milo/mfinance/bossa/funds/"},
-  "currencyFolderPath":{"folderPath":"/home/milo/mfinance/bossa/currencies/"},
-  "fundBackupFolderPath":{"folderPath":"/home/milo/mfinance/bossa/backup/funds/"},
-  "currencyBackupFolderPath":{"folderPath":"/home/milo/mfinance/bossa/backup/currencies/"},
-
-  "fundUrl":{"fileUrl":"http://bossa.pl/pub/fundinwest/omega/omegafun.zip"},
-  "currencyUrl":{"fileUrl":"http://bossa.pl/pub/waluty/omega/omeganbp.zip"},
-  "externalResourceFilePath":"/home/milo/mfinance/",
-
-  "fundFilePaths":[
+  "fundFolderPath": {
+    "folderPath": "/home/milo/mfinance/bossa/funds/"
+  },
+  "currencyFolderPath": {
+    "folderPath": "/home/milo/mfinance/bossa/currencies/"
+  },
+  "fundBackupFolderPath": {
+    "folderPath": "/home/milo/mfinance/bossa/backup/funds/"
+  },
+  "currencyBackupFolderPath": {
+    "folderPath": "/home/milo/mfinance/bossa/backup/currencies/"
+  },
+  "fundUrl": {
+    "fileUrl": "http://bossa.pl/pub/fundinwest/omega/omegafun.zip"
+  },
+  "currencyUrl": {
+    "fileUrl": "http://bossa.pl/pub/waluty/omega/omeganbp.zip"
+  },
+  "externalResourceFilePath": "/home/milo/mfinance/",
+  "fundFilePaths": [
   ],
-  "currencyFilePaths":[
+  "currencyFilePaths": [
   ]
 }
 
