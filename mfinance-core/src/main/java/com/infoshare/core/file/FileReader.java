@@ -10,7 +10,6 @@ public class FileReader {
 
     public String resourceFilePath;
 
-
     public FileReader(String resourceFilePath) {
         this.resourceFilePath = resourceFilePath;
     }

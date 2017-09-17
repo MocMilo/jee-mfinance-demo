@@ -2,7 +2,7 @@ package com.infoshare.web.analyzer;
 
 import com.infoshare.web.analyzer.analysis.comparison.AnalysisComparisonContainer;
 import com.infoshare.web.analyzer.analysis.wrapper.WrappingService;
-import com.infoshare.core.analyzer.analyses.exception.NoDataForCriteria;
+import com.infoshare.core.models.exceptions.NoDataForCriteria;
 import com.infoshare.web.user.IUserService;
 import com.infoshare.web.user.User;
 import com.infoshare.web.user.report.IUserActivityService;
@@ -23,7 +23,7 @@ import java.util.*;
 @WebServlet(urlPatterns = "/auth/userview/favouriteindicatorcomparator")
 public class FavouriteIndicatorComparatorServlet extends HttpServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger(FavouriteIndicatorComparatorServlet.class);
-    private final String USER_ACTIVITY_FAVOURITES_DISPLAY = "User displayed Favourites: IndicatorComparator analysis.";
+    private final String USER_ACTIVITY_FAVOURITES_DISPLAY = "User displayed Favourites: IndicatorComparator analyses.";
 
     @Inject
     IUserService userService;

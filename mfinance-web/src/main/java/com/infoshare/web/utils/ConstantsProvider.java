@@ -5,7 +5,7 @@ public class ConstantsProvider {
     private ConstantsProvider(){}
 
     public static final String CRITERIA_MODERATION_MESSAGE = "Note! Your input data does not correspond to current investment history of quotations. \n" +
-            "    For analysis system used nearest possible quoutations acording to dates from submitted form.\n" +
+            "    For analyses system used nearest possible quoutations acording to dates from submitted form.\n" +
             "    User criteria moderated by system are listed in User input moderation report.";
     public static final String NO_DATA_FOR_CRITERIA_MESSAGE = "Error! No data for current criteria!";
 

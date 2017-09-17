@@ -1,6 +1,6 @@
 package com.infoshare.web.webconfiguration;
 
-import com.infoshare.core.appconfiguration.AppConfigurationProvider;
+import com.infoshare.core.configuration.ConfigurationProvider;
 import com.infoshare.web.webconfiguration.utils.ConfigFileReader;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -57,7 +57,7 @@ public class WebConfigurationProvider {
 
     public WebConfigurationProvider getConfiguration() {
         try {
-            String externalPath = new AppConfigurationProvider()
+            String externalPath = new ConfigurationProvider()
                     .getConfiguration()
                     .getExternalResourceFilePath();
             Path appModePath = Paths.get(externalPath, CONFIGURATION_FILE_NAME);

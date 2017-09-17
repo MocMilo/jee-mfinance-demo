@@ -1,10 +1,10 @@
 package com.infoshare.web.analyzer.analysis.investmentrevenue;
 
 import com.infoshare.web.analyzer.IFavouriteService;
-import com.infoshare.core.analyzer.analyses.exception.NoDataForCriteria;
+import com.infoshare.core.models.exceptions.NoDataForCriteria;
 import com.infoshare.core.analyzer.analyses.revenue.InvestmentRevenue;
-import com.infoshare.core.analyzer.analyses.revenue.InvestmentRevenueCriteria;
-import com.infoshare.core.analyzer.analyses.revenue.InvestmentRevenueResult;
+import com.infoshare.core.models.analyses.criteria.InvestmentRevenueCriteria;
+import com.infoshare.core.models.analyses.results.InvestmentRevenueResult;
 import com.infoshare.web.container.IModelContainerService;
 import com.infoshare.web.user.IUserService;
 import com.infoshare.web.user.User;
@@ -45,7 +45,7 @@ import static com.infoshare.web.utils.ConstantsProvider.AUTH_USER;
 public class InvestmentRevenueServlet extends HttpServlet {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(InvestmentRevenueServlet.class);
-    private final String USER_ACTIVITY_ANALYSIS_SUBMMIT = "user subbmited: InvestmentRevenue analysis";
+    private final String USER_ACTIVITY_ANALYSIS_SUBMMIT = "user subbmited: InvestmentRevenue analyses";
     private ContentWrapper wrapper = new ContentWrapper();
 
     @Inject

@@ -4,7 +4,7 @@ import com.infoshare.web.webconfiguration.utils.JsonSerializer;
 import com.infoshare.web.webconfiguration.utils.ConfigFileReader;
 import com.infoshare.web.webconfiguration.smtp.SmtpProperties;
 import com.infoshare.web.adminpanel.trigger.ITriggerable;
-import com.infoshare.core.appconfiguration.AppConfigurationProvider;
+import com.infoshare.core.configuration.ConfigurationProvider;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -82,7 +82,7 @@ public class MailSender implements ITriggerable {
     }
 
     private SmtpProperties getSMTPProps() throws IOException {
-        String smtpConfigFilePath = new AppConfigurationProvider()
+        String smtpConfigFilePath = new ConfigurationProvider()
                 .getConfiguration()
                 .getExternalResourceFilePath();
 

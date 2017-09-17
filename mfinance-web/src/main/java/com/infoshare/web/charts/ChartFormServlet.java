@@ -1,7 +1,7 @@
 package com.infoshare.web.charts;
 
-import com.infoshare.core.analyzer.analyses.exception.NoDataForCriteria;
-import com.infoshare.core.analyzer.analyses.trend.QuotationSeriesCriteria;
+import com.infoshare.core.models.exceptions.NoDataForCriteria;
+import com.infoshare.core.models.analyses.criteria.QuotationSeriesCriteria;
 import com.infoshare.web.container.IModelContainerService;
 import com.infoshare.web.user.User;
 import com.infoshare.web.user.report.IUserActivityService;
@@ -25,7 +25,7 @@ import java.time.format.DateTimeFormatter;
 @WebServlet(urlPatterns = "/auth/userview/chart")
 public class ChartFormServlet extends HttpServlet {
 
-    private final String USER_ACTIVITY_ANALYSIS_SUBMMIT = "user subbmited: ChartComparison analysis";
+    private final String USER_ACTIVITY_ANALYSIS_SUBMMIT = "user subbmited: ChartComparison analyses";
     @Inject
     private IModelContainerService container;
 

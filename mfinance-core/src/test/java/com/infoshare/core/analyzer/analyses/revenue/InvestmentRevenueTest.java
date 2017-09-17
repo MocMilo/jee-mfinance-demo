@@ -1,10 +1,12 @@
 package com.infoshare.core.analyzer.analyses.revenue;
 
-import com.infoshare.core.analyzer.analyses.exception.NoDataForCriteria;
-import com.infoshare.core.appconfiguration.AppConfigurationProvider;
-import com.infoshare.core.model.loader.MainContainerLoader;
-import com.infoshare.core.model.Investment;
-import com.infoshare.core.model.MainContainer;
+import com.infoshare.core.models.analyses.criteria.InvestmentRevenueCriteria;
+import com.infoshare.core.models.analyses.results.InvestmentRevenueResult;
+import com.infoshare.core.models.exceptions.NoDataForCriteria;
+import com.infoshare.core.configuration.ConfigurationProvider;
+import com.infoshare.core.loader.MainContainerLoader;
+import com.infoshare.core.models.bossa.Investment;
+import com.infoshare.core.models.bossa.MainContainer;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -22,7 +24,7 @@ public class InvestmentRevenueTest  {
     private final   LocalDate SELL_DATE = LocalDate.parse("20170330", formatter);
     private final   String InvestmentName = "CHF";
     // application initialization
-    private final AppConfigurationProvider appCon = new AppConfigurationProvider().getConfiguration();
+    private final ConfigurationProvider appCon = new ConfigurationProvider().getConfiguration();
     private final MainContainerLoader mainContainerLoader = new MainContainerLoader(appCon);
 
     private MainContainer getMainContainerWithLoadeData(){
@@ -38,11 +40,11 @@ public class InvestmentRevenueTest  {
 
         MainContainer mc = this.getMainContainerWithLoadeData();
 
-        // example analysis usage
+        // example analyses usage
         InvestmentRevenueCriteria input = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName, false);
         InvestmentRevenueResult ir = new InvestmentRevenue(mc, input).getResult();
 
-        //analysis input
+        //analyses input
         System.out.println("\ninputValues(buy date, sell date)");
         System.out.println(input.getStartDate());
         System.out.println(input.getEndDate());
@@ -82,7 +84,7 @@ public class InvestmentRevenueTest  {
         // ESSENTIAL: removing quotations
         mc.getInvestments().forEach(x -> x.setQuotations(null));
 
-        // example analysis usage
+        // example analyses usage
         InvestmentRevenueCriteria input = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName, false);
         InvestmentRevenueResult ir = new InvestmentRevenue(mc, input).getResult();
     }
@@ -99,7 +101,7 @@ public class InvestmentRevenueTest  {
         // extracting investments
         List<Investment> investments = mc.getInvestments();
 
-        // example analysis usage
+        // example analyses usage
         InvestmentRevenueCriteria input = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName, false);
         InvestmentRevenueResult ir = new InvestmentRevenue(mc, input).getResult();
     }

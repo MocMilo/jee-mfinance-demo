@@ -1,7 +1,7 @@
 package com.infoshare.web.analyzer.analysis.investmentrevenue;
 
-import com.infoshare.core.analyzer.analyses.AnalysisCriteria;
-import com.infoshare.core.analyzer.analyses.AnalysisResult;
+import com.infoshare.core.models.analyses.criteria.AnalysisCriteria;
+import com.infoshare.core.models.analyses.results.AnalysisResult;
 
 public class ContentWrapper {
 

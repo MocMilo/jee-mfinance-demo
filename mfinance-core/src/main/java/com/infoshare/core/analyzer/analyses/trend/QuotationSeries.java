@@ -1,12 +1,14 @@
 package com.infoshare.core.analyzer.analyses.trend;
 
 import com.infoshare.core.analyzer.analyses.Analysis;
-import com.infoshare.core.analyzer.analyses.AnalysisResult;
+import com.infoshare.core.models.analyses.results.AnalysisResult;
 import com.infoshare.core.analyzer.analyses.IResult;
-import com.infoshare.core.analyzer.analyses.exception.NoDataForCriteria;
-import com.infoshare.core.model.Investment;
-import com.infoshare.core.model.MainContainer;
-import com.infoshare.core.model.Quotation;
+import com.infoshare.core.models.analyses.criteria.QuotationSeriesCriteria;
+import com.infoshare.core.models.analyses.results.QuotationSeriesResult;
+import com.infoshare.core.models.exceptions.NoDataForCriteria;
+import com.infoshare.core.models.bossa.Investment;
+import com.infoshare.core.models.bossa.MainContainer;
+import com.infoshare.core.models.bossa.Quotation;
 
 import java.time.LocalDate;
 import java.util.List;

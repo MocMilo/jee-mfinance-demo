@@ -2,11 +2,13 @@ package com.infoshare.core.analyzer.analyses.indicator;
 
 import com.infoshare.core.analyzer.analyses.Analysis;
 import com.infoshare.core.analyzer.analyses.IResult;
-import com.infoshare.core.analyzer.analyses.exception.NoDataForCriteria;
+import com.infoshare.core.models.analyses.criteria.IndicatorCriteria;
+import com.infoshare.core.models.analyses.results.IndicatorResult;
+import com.infoshare.core.models.exceptions.NoDataForCriteria;
 
-import com.infoshare.core.model.Investment;
-import com.infoshare.core.model.MainContainer;
-import com.infoshare.core.model.Quotation;
+import com.infoshare.core.models.bossa.Investment;
+import com.infoshare.core.models.bossa.MainContainer;
+import com.infoshare.core.models.bossa.Quotation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

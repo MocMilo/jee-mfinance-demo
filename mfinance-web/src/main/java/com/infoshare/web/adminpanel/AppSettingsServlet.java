@@ -46,7 +46,7 @@ public class AppSettingsServlet extends HttpServlet {
 
         } catch (RuntimeException ex) {
 
-            LOGGER.error("FATAL ERROR: Failed to manually reload data model CSV files! {}", ex.getMessage());
+            LOGGER.error("FATAL ERROR: Failed to manually reload data models CSV files! {}", ex.getMessage());
         }
         req.getRequestDispatcher("../adminview/appSettings.jsp").forward(req, resp);
     }

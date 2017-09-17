@@ -1,15 +1,13 @@
 package com.infoshare.core.analyzer.suggester;
 
-import com.infoshare.core.analyzer.analyses.exception.NoDataForCriteria;
-import com.infoshare.core.model.Quotation;
+import com.infoshare.core.models.exceptions.NoDataForCriteria;
+import com.infoshare.core.models.bossa.Quotation;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.TreeSet;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class InputCriteriaSuggester {
     private List<LocalDate> dateList = new ArrayList<>();

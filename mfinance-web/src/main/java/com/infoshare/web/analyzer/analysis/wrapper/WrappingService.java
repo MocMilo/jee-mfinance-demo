@@ -3,10 +3,10 @@ package com.infoshare.web.analyzer.analysis.wrapper;
 
 import com.infoshare.web.analyzer.analysis.comparison.AnalysisComparisonContainer;
 import com.infoshare.web.analyzer.analysis.investmentindicator.PersistedIndicatorCriteria;
-import com.infoshare.core.analyzer.analyses.exception.NoDataForCriteria;
+import com.infoshare.core.models.exceptions.NoDataForCriteria;
 import com.infoshare.core.analyzer.analyses.indicator.Indicator;
-import com.infoshare.core.analyzer.analyses.indicator.IndicatorCriteria;
-import com.infoshare.core.analyzer.analyses.indicator.IndicatorResult;
+import com.infoshare.core.models.analyses.criteria.IndicatorCriteria;
+import com.infoshare.core.models.analyses.results.IndicatorResult;
 import com.infoshare.web.container.IModelContainerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

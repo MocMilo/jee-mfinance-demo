@@ -48,7 +48,7 @@ public final class WebAppDeployListener implements ServletContextListener {
 
     private void loadModelData() {
         try {
-            LOGGER.info("Data model CSV files loading initialized...");
+            LOGGER.info("Data models CSV files loading initialized...");
 
             new ModelContainer().updateModelFileResources();
 
@@ -58,7 +58,7 @@ public final class WebAppDeployListener implements ServletContextListener {
                     container.getMainContainer().getCurrenciesCount(),
                     container.getMainContainer().getFundsCount());
         } catch (RuntimeException ex) {
-            LOGGER.error("FATAL ERROR: Failed to load data model CSV files! {}", ex.getMessage());
+            LOGGER.error("FATAL ERROR: Failed to load data models CSV files! {}", ex.getMessage());
         }
     }
 

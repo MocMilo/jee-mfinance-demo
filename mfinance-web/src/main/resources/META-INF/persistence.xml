@@ -6,8 +6,8 @@
     <persistence-unit name="infoshareUnit" transaction-type="JTA">
         <jta-data-source>java:/infoshareDatasource</jta-data-source>
         <jar-file>../mfinance-core/target/mfinance.jar</jar-file>
-        <class>com.infoshare.core.analyzer.analyses.revenue.InvestmentRevenueCriteria</class>
-        <class>com.infoshare.core.analyzer.analyses.indicator.IndicatorCriteria</class>
+        <class>com.infoshare.core.models.analyses.criteria.InvestmentRevenueCriteria</class>
+        <class>com.infoshare.core.models.analyses.criteria.IndicatorCriteria</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>

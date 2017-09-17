@@ -2,7 +2,7 @@ package com.infoshare.core.analyzer.analyses;
 
 
 import com.infoshare.core.analyzer.suggester.InputCriteriaSuggester;
-import com.infoshare.core.model.MainContainer;
+import com.infoshare.core.models.bossa.MainContainer;
 
 public abstract class Analysis {
 

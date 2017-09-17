@@ -2,23 +2,20 @@ package com.infoshare.core.analyzer.analyses.revenue;
 
 import com.infoshare.core.analyzer.analyses.Analysis;
 import com.infoshare.core.analyzer.analyses.IResult;
-import com.infoshare.core.analyzer.analyses.exception.NoDataForCriteria;
+import com.infoshare.core.models.analyses.criteria.InvestmentRevenueCriteria;
+import com.infoshare.core.models.analyses.results.InvestmentRevenueResult;
+import com.infoshare.core.models.exceptions.NoDataForCriteria;
 
-import com.infoshare.core.model.Investment;
-import com.infoshare.core.model.MainContainer;
-import com.infoshare.core.model.Quotation;
+import com.infoshare.core.models.bossa.Investment;
+import com.infoshare.core.models.bossa.MainContainer;
+import com.infoshare.core.models.bossa.Quotation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
 import java.math.BigDecimal;
-import java.math.MathContext;
-import java.math.RoundingMode;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
 
 import static java.math.RoundingMode.HALF_EVEN;
 

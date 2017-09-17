@@ -1,10 +1,10 @@
 package com.infoshare.web.analyzer;
 
 import com.infoshare.web.analyzer.analysis.investmentrevenue.ContentWrapper;
-import com.infoshare.core.analyzer.analyses.exception.NoDataForCriteria;
+import com.infoshare.core.models.exceptions.NoDataForCriteria;
 import com.infoshare.core.analyzer.analyses.revenue.InvestmentRevenue;
-import com.infoshare.core.analyzer.analyses.revenue.InvestmentRevenueCriteria;
-import com.infoshare.core.analyzer.analyses.revenue.InvestmentRevenueResult;
+import com.infoshare.core.models.analyses.criteria.InvestmentRevenueCriteria;
+import com.infoshare.core.models.analyses.results.InvestmentRevenueResult;
 import com.infoshare.web.container.IModelContainerService;
 import com.infoshare.web.analyzer.analysis.investmentrevenue.PersistedInvestmentRevenueCriteria;
 import com.infoshare.web.user.IUserService;
@@ -36,7 +36,7 @@ import static com.infoshare.web.utils.ConstantsProvider.CRITERIA_MODERATION_MESS
 @WebServlet(urlPatterns = "/auth/userview/favouriterevenue")
 public class FavouriteRevenueServlet extends HttpServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger(FavouriteRevenueServlet.class);
-    private final String USER_ACTIVITY_FAVOURITES_DISPLAY = "user displayed Favourites: InvestmentRevenue analysis.";
+    private final String USER_ACTIVITY_FAVOURITES_DISPLAY = "user displayed Favourites: InvestmentRevenue analyses.";
 
     @Inject
     IModelContainerService container;

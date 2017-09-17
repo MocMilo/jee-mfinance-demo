@@ -1,7 +1,7 @@
 package com.infoshare.core.file;
 
 
-import com.infoshare.core.appconfiguration.AppConfigurationProvider;
+import com.infoshare.core.configuration.ConfigurationProvider;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,19 +21,19 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 public class RemoteDownloader {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RemoteDownloader.class);
-    private AppConfigurationProvider appConfigurationProvider = new AppConfigurationProvider().getConfiguration();
+    private ConfigurationProvider configurationProvider = new ConfigurationProvider().getConfiguration();
     private final String DATE_PATTERN = "yyyyMMdd";
-    private final String currencyTargetPath = appConfigurationProvider.getCurrencyFolderPath().getFolderPath();
-    private final String fundTargetPath = appConfigurationProvider.getFundFolderPath().getFolderPath();
+    private final String currencyTargetPath = configurationProvider.getCurrencyFolderPath().getFolderPath();
+    private final String fundTargetPath = configurationProvider.getFundFolderPath().getFolderPath();
 
 
     public void getModelFilesFromRemoteLocation() throws IOException {
         try {
-            Path currencyZipFilePath = this.download(appConfigurationProvider.getCurrencyUrl().getFileUrl(),
-                    appConfigurationProvider.getCurrencyBackupFolderPath().getFolderPath());
+            Path currencyZipFilePath = this.download(configurationProvider.getCurrencyUrl().getFileUrl(),
+                    configurationProvider.getCurrencyBackupFolderPath().getFolderPath());
 
-            Path fundZipFilePath = this.download(appConfigurationProvider.getFundUrl().getFileUrl(),
-                    appConfigurationProvider.getFundBackupFolderPath().getFolderPath());
+            Path fundZipFilePath = this.download(configurationProvider.getFundUrl().getFileUrl(),
+                    configurationProvider.getFundBackupFolderPath().getFolderPath());
 
             this.saveZipFileContent(currencyZipFilePath, currencyTargetPath);
             this.saveZipFileContent(fundZipFilePath, fundTargetPath);

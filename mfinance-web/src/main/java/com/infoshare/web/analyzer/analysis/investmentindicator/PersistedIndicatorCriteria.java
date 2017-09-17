@@ -1,7 +1,7 @@
 package com.infoshare.web.analyzer.analysis.investmentindicator;
 
 import com.infoshare.web.analyzer.analysis.comparison.AnalysisComparisonContainer;
-import com.infoshare.core.analyzer.analyses.indicator.IndicatorCriteria;
+import com.infoshare.core.models.analyses.criteria.IndicatorCriteria;
 import com.infoshare.web.user.User;
 
 import javax.persistence.*;
