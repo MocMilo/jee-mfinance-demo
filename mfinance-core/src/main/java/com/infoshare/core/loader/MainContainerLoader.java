@@ -6,13 +6,14 @@ import com.infoshare.core.models.bossa.Currency;
 import com.infoshare.core.models.bossa.Fund;
 import com.infoshare.core.models.bossa.Investment;
 import com.infoshare.core.models.bossa.MainContainer;
+import com.infoshare.core.models.configuration.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainContainerLoader {
 
-    private ConfigurationProvider appCon;
+    private Configuration configuration;
     private List<Fund> funds = new ArrayList<>();
     private List<Currency> currencies = new ArrayList<>() ;
     private List<Investment> investments = new ArrayList<>();
@@ -21,7 +22,7 @@ public class MainContainerLoader {
     private CurrencyLoader currencyLoader = new CurrencyLoader();
 
     public void loadFunds() {
-        appCon.getFundFilePaths().forEach((FilePath filePath) -> {
+        configuration.getFundFilePaths().forEach((FilePath filePath) -> {
             fundLoader.createFundsFromFile(filePath.getFilePath());
         });
         funds = fundLoader.getFunds();
@@ -29,15 +30,15 @@ public class MainContainerLoader {
     }
 
     public void loadCurrencies() {
-        appCon.getCurrencyFilePaths().forEach((FilePath filePath) -> {
+        configuration.getCurrencyFilePaths().forEach((FilePath filePath) -> {
             currencyLoader.createCurrenciesFromFile(filePath.getFilePath());
         });
         currencies = currencyLoader.getCurrencies();
         investments.addAll(currencies);
     }
 
-    public MainContainerLoader(ConfigurationProvider appCon) {
-        this.appCon = appCon;
+    public MainContainerLoader(Configuration appCon) {
+        this.configuration = appCon;
     }
 
     public MainContainer getMainContainer() {

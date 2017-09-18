@@ -3,6 +3,7 @@ package com.infoshare.core.file;
 
 import com.infoshare.core.configuration.ConfigurationProvider;
 
+import com.infoshare.core.models.configuration.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,19 +22,19 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 public class RemoteDownloader {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RemoteDownloader.class);
-    private ConfigurationProvider configurationProvider = new ConfigurationProvider().getConfiguration();
+    private Configuration configuration = new ConfigurationProvider().getConfiguration();
     private final String DATE_PATTERN = "yyyyMMdd";
-    private final String currencyTargetPath = configurationProvider.getCurrencyFolderPath().getFolderPath();
-    private final String fundTargetPath = configurationProvider.getFundFolderPath().getFolderPath();
+    private final String currencyTargetPath = configuration.getCurrencyFolderPath().getFolderPath();
+    private final String fundTargetPath = configuration.getFundFolderPath().getFolderPath();
 
 
     public void getModelFilesFromRemoteLocation() throws IOException {
         try {
-            Path currencyZipFilePath = this.download(configurationProvider.getCurrencyUrl().getFileUrl(),
-                    configurationProvider.getCurrencyBackupFolderPath().getFolderPath());
+            Path currencyZipFilePath = this.download(configuration.getCurrencyUrl().getFileUrl(),
+                    configuration.getCurrencyBackupFolderPath().getFolderPath());
 
-            Path fundZipFilePath = this.download(configurationProvider.getFundUrl().getFileUrl(),
-                    configurationProvider.getFundBackupFolderPath().getFolderPath());
+            Path fundZipFilePath = this.download(configuration.getFundUrl().getFileUrl(),
+                    configuration.getFundBackupFolderPath().getFolderPath());
 
             this.saveZipFileContent(currencyZipFilePath, currencyTargetPath);
             this.saveZipFileContent(fundZipFilePath, fundTargetPath);

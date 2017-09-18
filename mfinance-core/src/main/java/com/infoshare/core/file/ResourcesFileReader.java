@@ -5,12 +5,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-
-public class FileReader {
+public class ResourcesFileReader {
 
     public String resourceFilePath;
 
-    public FileReader(String resourceFilePath) {
+    public ResourcesFileReader(String resourceFilePath) {
         this.resourceFilePath = resourceFilePath;
     }
 
@@ -26,5 +25,4 @@ public class FileReader {
         return stringBuilder
                 .toString();
     }
-
 }

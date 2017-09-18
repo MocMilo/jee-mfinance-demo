@@ -1,9 +1,9 @@
 package com.infoshare.core.models.exceptions;
 
-public class AppConfigurationProviderException extends RuntimeException {
+public class ConfigurationException extends RuntimeException {
     private final static String message = "Error creating the configuration: ";
 
-    public AppConfigurationProviderException(Throwable previousException) {
+    public ConfigurationException(Throwable previousException) {
         super(message + previousException.getMessage());
     }
 }

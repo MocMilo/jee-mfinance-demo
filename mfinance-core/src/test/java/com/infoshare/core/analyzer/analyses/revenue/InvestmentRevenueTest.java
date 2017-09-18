@@ -2,6 +2,7 @@ package com.infoshare.core.analyzer.analyses.revenue;
 
 import com.infoshare.core.models.analyses.criteria.InvestmentRevenueCriteria;
 import com.infoshare.core.models.analyses.results.InvestmentRevenueResult;
+import com.infoshare.core.models.configuration.Configuration;
 import com.infoshare.core.models.exceptions.NoDataForCriteria;
 import com.infoshare.core.configuration.ConfigurationProvider;
 import com.infoshare.core.loader.MainContainerLoader;
@@ -24,8 +25,8 @@ public class InvestmentRevenueTest  {
     private final   LocalDate SELL_DATE = LocalDate.parse("20170330", formatter);
     private final   String InvestmentName = "CHF";
     // application initialization
-    private final ConfigurationProvider appCon = new ConfigurationProvider().getConfiguration();
-    private final MainContainerLoader mainContainerLoader = new MainContainerLoader(appCon);
+    private final Configuration configuration = new ConfigurationProvider().getConfiguration();
+    private final MainContainerLoader mainContainerLoader = new MainContainerLoader(configuration);
 
     private MainContainer getMainContainerWithLoadeData(){
         // loading data
