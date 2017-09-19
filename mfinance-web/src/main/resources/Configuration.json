@@ -17,6 +17,7 @@
   "currencyUrl": {
     "fileUrl": "http://bossa.pl/pub/waluty/omega/omeganbp.zip"
   },
+  "externalResourceFilePath": "/home/milo/mfinance/",
   "fundFilePaths": [
   ],
   "currencyFilePaths": [

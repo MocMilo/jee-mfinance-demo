@@ -18,6 +18,8 @@ public class Configuration {
     private FundUrl fundUrl;
     private CurrencyUrl currencyUrl;
 
+    private String externalResourceFilePath;
+
     private List<FilePath> fundFilePaths = new ArrayList<>();
     private List<FilePath> currencyFilePaths = new ArrayList<>();
 
@@ -43,6 +45,10 @@ public class Configuration {
 
     public CurrencyUrl getCurrencyUrl() {
         return currencyUrl;
+    }
+
+    public String getExternalResourceFilePath() {
+        return externalResourceFilePath;
     }
 
     public List<FilePath> getFundFilePaths() {

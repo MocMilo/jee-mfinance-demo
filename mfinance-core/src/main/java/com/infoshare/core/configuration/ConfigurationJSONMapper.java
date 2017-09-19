@@ -6,7 +6,6 @@ import com.infoshare.core.models.configuration.Configuration;
 import com.infoshare.core.models.exceptions.ConfigurationException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
 public class ConfigurationJSONMapper {
 
     private final String json;
