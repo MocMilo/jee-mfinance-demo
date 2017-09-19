@@ -67,13 +67,6 @@ public class InvestmentRevenue extends Analysis implements IResult {
         Optional<Quotation> quotation = quotations.stream()
                 .filter(x -> x.getDate().equals(inputCriteria.getBuyDate()))
                 .findFirst();
-
-        if (!quotation.isPresent()) {
-            quotation = suggester.getNearestQuotation(quotations, inputCriteria.getBuyDate());
-            quotation.ifPresent(x -> {
-                finalInputCriteria.setBuyDate(x.getDate());
-            });
-        }
         return quotation.orElseThrow(NoDataForCriteria::new);
     }
 
@@ -82,13 +75,6 @@ public class InvestmentRevenue extends Analysis implements IResult {
         Optional<Quotation> quotation = quotations.stream()
                 .filter(x -> x.getDate().equals(inputCriteria.getSellDate()))
                 .findFirst();
-
-        if (!quotation.isPresent()) {
-            quotation = suggester.getNearestQuotation(quotations, inputCriteria.getSellDate());
-            quotation.ifPresent(x -> {
-                finalInputCriteria.setSellDate(x.getDate());
-            });
-        }
         return quotation.orElseThrow(NoDataForCriteria::new);
     }
 

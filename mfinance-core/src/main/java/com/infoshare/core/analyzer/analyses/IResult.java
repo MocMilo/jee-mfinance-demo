@@ -8,5 +8,4 @@ public interface IResult {
 
    AnalysisResult getResult() throws NoDataForCriteria;
 
-
 }
