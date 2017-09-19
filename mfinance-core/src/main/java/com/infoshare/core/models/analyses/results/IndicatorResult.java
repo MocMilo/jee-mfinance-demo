@@ -4,7 +4,6 @@ import com.infoshare.core.models.bossa.Quotation;
 
 public class IndicatorResult extends AnalysisResult {
 
-
     private String name;
     private Quotation firstQuotation;
     private Quotation lastQuotation;

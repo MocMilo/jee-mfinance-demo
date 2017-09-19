@@ -1,32 +1,12 @@
 package com.infoshare.core.models.analyses.criteria;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-
-@Entity
-@Inheritance(
-        strategy = InheritanceType.TABLE_PER_CLASS
-)
 public class AnalysisCriteria {
-    @Id
-    @GeneratedValue
-    protected long id;
+
     protected String investmentName;
     protected Boolean isFavourite = Boolean.valueOf(false);
     protected Boolean isModifiedBySuggester = Boolean.valueOf(false);
 
     public AnalysisCriteria() {
-    }
-
-    public long getId() {
-        return this.id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getInvestmentName() {

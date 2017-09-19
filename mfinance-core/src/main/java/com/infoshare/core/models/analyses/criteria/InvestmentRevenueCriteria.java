@@ -2,9 +2,8 @@ package com.infoshare.core.models.analyses.criteria;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import javax.persistence.MappedSuperclass;
 
-@MappedSuperclass
+
 public class InvestmentRevenueCriteria extends AnalysisCriteria {
     private BigDecimal investedCapital;
     private LocalDate buyDate;
