@@ -9,7 +9,7 @@ Run Maven package command from the project root:
 In the compiled artifacts directory `target/`, run:
 ```bash
     # replace $version with the version, ex. 1.0-SNAPSHOT
-    java -jar financial-app-$version-jar-with-dependencies.jar
+    java -jar mfinance-$version-jar-with-dependencies.jar
 ```
 
 #### csv data
