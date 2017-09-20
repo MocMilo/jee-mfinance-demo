@@ -1,7 +1,13 @@
 .idea/
+
+mfinance-cli/target/
+mfinance-cli/logs/
+mfinance-cli/*.iml
+
 mfinance-core/target/
 mfinance-core/logs/
-mfinance-core/src/main/java/com/dmmsoft/app/analyzer/Demo.java
+mfinance-core/*.iml
+
 
 mfinance-web/target/
 mfinance-web/logs/
