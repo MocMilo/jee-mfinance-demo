@@ -22,13 +22,12 @@ import static java.math.RoundingMode.HALF_EVEN;
 public class InvestmentRevenue extends Analysis implements IResult {
     private static final Logger LOGGER = LoggerFactory.getLogger(InvestmentRevenue.class);
     private InvestmentRevenueCriteria inputCriteria;
-    private InvestmentRevenueCriteria finalInputCriteria;
+
 
 
     public InvestmentRevenue(MainContainer mainContainer, InvestmentRevenueCriteria inputCriteria) {
         this.mainContainer = mainContainer;
         this.inputCriteria = inputCriteria;
-        finalInputCriteria = new InvestmentRevenueCriteria(inputCriteria);
     }
 
     public InvestmentRevenueResult getResult() throws NoDataForCriteria {
@@ -100,21 +99,13 @@ public class InvestmentRevenue extends Analysis implements IResult {
                     .multiply(inputCriteria.getInvestedCapital()))
                     .setScale(2, HALF_EVEN);
 
-            doCheckIfInputWasModeratedBySuggester();
-            return new InvestmentRevenueResult(revenueValue, deltaPriceRounded, finalInputCriteria);
+            return new InvestmentRevenueResult(revenueValue, deltaPriceRounded, inputCriteria);
 
         } else {
             throw new NoDataForCriteria("Failed to calculate InvestmentRevenue.");
         }
     }
 
-    private void doCheckIfInputWasModeratedBySuggester() {
-        if (!this.inputCriteria.equals(this.finalInputCriteria)) {
-            this.finalInputCriteria.setModifiedBySuggester(true);
-            LOGGER.info("InvestmentInputCriteria was moderated by Suggester."
-                    + "InputCriteria: " + inputCriteria.hashCode()
-                    + "FinalInputCriteria:" + finalInputCriteria.hashCode());
-        }
-    }
+
 
 }

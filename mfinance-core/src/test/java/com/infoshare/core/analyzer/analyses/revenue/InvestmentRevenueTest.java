@@ -70,7 +70,7 @@ public class InvestmentRevenueTest  {
         //  ESSENTIAL creating empty MainContainer (no loaded data)
         MainContainer mc = mainContainerLoader.getMainContainer();
 
-        InvestmentRevenueCriteria input = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName, false);
+        InvestmentRevenueCriteria input = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName);
 
         // should throw exception
         InvestmentRevenueResult ir = new InvestmentRevenue(mc, input).getResult();
@@ -86,7 +86,7 @@ public class InvestmentRevenueTest  {
         mc.getInvestments().forEach(x -> x.setQuotations(null));
 
         // example analyses usage
-        InvestmentRevenueCriteria input = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName, false);
+        InvestmentRevenueCriteria input = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName);
         InvestmentRevenueResult ir = new InvestmentRevenue(mc, input).getResult();
     }
 
@@ -103,7 +103,7 @@ public class InvestmentRevenueTest  {
         List<Investment> investments = mc.getInvestments();
 
         // example analyses usage
-        InvestmentRevenueCriteria input = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName, false);
+        InvestmentRevenueCriteria input = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName);
         InvestmentRevenueResult ir = new InvestmentRevenue(mc, input).getResult();
     }
 
