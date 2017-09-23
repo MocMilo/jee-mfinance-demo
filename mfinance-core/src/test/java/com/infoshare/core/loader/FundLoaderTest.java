@@ -17,7 +17,6 @@ public class FundLoaderTest extends TestCase {
     FundLoader fundLoader = new FundLoader();
 
 
-
     public void testGetNumberOfFunds() throws Exception {
 
     }
@@ -31,7 +30,7 @@ public class FundLoaderTest extends TestCase {
         fundLoader.createFundsFromFile(TESTFILEPATH);
         fundLoader.getNumberOfFunds();
 
-        if (fundLoader.getFunds().size()!=1){
+        if (fundLoader.getFunds().size() != 1) {
             throw new IllegalArgumentException();
         }
     }
@@ -42,7 +41,7 @@ public class FundLoaderTest extends TestCase {
         fundLoader.createFundsFromFile(TESTFILEPATH2);
         fundLoader.getNumberOfFunds();
 
-        if (fundLoader.getFunds().size()!=2){
+        if (fundLoader.getFunds().size() != 2) {
             throw new IllegalArgumentException();
         }
     }
@@ -57,17 +56,10 @@ public class FundLoaderTest extends TestCase {
 
         int numberOfQuotations = fundLoader.getFunds().get(0).getQuotations().size();
 
-        System.out.println("number of quotations: "+numberOfQuotations);
+        System.out.println("number of quotations: " + numberOfQuotations);
 
-
-        if (numberOfQuotations != NUMBEROFROWS){
+        if (numberOfQuotations != NUMBEROFROWS) {
             throw new IllegalArgumentException();
         }
-
-
-
     }
-
-
-
 }

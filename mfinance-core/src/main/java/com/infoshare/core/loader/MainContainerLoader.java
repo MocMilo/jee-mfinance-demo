@@ -15,7 +15,7 @@ public class MainContainerLoader {
 
     private Configuration configuration;
     private List<Fund> funds = new ArrayList<>();
-    private List<Currency> currencies = new ArrayList<>() ;
+    private List<Currency> currencies = new ArrayList<>();
     private List<Investment> investments = new ArrayList<>();
     private MainContainer mainContainer = new MainContainer();
     private FundLoader fundLoader = new FundLoader();
@@ -30,9 +30,10 @@ public class MainContainerLoader {
     }
 
     public void loadCurrencies() {
-        configuration.getCurrencyFilePaths().forEach((FilePath filePath) -> {
-            currencyLoader.createCurrenciesFromFile(filePath.getFilePath());
-        });
+        configuration.getCurrencyFilePaths()
+                .forEach((FilePath filePath) -> {
+                    currencyLoader.createCurrenciesFromFile(filePath.getFilePath());
+                });
         currencies = currencyLoader.getCurrencies();
         investments.addAll(currencies);
     }

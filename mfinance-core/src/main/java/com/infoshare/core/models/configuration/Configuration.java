@@ -53,5 +53,11 @@ public class Configuration {
         return currencyFilePaths;
     }
 
+    public void setFundFilePaths(List<FilePath> fundFilePaths) {
+        this.fundFilePaths = fundFilePaths;
+    }
 
+    public void setCurrencyFilePaths(List<FilePath> currencyFilePaths) {
+        this.currencyFilePaths = currencyFilePaths;
+    }
 }

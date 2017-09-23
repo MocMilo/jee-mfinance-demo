@@ -1,6 +1,6 @@
 package com.infoshare.controller.validators;
 
-import com.infoshare.core.models.exceptions.NoDataForCriteria;
+
 import com.infoshare.model.arguments.IVRArgs;
 import com.infoshare.model.validationResults.AnalysisValidationResult;
 import com.infoshare.controller.validators.analysis.AnalysisValidationStrategy;

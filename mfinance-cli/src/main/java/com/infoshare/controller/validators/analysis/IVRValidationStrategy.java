@@ -36,7 +36,7 @@ public class IVRValidationStrategy implements AnalysisValidationStrategy {
         return new AnalysisValidationResult(
                 this.isValid(results),
                 messageComposer.composeErrorMessage(results),
-                ivrArgs);
+                args);
     }
 
     private boolean isValid(List<ArgValidationResult> results) {

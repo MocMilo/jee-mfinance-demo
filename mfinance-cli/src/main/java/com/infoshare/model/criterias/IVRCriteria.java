@@ -1,12 +1,14 @@
 package com.infoshare.model.criterias;
 
+import com.infoshare.model.arguments.IVRArgs;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class IVRCriteria {
 
-    private static final int COMMAND_ARGS_NUMBER = 5;
-    private static final String ANALYSIS_COMMAND_STRING = "IVR";
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
     private BigDecimal capital;
     private String investmentName;
     private LocalDate startDate;
@@ -35,5 +37,13 @@ public class IVRCriteria {
         this.investmentName = investmentName;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+
+    public IVRCriteria(IVRArgs args) {
+
+        this.capital = new BigDecimal(args.getCapital());
+        this.investmentName =args.getInvestmentName();
+        this.startDate = LocalDate.parse(args.getStartDate(), formatter);
+        this.endDate = LocalDate.parse(args.getEndDate(), formatter);
     }
 }

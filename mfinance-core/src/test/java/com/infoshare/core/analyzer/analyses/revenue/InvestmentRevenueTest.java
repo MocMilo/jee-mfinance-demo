@@ -28,7 +28,7 @@ public class InvestmentRevenueTest  {
     private final Configuration configuration = new ConfigurationProvider().getConfiguration();
     private final MainContainerLoader mainContainerLoader = new MainContainerLoader(configuration);
 
-    private MainContainer getMainContainerWithLoadeData(){
+    private MainContainer getMainContainerWithLoadedData(){
         // loading data
         mainContainerLoader.loadFunds();
         mainContainerLoader.loadCurrencies();
@@ -36,32 +36,34 @@ public class InvestmentRevenueTest  {
     }
 
     @Test
-    public void testGetResultWhenUserInputOutOfRange() throws Exception {
-        /*LocalDate SELL_DATE = LocalDate.parse("20180104", formatter);
+    public void getInvestmentsFfomMainContainer(){
 
-        MainContainer mc = this.getMainContainerWithLoadeData();
+        int investments =  getMainContainerWithLoadedData().getInvestments().size();
+        System.out.println("number of investments: "+investments);
+
+    }
+
+    @Test(expected = NoDataForCriteria.class)
+    public void testGetResultWhenUserInputOutOfRange() throws Exception {
+        LocalDate SELL_DATE = LocalDate.parse("20140104", formatter);
+
+        MainContainer mc = this.getMainContainerWithLoadedData();
 
         // example analyses usage
-        InvestmentRevenueCriteria input = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName, false);
+        InvestmentRevenueCriteria input = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName);
         InvestmentRevenueResult ir = new InvestmentRevenue(mc, input).getResult();
 
         //analyses input
         System.out.println("\ninputValues(buy date, sell date)");
-        System.out.println(input.getStartDate());
-        System.out.println(input.getEndDate());
-        System.out.println(input.getModifiedBySuggester());
-        System.out.println(input.getFavourite());
+        System.out.println(input.getBuyDate());
+        System.out.println(input.getSellDate());
+
 
         // anlysis results
         System.out.println("\nresultValues(buy date, sell date)");
-        InvestmentRevenueCriteria finallyEvaluatedInput =(InvestmentRevenueCriteria)ir.getFinallyEvaluatedInput();
 
-        System.out.println(finallyEvaluatedInput.getStartDate());
-        System.out.println(finallyEvaluatedInput.getEndDate());
-        System.out.println(finallyEvaluatedInput.getModifiedBySuggester());
-        System.out.println(input.getFavourite());
         System.out.println(ir.getCapitalRevenueValue());
-        System.out.println(ir.getCapitalRevenueDeltaPrecentValue());*/
+        System.out.println(ir.getCapitalRevenueDeltaPrecentValue());
     }
 
     @Test(expected = NoDataForCriteria.class)
@@ -80,7 +82,7 @@ public class InvestmentRevenueTest  {
     public void testGetResultWhenMissingQuotations() throws Exception {
         LocalDate SELL_DATE = LocalDate.parse("20170330", formatter);
 
-        MainContainer mc = this.getMainContainerWithLoadeData();
+        MainContainer mc = this.getMainContainerWithLoadedData();
 
         // ESSENTIAL: removing quotations
         mc.getInvestments().forEach(x -> x.setQuotations(null));
@@ -90,21 +92,6 @@ public class InvestmentRevenueTest  {
         InvestmentRevenueResult ir = new InvestmentRevenue(mc, input).getResult();
     }
 
-    @Test(expected = NoDataForCriteria.class)
-    public void testGetResultSuggesterFailureByDateOutOfBounds() throws Exception {
 
-        // ESSENTIAL: Suggester (for dates) scans for available dates on left side of timeline
-        // target date out of left bound will always couse Suggester fialure
-        LocalDate SELL_DATE = LocalDate.parse("19850315", formatter);
-
-        MainContainer mc = this.getMainContainerWithLoadeData();
-
-        // extracting investments
-        List<Investment> investments = mc.getInvestments();
-
-        // example analyses usage
-        InvestmentRevenueCriteria input = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName);
-        InvestmentRevenueResult ir = new InvestmentRevenue(mc, input).getResult();
-    }
 
 }

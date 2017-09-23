@@ -1,12 +1,11 @@
 package com.infoshare.model.validationResults;
 
-import com.infoshare.model.arguments.IVRArgs;
 
 public class AnalysisValidationResult {
 
     private boolean isValid;
     private String errMessage;
-    private IVRArgs ivrArgs;
+    private String[] validatedArgs;
 
     public boolean isValid() {
         return isValid;
@@ -16,13 +15,17 @@ public class AnalysisValidationResult {
         return errMessage;
     }
 
-    public IVRArgs getIvrArgs() {
-        return ivrArgs;
+    public String[] getValidatedArgs() {
+        return validatedArgs;
     }
 
-    public AnalysisValidationResult(boolean isValid, String errMessage, IVRArgs ivrArgs) {
+    public AnalysisValidationResult(boolean isValid, String errMessage, String[] validatedArgs) {
         this.isValid = isValid;
         this.errMessage = errMessage;
-        this.ivrArgs = ivrArgs;
+        this.validatedArgs = validatedArgs;
     }
+
+
+
+
 }

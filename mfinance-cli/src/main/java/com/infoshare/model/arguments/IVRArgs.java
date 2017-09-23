@@ -1,6 +1,6 @@
 package com.infoshare.model.arguments;
 
-public class IVRArgs {
+public class IVRArgs extends AnalysisArgs {
 
     private static final int COMMAND_ARGS_NUMBER = 5;
     public static final String ANALYSIS_COMMAND_STRING = "IVR";

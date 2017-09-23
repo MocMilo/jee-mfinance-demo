@@ -1,6 +1,8 @@
 package com.infoshare.controller;
 
+import com.infoshare.controller.analyzer.Analyzer;
 import com.infoshare.controller.validators.ValidationContext;
+import com.infoshare.core.models.exceptions.NoDataForCriteria;
 import com.infoshare.model.validationResults.AnalysisValidationResult;
 import com.infoshare.view.WelcomeMessageComposer;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -14,7 +16,7 @@ public class MainController {
     public MainController() {
     }
 
-    public void initialize(String[] args) {
+    public void initialize(String[] args) throws NoDataForCriteria {
 
         // load main container (m-finance core)
         composer.printWelcomeMessage(args);
@@ -22,28 +24,16 @@ public class MainController {
         // print result message
     }
 
-
-
-
-    private void doExecute(String[] args) {
+    private void doExecute(String[] args) throws NoDataForCriteria {
         if (args.length > 0) {
             result = ValidationContext.doValidate(args);
             if(!result.isValid()) {
                 System.out.print(result.getErrMessage());
             }
             else {
-               // System.out.print(result.getErrMessage());
-                //  doAnalyze(result);
+                new Analyzer().doAnalyze(args);
             }
         }
-
-    }
-
-    private void doAnalyze(AnalysisValidationResult result) {
-
-        throw new NotImplementedException();
-        // TODO analysis processing
-        // TODO analysis results presentation
     }
 
 }

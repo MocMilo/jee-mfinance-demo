@@ -11,7 +11,9 @@ public class ConfigurationProviderTest extends TestCase {
 
        ConfigurationProvider configurationProvider = new ConfigurationProvider();
        Configuration config =  configurationProvider.getConfiguration();
-       System.out.println("folderbackup:"+ config.getCurrencyBackupFolderPath().getFolderPath());
+
+        System.out.println("\ncurrency folderpath: "+ config.getCurrencyFolderPath().getFolderPath());
+        System.out.println("\nfolderbackup: "+ config.getCurrencyBackupFolderPath().getFolderPath());
 
     }
 
