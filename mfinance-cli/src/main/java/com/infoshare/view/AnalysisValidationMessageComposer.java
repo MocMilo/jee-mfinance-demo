@@ -1,17 +1,17 @@
 package com.infoshare.view;
 
-import com.infoshare.model.validationResults.ArgValidatorResult;
+import com.infoshare.model.validationResults.ArgValidationResult;
 
 import java.util.List;
 
 public class AnalysisValidationMessageComposer {
 
-    public String composeErrorMessage(List<ArgValidatorResult> results) {
+    public String composeErrorMessage(List<ArgValidationResult> results) {
 
         StringBuilder sb = new StringBuilder();
 
-            for (ArgValidatorResult item : results) {
-                sb.append("\narg value:"
+            for (ArgValidationResult item : results) {
+                sb.append("\narg:"
                         .concat(item.getEvaluatedValue())
                         .concat(" "
                         .concat(item.getErrMessage()

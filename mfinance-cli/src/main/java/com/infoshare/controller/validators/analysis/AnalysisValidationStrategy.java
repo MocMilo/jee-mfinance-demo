@@ -1,9 +1,9 @@
 package com.infoshare.controller.validators.analysis;
 
 
-import com.infoshare.model.validationResults.AnalysisValidatorResult;
+import com.infoshare.model.validationResults.AnalysisValidationResult;
 
 
 public interface AnalysisValidationStrategy {
-   AnalysisValidatorResult doValidationAlgorithm(String[] args);
+   AnalysisValidationResult doValidationAlgorithm(String[] args);
 }

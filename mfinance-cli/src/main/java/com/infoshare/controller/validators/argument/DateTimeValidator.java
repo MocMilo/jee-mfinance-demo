@@ -1,25 +1,23 @@
 package com.infoshare.controller.validators.argument;
 
-import com.infoshare.model.validationResults.ArgValidatorResult;
+import com.infoshare.model.validationResults.ArgValidationResult;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class DateTimeValidator implements ArgumentValidator {
 
 
-    private static final String ERR_MESSAGE = "Value should be a date formated as: yyy-MM-dd";
+    private static final String ERR_MESSAGE = "Value should be a date formated as: yyyy-MM-dd";
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
     private String MESSAGE ="ok";
 
     @Override
-    public ArgValidatorResult doValidate(String evaluetedValue) {
+    public ArgValidationResult doValidate(String evaluetedValue) {
 
         boolean isValid = isValidDate(evaluetedValue);
         if(!isValid){MESSAGE=ERR_MESSAGE;}
-        return new ArgValidatorResult(isValid, evaluetedValue , MESSAGE);
+        return new ArgValidationResult(isValid, evaluetedValue , MESSAGE);
     }
 
     private boolean isValidDate(String input) {

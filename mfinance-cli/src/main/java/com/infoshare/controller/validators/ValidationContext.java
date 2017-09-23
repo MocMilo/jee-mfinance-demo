@@ -1,7 +1,8 @@
 package com.infoshare.controller.validators;
 
+import com.infoshare.core.models.exceptions.NoDataForCriteria;
 import com.infoshare.model.arguments.IVRArgs;
-import com.infoshare.model.validationResults.AnalysisValidatorResult;
+import com.infoshare.model.validationResults.AnalysisValidationResult;
 import com.infoshare.controller.validators.analysis.AnalysisValidationStrategy;
 import com.infoshare.controller.validators.analysis.IVRValidationStrategy;
 
@@ -19,8 +20,14 @@ public class ValidationContext {
         validationStratiegies.put(IVRArgs.ANALYSIS_COMMAND_STRING, new IVRValidationStrategy());
     }
 
-    public static AnalysisValidatorResult doValidate(String name, String[] args) {
+    public static AnalysisValidationResult doValidate(String[] args) {
 
-        return validationStratiegies.get(name).doValidationAlgorithm(args);
+        String analysisCommandName = args[0];
+
+        if (validationStratiegies.containsKey(analysisCommandName)) {
+            return validationStratiegies.get(analysisCommandName).doValidationAlgorithm(args);
+        } else {
+            throw new IllegalArgumentException("bad argument: analysis_name not found!");
+        }
     }
 }

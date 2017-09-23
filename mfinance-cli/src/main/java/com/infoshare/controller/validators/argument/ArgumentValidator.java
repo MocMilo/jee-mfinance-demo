@@ -1,8 +1,8 @@
 package com.infoshare.controller.validators.argument;
 
-import com.infoshare.model.validationResults.ArgValidatorResult;
+import com.infoshare.model.validationResults.ArgValidationResult;
 
 public interface ArgumentValidator {
 
-    ArgValidatorResult doValidate(String valueToValidate);
+    ArgValidationResult doValidate(String valueToValidate);
 }

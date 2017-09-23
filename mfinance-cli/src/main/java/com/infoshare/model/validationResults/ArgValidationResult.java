@@ -1,6 +1,6 @@
 package com.infoshare.model.validationResults;
 
-public class ArgValidatorResult {
+public class ArgValidationResult {
 
     private boolean isValid;
     private String errMessage;
@@ -18,7 +18,7 @@ public class ArgValidatorResult {
         return evaluatedValue;
     }
 
-    public ArgValidatorResult(boolean isValid, String evaluatedValue, String errMessage) {
+    public ArgValidationResult(boolean isValid, String evaluatedValue, String errMessage) {
         this.isValid = isValid;
         this.errMessage = errMessage;
         this.evaluatedValue = evaluatedValue;

@@ -10,9 +10,25 @@ public class IVRArgs {
     private String endDate;
 
     public IVRArgs(String[] args) {
-        this.capital = args[1];
-        this.investmentName = args[2];
+        this.investmentName = args[1];
+        this.capital = args[2];
         this.startDate = args[3];
         this.endDate = args[4];
+    }
+
+    public String getCapital() {
+        return capital;
+    }
+
+    public String getInvestmentName() {
+        return investmentName;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
     }
 }
