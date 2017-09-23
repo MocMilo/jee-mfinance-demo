@@ -10,5 +10,4 @@ public class ConsoleMessage {
     public static final String COMMAND_HELP_MESSAGE ="\nTo get analysis result type command:\n"
             +"\n  -analysis_name <arg1> <arg2> <arg3>...\n";
 
-    public static final String APP_OPTIONS ="\n-q to quit application\n";
 }

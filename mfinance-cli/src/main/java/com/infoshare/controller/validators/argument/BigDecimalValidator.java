@@ -1,4 +1,4 @@
-package com.infoshare.validators.argument;
+package com.infoshare.controller.validators.argument;
 
 import com.infoshare.model.validationResults.ArgValidatorResult;
 
@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class BigDecimalValidator implements ArgumentValidator {
 
     private static final String ERR_MESSAGE = "Value should be BigDecimal.";
-    private String MESSAGE ="";
+    private String MESSAGE ="ok";
 
     @Override
     public ArgValidatorResult doValidate(String evaluetedValue) {

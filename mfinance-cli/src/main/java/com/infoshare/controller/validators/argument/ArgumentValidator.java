@@ -1,4 +1,4 @@
-package com.infoshare.validators.argument;
+package com.infoshare.controller.validators.argument;
 
 import com.infoshare.model.validationResults.ArgValidatorResult;
 
