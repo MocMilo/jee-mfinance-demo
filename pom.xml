@@ -6,7 +6,7 @@
     <artifactId>mfinance</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>mfinance</investmentName>
+    <name>mfinance</name>
 
     <modules>
         <module>mfinance-cli</module>
