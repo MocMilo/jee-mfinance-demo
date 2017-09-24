@@ -1,4 +1,4 @@
-package com.infoshare.view;
+package com.infoshare.view.composers;
 
 import com.infoshare.model.analysisResults.IVRResult;
 

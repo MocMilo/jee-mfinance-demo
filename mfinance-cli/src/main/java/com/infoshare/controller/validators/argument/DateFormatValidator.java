@@ -5,7 +5,7 @@ import com.infoshare.model.validationResults.ArgValidationResult;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class DateTimeValidator implements ArgumentValidator {
+public class DateFormatValidator implements ArgumentValidator {
 
 
     private static final String ERR_MESSAGE = "Value should be a date formated as: yyyy-MM-dd";

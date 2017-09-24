@@ -1,10 +1,8 @@
-package com.infoshare.controller.validators;
+package com.infoshare.controller.validators.strategies;
 
 
 import com.infoshare.model.arguments.IVRArgs;
 import com.infoshare.model.validationResults.AnalysisValidationResult;
-import com.infoshare.controller.validators.analysis.AnalysisValidationStrategy;
-import com.infoshare.controller.validators.analysis.IVRValidationStrategy;
 
 import java.util.HashMap;
 import java.util.Map;

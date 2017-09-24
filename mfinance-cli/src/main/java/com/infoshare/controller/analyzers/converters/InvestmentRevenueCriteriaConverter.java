@@ -1,4 +1,4 @@
-package com.infoshare.controller.analyzer.converters;
+package com.infoshare.controller.analyzers.converters;
 
 import com.infoshare.core.models.analyses.criteria.InvestmentRevenueCriteria;
 import com.infoshare.model.arguments.IVRArgs;

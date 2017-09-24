@@ -1,4 +1,4 @@
-package com.infoshare.controller.validators.analysis;
+package com.infoshare.controller.validators.strategies;
 
 
 import com.infoshare.model.validationResults.AnalysisValidationResult;
