@@ -6,19 +6,19 @@
          version="2.4">
 
     <filter-mapping>
-        <filter-name>loginAccessPoint</filter-name>
+        <filter-name>loginAccessPoint</filter-investmentName>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
-        <filter-name>isUserAuthenticated</filter-name>
+        <filter-name>isUserAuthenticated</filter-investmentName>
         <url-pattern>/auth/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
-        <filter-name>userView</filter-name>
+        <filter-name>userView</filter-investmentName>
         <url-pattern>/auth/userview/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
-        <filter-name>adminView</filter-name>
+        <filter-name>adminView</filter-investmentName>
         <url-pattern>/auth/adminview/*</url-pattern>
     </filter-mapping>
 

@@ -11,20 +11,21 @@ import com.infoshare.view.composers.IVRResultMessageComposer;
 public class IVRAnalyzerStrategy implements AnalysisStrategy {
 
     private IVRResultMessageComposer composer = new IVRResultMessageComposer();
-    private InvestmentRevenueResultConverter criteriaConverter = new InvestmentRevenueResultConverter();
+    private InvestmentRevenueResultConverter resultConverter = new InvestmentRevenueResultConverter();
     private BossaInitializerFacade initializer = new BossaInitializerFacade();
-    private InvestmentRevenueCriteriaConverter resultConverter = new InvestmentRevenueCriteriaConverter();
+    private InvestmentRevenueCriteriaConverter criteriaConverter = new InvestmentRevenueCriteriaConverter();
 
+    @Override
     public void doAnalyzeAlgorithm(String[] args) throws NoDataForCriteria {
         InvestmentRevenueResult result =  getResult(args);
-        composer.printResultMessage(criteriaConverter.convertFrom(result));
+        composer.printResultMessage(resultConverter.convertFrom(result));
     }
 
     public InvestmentRevenueResult getResult(String[] args) throws NoDataForCriteria {
 
         InvestmentRevenue revenue =
                 new InvestmentRevenue(initializer.getMainContainerWithLoadedData(),
-                        resultConverter.convertFrom(args));
+                        criteriaConverter.convertFrom(args));
 
         return revenue.getResult();
     }

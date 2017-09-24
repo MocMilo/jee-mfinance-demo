@@ -1,6 +1,7 @@
 package com.infoshare.controller.validators.strategies;
 
 
+import com.infoshare.model.arguments.INDArgs;
 import com.infoshare.model.arguments.IVRArgs;
 import com.infoshare.model.validationResults.AnalysisValidationResult;
 
@@ -13,9 +14,9 @@ public class ValidationContext {
 
     static {
 
-        //TODO put all analysis mappings here
-
+        //TODO put all analysis validation mappings here
         validationStratiegies.put(IVRArgs.ANALYSIS_COMMAND_STRING, new IVRValidationStrategy());
+        validationStratiegies.put(INDArgs.ANALYSIS_COMMAND_STRING, new INDValidationStrategy());
     }
 
     public static AnalysisValidationResult doValidate(String[] args) {
