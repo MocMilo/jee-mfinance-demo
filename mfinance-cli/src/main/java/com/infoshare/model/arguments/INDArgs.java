@@ -11,13 +11,6 @@ public class INDArgs {
         return investmentName;
     }
 
-    public INDArgs(String investmentName) {
-        this.investmentName = investmentName;
-    }
-
-    public INDArgs() {
-    }
-
     public INDArgs(String[] args) {
         this.investmentName = args[1];
     }

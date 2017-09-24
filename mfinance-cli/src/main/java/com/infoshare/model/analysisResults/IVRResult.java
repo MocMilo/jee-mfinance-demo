@@ -7,18 +7,18 @@ import java.math.BigDecimal;
 public class IVRResult {
 
     private BigDecimal capitalRevenueValue;
-    private BigDecimal capitalRevenueDeltaPrecentValue;
+    private BigDecimal capitalRevenueDeltaPercentValue;
 
     public BigDecimal getCapitalRevenueValue() {
         return capitalRevenueValue;
     }
-    public BigDecimal getCapitalRevenueDeltaPrecentValue() {
-        return capitalRevenueDeltaPrecentValue;
+    public BigDecimal getCapitalRevenueDeltaPercentValue() {
+        return capitalRevenueDeltaPercentValue;
     }
 
-    public IVRResult(BigDecimal capitalRevenueValue, BigDecimal capitalRevenueDeltaPrecentValue) {
+    public IVRResult(BigDecimal capitalRevenueValue, BigDecimal capitalRevenueDeltaPercentValue) {
         this.capitalRevenueValue = capitalRevenueValue;
-        this.capitalRevenueDeltaPrecentValue = capitalRevenueDeltaPrecentValue;
+        this.capitalRevenueDeltaPercentValue = capitalRevenueDeltaPercentValue;
     }
 
 }

@@ -30,6 +30,4 @@ public class INDAnalyzerStrategy implements AnalysisStrategy {
 
         return indicator.getResult();
     }
-
-
 }
