@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 public class DateFormatValidator implements ArgumentValidator {
 
 
-    private static final String ERR_MESSAGE = "Value should be a date formated as: yyyy-MM-dd";
+    private static final String ERR_MESSAGE = "Value should be Date, formated: yyyy-MM-dd";
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
     private String MESSAGE ="ok";
 
