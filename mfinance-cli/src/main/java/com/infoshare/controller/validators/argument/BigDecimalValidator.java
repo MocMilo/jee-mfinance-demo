@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class BigDecimalValidator implements ArgumentValidator {
 
-    private static final String ERR_MESSAGE = "Value should be BigDecimal.";
+    private static final String ERR_MESSAGE = "Value should be of type Decimal";
     private String MESSAGE ="ok";
 
     @Override
