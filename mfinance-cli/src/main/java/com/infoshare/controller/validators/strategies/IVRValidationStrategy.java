@@ -31,6 +31,8 @@ public class IVRValidationStrategy implements AnalysisValidationStrategy {
         results.add(dateFormatValidator.doValidate(ivrArgs.getStartDate()));
         results.add(dateFormatValidator.doValidate(ivrArgs.getEndDate()));
 
+
+
         return new AnalysisValidationResult(
                 this.isValid(results),
                 messageComposer.composeErrorMessage(results),
