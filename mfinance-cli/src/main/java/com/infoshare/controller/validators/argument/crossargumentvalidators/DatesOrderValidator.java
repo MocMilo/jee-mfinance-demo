@@ -11,11 +11,11 @@ import java.util.List;
 
 public class DatesOrderValidator {
 
-
     private List<LocalDate> expectedOrderOfDateArgValues = new LinkedList<>();
     private List<DatesOrderValidationResult> validationResults = new ArrayList<>();
     private ArgValidationResult argValidationResult;
     private String arg = "";
+    DatesOrderValidationMessageComposer composer = new DatesOrderValidationMessageComposer();
 
     public DatesOrderValidator(List<LocalDate> expectedOrderOfDateArgValues) {
         this.expectedOrderOfDateArgValues = expectedOrderOfDateArgValues;
@@ -23,10 +23,8 @@ public class DatesOrderValidator {
 
     public ArgValidationResult doValidate() {
 
-        DatesOrderValidationMessageComposer composer = new DatesOrderValidationMessageComposer();
-        String message = composer.composeErrorMessage(validationResults);
         boolean isValid = this.isValid(getOrderValidationResults());
-
+        String message = composer.composeErrorMessage(validationResults);
         return argValidationResult = new ArgValidationResult(isValid, arg,message);
     }
 
@@ -42,7 +40,7 @@ public class DatesOrderValidator {
     }
 
     private List<DatesOrderValidationResult> getOrderValidationResults() {
-        for (int i = 0; 0 < expectedOrderOfDateArgValues.size(); i++) {
+        for (int i = 0; i < expectedOrderOfDateArgValues.size(); i++) {
 
             arg.concat(expectedOrderOfDateArgValues.get(i).toString());
 

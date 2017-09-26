@@ -16,7 +16,7 @@ public class DatesOrderValidationMessageComposer {
             if (!item.isIdValidOrder()) {
                 sb.append("\n"
                         .concat(ERR_MESSAGE)
-                        .concat("\nDate:")
+                        .concat("\nDate arg:")
                         .concat(item.getExpectedFirst().toString())
                         .concat(" should be before:"
                         .concat(item.getExpectedAsSecond().toString()
