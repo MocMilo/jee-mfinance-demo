@@ -1,6 +1,5 @@
 package com.infoshare.controller.validators.argument.crossargumentvalidators;
 
-
 import com.infoshare.model.analysisResults.NumberOfArgumentsValidationResult;
 import com.infoshare.model.validationResults.ArgValidationResult;
 import com.infoshare.view.composers.validation.crossargument.NumberOfArgumentsMessageComposer;
@@ -17,7 +16,7 @@ public class NumberOfArgumentsValidator {
         this.args = args;
     }
 
-    public ArgValidationResult doValidate(){
+    public ArgValidationResult doValidate() {
 
         String message = composer.composeErrorMessage(this.getResult(expectedArgsNumber));
         NumberOfArgumentsValidationResult result = this.getResult(expectedArgsNumber);
@@ -26,14 +25,14 @@ public class NumberOfArgumentsValidator {
                 result.getEvaluatedValue(), message);
     }
 
-    private NumberOfArgumentsValidationResult getResult(int expectedNumberOfArgs){
+    private NumberOfArgumentsValidationResult getResult(int expectedNumberOfArgs) {
 
         String expectedValue = Integer.toString(expectedNumberOfArgs);
         String evaluatedValue = Integer.toString(args.length);
 
-        if(expectedNumberOfArgs == args.length){
-            return new NumberOfArgumentsValidationResult(true,expectedValue , evaluatedValue);
+        if (expectedNumberOfArgs == args.length) {
+            return new NumberOfArgumentsValidationResult(true, expectedValue, evaluatedValue);
         }
-        return new NumberOfArgumentsValidationResult(false,expectedValue , evaluatedValue);
+        return new NumberOfArgumentsValidationResult(false, expectedValue, evaluatedValue);
     }
 }
