@@ -4,10 +4,11 @@ import com.infoshare.controller.validators.argument.BigDecimalValidator;
 import com.infoshare.controller.validators.argument.DateFormatValidator;
 import com.infoshare.controller.validators.argument.StringLengthValidator;
 import com.infoshare.controller.validators.argument.crossargumentvalidators.DatesOrderValidator;
+import com.infoshare.controller.validators.argument.crossargumentvalidators.NumberOfArgumentsValidator;
 import com.infoshare.model.arguments.IVRArgs;
 import com.infoshare.model.validationResults.AnalysisValidationResult;
 import com.infoshare.model.validationResults.ArgValidationResult;
-import com.infoshare.view.composers.AnalysisValidationMessageComposer;
+import com.infoshare.view.composers.validation.AnalysisValidationMessageComposer;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -18,20 +19,28 @@ import java.util.List;
 public class IVRValidationStrategy implements AnalysisValidationStrategy {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private IVRArgs ivrArgs;
+
+    private NumberOfArgumentsValidator argsNumberValidator;
     private BigDecimalValidator bigDecimalValidator = new BigDecimalValidator();
     private StringLengthValidator stringLengthValidator = new StringLengthValidator();
     private DateFormatValidator dateFormatValidator = new DateFormatValidator();
-    private IVRArgs ivrArgs;
-
     private AnalysisValidationMessageComposer messageComposer = new AnalysisValidationMessageComposer();
+
+    private List<ArgValidationResult> finalValidationResults = new ArrayList<>();
+    private List<ArgValidationResult> results = new ArrayList<>();
+    private List<LocalDate> expectedOrderOfDateArgValues = new LinkedList<>();
 
     @Override
     public AnalysisValidationResult doValidationAlgorithm(String[] args) {
 
-        ivrArgs = new IVRArgs(args);
-        List<ArgValidationResult> finalValidationResults = new ArrayList<>();
+        finalValidationResults.add(doArgsNumberValidation(args));
 
-        finalValidationResults.addAll(doArgValidation(ivrArgs));
+        if (isValid(finalValidationResults)) {
+            ivrArgs = new IVRArgs(args);
+            finalValidationResults.addAll(doArgValidation(ivrArgs));
+        }
+
         if (isValid(finalValidationResults)) {
             finalValidationResults.add(doCrossArgValidation(ivrArgs));
         }
@@ -42,8 +51,15 @@ public class IVRValidationStrategy implements AnalysisValidationStrategy {
                 args);
     }
 
+    private ArgValidationResult doArgsNumberValidation(String[] args) {
+
+        argsNumberValidator = new NumberOfArgumentsValidator(IVRArgs.COMMAND_ARGS_NUMBER, args);
+        ArgValidationResult result = argsNumberValidator.doValidate();
+        return new ArgValidationResult(result.isValid(), result.getEvaluatedValue(),result.getErrMessage());
+
+    }
     private List<ArgValidationResult> doArgValidation(IVRArgs args) {
-        List<ArgValidationResult> results = new ArrayList<>();
+
         results.add(stringLengthValidator.doValidate(IVRArgs.ANALYSIS_COMMAND_STRING));
         results.add(bigDecimalValidator.doValidate(args.getCapital()));
         results.add(dateFormatValidator.doValidate(args.getStartDate()));
@@ -52,7 +68,7 @@ public class IVRValidationStrategy implements AnalysisValidationStrategy {
     }
 
     private ArgValidationResult doCrossArgValidation(IVRArgs args) {
-        List<LocalDate> expectedOrderOfDateArgValues = new LinkedList<>();
+
         expectedOrderOfDateArgValues.add(LocalDate.parse(args.getStartDate(), FORMATTER));
         expectedOrderOfDateArgValues.add(LocalDate.parse(args.getEndDate(), FORMATTER));
 

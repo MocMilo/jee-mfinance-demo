@@ -1,4 +1,4 @@
-package com.infoshare.view.composers;
+package com.infoshare.view.composers.validation;
 
 import com.infoshare.model.validationResults.ArgValidationResult;
 

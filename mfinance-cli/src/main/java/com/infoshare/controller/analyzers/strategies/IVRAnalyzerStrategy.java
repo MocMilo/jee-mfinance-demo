@@ -6,7 +6,7 @@ import com.infoshare.controller.analyzers.converters.InvestmentRevenueResultConv
 import com.infoshare.core.analyzer.analyses.revenue.InvestmentRevenue;
 import com.infoshare.core.models.analyses.results.InvestmentRevenueResult;
 import com.infoshare.core.models.exceptions.NoDataForCriteria;
-import com.infoshare.view.composers.IVRResultMessageComposer;
+import com.infoshare.view.composers.results.IVRResultMessageComposer;
 
 public class IVRAnalyzerStrategy implements AnalysisStrategy {
 

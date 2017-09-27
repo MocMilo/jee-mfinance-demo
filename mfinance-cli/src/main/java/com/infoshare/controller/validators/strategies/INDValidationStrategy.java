@@ -1,11 +1,12 @@
 package com.infoshare.controller.validators.strategies;
 
 import com.infoshare.controller.validators.argument.StringLengthValidator;
+import com.infoshare.controller.validators.argument.crossargumentvalidators.NumberOfArgumentsValidator;
 import com.infoshare.model.arguments.INDArgs;
 import com.infoshare.model.arguments.IVRArgs;
 import com.infoshare.model.validationResults.AnalysisValidationResult;
 import com.infoshare.model.validationResults.ArgValidationResult;
-import com.infoshare.view.composers.AnalysisValidationMessageComposer;
+import com.infoshare.view.composers.validation.AnalysisValidationMessageComposer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,21 +15,32 @@ public class INDValidationStrategy implements AnalysisValidationStrategy {
 
 
     private INDArgs indArgs;
+    private NumberOfArgumentsValidator argsNumberValidator;
     private StringLengthValidator stringLengthValidator = new StringLengthValidator();
     private AnalysisValidationMessageComposer messageComposer = new AnalysisValidationMessageComposer();
+    private List<ArgValidationResult> finalValidationResults = new ArrayList<>();
 
     @Override
     public AnalysisValidationResult doValidationAlgorithm(String[] args) {
 
-        indArgs = new INDArgs(args);
-        List<ArgValidationResult> results = new ArrayList<>();
+        finalValidationResults.add(doArgsNumberValidation(args));
 
-        results.add(stringLengthValidator.doValidate(IVRArgs.ANALYSIS_COMMAND_STRING));
-
+        if (isValid(finalValidationResults)) {
+            indArgs = new INDArgs(args);
+            finalValidationResults.add(stringLengthValidator.doValidate(IVRArgs.ANALYSIS_COMMAND_STRING));
+        }
         return new AnalysisValidationResult(
-                this.isValid(results),
-                messageComposer.composeErrorMessage(results),
+                this.isValid(finalValidationResults),
+                messageComposer.composeErrorMessage(finalValidationResults),
                 args);
+    }
+
+    private ArgValidationResult doArgsNumberValidation(String[] args) {
+
+        argsNumberValidator = new NumberOfArgumentsValidator(INDArgs.COMMAND_ARGS_NUMBER, args);
+        ArgValidationResult result = argsNumberValidator.doValidate();
+        return new ArgValidationResult(result.isValid(), result.getEvaluatedValue(),result.getErrMessage());
+
     }
 
     private boolean isValid(List<ArgValidationResult> results) {

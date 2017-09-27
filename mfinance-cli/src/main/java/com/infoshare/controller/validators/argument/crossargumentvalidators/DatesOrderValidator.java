@@ -2,7 +2,7 @@ package com.infoshare.controller.validators.argument.crossargumentvalidators;
 
 import com.infoshare.model.validationResults.ArgValidationResult;
 import com.infoshare.model.validationResults.crossargument.DatesOrderValidationResult;
-import com.infoshare.view.composers.crossargument.DatesOrderValidationMessageComposer;
+import com.infoshare.view.composers.validation.crossargument.DatesOrderValidationMessageComposer;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

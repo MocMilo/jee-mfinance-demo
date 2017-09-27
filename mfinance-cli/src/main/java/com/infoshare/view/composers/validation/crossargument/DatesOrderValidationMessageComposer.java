@@ -1,4 +1,4 @@
-package com.infoshare.view.composers.crossargument;
+package com.infoshare.view.composers.validation.crossargument;
 
 import com.infoshare.model.validationResults.crossargument.DatesOrderValidationResult;
 

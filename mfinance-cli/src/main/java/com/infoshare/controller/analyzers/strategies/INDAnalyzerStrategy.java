@@ -6,7 +6,7 @@ import com.infoshare.controller.analyzers.initializer.BossaInitializerFacade;
 import com.infoshare.core.analyzer.analyses.indicator.Indicator;
 import com.infoshare.core.models.analyses.results.IndicatorResult;
 import com.infoshare.core.models.exceptions.NoDataForCriteria;
-import com.infoshare.view.composers.INDResultMessageComposer;
+import com.infoshare.view.composers.results.INDResultMessageComposer;
 
 
 public class INDAnalyzerStrategy implements AnalysisStrategy {

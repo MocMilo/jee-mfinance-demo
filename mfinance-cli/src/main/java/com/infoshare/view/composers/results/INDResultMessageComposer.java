@@ -1,4 +1,4 @@
-package com.infoshare.view.composers;
+package com.infoshare.view.composers.results;
 
 import com.infoshare.model.analysisResults.INDResult;
 
