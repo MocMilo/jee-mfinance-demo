@@ -18,7 +18,7 @@ import static org.hamcrest.core.IsNot.not;
 public class QuotationFactoryTest {
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private File resourcesDirectory = new File("src/test/resources/csv/currencies/EUR.txt");
+    private final File resourcesDirectory = new File("src/test/resources/csv/currencies/EUR.txt");
     private final int NUMBEROFROWS = 4622;
     private QuotationFactory quotationFactory= new QuotationFactory();;
 

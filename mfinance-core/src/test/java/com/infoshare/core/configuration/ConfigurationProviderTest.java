@@ -1,19 +1,24 @@
 package com.infoshare.core.configuration;
 
 import com.infoshare.core.models.configuration.Configuration;
-import junit.framework.TestCase;
+import org.junit.Test;
+
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNot.not;
 
 
-public class ConfigurationProviderTest extends TestCase {
+public class ConfigurationProviderTest {
+
+    @Test
     public void testGetConfiguration() throws Exception {
-
-       //TODO implement the rest of Test cases
 
        ConfigurationProvider configurationProvider = new ConfigurationProvider();
        Configuration config =  configurationProvider.getConfiguration();
 
-        System.out.println("\ncurrency folderpath: "+ config.getCurrencyFolderPath().getFolderPath());
-        System.out.println("\nfolderbackup: "+ config.getCurrencyBackupFolderPath().getFolderPath());
+       assertThat(config.getCurrencyFolderPath().getFolderPath(), not(equalTo(nullValue())));
+       assertThat(config.getCurrencyBackupFolderPath().getFolderPath(), not(equalTo(nullValue())));
 
     }
 
