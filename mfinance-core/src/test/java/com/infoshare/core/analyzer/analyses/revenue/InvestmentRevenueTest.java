@@ -1,35 +1,31 @@
 package com.infoshare.core.analyzer.analyses.revenue;
 
-import com.infoshare.core.models.analyses.criteria.InvestmentRevenueCriteria;
-import com.infoshare.core.models.analyses.results.InvestmentRevenueResult;
-import com.infoshare.core.models.configuration.Configuration;
-import com.infoshare.core.models.exceptions.NoDataForCriteria;
 import com.infoshare.core.configuration.ConfigurationProvider;
 import com.infoshare.core.loader.MainContainerLoader;
-import com.infoshare.core.models.bossa.Investment;
+import com.infoshare.core.models.analyses.criteria.InvestmentRevenueCriteria;
+import com.infoshare.core.models.analyses.results.InvestmentRevenueResult;
 import com.infoshare.core.models.bossa.MainContainer;
+import com.infoshare.core.models.configuration.Configuration;
+import com.infoshare.core.models.exceptions.NoDataForCriteria;
 import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 
 public class InvestmentRevenueTest  {
 
-    // Test values (just as from .jsp form)
     private final   BigDecimal capital =  new BigDecimal(10000.00);
     private final   DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
     private final   LocalDate BUY_DATE = LocalDate.parse("20090910", formatter);
     private final   LocalDate SELL_DATE = LocalDate.parse("20170330", formatter);
     private final   String InvestmentName = "CHF";
-    // application initialization
+
     private final Configuration configuration = new ConfigurationProvider().getConfiguration();
     private final MainContainerLoader mainContainerLoader = new MainContainerLoader(configuration);
 
     private MainContainer getMainContainerWithLoadedData(){
-        // loading data
         mainContainerLoader.loadFunds();
         mainContainerLoader.loadCurrencies();
         return mainContainerLoader.getMainContainer();
