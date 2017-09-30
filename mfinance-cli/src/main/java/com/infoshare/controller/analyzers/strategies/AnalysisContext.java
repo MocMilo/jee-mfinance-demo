@@ -13,7 +13,6 @@ public class AnalysisContext {
 
     static {
 
-        //TODO put all analysis mappings here
         analysisStrategies.put(IVRArgs.ANALYSIS_COMMAND_STRING, new IVRAnalyzerStrategy());
         analysisStrategies.put(INDArgs.ANALYSIS_COMMAND_STRING, new INDAnalyzerStrategy());
     }

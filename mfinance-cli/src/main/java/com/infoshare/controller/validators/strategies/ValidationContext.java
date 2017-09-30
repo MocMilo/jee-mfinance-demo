@@ -14,7 +14,6 @@ public class ValidationContext {
 
     static {
 
-        //TODO put all analysis validation mappings here
         validationStrategies.put(IVRArgs.ANALYSIS_COMMAND_STRING, new IVRValidationStrategy());
         validationStrategies.put(INDArgs.ANALYSIS_COMMAND_STRING, new INDValidationStrategy());
     }

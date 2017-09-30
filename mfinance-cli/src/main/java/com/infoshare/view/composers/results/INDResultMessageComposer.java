@@ -26,7 +26,7 @@ public class INDResultMessageComposer {
 
         System.out.print("\nminValue quot date:" + result.getMinValueCLIQuotation().getDate());
         System.out.print("\nminValue quot value[%]:" + result.getMinValueCLIQuotation().getClose());
-        System.out.print("\nminValue quot delta[%]:" + result.getMinValueCLIQuotation().getDeltaClose());
+        System.out.print("\nminValue quot delta[%]:\n" + result.getMinValueCLIQuotation().getDeltaClose());
     }
 
 

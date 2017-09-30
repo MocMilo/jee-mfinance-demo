@@ -11,7 +11,6 @@ public class BossaInitializerFacade {
         Configuration configuration = new ConfigurationProvider().getConfiguration();
         MainContainerLoader mainContainerLoader = new MainContainerLoader(configuration);
 
-        // loading data
         mainContainerLoader.loadFunds();
         mainContainerLoader.loadCurrencies();
 
