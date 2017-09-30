@@ -23,7 +23,7 @@ public class ConfigurationProvider {
         ResourcesFileReader fileReader = new ResourcesFileReader(CONFIGURATION_FILE_PATH);
         try {
             String fileContent = fileReader.getFileAsString();
-            ConfigurationJSONMapper configurationJsonMapper = new ConfigurationJSONMapper(fileContent);
+            ConfigurationJSONSerializer configurationJsonMapper = new ConfigurationJSONSerializer(fileContent);
 
             configuration = configurationJsonMapper.getConfigurationFromJson();
 
