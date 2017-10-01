@@ -20,6 +20,5 @@ public class InvestmentRevenueResult extends AnalysisResult {
     public InvestmentRevenueResult(BigDecimal capitalRevenueValue, BigDecimal capitalRevenueDeltaPrecentValue, AnalysisCriteria evaluatedInput) {
         this.capitalRevenueValue = capitalRevenueValue;
         this.capitalRevenueDeltaPrecentValue = capitalRevenueDeltaPrecentValue;
-        super.finallyEvaluatedInput = evaluatedInput;
     }
 }

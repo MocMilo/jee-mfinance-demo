@@ -23,9 +23,24 @@ public class ConfigurationProvider {
         ResourcesFileReader fileReader = new ResourcesFileReader(CONFIGURATION_FILE_PATH);
         try {
             String fileContent = fileReader.getFileAsString();
-            ConfigurationJSONMapper configurationJsonMapper = new ConfigurationJSONMapper(fileContent);
+            ConfigurationJSONSerializer configurationJsonMapper = new ConfigurationJSONSerializer(fileContent);
 
-            this.configuration = configurationJsonMapper.getConfigurationFromJson();
+            configuration = configurationJsonMapper.getConfigurationFromJson();
+
+            if(configuration.getCurrencyFilePaths().isEmpty()){
+              String folderPath = configuration.getCurrencyFolderPath().getFolderPath();
+              List<String> fileNames = getFileNameList(folderPath);
+              List<FilePath> generatedfilePaths = generateFilePaths(folderPath, fileNames);
+              configuration.setCurrencyFilePaths(generatedfilePaths);
+            }
+
+            if(configuration.getFundFilePaths().isEmpty()){
+                String folderPath = configuration.getFundFolderPath().getFolderPath();
+                List<String> fileNames = getFileNameList(folderPath);
+                List<FilePath> generatedfilePaths = generateFilePaths(folderPath, fileNames);
+                configuration.setFundFilePaths(generatedfilePaths);
+            }
+
         } catch (IOException e) {
             LOGGER.info("Error reading the file: " + e.getMessage());
         } catch (ConfigurationException e) {

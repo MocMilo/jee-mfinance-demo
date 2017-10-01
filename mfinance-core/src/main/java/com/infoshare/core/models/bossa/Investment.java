@@ -5,9 +5,9 @@ import java.util.List;
 
 public abstract class Investment {
 
-    public int Id;
-    public String name;
-    public List<Quotation> quotations = new ArrayList<>();
+    private int Id;
+    private String name;
+    private List<Quotation> quotations = new ArrayList<>();
 
     public int getId() {
         return Id;

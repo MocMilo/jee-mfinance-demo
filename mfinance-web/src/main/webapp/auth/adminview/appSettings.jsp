@@ -18,7 +18,7 @@
 <p>Total Number of Currencies: <b>${currencyCount}</b></p>
 <br>
 <form action="../adminview/appsettings" method="post">
-    <button type="submit">Press to reload data model csv files...</button>
+    <button type="submit">Press to reload data com.infoshare.mfinance.cli.model csv files...</button>
 </form>
 </br>
 <br>
