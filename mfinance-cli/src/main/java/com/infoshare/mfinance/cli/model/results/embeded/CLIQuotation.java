@@ -16,6 +16,9 @@ public class CLIQuotation {
     private BigDecimal volume;
     private BigDecimal deltaClose;
 
+    public CLIQuotation() {
+    }
+
     public CLIQuotation(String name, LocalDate date, BigDecimal open, BigDecimal high , BigDecimal low, BigDecimal close, BigDecimal volume) {
         this.name = name;
         this.date = date;
