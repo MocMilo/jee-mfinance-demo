@@ -1,7 +1,7 @@
 package com.infoshare.mfinance.cli.services.parser;
 
-import com.infoshare.mfinance.cli.services.validators.IVRValidationStrategy;
-import com.infoshare.mfinance.cli.services.validators.ValidationStrategy;
+import com.infoshare.mfinance.cli.services.parser.strategies.IVRValidationStrategy;
+import com.infoshare.mfinance.cli.services.parser.strategies.ValidationStrategy;
 
 import java.util.HashMap;
 import java.util.Map;
