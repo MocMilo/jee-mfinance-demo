@@ -1,6 +1,7 @@
 package com.infoshare.mfinance.cli.services.parser.strategies;
 
 import com.infoshare.mfinance.cli.services.parser.ParserResult;
+import org.apache.logging.log4j.core.util.ArrayUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,6 +34,28 @@ public class IVRValidationStrategyTest {
         assertThat(result.isValid(), is(equalTo(true)));
         assertThat(result.getArguments(), not(equalTo(nullValue())));
         assertThat(result.getErrorMessage(), is(equalTo("")));
+    }
+
+    @Test
+    public void shouldBeNotValiWrongNumberOfArgs() {
+
+        result = strategy.validate(ArrayUtils.remove(args, 1));
+
+        assertThat(result.isValid(), is(equalTo(false)));
+        assertThat(result.getArguments(), is(equalTo(null)));
+        assertThat(result.getErrorMessage(), is(equalTo("\nIncorrect number of arguments")));
+    }
+
+    @Test
+    public void shouldBeNotValiWrongNumberOfArgsTooMany() {
+
+        String[] tooManyArgs = new String[6];
+
+        result = strategy.validate(tooManyArgs);
+
+        assertThat(result.isValid(), is(equalTo(false)));
+        assertThat(result.getArguments(), is(equalTo(null)));
+        assertThat(result.getErrorMessage(), is(equalTo("\nIncorrect number of arguments")));
     }
 
 

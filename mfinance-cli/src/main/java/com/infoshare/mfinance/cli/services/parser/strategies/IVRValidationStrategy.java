@@ -19,11 +19,11 @@ public class IVRValidationStrategy implements ValidationStrategy {
     @Override
     public ParserResult validate(String[] args) {
 
-        IVRArgs ivrArgs = new IVRArgs(args);
-
         if (args.length != 5) {
             return new ParserResult(false, "\nIncorrect number of arguments", null);
         }
+
+        IVRArgs ivrArgs = new IVRArgs(args);
 
         try {
             analysisNames.valueOf(ivrArgs.getStrategy());
