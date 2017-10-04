@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class IVRResult extends AnalysisResult {
 
+
     private BigDecimal capitalRevenueValue;
     private BigDecimal capitalRevenueDeltaPercentValue;
 
@@ -15,16 +16,21 @@ public class IVRResult extends AnalysisResult {
         return capitalRevenueDeltaPercentValue;
     }
 
-    public IVRResult(BigDecimal capitalRevenueValue, BigDecimal capitalRevenueDeltaPercentValue) {
+    public void setCapitalRevenueValue(BigDecimal capitalRevenueValue) {
         this.capitalRevenueValue = capitalRevenueValue;
+    }
+    public void setCapitalRevenueDeltaPercentValue(BigDecimal capitalRevenueDeltaPercentValue) {
         this.capitalRevenueDeltaPercentValue = capitalRevenueDeltaPercentValue;
     }
 
+    public IVRResult() {
+    }
 
     @Override
     public String toString() {
-        return "\nInvestment Revenue [PLN]:" + capitalRevenueValue +
-                ", Change [%]:" + capitalRevenueDeltaPercentValue + "\n";
+        return "IVRResult{" +
+                "capitalRevenueValue=" + capitalRevenueValue +
+                ", capitalRevenueDeltaPercentValue=" + capitalRevenueDeltaPercentValue +
+                '}';
     }
-
 }

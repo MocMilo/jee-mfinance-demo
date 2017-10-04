@@ -1,20 +1,19 @@
 package com.infoshare.mfinance.cli.services.analyzer.converters;
 
+import com.infoshare.core.models.analyses.results.IndicatorResult;
+import com.infoshare.mfinance.cli.model.results.INDResult;
+import org.modelmapper.ModelMapper;
+
 public class IndicatorResultConverter {
 
-/*    QuotationToCLIQuotationConverter converter = new QuotationToCLIQuotationConverter();
+    private ModelMapper mapper = new ModelMapper();
+
 
     public INDResult convertFrom(IndicatorResult result) {
 
-        return new INDResult(
-                result.getName(),
-                converter.convertFrom(result.getFirstQuotation()),
-                converter.convertFrom(result.getLastQuotation()),
-                converter.convertFrom(result.getMaxValueQuotation()),
-                converter.convertFrom(result.getMinValueQuotation()),
-                converter.convertFrom(result.getMaxDeltaPlus()),
-                converter.convertFrom(result.getMaxDeltaMinus()));
+        return mapper.map(result, INDResult.class);
 
-    }*/
+    }
+
 }
 

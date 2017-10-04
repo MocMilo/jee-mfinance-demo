@@ -1,7 +1,5 @@
 package com.infoshare.core.models.analyses.results;
 
-import com.infoshare.core.models.analyses.criteria.AnalysisCriteria;
-
 import java.math.BigDecimal;
 
 public class InvestmentRevenueResult extends AnalysisResult {
@@ -17,7 +15,10 @@ public class InvestmentRevenueResult extends AnalysisResult {
         return capitalRevenueDeltaPrecentValue;
     }
 
-    public InvestmentRevenueResult(BigDecimal capitalRevenueValue, BigDecimal capitalRevenueDeltaPrecentValue, AnalysisCriteria evaluatedInput) {
+    public InvestmentRevenueResult() {
+    }
+
+    public InvestmentRevenueResult(BigDecimal capitalRevenueValue, BigDecimal capitalRevenueDeltaPrecentValue) {
         this.capitalRevenueValue = capitalRevenueValue;
         this.capitalRevenueDeltaPrecentValue = capitalRevenueDeltaPrecentValue;
     }

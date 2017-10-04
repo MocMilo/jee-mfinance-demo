@@ -99,7 +99,7 @@ public class InvestmentRevenue extends Analysis implements IResult {
                     .multiply(inputCriteria.getInvestedCapital()))
                     .setScale(2, HALF_EVEN);
 
-            return new InvestmentRevenueResult(revenueValue, deltaPriceRounded, inputCriteria);
+            return new InvestmentRevenueResult(revenueValue, deltaPriceRounded);
 
         } else {
             throw new NoDataForCriteria("Failed to calculate InvestmentRevenue.");
