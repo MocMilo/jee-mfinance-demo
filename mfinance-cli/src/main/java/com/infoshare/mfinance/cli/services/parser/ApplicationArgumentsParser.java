@@ -1,5 +1,6 @@
 package com.infoshare.mfinance.cli.services.parser;
 
+import com.infoshare.mfinance.cli.services.parser.strategies.INDValidationStrategy;
 import com.infoshare.mfinance.cli.services.parser.strategies.IVRValidationStrategy;
 import com.infoshare.mfinance.cli.services.parser.strategies.ValidationStrategy;
 
@@ -14,9 +15,8 @@ public class ApplicationArgumentsParser {
 
     static {
 
-        //TODO impl the rest of validator strategies
-
         validationStratiegies.put(analysisNames.IVR.toString(), new IVRValidationStrategy());
+        validationStratiegies.put(analysisNames.IND.toString(), new INDValidationStrategy());
     }
 
     public ParserResult parse(String[] args) {

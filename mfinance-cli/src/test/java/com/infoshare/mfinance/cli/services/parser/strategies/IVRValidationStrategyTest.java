@@ -17,7 +17,6 @@ public class IVRValidationStrategyTest {
     private IVRValidationStrategy strategy;
     private ParserResult result;
 
-
     @Before
     public void init() {
 
@@ -35,17 +34,17 @@ public class IVRValidationStrategyTest {
     }
 
     @Test
-    public void shouldBeNotValiWrongNumberOfArgsLessThanNedded() {
+    public void shouldBeNotValidWrongNumberOfArgsLessThanNedded() {
 
         result = strategy.validate(ArrayUtils.remove(args, 1));
 
         assertThat(result.isValid(), is(equalTo(false)));
         assertThat(result.getArguments(), is(equalTo(null)));
-        assertThat(result.getErrorMessage(), is(equalTo("\nIncorrect number of arguments")));
+        assertThat(result.getErrorMessage(), is(equalTo("\nwrong number of arguments")));
     }
 
     @Test
-    public void shouldBeNotValiWrongNumberOfArgsTooMany() {
+    public void shouldBeNotValidWrongNumberOfArgsTooMany() {
 
         String[] tooManyArgs = new String[6];
 
@@ -53,12 +52,12 @@ public class IVRValidationStrategyTest {
 
         assertThat(result.isValid(), is(equalTo(false)));
         assertThat(result.getArguments(), is(equalTo(null)));
-        assertThat(result.getErrorMessage(), is(equalTo("\nIncorrect number of arguments")));
+        assertThat(result.getErrorMessage(), is(equalTo("\nwrong number of arguments")));
     }
 
 
     @Test
-    public void shouldNotBeValidBecauseOfMoneyValue() {
+    public void shouldNotBeValidWrongMoneyValue() {
         args[2] = "err1000";
         result = strategy.validate(args);
 
@@ -68,7 +67,7 @@ public class IVRValidationStrategyTest {
     }
 
     @Test
-    public void shouldNotBeValidBecauseOfBuyDateValue() {
+    public void shouldNotBeValidWrongBuyDateValue() {
         args[3] = "err2015-09-07";
         result = strategy.validate(args);
 
@@ -78,7 +77,7 @@ public class IVRValidationStrategyTest {
     }
 
     @Test
-    public void shouldNotBeValidBecauseOfSellDateValue() {
+    public void shouldNotBeValidWrongOfSellDateValue() {
         args[4] = "err2015-09-08";
         result = strategy.validate(args);
 
@@ -88,7 +87,7 @@ public class IVRValidationStrategyTest {
     }
 
     @Test
-    public void shouldNotBeValidBecauseOfSellDateBeforeBuyDate() {
+    public void shouldNotBeValidWrongOrderSellDateBeforeBuyDate() {
 
         args[3] = "2015-09-08";
         args[4] = "2015-09-07";

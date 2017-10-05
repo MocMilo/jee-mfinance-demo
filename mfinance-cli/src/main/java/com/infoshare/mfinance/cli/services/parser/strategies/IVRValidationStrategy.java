@@ -20,7 +20,7 @@ public class IVRValidationStrategy implements ValidationStrategy {
     public ParserResult validate(String[] args) {
 
         if (args.length != 5) {
-            return new ParserResult(false, "\nIncorrect number of arguments", null);
+            return new ParserResult(false, "\nwrong number of arguments", null);
         }
 
         IVRArgs ivrArgs = new IVRArgs(args);
@@ -28,7 +28,7 @@ public class IVRValidationStrategy implements ValidationStrategy {
         try {
             analysisNames.valueOf(ivrArgs.getStrategy());
         } catch (NullPointerException e) {
-            return new ParserResult(false, "\nAnalysis not found!", null);
+            return new ParserResult(false, "\nanalysis not found!", null);
         }
 
         try {
