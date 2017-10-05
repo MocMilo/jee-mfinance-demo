@@ -1,7 +1,7 @@
 package com.infoshare.mfinance.cli.services.analyzer.strategies;
 
 
-import com.infoshare.core.models.analyses.results.IndicatorResult;
+import com.infoshare.core.analyzer.analyses.indicator.Indicator;
 import com.infoshare.core.models.bossa.MainContainer;
 import com.infoshare.core.models.exceptions.NoDataForCriteria;
 import com.infoshare.mfinance.cli.model.arguments.INDArgs;
@@ -22,12 +22,11 @@ public class INDAnalysisStrategy implements AnalysisStrategy {
     public AnalysisResult getResult(ParserResult result, MainContainer container) {
 
         INDArgs args = (INDArgs) result.getArguments();
-
-        IndicatorResult indicatorResult =
-                new IndicatorResult(container, criteriaConverter.convertFrom(args));
+        
+        Indicator indicator= new Indicator(container, criteriaConverter.convertFrom(args));
 
         try {
-            indResult = resultConverter.convertFrom(indicatorResult.getResult());
+            indResult = resultConverter.convertFrom(indicator.getResult());
         } catch (NoDataForCriteria e) {
             System.out.println(e.getMessage());
         }
