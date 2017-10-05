@@ -6,9 +6,8 @@ import com.infoshare.mfinance.cli.model.arguments.INDArgs;
 
 public class IndicatorCriteriaConverter {
 
-    public IndicatorCriteria convertFrom(String[] args) {
+    public IndicatorCriteria convertFrom(INDArgs indArgs) {
 
-        INDArgs indArgs = new INDArgs(args);
         return new IndicatorCriteria(indArgs.getInvestmentName());
     }
 }

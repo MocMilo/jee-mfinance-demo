@@ -3,7 +3,7 @@ package com.infoshare.mfinance.cli.model.results;
 
 import com.infoshare.mfinance.cli.model.results.embeded.CLIQuotation;
 
-public class INDResult {
+public class INDResult extends AnalysisResult  {
 
     private String name;
 
@@ -60,4 +60,16 @@ public class INDResult {
 
     }
 
+    @Override
+    public String toString() {
+        return "INDResult{" +
+                "name='" + name + '\'' +
+                ", firstCLIQuotation=" + firstCLIQuotation +
+                ", lastCLIQuotation=" + lastCLIQuotation +
+                ", maxValueCLIQuotation=" + maxValueCLIQuotation +
+                ", minValueCLIQuotation=" + minValueCLIQuotation +
+                ", maxDeltaPlus=" + maxDeltaPlus +
+                ", maxDeltaMinus=" + maxDeltaMinus +
+                '}';
+    }
 }
