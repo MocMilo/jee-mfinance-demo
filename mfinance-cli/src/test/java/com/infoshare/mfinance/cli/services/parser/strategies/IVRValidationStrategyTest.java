@@ -13,8 +13,6 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class IVRValidationStrategyTest {
 
-    //TODO rest of testCases
-
     private String[] args = {"IVR", "USD", "1000", "2015-09-07", "2015-09-08"};
     private IVRValidationStrategy strategy;
     private ParserResult result;
@@ -27,7 +25,7 @@ public class IVRValidationStrategyTest {
     }
 
     @Test
-    public void shouldBeValid() {
+    public void shouldBeValidAllArgsCorrect() {
 
         result = strategy.validate(args);
 
@@ -37,7 +35,7 @@ public class IVRValidationStrategyTest {
     }
 
     @Test
-    public void shouldBeNotValiWrongNumberOfArgs() {
+    public void shouldBeNotValiWrongNumberOfArgsLessThanNedded() {
 
         result = strategy.validate(ArrayUtils.remove(args, 1));
 
@@ -88,4 +86,18 @@ public class IVRValidationStrategyTest {
         assertThat(result.getArguments(), is(equalTo(null)));
         assertThat(result.getErrorMessage(), is(equalTo("\nwrong sell date: should be in format yyyy-MM-dd")));
     }
+
+    @Test
+    public void shouldNotBeValidBecauseOfSellDateBeforeBuyDate() {
+
+        args[3] = "2015-09-08";
+        args[4] = "2015-09-07";
+
+        result = strategy.validate(args);
+
+        assertThat(result.isValid(), is(equalTo(false)));
+        assertThat(result.getArguments(), is(equalTo(null)));
+        assertThat(result.getErrorMessage(), is(equalTo("\nwrong dates order: buy date should be before sell date")));
+    }
+
 }
