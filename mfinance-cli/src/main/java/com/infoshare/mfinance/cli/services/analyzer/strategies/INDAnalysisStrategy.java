@@ -22,7 +22,7 @@ public class INDAnalysisStrategy implements AnalysisStrategy {
     public AnalysisResult getResult(ParserResult result, MainContainer container) {
 
         INDArgs args = (INDArgs) result.getArguments();
-        
+
         Indicator indicator= new Indicator(container, criteriaConverter.convertFrom(args));
 
         try {

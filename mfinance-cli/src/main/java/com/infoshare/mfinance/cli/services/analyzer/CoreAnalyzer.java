@@ -4,6 +4,7 @@ import com.infoshare.core.models.bossa.MainContainer;
 import com.infoshare.mfinance.cli.model.results.AnalysisResult;
 import com.infoshare.mfinance.cli.services.analyzer.initializer.BossaInitializerFacade;
 import com.infoshare.mfinance.cli.services.analyzer.strategies.AnalysisStrategy;
+import com.infoshare.mfinance.cli.services.analyzer.strategies.INDAnalysisStrategy;
 import com.infoshare.mfinance.cli.services.analyzer.strategies.IVRAnalysisStrategy;
 import com.infoshare.mfinance.cli.services.parser.ParserResult;
 import com.infoshare.mfinance.cli.services.parser.analysisNames;
@@ -19,8 +20,7 @@ public class CoreAnalyzer {
 
     static {
 
-        //TODO impl. the rest of analyzer strategies
-
+        analysisStratiegies.put(analysisNames.IND.toString(), new INDAnalysisStrategy());
         analysisStratiegies.put(analysisNames.IVR.toString(), new IVRAnalysisStrategy());
     }
 

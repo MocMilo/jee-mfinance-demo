@@ -9,7 +9,8 @@ public class INDArgs extends ApplicationArguments {
     }
 
     public INDArgs(String[] args) {
-        this.investmentName = args[0];
+        this.strategy = args[0];
+        this.investmentName = args[1];
     }
 
 }
