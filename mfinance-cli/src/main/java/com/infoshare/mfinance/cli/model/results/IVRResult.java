@@ -8,17 +8,19 @@ public class IVRResult extends AnalysisResult {
     private BigDecimal capitalRevenueValue;
     private BigDecimal capitalRevenueDeltaPercentValue;
 
+
     public BigDecimal getCapitalRevenueValue() {
         return capitalRevenueValue;
     }
 
-    public BigDecimal getCapitalRevenueDeltaPercentValue() {
+    public BigDecimal getCapitalRevenueDeltaPrecentValue() {
         return capitalRevenueDeltaPercentValue;
     }
 
     public void setCapitalRevenueValue(BigDecimal capitalRevenueValue) {
         this.capitalRevenueValue = capitalRevenueValue;
     }
+
     public void setCapitalRevenueDeltaPercentValue(BigDecimal capitalRevenueDeltaPercentValue) {
         this.capitalRevenueDeltaPercentValue = capitalRevenueDeltaPercentValue;
     }
@@ -26,6 +28,10 @@ public class IVRResult extends AnalysisResult {
     public IVRResult() {
     }
 
+/*    public IVRResult(BigDecimal capitalRevenueValue, BigDecimal capitalRevenueDeltaPrecentValue) {
+        this.capitalRevenueValue = capitalRevenueValue;
+        this.capitalRevenueDeltaPercentValue = capitalRevenueDeltaPrecentValue;
+    }*/
     @Override
     public String toString() {
         return "IVRResult{" +

@@ -12,5 +12,4 @@ public class INDArgs extends ApplicationArguments {
         this.strategy = args[0];
         this.investmentName = args[1];
     }
-
 }

@@ -21,33 +21,32 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 
 
-public class InvestmentRevenueTest  {
+public class InvestmentRevenueTest {
 
     private static final Configuration configuration = new ConfigurationProvider().getConfiguration();
     private static final MainContainerLoader mainContainerLoader = new MainContainerLoader(configuration);
 
-    private final   BigDecimal capital =  new BigDecimal(10000.00);
-    private final   DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
-    private final   LocalDate BUY_DATE = LocalDate.parse("20090910", formatter);
-    private final   LocalDate SELL_DATE = LocalDate.parse("20170330", formatter);
-    private final   String InvestmentName = "CHF";
-
+    private final BigDecimal capital = new BigDecimal(10000.00);
+    private final DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
+    private final LocalDate BUY_DATE = LocalDate.parse("20090910", formatter);
+    private final LocalDate SELL_DATE = LocalDate.parse("20170330", formatter);
+    private final String InvestmentName = "CHF";
 
     @BeforeClass
-    public static void init(){
+    public static void init() {
         mainContainerLoader.loadFunds();
         mainContainerLoader.loadCurrencies();
     }
 
     @Test
-    public void getInvestmentsFfomMainContainer(){
+    public void getInvestmentsFfomMainContainer() {
 
         MainContainer container = mainContainerLoader.getMainContainer();
-        int investments =  container.getInvestments().size();
+        int investments = container.getInvestments().size();
 
         assertThat(investments, not(equalTo(nullValue())));
 
-        System.out.println("number of investments: "+investments);
+        System.out.println("number of investments: " + investments);
     }
 
     @Test(expected = NoDataForCriteria.class)
@@ -66,10 +65,8 @@ public class InvestmentRevenueTest  {
 
         // anlysis results
         assertThat(ir.getCapitalRevenueValue(), is(equalTo(nullValue())));
-        assertThat(ir.getCapitalRevenueDeltaPrecentValue(), is(equalTo(nullValue())));
-
-       }
-
+        assertThat(ir.getCapitalRevenueDeltaPercentValue(), is(equalTo(nullValue())));
+    }
 
     @Test(expected = NoDataForCriteria.class)
     public void testGetResultWhenMissingQuotations() throws Exception {
@@ -84,7 +81,4 @@ public class InvestmentRevenueTest  {
         InvestmentRevenueCriteria input = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName);
         InvestmentRevenueResult ir = new InvestmentRevenue(mc, input).getResult();
     }
-
-
-
 }

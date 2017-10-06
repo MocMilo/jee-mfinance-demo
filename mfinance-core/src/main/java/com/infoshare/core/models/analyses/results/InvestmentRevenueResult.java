@@ -5,21 +5,24 @@ import java.math.BigDecimal;
 public class InvestmentRevenueResult extends AnalysisResult {
 
     private BigDecimal capitalRevenueValue;
-    private BigDecimal capitalRevenueDeltaPrecentValue;
+    private BigDecimal capitalRevenueDeltaPercentValue;
+
 
     public BigDecimal getCapitalRevenueValue() {
         return capitalRevenueValue;
     }
 
-    public BigDecimal getCapitalRevenueDeltaPrecentValue() {
-        return capitalRevenueDeltaPrecentValue;
+    public BigDecimal getCapitalRevenueDeltaPercentValue() {
+        return capitalRevenueDeltaPercentValue;
     }
+
+
 
     public InvestmentRevenueResult() {
     }
 
-    public InvestmentRevenueResult(BigDecimal capitalRevenueValue, BigDecimal capitalRevenueDeltaPrecentValue) {
+    public InvestmentRevenueResult(BigDecimal capitalRevenueValue, BigDecimal capitalRevenueDeltaPercentValue) {
         this.capitalRevenueValue = capitalRevenueValue;
-        this.capitalRevenueDeltaPrecentValue = capitalRevenueDeltaPrecentValue;
+        this.capitalRevenueDeltaPercentValue = capitalRevenueDeltaPercentValue;
     }
 }

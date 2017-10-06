@@ -30,7 +30,8 @@ public class InvestmentRevenueResultConverterTest {
 
         ivrResult = converter.convertFrom(revenueResult);
         assertThat(ivrResult.getCapitalRevenueValue(), is(equalTo(moneyValue)));
-        assertThat(ivrResult.getCapitalRevenueDeltaPercentValue(), is(equalTo(deltaValue)));
+        assertThat(ivrResult.getCapitalRevenueDeltaPrecentValue(), is(equalTo(deltaValue)));
+
     }
 
 }
