@@ -55,7 +55,6 @@ public class IVRValidationStrategyTest {
         assertThat(result.getErrorMessage(), is(equalTo("\nwrong number of arguments")));
     }
 
-
     @Test
     public void shouldNotBeValidWrongMoneyValue() {
         args[2] = "err1000";
