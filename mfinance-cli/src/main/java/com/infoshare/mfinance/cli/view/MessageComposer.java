@@ -10,6 +10,7 @@ public class MessageComposer {
             System.out.print(ConstantMessagesProvider.WELCOME_MESSAGE
                     + ConstantMessagesProvider.COMMAND_HELP_MESSAGE
                     + ConstantMessagesProvider.ANALYSIS_OPTIONS_MESSAGE);
+
             System.out.println(parserResult.getErrorMessage());
         }
     }
