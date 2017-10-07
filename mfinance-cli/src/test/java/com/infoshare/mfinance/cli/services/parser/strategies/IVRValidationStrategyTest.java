@@ -13,7 +13,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class IVRValidationStrategyTest {
 
-    private String[] args = {"IVR", "USD", "1000", "2015-09-07", "2015-09-08"};
+    private String[] args = {"IVR", "USD", "1000.25", "2015-09-07", "2015-09-08"};
     private IVRValidationStrategy strategy;
     private ParserResult result;
 
@@ -56,13 +56,23 @@ public class IVRValidationStrategyTest {
     }
 
     @Test
+    public void shouldNotBeValidWrongMoneyFormatValue() {
+        args[2] = "1000.245";
+        result = strategy.validate(args);
+
+        assertThat(result.isValid(), is(equalTo(false)));
+        assertThat(result.getArguments(), is(equalTo(null)));
+        assertThat(result.getErrorMessage(), is(equalTo("\nwrong capital argument: should be decimal of format: 0.00")));
+    }
+
+    @Test
     public void shouldNotBeValidWrongMoneyValue() {
         args[2] = "err1000";
         result = strategy.validate(args);
 
         assertThat(result.isValid(), is(equalTo(false)));
         assertThat(result.getArguments(), is(equalTo(null)));
-        assertThat(result.getErrorMessage(), is(equalTo("\nwrong capital argument: should be decimal")));
+        assertThat(result.getErrorMessage(), is(equalTo("\nwrong capital argument: should be decimal of format: 0.00")));
     }
 
     @Test

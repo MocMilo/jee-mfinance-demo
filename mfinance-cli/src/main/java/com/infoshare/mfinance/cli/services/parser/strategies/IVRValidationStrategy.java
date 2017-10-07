@@ -8,6 +8,9 @@ import com.infoshare.mfinance.cli.services.parser.analysisNames;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class IVRValidationStrategy implements ValidationStrategy {
 
@@ -31,24 +34,28 @@ public class IVRValidationStrategy implements ValidationStrategy {
             return new ParserResult(false, "\nanalysis not found!", null);
         }
 
+
+        if (!hasMoneyFormat(ivrArgs.getCapital())) {
+            return new ParserResult(false, "\nwrong capital argument: should be decimal of format: 0.00", null);
+        }
+
         try {
             new BigDecimal(ivrArgs.getCapital());
-
-        } catch (Exception e) {
-            return new ParserResult(false, "\nwrong capital argument: should be decimal", null);
+        } catch (NumberFormatException e) {
+            return new ParserResult(false, "\nwrong capital argument: should be decimal of format: 0.00", null);
         }
 
         try {
             buyDate = LocalDate.parse(ivrArgs.getStartDate(), formatter);
 
-        } catch (Exception e) {
+        } catch (DateTimeParseException e) {
             return new ParserResult(false, "\nwrong buy date: should be in format yyyy-MM-dd", null);
         }
 
         try {
             sellDate = LocalDate.parse(ivrArgs.getEndDate(), formatter);
 
-        } catch (Exception e) {
+        } catch (DateTimeParseException e) {
             return new ParserResult(false, "\nwrong sell date: should be in format yyyy-MM-dd", null);
         }
 
@@ -58,4 +65,9 @@ public class IVRValidationStrategy implements ValidationStrategy {
 
         return new ParserResult(true, "", ivrArgs);
     }
+
+    private boolean hasMoneyFormat(String evalValue) {
+        return new Scanner(evalValue).hasNext(Pattern.compile("^(0|0?[1-9]\\d*)\\.\\d\\d$"));
+    }
+
 }
