@@ -29,7 +29,6 @@ public class InvestmentRevenueTest {
     private final BigDecimal capital = new BigDecimal(10000.00);
     private final DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
     private final LocalDate BUY_DATE = LocalDate.parse("20090910", formatter);
-    private final LocalDate SELL_DATE = LocalDate.parse("20170330", formatter);
     private final String InvestmentName = "CHF";
 
     @BeforeClass
@@ -39,7 +38,7 @@ public class InvestmentRevenueTest {
     }
 
     @Test
-    public void getInvestmentsFfomMainContainer() {
+    public void getInvestmentsFromMainContainer() {
 
         MainContainer container = MAIN_CONTAINER_BUILDER.getMainContainer();
         int investments = container.getInvestments().size();
