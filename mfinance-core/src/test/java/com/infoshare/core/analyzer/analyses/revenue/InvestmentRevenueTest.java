@@ -1,7 +1,7 @@
 package com.infoshare.core.analyzer.analyses.revenue;
 
 import com.infoshare.core.configuration.ConfigurationProvider;
-import com.infoshare.core.loader.MainContainerLoader;
+import com.infoshare.core.builders.MainContainerBuilder;
 import com.infoshare.core.models.analyses.criteria.InvestmentRevenueCriteria;
 import com.infoshare.core.models.analyses.results.InvestmentRevenueResult;
 import com.infoshare.core.models.bossa.MainContainer;
@@ -24,7 +24,7 @@ import static org.hamcrest.core.IsNot.not;
 public class InvestmentRevenueTest {
 
     private static final Configuration configuration = new ConfigurationProvider().getConfiguration();
-    private static final MainContainerLoader mainContainerLoader = new MainContainerLoader(configuration);
+    private static final MainContainerBuilder MAIN_CONTAINER_BUILDER = new MainContainerBuilder(configuration);
 
     private final BigDecimal capital = new BigDecimal(10000.00);
     private final DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
@@ -34,14 +34,14 @@ public class InvestmentRevenueTest {
 
     @BeforeClass
     public static void init() {
-        mainContainerLoader.loadFunds();
-        mainContainerLoader.loadCurrencies();
+        MAIN_CONTAINER_BUILDER.loadFunds();
+        MAIN_CONTAINER_BUILDER.loadCurrencies();
     }
 
     @Test
     public void getInvestmentsFfomMainContainer() {
 
-        MainContainer container = mainContainerLoader.getMainContainer();
+        MainContainer container = MAIN_CONTAINER_BUILDER.getMainContainer();
         int investments = container.getInvestments().size();
 
         assertThat(investments, not(equalTo(nullValue())));
@@ -53,7 +53,7 @@ public class InvestmentRevenueTest {
     public void testGetResultWhenUserInputOutOfRange() throws Exception {
         LocalDate SELL_DATE = LocalDate.parse("20140104", formatter);
 
-        MainContainer mc = mainContainerLoader.getMainContainer();
+        MainContainer mc = MAIN_CONTAINER_BUILDER.getMainContainer();
 
         // example analyses usage
         InvestmentRevenueCriteria input = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName);
@@ -72,7 +72,7 @@ public class InvestmentRevenueTest {
     public void testGetResultWhenMissingQuotations() throws Exception {
         LocalDate SELL_DATE = LocalDate.parse("20170330", formatter);
 
-        MainContainer mc = mainContainerLoader.getMainContainer();
+        MainContainer mc = MAIN_CONTAINER_BUILDER.getMainContainer();
 
         // ESSENTIAL: removing quotations
         mc.getInvestments().forEach(x -> x.setQuotations(null));

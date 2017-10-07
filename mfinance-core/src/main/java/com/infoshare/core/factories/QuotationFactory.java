@@ -33,13 +33,9 @@ public class QuotationFactory {
                 String data[] = scanner.nextLine().split(",");
                 String name = data[0];
                 LocalDate date = LocalDate.parse(data[1], formatter);
-                BigDecimal open = new BigDecimal(data[2]);
-                BigDecimal high = new BigDecimal(data[3]);
-                BigDecimal low = new BigDecimal(data[4]);
                 BigDecimal close = new BigDecimal(data[5]);
-                BigDecimal volume = new BigDecimal(data[6]);
 
-                Quotation quotation = new Quotation(name, date, open, high, low, close, volume);
+                Quotation quotation = new Quotation(name, date, close);
                 quotations.add(quotation);
             }
             scanner.close();

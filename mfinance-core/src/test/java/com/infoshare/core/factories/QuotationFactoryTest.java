@@ -43,7 +43,6 @@ public class QuotationFactoryTest {
         LocalDate expectedDate = LocalDate.parse("1999-01-01", formatter);
         String expectedName = "EUR";
         BigDecimal expectedValue = new BigDecimal("4.0925");
-        BigDecimal expectedVolumeValue = new BigDecimal("0");
 
         assertThat(quotation, not(equalTo(nullValue())));
         assertThat(quotation.getName(), not(equalTo(nullValue())));
@@ -51,11 +50,7 @@ public class QuotationFactoryTest {
 
         assertThat(quotation.getName(), is(equalTo(expectedName)));
         assertThat(quotation.getDate(), is(equalTo(expectedDate)));
-        assertThat(quotation.getOpen(), is(equalTo(expectedValue)));
-        assertThat(quotation.getHigh(), is(equalTo(expectedValue)));
-        assertThat(quotation.getLow(), is(equalTo(expectedValue)));
         assertThat(quotation.getClose(), is(equalTo(expectedValue)));
-        assertThat(quotation.getVolume(), is(equalTo(expectedVolumeValue)));
     }
 
 }

@@ -1,4 +1,4 @@
-package com.infoshare.core.loader;
+package com.infoshare.core.builders;
 
 import com.infoshare.core.models.bossa.Fund;
 import com.infoshare.core.models.bossa.Quotation;
@@ -7,7 +7,7 @@ import com.infoshare.core.models.bossa.Quotation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FundLoader extends Loader {
+public class FundBuilder extends Builder {
 
     private List<Fund> funds = new ArrayList<>();
 

@@ -3,7 +3,7 @@ package com.infoshare.web.container;
 import com.infoshare.web.adminpanel.trigger.ITriggerable;
 import com.infoshare.core.configuration.ConfigurationProvider;
 import com.infoshare.core.file.RemoteDownloader;
-import com.infoshare.core.loader.MainContainerLoader;
+import com.infoshare.core.builders.MainContainerBuilder;
 import com.infoshare.core.models.bossa.MainContainer;
 import com.infoshare.core.models.bossa.Investment;
 import org.slf4j.Logger;
@@ -28,11 +28,11 @@ public class ModelContainer implements IModelContainerService, ITriggerable {
         //this.updateModelFileResources();
 
         ConfigurationProvider appCon = new ConfigurationProvider().getConfiguration();
-        MainContainerLoader mainContainerLoader = new MainContainerLoader(appCon);
-        mainContainerLoader.loadFunds();
-        mainContainerLoader.loadCurrencies();
+        MainContainerBuilder mainContainerBuilder = new MainContainerBuilder(appCon);
+        mainContainerBuilder.loadFunds();
+        mainContainerBuilder.loadCurrencies();
 
-        MainContainer mainContainer = mainContainerLoader.getMainContainer();
+        MainContainer mainContainer = mainContainerBuilder.getMainContainer();
         this.mainContainer = mainContainer;
         this.investments = mainContainer.getInvestments();
 
@@ -62,11 +62,11 @@ public class ModelContainer implements IModelContainerService, ITriggerable {
         }
 
         ConfigurationProvider appCon = new ConfigurationProvider().getConfiguration();
-        MainContainerLoader mainContainerLoader = new MainContainerLoader(appCon);
-        mainContainerLoader.loadFunds();
-        mainContainerLoader.loadCurrencies();
+        MainContainerBuilder mainContainerBuilder = new MainContainerBuilder(appCon);
+        mainContainerBuilder.loadFunds();
+        mainContainerBuilder.loadCurrencies();
 
-        MainContainer mainContainer = mainContainerLoader.getMainContainer();
+        MainContainer mainContainer = mainContainerBuilder.getMainContainer();
         this.investments = mainContainer.getInvestments();
         this.mainContainer = mainContainer;
     }

@@ -1,4 +1,4 @@
-package com.infoshare.core.loader;
+package com.infoshare.core.builders;
 
 import com.infoshare.core.models.bossa.Fund;
 import org.junit.Before;
@@ -12,25 +12,25 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 
-public class FundLoaderTest {
+public class FundBuilderTest {
 
     private final String TESTFILEPATH = Paths.get("src/test/resources/csv/funds/AGI001.txt").toString();
     private final int NUMBEROFROWS = 405;
     private Fund fund;
-    private FundLoader fundLoader;
+    private FundBuilder fundBuilder;
 
     @Before
     public void init() {
-        fundLoader = new FundLoader();
-        fundLoader.createFundsFromFile(TESTFILEPATH);
-        fund = fundLoader.getFunds().get(0);
+        fundBuilder = new FundBuilder();
+        fundBuilder.createFundsFromFile(TESTFILEPATH);
+        fund = fundBuilder.getFunds().get(0);
     }
 
     @Test
     public void CreateFundFromFile() throws Exception {
 
         int expected = 1;
-        int evaluated = fundLoader.getNumberOfFunds();
+        int evaluated = fundBuilder.getNumberOfFunds();
 
         assertThat(fund, not(equalTo(nullValue())));
         assertThat(evaluated, is(equalTo(expected)));
@@ -48,7 +48,7 @@ public class FundLoaderTest {
     @Test
     public void FundContainsLoadedQuotationsData() throws Exception {
 
-        int numberOfQuotations = fundLoader.getFunds().get(0).getQuotations().size();
+        int numberOfQuotations = fundBuilder.getFunds().get(0).getQuotations().size();
 
         assertThat(NUMBEROFROWS, is(numberOfQuotations));
     }

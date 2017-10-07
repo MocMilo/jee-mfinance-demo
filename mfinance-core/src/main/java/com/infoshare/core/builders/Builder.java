@@ -1,4 +1,4 @@
-package com.infoshare.core.loader;
+package com.infoshare.core.builders;
 
 import com.infoshare.core.models.bossa.Quotation;
 import com.infoshare.core.factories.QuotationFactory;
@@ -8,7 +8,7 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Loader {
+public abstract class Builder {
 
 
     protected List<Quotation> getQuotationsList(String filePath) {

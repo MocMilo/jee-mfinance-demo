@@ -1,4 +1,4 @@
-package com.infoshare.core.loader;
+package com.infoshare.core.builders;
 
 import com.infoshare.core.models.bossa.Currency;
 import com.infoshare.core.models.bossa.Quotation;
@@ -6,7 +6,7 @@ import com.infoshare.core.models.bossa.Quotation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CurrencyLoader extends Loader {
+public class CurrencyBuilder extends Builder {
 
     private List<Currency> currencies = new ArrayList<>();
 

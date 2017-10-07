@@ -1,0 +1,2 @@
+Main-Class: com.infoshare.mfinance.cli.App
+Class-Path: .

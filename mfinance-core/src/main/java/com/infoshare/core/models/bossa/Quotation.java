@@ -8,21 +8,24 @@ public class Quotation implements Comparable<Quotation> {
     private String name;
     private LocalDate date;
     private BigDecimal open;
-    private BigDecimal high;
-    private BigDecimal low;
     private BigDecimal close;
-    private BigDecimal volume;
     private BigDecimal deltaClose;
 
-    public Quotation(String name, LocalDate date, BigDecimal open, BigDecimal high , BigDecimal low, BigDecimal close, BigDecimal volume) {
+/*    private BigDecimal high;
+    private BigDecimal low;
+    private BigDecimal volume;*/
+
+
+    public Quotation(String name, LocalDate date, BigDecimal close) {
         this.name = name;
         this.date = date;
-        this.open = open;
-        this.high = high;
-        this.low = low;
         this.close = close;
+       // this.open = open;
+/*        this.high = high;
+        this.low = low;*/
+
         // this.deltaClose =deltaClose;
-        this.volume = volume;
+     /*   this.volume = volume;*/
     }
 
     public String getName() {
@@ -58,7 +61,7 @@ public class Quotation implements Comparable<Quotation> {
         this.open = open;
     }
 
-    public BigDecimal getHigh() {
+    /*public BigDecimal getHigh() {
         return high;
     }
 
@@ -81,7 +84,7 @@ public class Quotation implements Comparable<Quotation> {
     public void setVolume(BigDecimal volume) {
         this.volume = volume;
     }
-
+*/
     public BigDecimal getDeltaClose() {
         return deltaClose;
     }
