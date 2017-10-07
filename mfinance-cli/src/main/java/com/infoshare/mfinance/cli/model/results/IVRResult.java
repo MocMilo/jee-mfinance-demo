@@ -28,10 +28,6 @@ public class IVRResult extends AnalysisResult {
     public IVRResult() {
     }
 
-/*    public IVRResult(BigDecimal capitalRevenueValue, BigDecimal capitalRevenueDeltaPrecentValue) {
-        this.capitalRevenueValue = capitalRevenueValue;
-        this.capitalRevenueDeltaPercentValue = capitalRevenueDeltaPrecentValue;
-    }*/
     @Override
     public String toString() {
         return "IVRResult{" +

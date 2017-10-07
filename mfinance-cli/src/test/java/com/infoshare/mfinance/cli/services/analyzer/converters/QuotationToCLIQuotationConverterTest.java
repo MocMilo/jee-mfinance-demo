@@ -23,7 +23,7 @@ public class QuotationToCLIQuotationConverterTest {
 
     @Before
     public void init() {
-        quotation = new Quotation(name, date, moneyValue, moneyValue, moneyValue, moneyValue, moneyValue);
+        quotation = new Quotation(name, date, moneyValue);
     }
 
     @Test
@@ -33,11 +33,7 @@ public class QuotationToCLIQuotationConverterTest {
 
         assertThat(quotation.getName(), is(equalTo(cliQuotation.getName())));
         assertThat(quotation.getDate(), is(equalTo(cliQuotation.getDate())));
-        assertThat(quotation.getOpen(), is(equalTo((cliQuotation.getOpen()))));
         assertThat(quotation.getClose(), is(equalTo((cliQuotation.getClose()))));
-        assertThat(quotation.getHigh(), is(equalTo((cliQuotation.getHigh()))));
-        assertThat(quotation.getLow(), is(equalTo((cliQuotation.getLow()))));
-        assertThat(quotation.getVolume(), is(equalTo((cliQuotation.getVolume()))));
         assertThat(quotation.getDeltaClose(), is(equalTo((cliQuotation.getDeltaClose()))));
     }
 }
