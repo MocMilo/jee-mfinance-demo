@@ -6,7 +6,7 @@ import com.infoshare.mfinance.cli.services.parser.ParserResult;
 
 public class MessageComposer {
 
-    public void prinntValidationMessage(ParserResult parserResult) {
+    public void printValidationMessage(ParserResult parserResult) {
         if (!parserResult.isValid()) {
             System.out.print(ConstantMessagesProvider.WELCOME_MESSAGE
                     + ConstantMessagesProvider.COMMAND_HELP_MESSAGE

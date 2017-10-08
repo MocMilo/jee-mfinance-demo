@@ -1,6 +1,6 @@
 package com.infoshare.web.analyzer.analysis.investmentrevenue;
 
-import com.infoshare.core.models.analyses.criteria.InvestmentRevenueCriteria;
+import com.infoshare.mfinance.core.models.analyses.criteria.InvestmentRevenueCriteria;
 import com.infoshare.web.user.User;
 
 import javax.persistence.*;

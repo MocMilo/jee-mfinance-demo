@@ -1,7 +1,7 @@
 package com.infoshare.web.adminpanel.email;
 
 import com.infoshare.web.analyzer.analysis.investmentrevenue.PersistedInvestmentRevenueCriteria;
-import com.infoshare.core.models.analyses.criteria.InvestmentRevenueCriteria;
+import com.infoshare.mfinance.core.models.analyses.criteria.InvestmentRevenueCriteria;
 import com.infoshare.web.utils.ConstantsProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

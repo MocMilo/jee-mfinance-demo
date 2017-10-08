@@ -1,10 +1,10 @@
 package com.infoshare.web.analyzer;
 
 import com.infoshare.web.analyzer.analysis.investmentrevenue.ContentWrapper;
-import com.infoshare.core.models.exceptions.NoDataForCriteria;
-import com.infoshare.core.analyzer.analyses.revenue.InvestmentRevenue;
-import com.infoshare.core.models.analyses.criteria.InvestmentRevenueCriteria;
-import com.infoshare.core.models.analyses.results.InvestmentRevenueResult;
+import com.infoshare.mfinance.core.models.exceptions.NoDataForCriteria;
+import com.infoshare.mfinance.core.analyzer.analyses.revenue.InvestmentRevenue;
+import com.infoshare.mfinance.core.models.analyses.criteria.InvestmentRevenueCriteria;
+import com.infoshare.mfinance.core.models.analyses.results.InvestmentRevenueResult;
 import com.infoshare.web.container.IModelContainerService;
 import com.infoshare.web.analyzer.analysis.investmentrevenue.PersistedInvestmentRevenueCriteria;
 import com.infoshare.web.user.IUserService;

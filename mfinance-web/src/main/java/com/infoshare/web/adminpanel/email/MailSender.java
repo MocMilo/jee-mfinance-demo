@@ -4,7 +4,7 @@ import com.infoshare.web.webconfiguration.utils.JsonSerializer;
 import com.infoshare.web.webconfiguration.utils.ConfigFileReader;
 import com.infoshare.web.webconfiguration.smtp.SmtpProperties;
 import com.infoshare.web.adminpanel.trigger.ITriggerable;
-import com.infoshare.core.configuration.ConfigurationProvider;
+import com.infoshare.mfinance.core.configuration.ConfigurationProvider;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -2,7 +2,7 @@ package com.infoshare.web.analyzer;
 
 import com.infoshare.web.analyzer.analysis.comparison.AnalysisComparisonContainer;
 import com.infoshare.web.analyzer.analysis.wrapper.WrappingService;
-import com.infoshare.core.models.exceptions.NoDataForCriteria;
+import com.infoshare.mfinance.core.models.exceptions.NoDataForCriteria;
 import com.infoshare.web.user.IUserService;
 import com.infoshare.web.user.User;
 import com.infoshare.web.user.report.IUserActivityService;

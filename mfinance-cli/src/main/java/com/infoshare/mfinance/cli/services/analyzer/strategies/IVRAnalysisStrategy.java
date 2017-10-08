@@ -1,8 +1,8 @@
 package com.infoshare.mfinance.cli.services.analyzer.strategies;
 
-import com.infoshare.core.analyzer.analyses.revenue.InvestmentRevenue;
-import com.infoshare.core.models.bossa.MainContainer;
-import com.infoshare.core.models.exceptions.NoDataForCriteria;
+import com.infoshare.mfinance.core.analyzer.analyses.revenue.InvestmentRevenue;
+import com.infoshare.mfinance.core.models.bossa.MainContainer;
+import com.infoshare.mfinance.core.models.exceptions.NoDataForCriteria;
 import com.infoshare.mfinance.cli.model.arguments.IVRArgs;
 import com.infoshare.mfinance.cli.model.results.AnalysisResult;
 import com.infoshare.mfinance.cli.model.results.IVRResult;

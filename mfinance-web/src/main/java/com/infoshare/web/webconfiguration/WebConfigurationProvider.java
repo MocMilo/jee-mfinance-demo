@@ -1,6 +1,6 @@
 package com.infoshare.web.webconfiguration;
 
-import com.infoshare.core.configuration.ConfigurationProvider;
+import com.infoshare.mfinance.core.configuration.ConfigurationProvider;
 import com.infoshare.web.webconfiguration.utils.ConfigFileReader;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;

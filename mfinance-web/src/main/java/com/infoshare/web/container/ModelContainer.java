@@ -1,11 +1,11 @@
 package com.infoshare.web.container;
 
 import com.infoshare.web.adminpanel.trigger.ITriggerable;
-import com.infoshare.core.configuration.ConfigurationProvider;
-import com.infoshare.core.file.RemoteDownloader;
-import com.infoshare.core.builders.MainContainerBuilder;
-import com.infoshare.core.models.bossa.MainContainer;
-import com.infoshare.core.models.bossa.Investment;
+import com.infoshare.mfinance.core.configuration.ConfigurationProvider;
+import com.infoshare.mfinance.core.file.RemoteDownloader;
+import com.infoshare.mfinance.core.builders.MainContainerBuilder;
+import com.infoshare.mfinance.core.models.bossa.MainContainer;
+import com.infoshare.mfinance.core.models.bossa.Investment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

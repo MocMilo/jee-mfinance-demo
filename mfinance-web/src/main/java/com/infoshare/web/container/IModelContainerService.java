@@ -1,7 +1,7 @@
 package com.infoshare.web.container;
 
-import com.infoshare.core.models.bossa.Investment;
-import com.infoshare.core.models.bossa.MainContainer;
+import com.infoshare.mfinance.core.models.bossa.Investment;
+import com.infoshare.mfinance.core.models.bossa.MainContainer;
 
 import java.util.List;
 

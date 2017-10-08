@@ -11,9 +11,11 @@ public class App {
     public static void main(String[] args) {
 
         ParserResult parserResult = new ApplicationArgumentsParser().parse(args);
-        new MessageComposer().prinntValidationMessage(parserResult);
+        new MessageComposer().printValidationMessage(parserResult);
 
-        if(!parserResult.isValid()){ return; }
+        if (!parserResult.isValid()) {
+            return;
+        }
 
         AnalysisResult analysisResult = new CoreAnalyzer().getResult(parserResult);
         new MessageComposer().printResultMessage(analysisResult);

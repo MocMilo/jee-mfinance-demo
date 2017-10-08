@@ -1,6 +1,6 @@
 package com.infoshare.mfinance.cli.services.analyzer.converters;
 
-import com.infoshare.core.models.analyses.criteria.InvestmentRevenueCriteria;
+import com.infoshare.mfinance.core.models.analyses.criteria.InvestmentRevenueCriteria;
 import com.infoshare.mfinance.cli.model.arguments.IVRArgs;
 import org.junit.Before;
 import org.junit.Test;

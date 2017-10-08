@@ -1,7 +1,7 @@
 package com.infoshare.mfinance.cli.services.analyzer.converters;
 
-import com.infoshare.core.models.analyses.results.IndicatorResult;
-import com.infoshare.core.models.bossa.Quotation;
+import com.infoshare.mfinance.core.models.analyses.results.IndicatorResult;
+import com.infoshare.mfinance.core.models.bossa.Quotation;
 import com.infoshare.mfinance.cli.model.results.INDResult;
 import com.infoshare.mfinance.cli.model.results.embeded.CLIQuotation;
 import org.junit.Before;

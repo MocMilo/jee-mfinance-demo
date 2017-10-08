@@ -1,6 +1,6 @@
 package com.infoshare.mfinance.cli.services.analyzer.converters;
 
-import com.infoshare.core.models.analyses.results.IndicatorResult;
+import com.infoshare.mfinance.core.models.analyses.results.IndicatorResult;
 import com.infoshare.mfinance.cli.model.results.INDResult;
 import org.modelmapper.ModelMapper;
 

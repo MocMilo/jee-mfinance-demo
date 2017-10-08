@@ -1,6 +1,6 @@
 package com.infoshare.mfinance.cli.services.analyzer;
 
-import com.infoshare.core.models.bossa.MainContainer;
+import com.infoshare.mfinance.core.models.bossa.MainContainer;
 import com.infoshare.mfinance.cli.model.results.AnalysisResult;
 import com.infoshare.mfinance.cli.services.analyzer.initializer.BossaInitializerFacade;
 import com.infoshare.mfinance.cli.services.analyzer.strategies.AnalysisStrategy;

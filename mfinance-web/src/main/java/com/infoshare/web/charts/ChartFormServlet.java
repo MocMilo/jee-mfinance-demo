@@ -1,7 +1,7 @@
 package com.infoshare.web.charts;
 
-import com.infoshare.core.models.exceptions.NoDataForCriteria;
-import com.infoshare.core.models.analyses.criteria.QuotationSeriesCriteria;
+import com.infoshare.mfinance.core.models.exceptions.NoDataForCriteria;
+import com.infoshare.mfinance.core.models.analyses.criteria.QuotationSeriesCriteria;
 import com.infoshare.web.container.IModelContainerService;
 import com.infoshare.web.user.User;
 import com.infoshare.web.user.report.IUserActivityService;

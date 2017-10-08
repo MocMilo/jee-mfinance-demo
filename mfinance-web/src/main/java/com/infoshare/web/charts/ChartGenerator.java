@@ -1,10 +1,10 @@
 package com.infoshare.web.charts;
 
-import com.infoshare.core.models.exceptions.NoDataForCriteria;
-import com.infoshare.core.analyzer.analyses.trend.QuotationSeries;
-import com.infoshare.core.models.analyses.criteria.QuotationSeriesCriteria;
-import com.infoshare.core.models.analyses.results.QuotationSeriesResult;
-import com.infoshare.core.models.bossa.Quotation;
+import com.infoshare.mfinance.core.models.exceptions.NoDataForCriteria;
+import com.infoshare.mfinance.core.analyzer.analyses.trend.QuotationSeries;
+import com.infoshare.mfinance.core.models.analyses.criteria.QuotationSeriesCriteria;
+import com.infoshare.mfinance.core.models.analyses.results.QuotationSeriesResult;
+import com.infoshare.mfinance.core.models.bossa.Quotation;
 import com.infoshare.web.container.IModelContainerService;
 import org.jfree.chart.ChartFactory;
 
