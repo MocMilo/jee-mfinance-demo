@@ -11,15 +11,11 @@ public class App {
     public static void main(String[] args) {
 
         ParserResult parserResult = new ApplicationArgumentsParser().parse(args);
+        new MessageComposer().prinntValidationMessage(parserResult);
 
-        if(!parserResult.isValid()){
-            new MessageComposer().printMessage(parserResult);
-            return;
-        }
+        if(!parserResult.isValid()){ return; }
 
         AnalysisResult analysisResult = new CoreAnalyzer().getResult(parserResult);
-
-        // TODO consider results display in separate class
-        System.out.println(analysisResult.toString());
+        new MessageComposer().printResultMessage(analysisResult);
     }
 }
