@@ -1,11 +1,9 @@
 package com.infoshare.mfinance.core.analyzer.analyses.revenue;
 
-import com.infoshare.mfinance.core.configuration.ConfigurationProvider;
 import com.infoshare.mfinance.core.builders.MainContainerBuilder;
 import com.infoshare.mfinance.core.models.analyses.criteria.InvestmentRevenueCriteria;
 import com.infoshare.mfinance.core.models.analyses.results.InvestmentRevenueResult;
 import com.infoshare.mfinance.core.models.bossa.MainContainer;
-import com.infoshare.mfinance.core.models.configuration.Configuration;
 import com.infoshare.mfinance.core.models.exceptions.NoDataForCriteria;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -23,9 +21,8 @@ import static org.hamcrest.core.IsNot.not;
 
 public class InvestmentRevenueTest {
 
-    private static final Configuration configuration = new ConfigurationProvider().getConfiguration();
-    private static final MainContainerBuilder MAIN_CONTAINER_BUILDER = new MainContainerBuilder(configuration);
-
+    private static final MainContainerBuilder MAIN_CONTAINER_BUILDER = new MainContainerBuilder();
+    private static MainContainer container;
     private final BigDecimal capital = new BigDecimal(10000.00);
     private final DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
     private final LocalDate BUY_DATE = LocalDate.parse("20090910", formatter);
@@ -33,14 +30,13 @@ public class InvestmentRevenueTest {
 
     @BeforeClass
     public static void init() {
-        MAIN_CONTAINER_BUILDER.loadFunds();
-        MAIN_CONTAINER_BUILDER.loadCurrencies();
+        container = MAIN_CONTAINER_BUILDER.getMainContainer();
     }
 
     @Test
     public void getInvestmentsFromMainContainer() {
 
-        MainContainer container = MAIN_CONTAINER_BUILDER.getMainContainer();
+
         int investments = container.getInvestments().size();
 
         assertThat(investments, not(equalTo(nullValue())));
@@ -52,17 +48,15 @@ public class InvestmentRevenueTest {
     public void testGetResultWhenUserInputOutOfRange() throws Exception {
         LocalDate SELL_DATE = LocalDate.parse("20140104", formatter);
 
-        MainContainer mc = MAIN_CONTAINER_BUILDER.getMainContainer();
-
         // example analyses usage
         InvestmentRevenueCriteria input = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName);
-        InvestmentRevenueResult ir = new InvestmentRevenue(mc, input).getResult();
+        InvestmentRevenueResult ir = new InvestmentRevenue(container, input).getResult();
 
-        //analyses input
+        // analyses input
         assertThat(input.getBuyDate(), not(equalTo(nullValue())));
         assertThat(input.getSellDate(), not(equalTo(nullValue())));
 
-        // anlysis results
+        // analysis results
         assertThat(ir.getCapitalRevenueValue(), is(equalTo(nullValue())));
         assertThat(ir.getCapitalRevenueDeltaPercentValue(), is(equalTo(nullValue())));
     }
@@ -71,13 +65,11 @@ public class InvestmentRevenueTest {
     public void testGetResultWhenMissingQuotations() throws Exception {
         LocalDate SELL_DATE = LocalDate.parse("20170330", formatter);
 
-        MainContainer mc = MAIN_CONTAINER_BUILDER.getMainContainer();
-
         // ESSENTIAL: removing quotations
-        mc.getInvestments().forEach(x -> x.setQuotations(null));
+        container.getInvestments().forEach(x -> x.setQuotations(null));
 
         // example analyses usage
         InvestmentRevenueCriteria input = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName);
-        InvestmentRevenueResult ir = new InvestmentRevenue(mc, input).getResult();
+        InvestmentRevenueResult ir = new InvestmentRevenue(container, input).getResult();
     }
 }

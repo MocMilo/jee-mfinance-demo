@@ -1,5 +1,6 @@
 package com.infoshare.mfinance.core.builders;
 
+import com.infoshare.mfinance.core.configuration.ConfigurationProvider;
 import com.infoshare.mfinance.core.file.path.FilePath;
 import com.infoshare.mfinance.core.models.bossa.Currency;
 import com.infoshare.mfinance.core.models.bossa.Fund;
@@ -12,15 +13,27 @@ import java.util.List;
 
 public class MainContainerBuilder {
 
-    private Configuration configuration;
-    private List<Fund> funds = new ArrayList<>();
-    private List<Currency> currencies = new ArrayList<>();
-    private List<Investment> investments = new ArrayList<>();
+    private Configuration configuration = new ConfigurationProvider().getConfiguration();
     private MainContainer mainContainer = new MainContainer();
     private FundBuilder fundBuilder = new FundBuilder();
     private CurrencyBuilder currencyBuilder = new CurrencyBuilder();
 
-    public void loadFunds() {
+    private List<Fund> funds = new ArrayList<>();
+    private List<Currency> currencies = new ArrayList<>();
+    private List<Investment> investments = new ArrayList<>();
+
+    public MainContainer getMainContainer() {
+
+        this.loadFunds();
+        this.loadCurrencies();
+
+        mainContainer.setInvestments(investments);
+        mainContainer.setFundsCount(fundBuilder.getNumberOfFunds());
+        mainContainer.setCurrenciesCount(currencyBuilder.getNumberOfCurrencies());
+        return mainContainer;
+    }
+
+    private void loadFunds() {
         configuration.getFundFilePaths().forEach((FilePath filePath) -> {
             fundBuilder.createFundsFromFile(filePath.getFilePath());
         });
@@ -28,23 +41,12 @@ public class MainContainerBuilder {
         investments.addAll(funds);
     }
 
-    public void loadCurrencies() {
+    private void loadCurrencies() {
         configuration.getCurrencyFilePaths()
                 .forEach((FilePath filePath) -> {
                     currencyBuilder.createCurrenciesFromFile(filePath.getFilePath());
                 });
         currencies = currencyBuilder.getCurrencies();
         investments.addAll(currencies);
-    }
-
-    public MainContainerBuilder(Configuration configuration) {
-        this.configuration = configuration;
-    }
-
-    public MainContainer getMainContainer() {
-        mainContainer.setInvestments(investments);
-        mainContainer.setFundsCount(fundBuilder.getNumberOfFunds());
-        mainContainer.setCurrenciesCount(currencyBuilder.getNumberOfCurrencies());
-        return mainContainer;
     }
 }

@@ -7,5 +7,4 @@ import com.infoshare.mfinance.cli.services.parser.ParserResult;
 public interface AnalysisStrategy {
 
   AnalysisResult getResult(ParserResult result, MainContainer container);
-
 }
