@@ -5,7 +5,7 @@ import com.infoshare.mfinance.core.models.bossa.Quotation;
 
 import java.util.List;
 
-public abstract class InvestmentBuilder {
+abstract class InvestmentBuilder {
 
     protected List<Quotation> getQuotationsList(String filePath) {
         QuotationBuilder builder = new QuotationBuilder();

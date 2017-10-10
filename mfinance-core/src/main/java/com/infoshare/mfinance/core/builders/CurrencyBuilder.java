@@ -8,20 +8,19 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CurrencyBuilder extends InvestmentBuilder {
+class CurrencyBuilder extends InvestmentBuilder {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CurrencyBuilder.class);
     private List<Currency> currencies = new ArrayList<>();
 
-    public int getNumberOfCurrencies() {
+    int getNumberOfCurrencies() {
         return currencies.size();
     }
-
-    public List<Currency> getCurrencies() {
+    List<Currency> getCurrencies() {
         return currencies;
     }
 
-    public void createCurrenciesFromFile(String filePath) {
+    void createCurrenciesFromFile(String filePath) {
 
         try {
             List<Quotation> quotationList = this.getQuotationsList(filePath);

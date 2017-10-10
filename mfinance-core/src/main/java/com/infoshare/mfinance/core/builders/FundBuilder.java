@@ -9,21 +9,20 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FundBuilder extends InvestmentBuilder {
+class FundBuilder extends InvestmentBuilder {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FundBuilder.class);
     private List<Fund> funds = new ArrayList<>();
 
-    public int getNumberOfFunds() {
+    int getNumberOfFunds() {
         return funds.size();
     }
-
-    public List<Fund> getFunds() {
+    List<Fund> getFunds() {
         return funds;
     }
 
 
-    public void createFundsFromFile(String filePath) {
+    void createFundsFromFile(String filePath) {
         try {
             List<Quotation> quotationList = this.getQuotationsList(filePath);
             String name = quotationList.get(0).getName();

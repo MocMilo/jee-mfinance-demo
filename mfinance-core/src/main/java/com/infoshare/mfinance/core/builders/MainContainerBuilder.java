@@ -24,8 +24,8 @@ public class MainContainerBuilder {
 
     public MainContainer getMainContainer() {
 
-        this.loadFunds();
-        this.loadCurrencies();
+        this.buildFunds();
+        this.buildCurrencies();
 
         mainContainer.setInvestments(investments);
         mainContainer.setFundsCount(fundBuilder.getNumberOfFunds());
@@ -33,7 +33,7 @@ public class MainContainerBuilder {
         return mainContainer;
     }
 
-    private void loadFunds() {
+    private void buildFunds() {
         configuration.getFundFilePaths().forEach((FilePath filePath) -> {
             fundBuilder.createFundsFromFile(filePath.getFilePath());
         });
@@ -41,7 +41,7 @@ public class MainContainerBuilder {
         investments.addAll(funds);
     }
 
-    private void loadCurrencies() {
+    private void buildCurrencies() {
         configuration.getCurrencyFilePaths()
                 .forEach((FilePath filePath) -> {
                     currencyBuilder.createCurrenciesFromFile(filePath.getFilePath());
