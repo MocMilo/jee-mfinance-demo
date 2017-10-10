@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Fund extends Investment {
 
-    public Fund(long Id, String name, List<Quotation> quotations) {
-        super(Id, name, quotations);
+    public Fund(String name, List<Quotation> quotations) {
+        super(name, quotations);
     }
 
 }

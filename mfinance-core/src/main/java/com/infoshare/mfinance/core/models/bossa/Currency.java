@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Currency extends Investment {
 
-    public Currency(long Id, String name, List<Quotation> quotations) {
-        super(Id, name, quotations);
+    public Currency(String name, List<Quotation> quotations) {
+        super(name, quotations);
     }
 
 }

@@ -2,6 +2,8 @@ package com.infoshare.mfinance.core.builders;
 
 import com.infoshare.mfinance.core.models.bossa.Fund;
 import com.infoshare.mfinance.core.models.bossa.Quotation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ import java.util.List;
 
 public class FundBuilder extends InvestmentBuilder {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(FundBuilder.class);
     private List<Fund> funds = new ArrayList<>();
 
     public int getNumberOfFunds() {
@@ -24,15 +27,11 @@ public class FundBuilder extends InvestmentBuilder {
         try {
             List<Quotation> quotationList = this.getQuotationsList(filePath);
             String name = quotationList.get(0).getName();
-            int id = funds.size();
 
-            //....//
-
-            Fund fund = new Fund(id, name, quotationList);
-            funds.add(fund);
+            funds.add(new Fund(name, quotationList));
 
         } catch (Exception e) {
-            System.out.println("Error:" + e.getMessage());
+            LOGGER.error("Failed to build Fund:{}", e.getMessage());
         }
     }
 }

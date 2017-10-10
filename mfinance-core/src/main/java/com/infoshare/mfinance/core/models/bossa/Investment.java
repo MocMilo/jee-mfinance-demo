@@ -5,17 +5,11 @@ import java.util.List;
 
 public abstract class Investment {
 
-    private long Id;
+
     private String name;
     private List<Quotation> quotations = new ArrayList<>();
 
-    public long getId() {
-        return Id;
-    }
 
-    public void setId(int id) {
-        Id = id;
-    }
 
     public String getName() {
         return name;
@@ -33,17 +27,14 @@ public abstract class Investment {
         this.quotations = quotations;
     }
 
-    public Investment(long id, String name, List<Quotation> quotations) {
-        Id = id;
+    public Investment(String name, List<Quotation> quotations) {
         this.name = name;
         this.quotations = quotations;
-
     }
 
     @Override
     public String toString() {
         return "models{" +
-                "Id=" + Id +
                 ", name='" + name + '\'' +
                 ", quotations=" + quotations +
                 '}';

@@ -37,8 +37,8 @@ public class MainContainerBuilder {
         investments.addAll(currencies);
     }
 
-    public MainContainerBuilder(Configuration appCon) {
-        this.configuration = appCon;
+    public MainContainerBuilder(Configuration configuration) {
+        this.configuration = configuration;
     }
 
     public MainContainer getMainContainer() {

@@ -10,7 +10,5 @@ public abstract class InvestmentBuilder {
     protected List<Quotation> getQuotationsList(String filePath) {
         QuotationBuilder builder = new QuotationBuilder();
         return builder.getQuotations(filePath);
-
     }
-
 }
