@@ -7,7 +7,7 @@ import com.infoshare.mfinance.core.models.bossa.Quotation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FundBuilder extends Builder {
+public class FundBuilder extends InvestmentBuilder {
 
     private List<Fund> funds = new ArrayList<>();
 

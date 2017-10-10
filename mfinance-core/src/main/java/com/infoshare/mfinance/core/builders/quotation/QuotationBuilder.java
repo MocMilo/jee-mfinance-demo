@@ -1,33 +1,30 @@
-package com.infoshare.mfinance.core.builders;
+package com.infoshare.mfinance.core.builders.quotation;
 
 import com.infoshare.mfinance.core.models.bossa.Quotation;
-import com.infoshare.mfinance.core.factories.QuotationFactory;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Builder {
+public class QuotationBuilder {
 
 
-    protected List<Quotation> getQuotationsList(String filePath) {
-
-        QuotationFactory quotationData = new QuotationFactory();
-        quotationData.loadDataFromFile("" + filePath);
+    public List<Quotation> getQuotations(String filePath){
+        QuotationPartialBuilder quotationData = new QuotationPartialBuilder();
+        quotationData.parseQuotationsFromFile(filePath);
 
         List<Quotation> quotations = new ArrayList<>();
         for (int i = 0; i < quotationData.getNumberOfQuotations(); i++) {
             quotations.add(quotationData.getQuotation(i));
         }
+
         this.deltaValueOfClose(quotations);
         return quotations;
     }
 
-
-    protected void deltaValueOfClose(List<Quotation> quotations) {
-
-        for (Quotation quotation : quotations) {
+    private void deltaValueOfClose(List<Quotation> quotations) {
+               for (Quotation quotation : quotations) {
             if ((quotations.indexOf(quotation) > 0 && quotations.indexOf(quotation) < quotations.size())) {
 
                 BigDecimal previousValue = quotations.get(quotations.indexOf(quotation) - 1).getClose()

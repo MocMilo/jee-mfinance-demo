@@ -6,7 +6,7 @@ import com.infoshare.mfinance.core.models.bossa.Quotation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CurrencyBuilder extends Builder {
+public class CurrencyBuilder extends InvestmentBuilder {
 
     private List<Currency> currencies = new ArrayList<>();
 

@@ -1,5 +1,6 @@
 package com.infoshare.mfinance.core.factories;
 
+import com.infoshare.mfinance.core.builders.quotation.QuotationPartialBuilder;
 import com.infoshare.mfinance.core.models.bossa.Quotation;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,31 +16,31 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 
-public class QuotationFactoryTest {
+public class QuotationPartialBuilderTest {
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private final File resourcesDirectory = new File("src/test/resources/csv/currencies/EUR.txt");
     private final int NUMBEROFROWS = 4622;
-    private QuotationFactory quotationFactory= new QuotationFactory();;
+    private QuotationPartialBuilder quotationPartialBuilder = new QuotationPartialBuilder();;
 
     @Before
     public void loadQuotations(){
 
         String filePath = resourcesDirectory.getAbsolutePath();
-        this.quotationFactory.loadDataFromFile(filePath);
+        this.quotationPartialBuilder.parseQuotationsFromFile(filePath);
     }
 
     @Test
     public void testGetNumberOfQuotations() throws Exception {
 
-        int loadedNumberOfQuotations = quotationFactory.getNumberOfQuotations();
+        int loadedNumberOfQuotations = quotationPartialBuilder.getNumberOfQuotations();
         assertThat(loadedNumberOfQuotations, is(equalTo(NUMBEROFROWS)));
     }
 
     @Test
     public void testGetFirstQuotation() throws Exception {
 
-        Quotation quotation = quotationFactory.getQuotation(0);
+        Quotation quotation = quotationPartialBuilder.getQuotation(0);
         LocalDate expectedDate = LocalDate.parse("1999-01-01", formatter);
         String expectedName = "EUR";
         BigDecimal expectedValue = new BigDecimal("4.0925");

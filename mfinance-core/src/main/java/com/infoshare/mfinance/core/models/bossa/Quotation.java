@@ -7,7 +7,6 @@ public class Quotation implements Comparable<Quotation> {
 
     private String name;
     private LocalDate date;
-    private BigDecimal open;
     private BigDecimal close;
     private BigDecimal deltaClose;
 
@@ -15,7 +14,6 @@ public class Quotation implements Comparable<Quotation> {
         this.name = name;
         this.date = date;
         this.close = close;
-
     }
 
     public String getName() {
@@ -40,14 +38,6 @@ public class Quotation implements Comparable<Quotation> {
 
     public void setClose(BigDecimal close) {
         this.close = close;
-    }
-
-    public BigDecimal getOpen() {
-        return open;
-    }
-
-    public void setOpen(BigDecimal open) {
-        this.open = open;
     }
 
     public BigDecimal getDeltaClose() {

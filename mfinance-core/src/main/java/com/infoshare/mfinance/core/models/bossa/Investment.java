@@ -5,11 +5,11 @@ import java.util.List;
 
 public abstract class Investment {
 
-    private int Id;
+    private long Id;
     private String name;
     private List<Quotation> quotations = new ArrayList<>();
 
-    public int getId() {
+    public long getId() {
         return Id;
     }
 
@@ -33,7 +33,7 @@ public abstract class Investment {
         this.quotations = quotations;
     }
 
-    public Investment(int id, String name, List<Quotation> quotations) {
+    public Investment(long id, String name, List<Quotation> quotations) {
         Id = id;
         this.name = name;
         this.quotations = quotations;

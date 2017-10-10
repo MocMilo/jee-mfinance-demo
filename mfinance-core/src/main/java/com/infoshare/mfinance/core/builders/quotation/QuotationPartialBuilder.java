@@ -1,4 +1,4 @@
-package com.infoshare.mfinance.core.factories;
+package com.infoshare.mfinance.core.builders.quotation;
 
 import com.infoshare.mfinance.core.models.bossa.Quotation;
 import org.slf4j.Logger;
@@ -10,12 +10,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class QuotationFactory {
+public class QuotationPartialBuilder {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(QuotationPartialBuilder.class);
     private static final String DATE_FORMAT = "yyyyMMdd";
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(DATE_FORMAT);
     private List<Quotation> quotations = new ArrayList<>();
-    private static final Logger LOGGER = LoggerFactory.getLogger(QuotationFactory.class);
 
     public int getNumberOfQuotations() {
         return quotations.size();
@@ -25,23 +25,23 @@ public class QuotationFactory {
         return quotations.get(i);
     }
 
-    public void loadDataFromFile(String filepath) {
+    public void parseQuotationsFromFile(String filepath) {
         try {
             Scanner scanner = new Scanner(new FileReader(filepath));
             scanner.nextLine();
             while (scanner.hasNextLine()) {
+
                 String data[] = scanner.nextLine().split(",");
                 String name = data[0];
-                LocalDate date = LocalDate.parse(data[1], formatter);
+                LocalDate date = LocalDate.parse(data[1], FORMATTER);
                 BigDecimal close = new BigDecimal(data[5]);
 
-                Quotation quotation = new Quotation(name, date, close);
-                quotations.add(quotation);
+                quotations.add(new Quotation(name, date, close));
             }
             scanner.close();
 
         } catch (Exception e) {
-            LOGGER.error("Failded to parse csv file {}, {}", filepath, e.getMessage());
+            LOGGER.error("Failed to parse quotations, file:{}, {}", filepath, e.getMessage());
         }
     }
 }

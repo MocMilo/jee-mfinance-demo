@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 
 public class InvestmentRevenueCriteria extends AnalysisCriteria {
+
     private BigDecimal investedCapital;
     private LocalDate buyDate;
     private LocalDate sellDate;
