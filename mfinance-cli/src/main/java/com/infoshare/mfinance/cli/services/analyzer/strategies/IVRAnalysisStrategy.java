@@ -1,7 +1,7 @@
 package com.infoshare.mfinance.cli.services.analyzer.strategies;
 
 import com.infoshare.mfinance.core.analyzer.analyses.revenue.InvestmentRevenue;
-import com.infoshare.mfinance.core.models.bossa.MainContainer;
+import com.infoshare.mfinance.core.models.bossa.DataContainer;
 import com.infoshare.mfinance.core.models.exceptions.NoDataForCriteria;
 import com.infoshare.mfinance.cli.model.arguments.IVRArgs;
 import com.infoshare.mfinance.cli.model.results.AnalysisResult;
@@ -18,7 +18,7 @@ public class IVRAnalysisStrategy implements AnalysisStrategy{
 
 
     @Override
-    public AnalysisResult getResult(ParserResult result, MainContainer container) {
+    public AnalysisResult getResult(ParserResult result, DataContainer container) {
 
         IVRArgs args = (IVRArgs) result.getArguments();
 

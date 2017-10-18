@@ -1,10 +1,10 @@
 package com.infoshare.web.container;
 
+import com.infoshare.mfinance.core.models.bossa.DataContainer;
 import com.infoshare.web.adminpanel.trigger.ITriggerable;
 import com.infoshare.mfinance.core.configuration.ConfigurationProvider;
 import com.infoshare.mfinance.core.file.RemoteDownloader;
-import com.infoshare.mfinance.core.builders.MainContainerBuilder;
-import com.infoshare.mfinance.core.models.bossa.MainContainer;
+import com.infoshare.mfinance.core.builders.DataContainerBuilder;
 import com.infoshare.mfinance.core.models.bossa.Investment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +18,7 @@ import java.util.List;
 public class ModelContainer implements IModelContainerService, ITriggerable {
 
     private List<Investment> investments;
-    private MainContainer mainContainer;
+    private DataContainer dataContainer;
     private RemoteDownloader remoteDownloader = new RemoteDownloader();
     private static final Logger LOGGER = LoggerFactory.getLogger(ModelContainer.class);
 
@@ -28,13 +28,13 @@ public class ModelContainer implements IModelContainerService, ITriggerable {
         //this.updateModelFileResources();
 
         ConfigurationProvider appCon = new ConfigurationProvider().getConfiguration();
-        MainContainerBuilder mainContainerBuilder = new MainContainerBuilder(appCon);
-        mainContainerBuilder.loadFunds();
-        mainContainerBuilder.loadCurrencies();
+        DataContainerBuilder dataContainerBuilder = new DataContainerBuilder(appCon);
+        dataContainerBuilder.loadFunds();
+        dataContainerBuilder.loadCurrencies();
 
-        MainContainer mainContainer = mainContainerBuilder.getMainContainer();
-        this.mainContainer = mainContainer;
-        this.investments = mainContainer.getInvestments();
+        DataContainer dataContainer = dataContainerBuilder.getDataContainer();
+        this.dataContainer = dataContainer;
+        this.investments = dataContainer.getInvestments();
 
     }
 
@@ -57,18 +57,18 @@ public class ModelContainer implements IModelContainerService, ITriggerable {
 
         this.updateModelFileResources();
 
-        if (!mainContainer.getInvestments().isEmpty()) {
-            mainContainer.getInvestments().clear();
+        if (!this.dataContainer.getInvestments().isEmpty()) {
+            this.dataContainer.getInvestments().clear();
         }
 
         ConfigurationProvider appCon = new ConfigurationProvider().getConfiguration();
-        MainContainerBuilder mainContainerBuilder = new MainContainerBuilder(appCon);
-        mainContainerBuilder.loadFunds();
-        mainContainerBuilder.loadCurrencies();
+        DataContainerBuilder dataContainerBuilder = new DataContainerBuilder(appCon);
+        dataContainerBuilder.loadFunds();
+        dataContainerBuilder.loadCurrencies();
 
-        MainContainer mainContainer = mainContainerBuilder.getMainContainer();
-        this.investments = mainContainer.getInvestments();
-        this.mainContainer = mainContainer;
+        DataContainer dataContainer = dataContainerBuilder.getDataContainer();
+        this.investments = dataContainer.getInvestments();
+        this.dataContainer = dataContainer;
     }
 
     public void updateModelFileResources() {
@@ -84,8 +84,8 @@ public class ModelContainer implements IModelContainerService, ITriggerable {
         return investments;
     }
 
-    public MainContainer getMainContainer() {
-        return mainContainer;
+    public DataContainer getDataContainer() {
+        return dataContainer;
     }
 
 }

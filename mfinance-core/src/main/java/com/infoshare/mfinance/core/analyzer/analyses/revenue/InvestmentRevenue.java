@@ -4,10 +4,10 @@ import com.infoshare.mfinance.core.analyzer.analyses.Analysis;
 import com.infoshare.mfinance.core.analyzer.analyses.IResult;
 import com.infoshare.mfinance.core.models.analyses.criteria.InvestmentRevenueCriteria;
 import com.infoshare.mfinance.core.models.analyses.results.InvestmentRevenueResult;
+import com.infoshare.mfinance.core.models.bossa.DataContainer;
 import com.infoshare.mfinance.core.models.exceptions.NoDataForCriteria;
 
 import com.infoshare.mfinance.core.models.bossa.Investment;
-import com.infoshare.mfinance.core.models.bossa.MainContainer;
 import com.infoshare.mfinance.core.models.bossa.Quotation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,8 +25,8 @@ public class InvestmentRevenue extends Analysis implements IResult {
 
 
 
-    public InvestmentRevenue(MainContainer mainContainer, InvestmentRevenueCriteria inputCriteria) {
-        this.mainContainer = mainContainer;
+    public InvestmentRevenue(DataContainer dataContainer, InvestmentRevenueCriteria inputCriteria) {
+        this.dataContainer = dataContainer;
         this.inputCriteria = inputCriteria;
     }
 
@@ -50,7 +50,7 @@ public class InvestmentRevenue extends Analysis implements IResult {
     }
 
     private Investment getInvestment() throws NoDataForCriteria {
-        return mainContainer.getInvestments().stream()
+        return dataContainer.getInvestments().stream()
                 .filter(x -> x.getName().equals(inputCriteria.getInvestmentName()))
                 .findFirst().orElseThrow(NoDataForCriteria::new);
     }

@@ -43,7 +43,7 @@ public class WrappingService {
         ComparisonContentWrapper wrapper = new ComparisonContentWrapper();
 
         for (PersistedIndicatorCriteria criteria : criteriaList) {
-            IndicatorResult result = new Indicator(container.getMainContainer(),
+            IndicatorResult result = new Indicator(container.getDataContainer(),
                     new IndicatorCriteria(criteria.getInvestmentName())).getResult();
 
             wrapper.setUserCustomName(criteria.getUserCustomName());

@@ -18,3 +18,4 @@ mfinance-core/*.log
 mfinance-web/*.log
 
 
+logs/

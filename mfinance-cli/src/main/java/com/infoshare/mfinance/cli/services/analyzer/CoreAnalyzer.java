@@ -6,8 +6,8 @@ import com.infoshare.mfinance.cli.services.analyzer.strategies.INDAnalysisStrate
 import com.infoshare.mfinance.cli.services.analyzer.strategies.IVRAnalysisStrategy;
 import com.infoshare.mfinance.cli.services.parser.ParserResult;
 import com.infoshare.mfinance.cli.services.parser.analysisNames;
-import com.infoshare.mfinance.core.builders.MainContainerBuilder;
-import com.infoshare.mfinance.core.models.bossa.MainContainer;
+import com.infoshare.mfinance.core.builders.DataContainerBuilder;
+import com.infoshare.mfinance.core.models.bossa.DataContainer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +24,7 @@ public class CoreAnalyzer {
 
     public AnalysisResult getResult(ParserResult result) {
 
-        MainContainer container = new MainContainerBuilder().getMainContainer();
+        DataContainer container = new DataContainerBuilder().getDataContainer();
         String analysisCommandName = result.getArguments().getStrategy();
 
         return analysisStrategies.get(analysisCommandName)

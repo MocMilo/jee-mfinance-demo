@@ -69,7 +69,7 @@ public class IndicatorServlet extends HttpServlet {
                 PersistedIndicatorCriteria criteria = new PersistedIndicatorCriteria(
                         item, userCustomName, isFavouriteChecked);
 
-                IndicatorResult result = new Indicator(container.getMainContainer()
+                IndicatorResult result = new Indicator(container.getDataContainer()
                         , new IndicatorCriteria(item)).getResult();
 
 

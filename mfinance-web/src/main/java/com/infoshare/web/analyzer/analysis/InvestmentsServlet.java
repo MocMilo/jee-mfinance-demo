@@ -20,9 +20,9 @@ public class InvestmentsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        req.setAttribute(ConstantsProvider.CURRENCY_COUNT, container.getMainContainer().getCurrenciesCount());
-        req.setAttribute(ConstantsProvider.FUND_COUNT, container.getMainContainer().getFundsCount());
-        req.setAttribute(ConstantsProvider.ALL_INVESTMENTS, container.getMainContainer().getInvestments());
+        req.setAttribute(ConstantsProvider.CURRENCY_COUNT, container.getDataContainer().getCurrenciesCount());
+        req.setAttribute(ConstantsProvider.FUND_COUNT, container.getDataContainer().getFundsCount());
+        req.setAttribute(ConstantsProvider.ALL_INVESTMENTS, container.getDataContainer().getInvestments());
 
         req.getRequestDispatcher("../userview/investments.jsp").forward(req, resp);
     }

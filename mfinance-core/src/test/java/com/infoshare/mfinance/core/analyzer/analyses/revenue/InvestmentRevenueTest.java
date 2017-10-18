@@ -1,9 +1,9 @@
 package com.infoshare.mfinance.core.analyzer.analyses.revenue;
 
-import com.infoshare.mfinance.core.builders.MainContainerBuilder;
+import com.infoshare.mfinance.core.builders.DataContainerBuilder;
 import com.infoshare.mfinance.core.models.analyses.criteria.InvestmentRevenueCriteria;
 import com.infoshare.mfinance.core.models.analyses.results.InvestmentRevenueResult;
-import com.infoshare.mfinance.core.models.bossa.MainContainer;
+import com.infoshare.mfinance.core.models.bossa.DataContainer;
 import com.infoshare.mfinance.core.models.exceptions.NoDataForCriteria;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -21,8 +21,8 @@ import static org.hamcrest.core.IsNot.not;
 
 public class InvestmentRevenueTest {
 
-    private static final MainContainerBuilder MAIN_CONTAINER_BUILDER = new MainContainerBuilder();
-    private static MainContainer container;
+    private static final DataContainerBuilder MAIN_CONTAINER_BUILDER = new DataContainerBuilder();
+    private static DataContainer container;
     private final BigDecimal capital = new BigDecimal(10000.00);
     private final DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
     private final LocalDate BUY_DATE = LocalDate.parse("20090910", formatter);
@@ -30,7 +30,7 @@ public class InvestmentRevenueTest {
 
     @BeforeClass
     public static void init() {
-        container = MAIN_CONTAINER_BUILDER.getMainContainer();
+        container = MAIN_CONTAINER_BUILDER.getDataContainer();
     }
 
     @Test

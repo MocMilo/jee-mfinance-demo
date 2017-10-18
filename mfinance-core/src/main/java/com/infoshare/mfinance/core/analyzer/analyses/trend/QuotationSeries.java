@@ -7,7 +7,7 @@ import com.infoshare.mfinance.core.models.analyses.criteria.QuotationSeriesCrite
 import com.infoshare.mfinance.core.models.analyses.results.QuotationSeriesResult;
 import com.infoshare.mfinance.core.models.exceptions.NoDataForCriteria;
 import com.infoshare.mfinance.core.models.bossa.Investment;
-import com.infoshare.mfinance.core.models.bossa.MainContainer;
+import com.infoshare.mfinance.core.models.bossa.DataContainer;
 import com.infoshare.mfinance.core.models.bossa.Quotation;
 
 import java.time.LocalDate;
@@ -29,8 +29,8 @@ public class QuotationSeries extends Analysis implements IResult {
         return new QuotationSeriesResult(filteredQuotations);
     }
 
-    public QuotationSeries(MainContainer mainContainer, QuotationSeriesCriteria inputCriteria) {
-        this.mainContainer = mainContainer;
+    public QuotationSeries(DataContainer dataContainer, QuotationSeriesCriteria inputCriteria) {
+        this.dataContainer = dataContainer;
         this.inputCriteria = inputCriteria;
     }
 
@@ -53,7 +53,7 @@ public class QuotationSeries extends Analysis implements IResult {
     }
 
     private Investment getInvestment() throws NoDataForCriteria {
-        return mainContainer.getInvestments().stream()
+        return dataContainer.getInvestments().stream()
                 .filter(x -> x.getName().equals(inputCriteria.getInvestmentName()))
                 .findFirst().orElseThrow(NoDataForCriteria::new);
     }

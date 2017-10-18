@@ -52,11 +52,11 @@ public final class WebAppDeployListener implements ServletContextListener {
 
             new ModelContainer().updateModelFileResources();
 
-            container.getMainContainer();
+            container.getDataContainer();
 
             LOGGER.info("Currencies items:{} Funds items:{}",
-                    container.getMainContainer().getCurrenciesCount(),
-                    container.getMainContainer().getFundsCount());
+                    container.getDataContainer().getCurrenciesCount(),
+                    container.getDataContainer().getFundsCount());
         } catch (RuntimeException ex) {
             LOGGER.error("FATAL ERROR: Failed to load data models CSV files! {}", ex.getMessage());
         }

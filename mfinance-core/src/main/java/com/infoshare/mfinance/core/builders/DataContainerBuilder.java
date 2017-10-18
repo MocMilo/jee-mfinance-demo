@@ -5,16 +5,16 @@ import com.infoshare.mfinance.core.file.path.FilePath;
 import com.infoshare.mfinance.core.models.bossa.Currency;
 import com.infoshare.mfinance.core.models.bossa.Fund;
 import com.infoshare.mfinance.core.models.bossa.Investment;
-import com.infoshare.mfinance.core.models.bossa.MainContainer;
+import com.infoshare.mfinance.core.models.bossa.DataContainer;
 import com.infoshare.mfinance.core.models.configuration.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainContainerBuilder {
+public class DataContainerBuilder {
 
     private Configuration configuration = new ConfigurationProvider().getConfiguration();
-    private MainContainer mainContainer = new MainContainer();
+    private DataContainer dataContainer = new DataContainer();
     private FundBuilder fundBuilder = new FundBuilder();
     private CurrencyBuilder currencyBuilder = new CurrencyBuilder();
 
@@ -22,15 +22,15 @@ public class MainContainerBuilder {
     private List<Currency> currencies = new ArrayList<>();
     private List<Investment> investments = new ArrayList<>();
 
-    public MainContainer getMainContainer() {
+    public DataContainer getDataContainer() {
 
         this.buildFunds();
         this.buildCurrencies();
 
-        mainContainer.setInvestments(investments);
-        mainContainer.setFundsCount(fundBuilder.getNumberOfFunds());
-        mainContainer.setCurrenciesCount(currencyBuilder.getNumberOfCurrencies());
-        return mainContainer;
+        dataContainer.setInvestments(investments);
+        dataContainer.setFundsCount(fundBuilder.getNumberOfFunds());
+        dataContainer.setCurrenciesCount(currencyBuilder.getNumberOfCurrencies());
+        return dataContainer;
     }
 
     private void buildFunds() {

@@ -25,8 +25,8 @@ public class AppSettingsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        req.setAttribute(ConstantsProvider.CURRENCY_COUNT, container.getMainContainer().getCurrenciesCount());
-        req.setAttribute(ConstantsProvider.FUND_COUNT, container.getMainContainer().getFundsCount());
+        req.setAttribute(ConstantsProvider.CURRENCY_COUNT, container.getDataContainer().getCurrenciesCount());
+        req.setAttribute(ConstantsProvider.FUND_COUNT, container.getDataContainer().getFundsCount());
         req.getRequestDispatcher("../adminview/appSettings.jsp").forward(req, resp);
     }
 
@@ -37,12 +37,12 @@ public class AppSettingsServlet extends HttpServlet {
             LOGGER.info("Administrator Main Container manual reloading initialized...");
 
             container.reload();
-            req.setAttribute(ConstantsProvider.CURRENCY_COUNT, container.getMainContainer().getCurrenciesCount());
-            req.setAttribute(ConstantsProvider.FUND_COUNT, container.getMainContainer().getFundsCount());
+            req.setAttribute(ConstantsProvider.CURRENCY_COUNT, container.getDataContainer().getCurrenciesCount());
+            req.setAttribute(ConstantsProvider.FUND_COUNT, container.getDataContainer().getFundsCount());
 
             LOGGER.info("Main Container reloaded!Currencies items:{} Funds items:{}",
-                    container.getMainContainer().getCurrenciesCount(),
-                    container.getMainContainer().getFundsCount());
+                    container.getDataContainer().getCurrenciesCount(),
+                    container.getDataContainer().getFundsCount());
 
         } catch (RuntimeException ex) {
 

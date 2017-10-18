@@ -3,7 +3,7 @@ package com.infoshare.mfinance.core.models.bossa;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainContainer {
+public class DataContainer {
 
     private int fundsCount = 0;
     private int currenciesCount = 0;
@@ -36,7 +36,7 @@ public class MainContainer {
 
     @Override
     public String toString() {
-        return "MainContainer{" +
+        return "DataContainer{" +
                 "investments=" + investments +
                 '}';
     }

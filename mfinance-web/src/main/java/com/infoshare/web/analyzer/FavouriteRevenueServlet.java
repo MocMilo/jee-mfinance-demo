@@ -70,7 +70,7 @@ public class FavouriteRevenueServlet extends HttpServlet {
         List<ContentWrapper> contentWrappers = new ArrayList<>();
         try {
             for (PersistedInvestmentRevenueCriteria criteria : criteriaList) {
-                InvestmentRevenueResult result = (new InvestmentRevenue(container.getMainContainer(),
+                InvestmentRevenueResult result = (new InvestmentRevenue(container.getDataContainer(),
                         criteria.getEqualEquivalent(criteria))).getResult();
 
                 ContentWrapper revenueWrapper = getContent(criteria, result);

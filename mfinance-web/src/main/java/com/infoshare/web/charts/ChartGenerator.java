@@ -39,7 +39,7 @@ public class ChartGenerator {
 
     private XYDataset createDataset() throws NoDataForCriteria {
 
-        QuotationSeries quotationSeries = new QuotationSeries(mainContainer.getMainContainer(), criteria);
+        QuotationSeries quotationSeries = new QuotationSeries(mainContainer.getDataContainer(), criteria);
         QuotationSeriesResult quotationSeriesResult = (QuotationSeriesResult) quotationSeries.getResult();
         List<Quotation> quotations = quotationSeriesResult.getQuotationList();
 

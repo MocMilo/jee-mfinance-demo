@@ -1,10 +1,10 @@
 package com.infoshare.mfinance.core.analyzer.analyses;
 
 
-import com.infoshare.mfinance.core.models.bossa.MainContainer;
+import com.infoshare.mfinance.core.models.bossa.DataContainer;
 
 public abstract class Analysis {
 
-    protected MainContainer mainContainer;
+    protected DataContainer dataContainer;
 
 }

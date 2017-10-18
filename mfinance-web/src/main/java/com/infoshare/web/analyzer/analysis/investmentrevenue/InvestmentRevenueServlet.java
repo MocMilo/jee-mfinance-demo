@@ -103,7 +103,7 @@ public class InvestmentRevenueServlet extends HttpServlet {
                     , investmentName
                     , isFavouriteChecked);
 
-            InvestmentRevenueResult result = (new InvestmentRevenue(container.getMainContainer(), criteria))
+            InvestmentRevenueResult result = (new InvestmentRevenue(container.getDataContainer(), criteria))
                     .getResult();
 
             User dbUser = userService.get(((User) req.getSession()
