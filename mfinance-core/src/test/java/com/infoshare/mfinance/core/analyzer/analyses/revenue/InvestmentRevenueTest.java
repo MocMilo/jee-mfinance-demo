@@ -20,7 +20,7 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
-
+import static org.hamcrest.core.Is.is;
 
 public class InvestmentRevenueTest {
 
@@ -55,13 +55,21 @@ public class InvestmentRevenueTest {
     }
 
     @Test
-    public void getInvestmentsFromMainContainer() {
+    public void shouldDataContainerNotBeEmpty() {
+
         int investments = container.getInvestments().size();
         assertThat(investments, not(equalTo(nullValue())));
     }
 
     @Test
-    public void shouldGetAnalysisResult() throws NoDataForCriteria{
+    public void shouldDataContainerHaveValidInvestmentsSize() {
+
+        int investments = container.getInvestments().size();
+        assertThat(investments, is(equalTo(1)));
+    }
+
+    @Test
+    public void shouldReturnNotEmptyAnalysisResult() throws NoDataForCriteria{
 
         InvestmentRevenueCriteria criteria = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName);
         InvestmentRevenueResult result = new InvestmentRevenue(container, criteria).getResult();
@@ -70,8 +78,18 @@ public class InvestmentRevenueTest {
         assertThat(result.getCapitalRevenueDeltaPercentValue(), not(equalTo(nullValue())));
     }
 
+    @Test
+    public void shouldReturnValidAnalysisResult() throws NoDataForCriteria{
+
+        InvestmentRevenueCriteria criteria = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName);
+        InvestmentRevenueResult result = new InvestmentRevenue(container, criteria).getResult();
+
+        assertThat(result.getCapitalRevenueValue(), is(equalTo(new BigDecimal("400.00"))));
+        assertThat(result.getCapitalRevenueDeltaPercentValue(), is(equalTo(new BigDecimal("4.4444"))));
+    }
+
     @Test(expected = NoDataForCriteria.class)
-    public void testGetResultWhenUserInputOutOfRange() throws Exception {
+    public void shouldFailWhenCriteriaSellDateOutOfRange() throws NoDataForCriteria {
 
         LocalDate SELL_DATE = LocalDate.parse("20140104", formatter);
         InvestmentRevenueCriteria criteria = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName);
@@ -79,7 +97,15 @@ public class InvestmentRevenueTest {
     }
 
     @Test(expected = NoDataForCriteria.class)
-    public void testGetResultWhenMissingQuotations() throws Exception {
+    public void shouldFailWhenCriteriaBuyDateOutOfRange() throws NoDataForCriteria {
+
+        LocalDate BUY_DATE = LocalDate.parse("20060104", formatter);
+        InvestmentRevenueCriteria criteria = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName);
+        new InvestmentRevenue(container, criteria).getResult();
+    }
+
+    @Test(expected = NoDataForCriteria.class)
+    public void shouldFailWhenMissingQuotations() throws NoDataForCriteria {
 
         container.getInvestments().forEach(x -> x.setQuotations(null));
         InvestmentRevenueCriteria criteria = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName);
