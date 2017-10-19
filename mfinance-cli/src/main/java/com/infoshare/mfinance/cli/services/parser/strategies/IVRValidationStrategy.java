@@ -34,27 +34,32 @@ public class IVRValidationStrategy implements ValidationStrategy {
             return new ParserResult(false, "\nanalysis not found!", null);
         }
 
+        if (ivrArgs.getInvestmentName().equals("")) {
+            return new ParserResult(false, "\nwrong investment name, should not be empty", null);
+        }
 
         if (!hasMoneyFormat(ivrArgs.getCapital())) {
-            return new ParserResult(false, "\nwrong capital argument: should be decimal of format: 0.00", null);
+            return new ParserResult(false, "\nwrong capital argument: should be decimal of format: 1.00", null);
         }
 
         try {
             new BigDecimal(ivrArgs.getCapital());
         } catch (NumberFormatException e) {
-            return new ParserResult(false, "\nwrong capital argument: should be decimal of format: 0.00", null);
+            return new ParserResult(false, "\nwrong capital argument: should be decimal of format: 1.00", null);
+        }
+
+        if (new BigDecimal((ivrArgs.getCapital())).compareTo(BigDecimal.ZERO) <= 0) {
+            return new ParserResult(false, "\nwrong capital argument: should be > 0.00", null);
         }
 
         try {
             buyDate = LocalDate.parse(ivrArgs.getStartDate(), formatter);
-
         } catch (DateTimeParseException e) {
             return new ParserResult(false, "\nwrong buy date: should be in format yyyy-MM-dd", null);
         }
 
         try {
             sellDate = LocalDate.parse(ivrArgs.getEndDate(), formatter);
-
         } catch (DateTimeParseException e) {
             return new ParserResult(false, "\nwrong sell date: should be in format yyyy-MM-dd", null);
         }
