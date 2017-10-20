@@ -40,9 +40,9 @@ public class InvestmentRevenueTest {
 
     @Before
     public void init() {
-        quotation1 = new Quotation("CHF", LocalDate.parse("20090910", formatter), new BigDecimal(4.50));
-        quotation2 = new Quotation("CHF", LocalDate.parse("20090911", formatter), new BigDecimal(4.60));
-        quotation3 = new Quotation("CHF", LocalDate.parse("20090912", formatter), new BigDecimal(4.70));
+        quotation1 = new Quotation("CHF", LocalDate.parse("20090910", formatter), BigDecimal.valueOf(4.50));
+        quotation2 = new Quotation("CHF", LocalDate.parse("20090911", formatter), BigDecimal.valueOf(4.70));
+        quotation3 = new Quotation("CHF", LocalDate.parse("20090912", formatter), BigDecimal.valueOf(4.60));
 
         quotations.add(quotation1);
         quotations.add(quotation2);
@@ -84,8 +84,8 @@ public class InvestmentRevenueTest {
         InvestmentRevenueCriteria criteria = new InvestmentRevenueCriteria(capital, BUY_DATE, SELL_DATE, InvestmentName);
         InvestmentRevenueResult result = new InvestmentRevenue(container, criteria).getResult();
 
-        assertThat(result.getCapitalRevenueValue(), is(equalTo(new BigDecimal("400.00"))));
-        assertThat(result.getCapitalRevenueDeltaPercentValue(), is(equalTo(new BigDecimal("4.4444"))));
+        assertThat(result.getCapitalRevenueValue(), is(equalTo(new BigDecimal("200.00"))));
+        assertThat(result.getCapitalRevenueDeltaPercentValue(), is(equalTo(new BigDecimal("2.2222"))));
     }
 
     @Test(expected = NoDataForCriteria.class)

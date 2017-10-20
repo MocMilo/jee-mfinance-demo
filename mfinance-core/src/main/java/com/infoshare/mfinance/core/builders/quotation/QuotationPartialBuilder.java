@@ -10,6 +10,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+import static java.math.RoundingMode.HALF_EVEN;
+
 public class QuotationPartialBuilder {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(QuotationPartialBuilder.class);
@@ -34,7 +36,7 @@ public class QuotationPartialBuilder {
                 String data[] = scanner.nextLine().split(",");
                 String name = data[0];
                 LocalDate date = LocalDate.parse(data[1], FORMATTER);
-                BigDecimal close = new BigDecimal(data[5]);
+                BigDecimal close = new BigDecimal(data[5]).setScale(2, HALF_EVEN);
 
                 quotations.add(new Quotation(name, date, close));
             }

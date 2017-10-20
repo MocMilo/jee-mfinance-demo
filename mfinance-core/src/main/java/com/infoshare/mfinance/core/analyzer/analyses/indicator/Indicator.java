@@ -137,7 +137,7 @@ public class Indicator extends Analysis implements IResult {
     private Quotation getLast(List<Quotation> quotations) throws NoDataForCriteria {
         return quotations.stream()
                 .sorted()
-                .reduce((first, second) -> first)
+                .reduce((first, second) -> second)
                 .orElseThrow(NoDataForCriteria::new);
     }
 }
