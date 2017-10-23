@@ -31,14 +31,14 @@ public class QuotationPartialBuilderTest {
     }
 
     @Test
-    public void testGetNumberOfQuotations() throws Exception {
+    public void shouldReturnNumberOfQuoitations() throws Exception {
 
         int loadedNumberOfQuotations = quotationPartialBuilder.getNumberOfQuotations();
         assertThat(loadedNumberOfQuotations, is(equalTo(NUMBEROFROWS)));
     }
 
     @Test
-    public void testGetFirstQuotation() throws Exception {
+    public void shouldReturnQuotation() throws Exception {
 
         Quotation quotation = quotationPartialBuilder.getQuotation(0);
         LocalDate expectedDate = LocalDate.parse("1999-01-01", formatter);
