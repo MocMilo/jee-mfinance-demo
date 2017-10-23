@@ -52,4 +52,13 @@ public class InvestmentFundBuilderTest {
 
         assertThat(NUMBEROFROWS, is(numberOfQuotations));
     }
+
+    @Test(expected = Exception.class)
+    public void shouldFailWhenFileNotFound(){
+
+        //fixme (should throw exception)
+
+        String notExistingFilePath = "/NotExistingFilePath";
+        new FundBuilder().createFundsFromFile(notExistingFilePath);
+    }
 }
