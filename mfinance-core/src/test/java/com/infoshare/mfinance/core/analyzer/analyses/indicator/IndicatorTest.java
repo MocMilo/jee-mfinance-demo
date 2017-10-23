@@ -3,7 +3,7 @@ package com.infoshare.mfinance.core.analyzer.analyses.indicator;
 
 import com.infoshare.mfinance.core.models.analyses.criteria.IndicatorCriteria;
 import com.infoshare.mfinance.core.models.analyses.results.IndicatorResult;
-import com.infoshare.mfinance.core.models.bossa.Currency;
+import com.infoshare.mfinance.core.models.bossa.InvestmentCurrency;
 import com.infoshare.mfinance.core.models.bossa.DataContainer;
 import com.infoshare.mfinance.core.models.bossa.Investment;
 import com.infoshare.mfinance.core.models.bossa.Quotation;
@@ -31,7 +31,7 @@ public class IndicatorTest {
     private Quotation quotation1;
     private Quotation quotation2;
     private Quotation quotation3;
-    private Currency currency;
+    private InvestmentCurrency investmentCurrency;
 
     private final DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
     private final String investmentName = "CHF";
@@ -49,8 +49,8 @@ public class IndicatorTest {
         quotations.add(quotation2);
         quotations.add(quotation3);
 
-        currency = new Currency("CHF", quotations);
-        investments.add(currency);
+        investmentCurrency = new InvestmentCurrency("CHF", quotations);
+        investments.add(investmentCurrency);
         container.setInvestments(investments);
         container.setCurrenciesCount(1);
     }

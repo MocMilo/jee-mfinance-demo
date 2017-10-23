@@ -2,7 +2,7 @@ package com.infoshare.mfinance.core.analyzer.analyses.revenue;
 
 import com.infoshare.mfinance.core.models.analyses.criteria.InvestmentRevenueCriteria;
 import com.infoshare.mfinance.core.models.analyses.results.InvestmentRevenueResult;
-import com.infoshare.mfinance.core.models.bossa.Currency;
+import com.infoshare.mfinance.core.models.bossa.InvestmentCurrency;
 import com.infoshare.mfinance.core.models.bossa.DataContainer;
 import com.infoshare.mfinance.core.models.bossa.Investment;
 import com.infoshare.mfinance.core.models.bossa.Quotation;
@@ -30,7 +30,7 @@ public class InvestmentRevenueTest {
     private Quotation quotation1;
     private Quotation quotation2;
     private Quotation quotation3;
-    private Currency currency;
+    private InvestmentCurrency investmentCurrency;
 
     private final BigDecimal capital = new BigDecimal(10000.00);
     private final DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
@@ -48,8 +48,8 @@ public class InvestmentRevenueTest {
         quotations.add(quotation2);
         quotations.add(quotation3);
 
-        currency = new Currency("CHF", quotations);
-        investments.add(currency);
+        investmentCurrency = new InvestmentCurrency("CHF", quotations);
+        investments.add(investmentCurrency);
         container.setInvestments(investments);
         container.setCurrenciesCount(1);
     }

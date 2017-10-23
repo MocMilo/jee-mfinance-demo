@@ -2,8 +2,8 @@ package com.infoshare.mfinance.core.builders;
 
 import com.infoshare.mfinance.core.configuration.ConfigurationProvider;
 import com.infoshare.mfinance.core.file.path.FilePath;
-import com.infoshare.mfinance.core.models.bossa.Currency;
-import com.infoshare.mfinance.core.models.bossa.Fund;
+import com.infoshare.mfinance.core.models.bossa.InvestmentCurrency;
+import com.infoshare.mfinance.core.models.bossa.InvestmentFund;
 import com.infoshare.mfinance.core.models.bossa.Investment;
 import com.infoshare.mfinance.core.models.bossa.DataContainer;
 import com.infoshare.mfinance.core.models.configuration.Configuration;
@@ -18,8 +18,8 @@ public class DataContainerBuilder {
     private FundBuilder fundBuilder = new FundBuilder();
     private CurrencyBuilder currencyBuilder = new CurrencyBuilder();
 
-    private List<Fund> funds = new ArrayList<>();
-    private List<Currency> currencies = new ArrayList<>();
+    private List<InvestmentFund> investmentFunds = new ArrayList<>();
+    private List<InvestmentCurrency> currencies = new ArrayList<>();
     private List<Investment> investments = new ArrayList<>();
 
     public DataContainer getDataContainer() {
@@ -37,8 +37,8 @@ public class DataContainerBuilder {
         configuration.getFundFilePaths().forEach((FilePath filePath) -> {
             fundBuilder.createFundsFromFile(filePath.getFilePath());
         });
-        funds = fundBuilder.getFunds();
-        investments.addAll(funds);
+        investmentFunds = fundBuilder.getInvestmentFunds();
+        investments.addAll(investmentFunds);
     }
 
     private void buildCurrencies() {
