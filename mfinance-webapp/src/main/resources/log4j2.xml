@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" name="financial-app">
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%highlight{%d | %-10X{system} | %-18marker [%-5level] %-27logger{1.} [%t:%line] %enc{%msg}%n%throwable}{FATAL=white, ERROR=red, WARN=yellow, INFO=white, DEBUG=green, TRACE=cyan}"/>
+        </Console>
+        <File name="MainLogger" fileName="logs/webapp.log" append="true" bufferedIO="true" bufferSize="8192">
+            <PatternLayout>
+                <Pattern>%highlight{%d | %-18marker [%-5level] %-27logger{1.} [%t:%line]
+                    %enc{%msg}%n%throwable}{FATAL=white, ERROR=red, WARN=yellow, INFO=white, DEBUG=green, TRACE=cyan}
+                </Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.infoshare.web.analyzer.analysis.investmentrevenue.InvestmentRevenueServlet" level="TRACE">
+            <AppenderRef ref="MainLogger"/>
+        </Logger>
+        <Logger name="com.infoshare.web.analyzer.analysis.investmentrevenue.InvestmentRevenueServlet" level="TRACE">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Root level="trace">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="MainLogger"/>
+        </Root>
+    </Loggers>
+</Configuration>

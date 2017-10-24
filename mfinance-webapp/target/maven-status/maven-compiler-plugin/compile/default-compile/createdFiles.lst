@@ -1,0 +1,6 @@
+com/infoshare/web/utils/ConstantsProvider.class
+com/infoshare/web/analyzer/analysis/wrapper/ComparisonContentWrapper.class
+com/infoshare/web/security/LogoutServlet.class
+com/infoshare/web/analyzer/analysis/InvestmentsServlet.class
+com/infoshare/web/container/IModelContainerService.class
+com/infoshare/web/analyzer/analysis/wrapper/AnalysisContent.class
