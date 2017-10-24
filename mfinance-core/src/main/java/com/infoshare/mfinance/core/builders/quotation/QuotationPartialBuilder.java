@@ -8,7 +8,11 @@ import java.io.FileReader;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import static java.math.RoundingMode.HALF_EVEN;
 
 public class QuotationPartialBuilder {
 
@@ -27,14 +31,15 @@ public class QuotationPartialBuilder {
 
     public void parseQuotationsFromFile(String filepath) {
         try {
-            Scanner scanner = new Scanner(new FileReader(filepath));
+            FileReader fileReader = new FileReader(filepath);
+            Scanner scanner = new Scanner(fileReader);
             scanner.nextLine();
             while (scanner.hasNextLine()) {
 
                 String data[] = scanner.nextLine().split(",");
                 String name = data[0];
                 LocalDate date = LocalDate.parse(data[1], FORMATTER);
-                BigDecimal close = new BigDecimal(data[5]);
+                BigDecimal close = new BigDecimal(data[5]).setScale(4, HALF_EVEN);
 
                 quotations.add(new Quotation(name, date, close));
             }
@@ -42,6 +47,7 @@ public class QuotationPartialBuilder {
 
         } catch (Exception e) {
             LOGGER.error("Failed to parse quotations, file:{}, {}", filepath, e.getMessage());
+            throw new RuntimeException("Failed to parse quotations, file:"+filepath+e.getMessage());
         }
     }
 }

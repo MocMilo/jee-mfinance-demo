@@ -18,8 +18,27 @@ public class ConfigurationProvider {
     private final String CONFIGURATION_FILE_PATH = "Configuration.json";
     private Configuration configuration;
 
+
+
     public Configuration getConfiguration() {
-        ResourcesFileReader fileReader = new ResourcesFileReader(CONFIGURATION_FILE_PATH);
+        /**
+         * @return Provides default Configuration from json file.
+         */
+
+        return buildConfiguration(CONFIGURATION_FILE_PATH);
+    }
+
+    public Configuration getConfiguration(String resourcesFilePath){
+        /**
+         *@return Provides Configuration from json file.
+         *@param resourcesFilePath Explicit resources file path
+         */
+
+        return buildConfiguration(resourcesFilePath);
+    }
+
+    private Configuration buildConfiguration(String configurationFilePath){
+        ResourcesFileReader fileReader = new ResourcesFileReader(configurationFilePath);
         try {
             String fileContent = fileReader.getFileAsString();
             ConfigurationJSONSerializer configurationJsonMapper = new ConfigurationJSONSerializer(fileContent);
@@ -27,10 +46,10 @@ public class ConfigurationProvider {
             configuration = configurationJsonMapper.getConfigurationFromJson();
 
             if(configuration.getCurrencyFilePaths().isEmpty()){
-              String folderPath = configuration.getCurrencyFolderPath().getFolderPath();
-              List<String> fileNames = getFileNameList(folderPath);
-              List<FilePath> generatedfilePaths = generateFilePaths(folderPath, fileNames);
-              configuration.setCurrencyFilePaths(generatedfilePaths);
+                String folderPath = configuration.getCurrencyFolderPath().getFolderPath();
+                List<String> fileNames = getFileNameList(folderPath);
+                List<FilePath> generatedfilePaths = generateFilePaths(folderPath, fileNames);
+                configuration.setCurrencyFilePaths(generatedfilePaths);
             }
 
             if(configuration.getFundFilePaths().isEmpty()){
@@ -40,12 +59,14 @@ public class ConfigurationProvider {
                 configuration.setFundFilePaths(generatedfilePaths);
             }
 
+
         } catch (IOException e) {
             LOGGER.info("Error reading the file: " + e.getMessage());
         } catch (ConfigurationException e) {
             LOGGER.info("Error creating the configuration: " + e.getMessage());
         }
         return configuration;
+
     }
 
     private List<String> getFileNameList(String folderPath) {

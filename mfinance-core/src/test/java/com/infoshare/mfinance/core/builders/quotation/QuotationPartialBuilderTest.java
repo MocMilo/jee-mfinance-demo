@@ -1,6 +1,5 @@
-package com.infoshare.mfinance.core.factories;
+package com.infoshare.mfinance.core.builders.quotation;
 
-import com.infoshare.mfinance.core.builders.quotation.QuotationPartialBuilder;
 import com.infoshare.mfinance.core.models.bossa.Quotation;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,25 +19,26 @@ public class QuotationPartialBuilderTest {
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private final File resourcesDirectory = new File("src/test/resources/csv/currencies/EUR.txt");
-    private final int NUMBEROFROWS = 4622;
-    private QuotationPartialBuilder quotationPartialBuilder = new QuotationPartialBuilder();;
+    private final int NUMBER_OF_ROWS = 4622;
+    private QuotationPartialBuilder quotationPartialBuilder = new QuotationPartialBuilder();
+    ;
 
     @Before
-    public void loadQuotations(){
+    public void loadQuotations() {
 
         String filePath = resourcesDirectory.getAbsolutePath();
         this.quotationPartialBuilder.parseQuotationsFromFile(filePath);
     }
 
     @Test
-    public void testGetNumberOfQuotations() throws Exception {
+    public void shouldReturnNumberOfQuotations() throws Exception {
 
         int loadedNumberOfQuotations = quotationPartialBuilder.getNumberOfQuotations();
-        assertThat(loadedNumberOfQuotations, is(equalTo(NUMBEROFROWS)));
+        assertThat(loadedNumberOfQuotations, is(equalTo(NUMBER_OF_ROWS)));
     }
 
     @Test
-    public void testGetFirstQuotation() throws Exception {
+    public void shouldReturnQuotation() {
 
         Quotation quotation = quotationPartialBuilder.getQuotation(0);
         LocalDate expectedDate = LocalDate.parse("1999-01-01", formatter);
@@ -54,4 +54,9 @@ public class QuotationPartialBuilderTest {
         assertThat(quotation.getClose(), is(equalTo(expectedValue)));
     }
 
+    @Test(expected = Exception.class)
+    public void shouldFailWhenFileNotFound() {
+        String notExistingFilePath = "/notexistingfilepath";
+        new QuotationPartialBuilder().parseQuotationsFromFile(notExistingFilePath);
+    }
 }

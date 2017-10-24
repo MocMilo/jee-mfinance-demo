@@ -9,15 +9,9 @@ public abstract class Investment {
     private String name;
     private List<Quotation> quotations = new ArrayList<>();
 
-
-
     public String getName() {
         return name;
     }
-
-    /*public void setName(String name) {
-        this.name = name;
-    }*/
 
     public List<Quotation> getQuotations() {
         return quotations;
@@ -28,6 +22,23 @@ public abstract class Investment {
     }
 
     public Investment(String name, List<Quotation> quotations) {
+
+        if(name==null){
+            throw new IllegalArgumentException("Investment name should not be null");
+        }
+
+        if(quotations==null){
+            throw new IllegalArgumentException("Investment quotations list should not be null");
+        }
+
+        if(name.isEmpty()){
+            throw new IllegalArgumentException("Investment name should not be empty");
+        }
+
+        if(quotations.isEmpty()){
+            throw new IllegalArgumentException("Investment quotations list should not be empty");
+        }
+
         this.name = name;
         this.quotations = quotations;
     }
