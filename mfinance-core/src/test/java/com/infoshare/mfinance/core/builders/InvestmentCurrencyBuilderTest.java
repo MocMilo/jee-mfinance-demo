@@ -14,15 +14,15 @@ import static org.hamcrest.core.IsNot.not;
 
 public class InvestmentCurrencyBuilderTest {
 
-    private String TESTFILEPATH = Paths.get("src/test/resources/csv/currencies/CHF.txt").toString();
-    private final int NUMBEROFROWS = 6133;
+    private final String TEST_FILE_PATH = Paths.get("src/test/resources/csv/currencies/CHF.txt").toString();
+    private final int NUMBER_OF_ROWS = 6133;
     private InvestmentCurrency investmentCurrency;
     private CurrencyBuilder currencyBuilder;
 
     @Before
     public void init() {
         currencyBuilder = new CurrencyBuilder();
-        currencyBuilder.createCurrenciesFromFile(TESTFILEPATH);
+        currencyBuilder.createCurrenciesFromFile(TEST_FILE_PATH);
         investmentCurrency = currencyBuilder.getCurrencies().get(0);
     }
 
@@ -50,7 +50,7 @@ public class InvestmentCurrencyBuilderTest {
 
         int numberOfQuotations = currencyBuilder.getCurrencies().get(0).getQuotations().size();
 
-        assertThat(NUMBEROFROWS, is(numberOfQuotations));
+        assertThat(NUMBER_OF_ROWS, is(numberOfQuotations));
     }
 
     @Test(expected = Exception.class)

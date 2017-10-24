@@ -14,15 +14,15 @@ import static org.hamcrest.core.IsNot.not;
 
 public class InvestmentFundBuilderTest {
 
-    private final String TESTFILEPATH = Paths.get("src/test/resources/csv/funds/AGI001.txt").toString();
-    private final int NUMBEROFROWS = 405;
+    private final String TEST_FILE_PATH = Paths.get("src/test/resources/csv/funds/AGI001.txt").toString();
+    private final int NUMBER_OF_ROWS = 405;
     private InvestmentFund investmentFund;
     private FundBuilder fundBuilder;
 
     @Before
     public void init() {
         fundBuilder = new FundBuilder();
-        fundBuilder.createFundsFromFile(TESTFILEPATH);
+        fundBuilder.createFundsFromFile(TEST_FILE_PATH);
         investmentFund = fundBuilder.getInvestmentFunds().get(0);
     }
 
@@ -50,7 +50,7 @@ public class InvestmentFundBuilderTest {
 
         int numberOfQuotations = fundBuilder.getInvestmentFunds().get(0).getQuotations().size();
 
-        assertThat(NUMBEROFROWS, is(numberOfQuotations));
+        assertThat(NUMBER_OF_ROWS, is(numberOfQuotations));
     }
 
     @Test(expected = Exception.class)
