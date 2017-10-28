@@ -1,21 +1,16 @@
 .idea/
 
 mfinance-cli/target/
-mfinance-cli/logs/
-mfinance-cli/*.iml
-
 mfinance-core/target/
+mfinance-webapp/target
+
 mfinance-core/logs/
-mfinance-core/*.iml
+mfinance-webapp/logs
 
-
-mfinance-web/target/
-mfinance-web/logs/
 *.iml
 *.log
 
-mfinance-core/*.log
-mfinance-web/*.log
 
 
-logs/
+
+

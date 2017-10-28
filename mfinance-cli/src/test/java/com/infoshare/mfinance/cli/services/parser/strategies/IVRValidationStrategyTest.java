@@ -62,7 +62,7 @@ public class IVRValidationStrategyTest {
 
         assertThat(result.isValid(), is(equalTo(false)));
         assertThat(result.getArguments(), is(equalTo(null)));
-        assertThat(result.getErrorMessage(), is(equalTo("\nwrong capital argument: should be decimal of format: 0.00")));
+        assertThat(result.getErrorMessage(), is(equalTo("\nwrong capital argument: should be decimal of format: 1.00")));
     }
 
     @Test
@@ -72,7 +72,7 @@ public class IVRValidationStrategyTest {
 
         assertThat(result.isValid(), is(equalTo(false)));
         assertThat(result.getArguments(), is(equalTo(null)));
-        assertThat(result.getErrorMessage(), is(equalTo("\nwrong capital argument: should be decimal of format: 0.00")));
+        assertThat(result.getErrorMessage(), is(equalTo("\nwrong capital argument: should be decimal of format: 1.00")));
     }
 
     @Test
