@@ -1,19 +1,30 @@
 mfinance - JEE demo project
 
 
-#### Build & run
+#### Webapp Deployment:
 
-$ cd docker
+##### 1. build application containers
+
+$ cd /docker
+
 $ docker-compose up --build
 
--------------------------------------------------------------------------------------
-welcome page:
+##### 2. add Google+ registered app domain to your docker host env.
+
+go to this file \etc\hosts
  
-http://localhost:8080/mfinance/login.jsp   (Google+ auth)
+and add this line:
+
+127.0.0.1 mfinance
+
+-------------------------------------------------------------------------------------
+##### 3. Welcome Page (Google+ auth):
+ 
+http://mfinance:8080/login.jsp   
 
 ------------------------------------------------------------------------------------
 Note!
-Set proper <user_name> in Configuration.json (file inside jar dependency)
+Set proper <user_name> in Configuration.json path properties (file inside jar dependency)
 
 ------------------------------------------------------------------------------------
 Note!
