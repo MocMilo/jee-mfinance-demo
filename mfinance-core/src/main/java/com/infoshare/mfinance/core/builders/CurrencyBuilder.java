@@ -5,6 +5,7 @@ import com.infoshare.mfinance.core.models.bossa.Quotation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,5 +34,16 @@ class CurrencyBuilder extends InvestmentBuilder {
         }
     }
 
+    void createCurrenciesFromStream(InputStream stream) {
 
+        try {
+            List<Quotation> quotationList = this.getQuotationsListFromStream(stream);
+            String name = quotationList.get(0).getName();
+
+            currencies.add(new InvestmentCurrency(name, quotationList));
+
+        } catch (Exception e) {
+            LOGGER.error("Failed to build InvestmentCurrency:{}", e.getMessage());
+        }
+    }
 }

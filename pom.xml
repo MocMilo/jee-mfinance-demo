@@ -9,7 +9,7 @@
     <name>mfinance</name>
 
     <modules>
-   <!--     <module>mfinance-cli</module>-->
+        <module>mfinance-cli</module>
         <module>mfinance-core</module>
         <module>mfinance-webapp</module>
     </modules>

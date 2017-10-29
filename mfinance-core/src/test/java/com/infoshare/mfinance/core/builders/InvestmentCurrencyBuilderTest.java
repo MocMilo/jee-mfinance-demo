@@ -14,7 +14,7 @@ import static org.hamcrest.core.IsNot.not;
 
 public class InvestmentCurrencyBuilderTest {
 
-    private final String TEST_FILE_PATH = Paths.get("src/test/resources/csv/currencies/CHF.txt").toString();
+    private final String TEST_FILE_PATH = Paths.get("src/test/resources/csv/currencies/CHF-test.txt").toString();
     private final int NUMBER_OF_ROWS = 6133;
     private InvestmentCurrency investmentCurrency;
     private CurrencyBuilder currencyBuilder;

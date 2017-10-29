@@ -5,6 +5,8 @@ mfinance-core/target/
 mfinance-webapp/target
 
 mfinance-core/logs/
+mfinance-core/src/test/java/_experimental/
+
 mfinance-webapp/logs
 
 *.iml

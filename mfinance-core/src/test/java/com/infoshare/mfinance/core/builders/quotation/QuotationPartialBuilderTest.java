@@ -18,7 +18,7 @@ import static org.hamcrest.core.IsNot.not;
 public class QuotationPartialBuilderTest {
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private final File resourcesDirectory = new File("src/test/resources/csv/currencies/EUR.txt");
+    private final File resourcesDirectory = new File("src/test/resources/csv/currencies/EUR-test.txt");
     private final int NUMBER_OF_ROWS = 4622;
     private QuotationPartialBuilder quotationPartialBuilder = new QuotationPartialBuilder();
     ;
