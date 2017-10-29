@@ -8,9 +8,7 @@ import com.infoshare.mfinance.core.models.bossa.Investment;
 import com.infoshare.mfinance.core.models.bossa.DataContainer;
 import com.infoshare.mfinance.core.models.configuration.Configuration;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -18,6 +16,7 @@ import java.util.List;
 
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
+import java.util.zip.ZipInputStream;
 
 
 public class DataContainerBuilder {
@@ -87,10 +86,18 @@ public class DataContainerBuilder {
 
     private void buildCurrenciesFromAppResourcesFiles() {
         try {
+            InputStream inputStream = classLoader.getResourceAsStream(CURRENCY_DEMO_RESOURCE_PATH);
 
-            File file = new File(classLoader.getResource(CURRENCY_DEMO_RESOURCE_PATH).getFile());
+            byte[] buffer = new byte[inputStream.available()];
+            inputStream.read(buffer);
 
-            ZipFile zipFile = new ZipFile(file);
+            File targetFile = File.createTempFile("tempCurrencies", ".zip");
+
+            OutputStream outStream = new FileOutputStream(targetFile);
+            outStream.write(buffer);
+
+            ZipFile zipFile = new ZipFile(targetFile);
+            targetFile.deleteOnExit();
 
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
             while (entries.hasMoreElements()) {
@@ -111,9 +118,21 @@ public class DataContainerBuilder {
 
     private void buildFundsFromAppResourcesFiles() {
         try {
-            File file = new File(classLoader.getResource(FUND_DEMO_RESOURCE_PATH).getFile());
+/*          File file = new File(classLoader.getResource(FUND_DEMO_RESOURCE_PATH).getFile());
+            ZipFile zipFile = new ZipFile(file);*/
 
-            ZipFile zipFile = new ZipFile(file);
+            InputStream inputStream = classLoader.getResourceAsStream(FUND_DEMO_RESOURCE_PATH);
+
+            byte[] buffer = new byte[inputStream.available()];
+            inputStream.read(buffer);
+
+            File targetFile = File.createTempFile("tempFunds", ".zip");
+
+            OutputStream outStream = new FileOutputStream(targetFile);
+            outStream.write(buffer);
+
+            ZipFile zipFile = new ZipFile(targetFile);
+            targetFile.deleteOnExit();
 
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
             while (entries.hasMoreElements()) {

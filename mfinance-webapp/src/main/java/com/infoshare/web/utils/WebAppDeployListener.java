@@ -19,8 +19,8 @@ public final class WebAppDeployListener implements ServletContextListener {
     private static final Logger LOGGER = LoggerFactory.getLogger(WebAppDeployListener.class);
     private static final String DEFAULT_TIMEZONE = "UTC";
 
-    @Inject
-    private IModelContainerService container;
+/*    @Inject
+    private IModelContainerService container;*/
     @Inject
     private IUserService userService;
 
@@ -50,11 +50,11 @@ public final class WebAppDeployListener implements ServletContextListener {
             //fixme
             //  new ModelContainer().updateModelFileResources();
 
-            container.getDataContainer();
+/*            container.getDataContainer();
 
             LOGGER.info("Currencies items:{} Funds items:{}",
                     container.getDataContainer().getCurrenciesCount(),
-                    container.getDataContainer().getFundsCount());
+                    container.getDataContainer().getFundsCount());*/
         } catch (RuntimeException ex) {
             LOGGER.error("FATAL ERROR: Failed to load data models CSV files! {}", ex.getMessage());
         }
