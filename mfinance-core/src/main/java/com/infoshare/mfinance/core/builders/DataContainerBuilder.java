@@ -12,6 +12,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -24,24 +26,21 @@ public class DataContainerBuilder {
 
     /**
      * To simplify deployment of DEMO version set property to:
-     *
      * IS_DEMO_MODE = true
-     *
      * (in this mode application reads csv files from application resources)
-     *
-     *
+     * <p>
      * For production deployment set property to:
-     *
      * IS_DEMO_MODE = false
-     *
      * (in this mode application reads csv files from path defined in Configuration.json)
      */
 
     private static final boolean IS_DEMO_MODE = true;
-    private static final String CURRENCY_DEMO_RESOURCE_PATH = "src/main/resources/bossademo/currencies/20170827_omeganbp.zip";
-    private static final String FUND_DEMO_RESOURCE_PATH = "src/main/resources/bossademo/funds/20170827_omegafun.zip";
+    private static final String CURRENCY_DEMO_RESOURCE_PATH = "bossademo/currencies/20170827_omeganbp.zip";
+    private static final String FUND_DEMO_RESOURCE_PATH = "bossademo/funds/20170827_omegafun.zip";
 
+    ClassLoader classLoader = getClass().getClassLoader();
     private Configuration configuration;
+
 
     private DataContainer dataContainer = new DataContainer();
     private FundBuilder fundBuilder = new FundBuilder();
@@ -90,8 +89,10 @@ public class DataContainerBuilder {
 
     private void buildCurrenciesFromAppResourcesFiles() {
         try {
-            ZipFile zipFile = new ZipFile(new File(CURRENCY_DEMO_RESOURCE_PATH)
-                    .getAbsolutePath());
+
+            File file = new File(classLoader.getResource(CURRENCY_DEMO_RESOURCE_PATH).getFile());
+
+            ZipFile zipFile = new ZipFile(file);
 
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
             while (entries.hasMoreElements()) {
@@ -112,8 +113,9 @@ public class DataContainerBuilder {
 
     private void buildFundsFromAppResourcesFiles() {
         try {
-            ZipFile zipFile = new ZipFile(new File(FUND_DEMO_RESOURCE_PATH)
-                    .getAbsolutePath());
+            File file = new File(classLoader.getResource(FUND_DEMO_RESOURCE_PATH).getFile());
+
+            ZipFile zipFile = new ZipFile(file);
 
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
             while (entries.hasMoreElements()) {
