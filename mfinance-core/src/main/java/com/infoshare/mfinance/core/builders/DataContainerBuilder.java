@@ -16,7 +16,7 @@ import java.util.List;
 
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-import java.util.zip.ZipInputStream;
+
 
 
 public class DataContainerBuilder {
@@ -118,9 +118,6 @@ public class DataContainerBuilder {
 
     private void buildFundsFromAppResourcesFiles() {
         try {
-/*          File file = new File(classLoader.getResource(FUND_DEMO_RESOURCE_PATH).getFile());
-            ZipFile zipFile = new ZipFile(file);*/
-
             InputStream inputStream = classLoader.getResourceAsStream(FUND_DEMO_RESOURCE_PATH);
 
             byte[] buffer = new byte[inputStream.available()];

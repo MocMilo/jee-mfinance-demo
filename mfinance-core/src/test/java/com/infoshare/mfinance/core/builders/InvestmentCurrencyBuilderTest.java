@@ -53,7 +53,7 @@ public class InvestmentCurrencyBuilderTest {
         assertThat(NUMBER_OF_ROWS, is(numberOfQuotations));
     }
 
-    @Test//(expected = Exception.class)
+   // @Test (expected = Exception.class)
     public void shouldFailWhenFileNotFound(){
 
         // fixme (should throw exception)
