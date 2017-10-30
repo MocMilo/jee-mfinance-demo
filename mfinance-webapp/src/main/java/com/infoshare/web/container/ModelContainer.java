@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Singleton;
+import java.util.ArrayList;
 import java.util.List;
 
 @Singleton
@@ -19,22 +20,13 @@ public class ModelContainer implements IModelContainerService, ITriggerable {
     //private RemoteDownloader remoteDownloader = new RemoteDownloader();
     private static final Logger LOGGER = LoggerFactory.getLogger(ModelContainer.class);
 
+    public ModelContainer() {
+        this.investments = new ArrayList<>();
+    }
+
     @PostConstruct
-    private void onPostConstruct() {
-
-        //this.updateModelFileResources();
-/*
-        Configuration appCon = new ConfigurationProvider().getConfiguration();
-        DataContainerBuilder dataContainerBuilder = new DataContainerBuilder().getDataContainer();
-        */
-
-/*        dataContainerBuilder.loadFunds();
-        dataContainerBuilder.loadCurrencies();*/
-
-        dataContainer = new DataContainerBuilder().getDataContainer();
-  /*      this.dataContainer = dataContainer;
-        this.investments = dataContainer.getInvestments();*/
-
+    public void onPostConstruct() {
+       dataContainer = new DataContainerBuilder().getDataContainer();
     }
 
     @Override
@@ -60,14 +52,6 @@ public class ModelContainer implements IModelContainerService, ITriggerable {
             this.dataContainer.getInvestments().clear();
         }*/
 
-/*        ConfigurationProvider appCon = new ConfigurationProvider().getConfiguration();
-        DataContainerBuilder dataContainerBuilder = new DataContainerBuilder(appCon);
-        dataContainerBuilder.loadFunds();
-        dataContainerBuilder.loadCurrencies();*/
-
-   /*     DataContainer dataContainer = new DataContainerBuilder().getDataContainer();*/
-/*        this.investments = dataContainer.getInvestments();
-        this.dataContainer = dataContainer;*/
     }
 
     public void updateModelFileResources() {

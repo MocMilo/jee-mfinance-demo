@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,19 @@ class FundBuilder extends InvestmentBuilder {
 
         } catch (Exception e) {
             LOGGER.error("Failed to build InvestmentFund:{}", e.getMessage());
+        }
+    }
+
+    void createFundsFromStream(InputStream stream) {
+
+        try {
+            List<Quotation> quotationList = this.getQuotationsListFromStream(stream);
+            String name = quotationList.get(0).getName();
+
+            investmentFunds.add(new InvestmentFund(name, quotationList));
+
+        } catch (Exception e) {
+            LOGGER.error("Failed to build InvestmentCurrency:{}", e.getMessage());
         }
     }
 }

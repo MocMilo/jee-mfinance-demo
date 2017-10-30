@@ -8,12 +8,37 @@ import com.infoshare.mfinance.core.models.bossa.Investment;
 import com.infoshare.mfinance.core.models.bossa.DataContainer;
 import com.infoshare.mfinance.core.models.configuration.Configuration;
 
+import java.io.*;
+
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
+
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+
+
 
 public class DataContainerBuilder {
 
-    private Configuration configuration = new ConfigurationProvider().getConfiguration();
+    /**
+     * To simplify deployment of DEMO version set property to:
+     * IS_DEMO_MODE = true
+     * (in this mode application reads csv files from application resources)
+     * <p>
+     * For production deployment set property to:
+     * IS_DEMO_MODE = false
+     * (in this mode application reads csv files from path defined in Configuration.json)
+     */
+
+    private static final boolean IS_DEMO_MODE = true;
+    private static final String CURRENCY_DEMO_RESOURCE_PATH = "bossademo/currencies/20170827_omeganbp.zip";
+    private static final String FUND_DEMO_RESOURCE_PATH = "bossademo/funds/20170827_omegafun.zip";
+
+    ClassLoader classLoader = getClass().getClassLoader();
+    private Configuration configuration;
+
+
     private DataContainer dataContainer = new DataContainer();
     private FundBuilder fundBuilder = new FundBuilder();
     private CurrencyBuilder currencyBuilder = new CurrencyBuilder();
@@ -24,13 +49,31 @@ public class DataContainerBuilder {
 
     public DataContainer getDataContainer() {
 
-        this.buildFunds();
-        this.buildCurrencies();
+        if (IS_DEMO_MODE) {
+            this.buildCurrenciesFromAppResourcesFiles();
+            this.buildFundsFromAppResourcesFiles();
+        }
+
+        if (!IS_DEMO_MODE) {
+            configuration = new ConfigurationProvider().getConfiguration();
+            this.buildFunds();
+            this.buildCurrencies();
+        }
 
         dataContainer.setInvestments(investments);
         dataContainer.setFundsCount(fundBuilder.getNumberOfFunds());
         dataContainer.setCurrenciesCount(currencyBuilder.getNumberOfCurrencies());
+
         return dataContainer;
+    }
+
+    private void buildCurrencies() {
+        configuration.getCurrencyFilePaths()
+                .forEach((FilePath filePath) -> {
+                    currencyBuilder.createCurrenciesFromFile(filePath.getFilePath());
+                });
+        currencies = currencyBuilder.getCurrencies();
+        investments.addAll(currencies);
     }
 
     private void buildFunds() {
@@ -41,12 +84,68 @@ public class DataContainerBuilder {
         investments.addAll(investmentFunds);
     }
 
-    private void buildCurrencies() {
-        configuration.getCurrencyFilePaths()
-                .forEach((FilePath filePath) -> {
-                    currencyBuilder.createCurrenciesFromFile(filePath.getFilePath());
-                });
-        currencies = currencyBuilder.getCurrencies();
-        investments.addAll(currencies);
+    private void buildCurrenciesFromAppResourcesFiles() {
+        try {
+            InputStream inputStream = classLoader.getResourceAsStream(CURRENCY_DEMO_RESOURCE_PATH);
+
+            byte[] buffer = new byte[inputStream.available()];
+            inputStream.read(buffer);
+
+            File targetFile = File.createTempFile("tempCurrencies", ".zip");
+
+            OutputStream outStream = new FileOutputStream(targetFile);
+            outStream.write(buffer);
+
+            ZipFile zipFile = new ZipFile(targetFile);
+            targetFile.deleteOnExit();
+
+            Enumeration<? extends ZipEntry> entries = zipFile.entries();
+            while (entries.hasMoreElements()) {
+                ZipEntry entry = entries.nextElement();
+                InputStream stream = zipFile.getInputStream(entry);
+
+                currencyBuilder.createCurrenciesFromStream(stream);
+                stream.close();
+            }
+            zipFile.close();
+            currencies = currencyBuilder.getCurrencies();
+            investments.addAll(currencies);
+
+        } catch (IOException e) {
+            throw new RuntimeException("Faild to parse currencies from Zip file:" + e.getMessage());
+        }
+    }
+
+    private void buildFundsFromAppResourcesFiles() {
+        try {
+            InputStream inputStream = classLoader.getResourceAsStream(FUND_DEMO_RESOURCE_PATH);
+
+            byte[] buffer = new byte[inputStream.available()];
+            inputStream.read(buffer);
+
+            File targetFile = File.createTempFile("tempFunds", ".zip");
+
+            OutputStream outStream = new FileOutputStream(targetFile);
+            outStream.write(buffer);
+
+            ZipFile zipFile = new ZipFile(targetFile);
+            targetFile.deleteOnExit();
+
+            Enumeration<? extends ZipEntry> entries = zipFile.entries();
+            while (entries.hasMoreElements()) {
+                ZipEntry entry = entries.nextElement();
+                InputStream stream = zipFile.getInputStream(entry);
+
+                fundBuilder.createFundsFromStream(stream);
+                stream.close();
+            }
+            zipFile.close();
+
+            investmentFunds = fundBuilder.getInvestmentFunds();
+            investments.addAll(investmentFunds);
+
+        } catch (IOException e) {
+            throw new RuntimeException("Faild to parse funds from Zip file:" + e.getMessage());
+        }
     }
 }
