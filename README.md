@@ -1,77 +1,56 @@
-mfinance - JEE demo project
+#### mfinance - JEE demo project
 
+##### Webapp Deployment:
+##### 1. clone repository
 
-#### Webapp Deployment:
+    $ git clone https://github.com/MocMilo/jee-mfinance-demo.git
+    
+##### 2. checkout actual branch
 
-##### 1. build application containers
+    $ git fetch
 
-$ cd /docker
+    $ git checkout mfinance-demo-simplification
 
-$ docker-compose up --build
+##### 3. build application using Maven (use root pom.xml)
 
-##### 2. add Google+ registered app domain to your docker host env.
+    $ mvn clean install
+    
+##### 4. deploy application using Docker containers   
 
-go to this file \etc\hosts
- 
-and add this line:
+    $ cd /docker
 
-127.0.0.1 mfinance
+    $ docker-compose up --build
 
 -------------------------------------------------------------------------------------
-##### 3. Welcome Page (Google+ auth):
+##### 5. welcome page (Google+ auth):
  
-http://mfinance:8080/login.jsp   
+    http://localhost:8080/login
 
-------------------------------------------------------------------------------------
-Note!
-Set proper <user_name> in Configuration.json path properties (file inside jar dependency)
+##### NOTE! Application by default starts in "DEMO mode". This means no extra configuration is needed (for example csv data files, webconfigurarion.json, smtp.json etc. are loaded from application resources).
 
-------------------------------------------------------------------------------------
-Note!
-Default application directories:
 
-/home/<user_name>/mfinance/bossa/currencies/
+    Note! Despite of "DEMO mode" application also supports loading csv files from external location.
+    For proper configuration read JAVADOC inside DataContainerBuilder class and directions below:
 
-/home/<user_name>/mfinance/bossa/funds/
+    ------------------------------------------------------------------------------------
+    Note!
+    Set proper <user_name> in Configuration.json path properties (file located in [core] module resources)
+
+    ------------------------------------------------------------------------------------
+    Note!
+    Example application directories (stored in Configuration.json) :
+
+    /home/<user_name>/mfinance/bossa/currencies/
+
+    /home/<user_name>/mfinance/bossa/funds/
  
-/home/<user_name>/mfinance/bossa/backup/currencies/  (zip files location)
+    /home/<user_name>/mfinance/bossa/backup/currencies/  (backup zip files location)
 
-/home/<user_name>/mfinance/bossa/backup/funds/       (zip files location)
+    /home/<user_name>/mfinance/bossa/backup/funds/       (backup zip files location)
 
-------------------------------------------------------------------------------------
-Note! 
-Add smtpconfig.json file to location: "/home/<user_name>/mfinance/smtpconfig.json"
-Add webconfiguration.json file to location: "/home/<user_name>/mfinance/webconfiguration.json"
+    ------------------------------------------------------------------------------------
+    Note! 
+    smtpconfig.json file to location: "/home/<user_name>/mfinance/smtpconfig.json"
+    webconfiguration.json file to location: "/home/<user_name>/mfinance/webconfiguration.json"
 
-------------------------------------------------------------------------------------
-
-------smtpconfig.json file example content:------------------------------------------
-
-{
-  "email":"xxxxx@gmail.com",
-  
-  "login":"xxxxx@gmail.com",
-  
-  "password":"xxxxxxxx",
-  
-  "smtpHost":"smtp.gmail.com",
-  
-  "smtpPort":"465",
-  
-  "targetEmail":"xxxxxx@xxxx.com"
-}
-
-------------------------------------------------------------------------------------
-
-
-------webconfiguration.json file example content:-----------------------------------
-
-{
-  "slave":false,
-  "masterModeAPIServiceTargetURI":"http://localhost:8080/api",
-  "slaveModeAPIServiceTargetURI":"http://192.168.1.104:8080/api",
-  "defaultAdminAccountLogin":"defaultadmin@gmail.com"
-}
-
-------------------------------------------------------------------------------------
-
+    ------------------------------------------------------------------------------------
