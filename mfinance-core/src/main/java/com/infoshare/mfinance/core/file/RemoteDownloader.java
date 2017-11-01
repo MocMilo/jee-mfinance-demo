@@ -22,7 +22,7 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 public class RemoteDownloader {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RemoteDownloader.class);
-    private Configuration configuration = new ConfigurationProvider().getConfiguration();
+    private Configuration configuration = new ConfigurationProvider().getDefaultConfiguration();
     private final String DATE_PATTERN = "yyyyMMdd";
     private final String currencyTargetPath = configuration.getCurrencyFolderPath().getFolderPath();
     private final String fundTargetPath = configuration.getFundFolderPath().getFolderPath();

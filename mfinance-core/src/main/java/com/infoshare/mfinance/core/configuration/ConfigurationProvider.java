@@ -15,12 +15,12 @@ import java.util.List;
 public class ConfigurationProvider {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ConfigurationProvider.class);
-    private final String CONFIGURATION_FILE_PATH = "Configuration.json";
+    private final String CONFIGURATION_FILE_PATH = "configuration/Configuration.json";
     private Configuration configuration;
 
 
 
-    public Configuration getConfiguration() {
+    public Configuration getDefaultConfiguration() {
         /**
          * @return Provides default Configuration from json file.
          */
@@ -28,16 +28,17 @@ public class ConfigurationProvider {
         return buildConfiguration(CONFIGURATION_FILE_PATH);
     }
 
-    public Configuration getConfiguration(String resourcesFilePath){
+    public Configuration getDefaultConfiguration(String resourcesFilePath){
         /**
          *@return Provides Configuration from json file.
          *@param resourcesFilePath Explicit resources file path
          */
 
-        return buildConfiguration(resourcesFilePath);
+        return buildConfigurationFromResources(resourcesFilePath);
     }
 
-    private Configuration buildConfiguration(String configurationFilePath){
+    private Configuration buildConfigurationFromResources(String configurationFilePath){
+
         ResourcesFileReader fileReader = new ResourcesFileReader(configurationFilePath);
         try {
             String fileContent = fileReader.getFileAsString();
@@ -45,7 +46,24 @@ public class ConfigurationProvider {
 
             configuration = configurationJsonMapper.getConfigurationFromJson();
 
-            if(configuration.getCurrencyFilePaths().isEmpty()){
+        } catch (IOException e) {
+            LOGGER.info("Error reading the file: " + e.getMessage());
+        } catch (ConfigurationException e) {
+            LOGGER.info("Error creating the configuration: " + e.getMessage());
+        }
+        return configuration;
+    }
+
+    private Configuration buildConfiguration(String configurationFilePath){
+
+        ResourcesFileReader fileReader = new ResourcesFileReader(configurationFilePath);
+        try {
+            String fileContent = fileReader.getFileAsString();
+            ConfigurationJSONSerializer configurationJsonMapper = new ConfigurationJSONSerializer(fileContent);
+
+            configuration = configurationJsonMapper.getConfigurationFromJson();
+
+            if(configuration.getCurrencyFilePaths().isEmpty() ){
                 String folderPath = configuration.getCurrencyFolderPath().getFolderPath();
                 List<String> fileNames = getFileNameList(folderPath);
                 List<FilePath> generatedfilePaths = generateFilePaths(folderPath, fileNames);

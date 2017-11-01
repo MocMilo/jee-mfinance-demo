@@ -55,7 +55,7 @@ public class DataContainerBuilder {
         }
 
         if (!IS_DEMO_MODE) {
-            configuration = new ConfigurationProvider().getConfiguration();
+            configuration = new ConfigurationProvider().getDefaultConfiguration();
             this.buildFunds();
             this.buildCurrencies();
         }

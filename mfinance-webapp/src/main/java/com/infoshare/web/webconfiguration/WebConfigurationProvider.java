@@ -56,7 +56,7 @@ public class WebConfigurationProvider {
     public WebConfigurationProvider getConfiguration() {
         try {
 /*            String externalPath = new ConfigurationProvider()
-                    .getConfiguration()
+                    .getDefaultConfiguration()
                     .getExternalResourceFilePath();*/
             //fixme read external file path from web resource configuration.json
 

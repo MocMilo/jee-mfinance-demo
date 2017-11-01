@@ -8,7 +8,7 @@ public class WebConfigurationProviderTest extends TestCase {
     @Test
     public void testGetConfiguration() throws Exception {
 /*        WebConfigurationProvider configurationProvider = new WebConfigurationProvider();
-        configurationProvider.getConfiguration();
-        System.out.println("test value isSlave"+configurationProvider.getConfiguration().isSlave());*/
+        configurationProvider.getDefaultConfiguration();
+        System.out.println("test value isSlave"+configurationProvider.getDefaultConfiguration().isSlave());*/
     }
 }
