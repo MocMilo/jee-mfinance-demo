@@ -1,6 +1,7 @@
 package com.infoshare.web.analyzer.analysis.wrapper;
 
 
+
 import com.infoshare.web.analyzer.analysis.comparison.AnalysisComparisonContainer;
 import com.infoshare.web.analyzer.analysis.model.PersistedIndicatorCriteria;
 import com.infoshare.mfinance.core.models.exceptions.NoDataForCriteria;
@@ -23,7 +24,7 @@ public class WrappingService {
     IModelContainerService container;
 
     public List<ComparisonContentWrapper> getWrapperedContentList(List<AnalysisComparisonContainer> containers)
-            throws NoDataForCriteria  {
+            throws NoDataForCriteria {
 
         List<ComparisonContentWrapper> wrappers = new ArrayList<>();
         try {
@@ -48,7 +49,7 @@ public class WrappingService {
 
             wrapper.setUserCustomName(criteria.getUserCustomName());
             //fixme
-            // wrapper.getAnanysisContentList().add(new AnalysisContent(criteria,result));
+            wrapper.getAnanysisContentList().add(new AnalysisContent(criteria,result));
         }
         return wrapper;
     }

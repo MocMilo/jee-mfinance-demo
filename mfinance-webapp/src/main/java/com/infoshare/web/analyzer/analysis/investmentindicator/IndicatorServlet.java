@@ -6,6 +6,7 @@ import com.infoshare.mfinance.core.models.analyses.results.IndicatorResult;
 import com.infoshare.mfinance.core.models.exceptions.NoDataForCriteria;
 import com.infoshare.web.analyzer.analysis.comparison.AnalysisComparisonContainer;
 import com.infoshare.web.analyzer.analysis.model.PersistedIndicatorCriteria;
+import com.infoshare.web.analyzer.analysis.wrapper.AnalysisContent;
 import com.infoshare.web.analyzer.analysis.wrapper.ComparisonContentWrapper;
 import com.infoshare.web.container.IModelContainerService;
 import com.infoshare.web.user.IUserService;
@@ -75,8 +76,7 @@ public class IndicatorServlet extends HttpServlet {
 
                 criteriaList.add(criteria);
 
-                //fixme
-               // wrapper.getAnanysisContentList().add(new AnalysisContent(criteria, result));
+                wrapper.getAnanysisContentList().add(new AnalysisContent(criteria, result));
             }
 
             AnalysisComparisonContainer comparisonContainer =

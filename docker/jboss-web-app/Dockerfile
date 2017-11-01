@@ -35,5 +35,6 @@ WORKDIR $JBOSS_HOME
 
 EXPOSE 8080
 EXPOSE 9990
+EXPOSE 5005
 
 CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]

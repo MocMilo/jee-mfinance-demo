@@ -53,15 +53,14 @@ public class WebConfigurationProvider {
     }
 
 
-
     public WebConfigurationProvider getConfiguration() {
         try {
 /*            String externalPath = new ConfigurationProvider()
                     .getConfiguration()
                     .getExternalResourceFilePath();*/
-            //fixme read external file path from web resobuce configuration.json
+            //fixme read external file path from web resource configuration.json
 
-            String externalPath= "/home/milo/mfinance/";
+            String externalPath = "/home/milo/mfinance/";
 
             Path appModePath = Paths.get(externalPath, CONFIGURATION_FILE_NAME);
 
@@ -82,7 +81,7 @@ public class WebConfigurationProvider {
             LOGGER.error("Failed to load webconfiguration.{} {}", e.getMessage(), e.getStackTrace());
             throw new IllegalStateException();
         }
-         return this;
+        return this;
     }
 
     private WebConfigurationProvider parseJson(String jsonString) throws IOException {

@@ -9,11 +9,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-public class PersistedInvestmentRevenueCriteria {
+public class PersistedInvestmentRevenueCriteria extends PersistedAnalysisCriteria {
 
     @Id
     @GeneratedValue
     private long id;
+
     private String investmentName;
     private BigDecimal investedCapital;
     private LocalDate buyDate;
@@ -21,6 +22,7 @@ public class PersistedInvestmentRevenueCriteria {
 
     @ManyToOne
     private User user;
+
     private String userCustomName;
     private LocalDateTime creationDateTime;
     private LocalDateTime lastUpdateDateTime;
@@ -28,15 +30,14 @@ public class PersistedInvestmentRevenueCriteria {
     private boolean isFavourite;
 
 
-
     @PrePersist
-    private void onCreate(){
-        creationDateTime=LocalDateTime.now();
+    private void onCreate() {
+        creationDateTime = LocalDateTime.now();
     }
 
     @PreUpdate
-    private void onUpdate(){
-        lastUpdateDateTime=LocalDateTime.now();
+    private void onUpdate() {
+        lastUpdateDateTime = LocalDateTime.now();
     }
 
     public String getInvestmentName() {
@@ -71,11 +72,10 @@ public class PersistedInvestmentRevenueCriteria {
         this.sellDate = sellDate;
     }
 
-    //@Override
     public long getId() {
         return id;
     }
-    //@Override
+
     public void setId(long id) {
         this.id = id;
     }
@@ -107,6 +107,7 @@ public class PersistedInvestmentRevenueCriteria {
     public LocalDateTime getCreationDateTime() {
         return creationDateTime;
     }
+
     public LocalDateTime getLastUpdateDateTime() {
         return lastUpdateDateTime;
     }
@@ -120,27 +121,25 @@ public class PersistedInvestmentRevenueCriteria {
     }
 
 
-
-    public PersistedInvestmentRevenueCriteria getCriteria(InvestmentRevenueCriteria criteria, String userCustomName) {
+    public PersistedInvestmentRevenueCriteria getCriteria(InvestmentRevenueCriteria criteria, String userCustomName, boolean isFavourite) {
         setInvestedCapital(criteria.getInvestedCapital());
         setBuyDate(criteria.getBuyDate());
         setSellDate(criteria.getSellDate());
         setInvestmentName(criteria.getInvestmentName());
-       // setFavourite(criteria.getFavourite());
+        setFavourite(isFavourite);
         setUserCustomName(userCustomName);
         setTestLocalDate(LocalDate.now());
-        System.out.println("aktualna data"+LocalDate.now());
+        System.out.println("aktualna data" + LocalDate.now());
         return this;
     }
 
-    public InvestmentRevenueCriteria getEqualEquivalent(PersistedInvestmentRevenueCriteria revenueCriteria){
+    public InvestmentRevenueCriteria getConvertedCriteria(PersistedInvestmentRevenueCriteria revenueCriteria) {
 
         InvestmentRevenueCriteria criteria = new InvestmentRevenueCriteria();
         criteria.setInvestedCapital(revenueCriteria.getInvestedCapital());
         criteria.setBuyDate(revenueCriteria.getBuyDate());
         criteria.setSellDate(revenueCriteria.getSellDate());
         criteria.setInvestmentName(revenueCriteria.getInvestmentName());
-       // criteria.setFavourite(revenueCriteria.getFavourite());
         return criteria;
     }
 }

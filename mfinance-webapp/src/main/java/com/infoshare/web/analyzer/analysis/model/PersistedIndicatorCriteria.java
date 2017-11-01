@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class PersistedIndicatorCriteria {
+public class PersistedIndicatorCriteria extends  PersistedAnalysisCriteria{
 
     @ManyToOne
     private User user;

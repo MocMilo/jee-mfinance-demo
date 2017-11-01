@@ -2,22 +2,23 @@ package com.infoshare.web.analyzer.analysis.wrapper;
 
 import com.infoshare.mfinance.core.models.analyses.criteria.AnalysisCriteria;
 import com.infoshare.mfinance.core.models.analyses.results.AnalysisResult;
+import com.infoshare.web.analyzer.analysis.model.PersistedAnalysisCriteria;
 
 public class AnalysisContent {
 
-   private AnalysisCriteria criteria;
+   private PersistedAnalysisCriteria criteria;
    private AnalysisResult result;
 
-    public AnalysisContent(AnalysisCriteria criteria, AnalysisResult result) {
+    public AnalysisContent(PersistedAnalysisCriteria criteria, AnalysisResult result) {
         this.criteria = criteria;
         this.result = result;
     }
 
-    public AnalysisCriteria getCriteria() {
+    public PersistedAnalysisCriteria getCriteria() {
         return criteria;
     }
 
-    public void setCriteria(AnalysisCriteria criteria) {
+    public void setCriteria(PersistedAnalysisCriteria criteria) {
         this.criteria = criteria;
     }
 

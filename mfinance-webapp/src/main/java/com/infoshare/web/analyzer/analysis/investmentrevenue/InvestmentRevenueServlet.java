@@ -5,6 +5,7 @@ import com.infoshare.mfinance.core.models.analyses.criteria.InvestmentRevenueCri
 import com.infoshare.mfinance.core.models.analyses.results.InvestmentRevenueResult;
 import com.infoshare.mfinance.core.models.exceptions.NoDataForCriteria;
 import com.infoshare.web.analyzer.IFavouriteService;
+import com.infoshare.web.analyzer.analysis.model.PersistedAnalysisCriteria;
 import com.infoshare.web.analyzer.analysis.model.PersistedInvestmentRevenueCriteria;
 import com.infoshare.web.container.IModelContainerService;
 import com.infoshare.web.user.IUserService;
@@ -40,8 +41,6 @@ public class InvestmentRevenueServlet extends HttpServlet {
 
     @Inject
     private IModelContainerService container;
-    @Inject
-    private IFavouriteService favouriteService;
     @Inject
     private IUserService userService;
     @Inject
@@ -99,7 +98,8 @@ public class InvestmentRevenueServlet extends HttpServlet {
                     .getAttribute(AUTH_USER)).getId());
 
             dbUser.getFavourites().add(new PersistedInvestmentRevenueCriteria()
-                    .getCriteria(criteria, userCustomName));
+                    .getCriteria(criteria, userCustomName, isFavouriteChecked));
+
             userService.update(dbUser);
             userActivityService.saveActivity(new UserActivity(dbUser.getLogin() , USER_ACTIVITY_ANALYSIS_SUBMMIT, req.getSession().getId()));
 
@@ -116,7 +116,15 @@ public class InvestmentRevenueServlet extends HttpServlet {
     }
 
     private ContentWrapper getContent(InvestmentRevenueCriteria criteria, InvestmentRevenueResult result) {
-        wrapper.setCriteria(criteria);
+
+        //TODO impl converter
+        PersistedInvestmentRevenueCriteria persistedInvestmentRevenueCriteria = new PersistedInvestmentRevenueCriteria();
+        persistedInvestmentRevenueCriteria.setInvestmentName(criteria.getInvestmentName());
+        persistedInvestmentRevenueCriteria.setInvestedCapital(criteria.getInvestedCapital());
+        persistedInvestmentRevenueCriteria.setBuyDate(criteria.getBuyDate());
+        persistedInvestmentRevenueCriteria.setSellDate(criteria.getSellDate());
+
+        wrapper.setCriteria(persistedInvestmentRevenueCriteria);
         wrapper.setResult(result);
         return wrapper;
     }

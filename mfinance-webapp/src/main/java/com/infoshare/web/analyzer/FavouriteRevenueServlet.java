@@ -1,7 +1,6 @@
 package com.infoshare.web.analyzer;
 
 import com.infoshare.mfinance.core.analyzer.analyses.revenue.InvestmentRevenue;
-import com.infoshare.mfinance.core.models.analyses.criteria.InvestmentRevenueCriteria;
 import com.infoshare.mfinance.core.models.analyses.results.InvestmentRevenueResult;
 import com.infoshare.mfinance.core.models.exceptions.NoDataForCriteria;
 import com.infoshare.web.analyzer.analysis.investmentrevenue.ContentWrapper;
@@ -65,13 +64,14 @@ public class FavouriteRevenueServlet extends HttpServlet {
         try {
             for (PersistedInvestmentRevenueCriteria criteria : criteriaList) {
                 InvestmentRevenueResult result = (new InvestmentRevenue(container.getDataContainer(),
-                        criteria.getEqualEquivalent(criteria))).getResult();
+                        criteria.getConvertedCriteria(criteria))).getResult();
 
-                //fixme
-                //  ContentWrapper revenueWrapper = getContent(criteria, result);
-                // contentWrappers.add(revenueWrapper);
+                ContentWrapper revenueWrapper = getContent(criteria, result);
+                contentWrappers.add(revenueWrapper);
 
-          /*      LOGGER.info(result.getCapitalRevenueDeltaPrecentValue().toString());*/
+             /* fixme
+             LOGGER.info(result.getCapitalRevenueDeltaPrecentValue().toString());
+             */
                 LOGGER.info(result.getCapitalRevenueValue().toString());
             }
 
@@ -130,12 +130,11 @@ public class FavouriteRevenueServlet extends HttpServlet {
         return i;
     }
 
-    private ContentWrapper getContent(InvestmentRevenueCriteria criteria, InvestmentRevenueResult result) {
+    private ContentWrapper getContent(PersistedInvestmentRevenueCriteria criteria, InvestmentRevenueResult result) {
         ContentWrapper wrapper = new ContentWrapper();
+
         wrapper.setCriteria(criteria);
         wrapper.setResult(result);
         return wrapper;
     }
-
-
 }

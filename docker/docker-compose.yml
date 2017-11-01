@@ -32,6 +32,7 @@ services:
     ports:
       - 8080:8080
       - 9990:9990
+      - 5005:5005
     networks:
       - infoshare_network
     volumes:
