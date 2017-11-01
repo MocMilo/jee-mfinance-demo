@@ -20,7 +20,7 @@ public class Login implements Filter {
             "/login.jsp",
             "/auth",
             "/api",
-            "/mfinance/res"};
+            "/res"};
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -37,11 +37,9 @@ public class Login implements Filter {
 
         if (checkIfRequestPathIsValid(urlAcccessPatterns, path)) {
             filterChain.doFilter(servletRequest, servletResponse);
-          //  LOGGER.info("login filter request path: {}", path);
             LOGGER.info("Valid request. Access succeed.");
         } else {
             req.getRequestDispatcher("/auth/accessdenied.jsp").forward(req, resp);
-          //  LOGGER.info("login filter request path: {}", path);
             LOGGER.warn("Not authenticated request! Access denied!");
         }
     }

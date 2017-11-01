@@ -3,9 +3,6 @@ package com.infoshare.web.webconfiguration;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Singleton;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 @Singleton
 public class AppMode {
@@ -21,6 +18,6 @@ public class AppMode {
 
     @PostConstruct
     public void onPostConstruct() {
-        this.isSlave = webConfigurationProvider.getConfiguration().isSlave();
+        this.isSlave = webConfigurationProvider.getWebConfigurationFromResources().isSlave();
     }
 }

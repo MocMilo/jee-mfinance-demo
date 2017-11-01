@@ -13,19 +13,6 @@ services:
     volumes:
       - /home/milo/mfinance/web-app/db-files:/var/lib/mysql
 
-#  web-api-db:
-#    container_name: "api-db"
-#    image: mysql
-#    environment:
-#      MYSQL_ROOT_PASSWORD: root
-#      MYSQL_DATABASE: webapi-db
-#    ports:
-#      - 3306:3306
-#    networks:
-#      - infoshare_network
-#    volumes:
-#      - /home/milo/mfinance/web-api/db-files:/var/lib/mysql
-
   web-app:
     container_name: "web-app"
     build: ./jboss-web-app
@@ -37,35 +24,6 @@ services:
       - infoshare_network
     volumes:
       - ../mfinance-webapp/target:/opt/jboss/wildfly/standalone/deployments
-
-      - /home/milo/mfinance/web-app/config/smtpconfig.json:/home/milo/mfinance/smtpconfig.json
-      - /home/milo/mfinance/web-app/config/webconfiguration.json:/home/milo/mfinance/webconfiguration.json
-      - /home/milo/mfinance/web-app/logs:/opt/jboss/wildfly/standalone/log
-
-      - /home/milo/mfinance/web-app/data/backup/currencies:/home/milo/mfinance/bossa/backup/currencies
-      - /home/milo/mfinance/web-app/data/backup/funds:/home/milo/mfinance/bossa/backup/funds
-      - /home/milo/mfinance/web-app/data/currencies:/home/milo/mfinance/bossa/currencies
-      - /home/milo/mfinance/web-app/data/funds:/home/milo/mfinance/bossa/funds
-
-#  web-api:
-#    container_name: "web-api"
-#    build: ./jboss-web-api
-#    ports:
-#      - 8081:8080
-#      - 9991:9990
-#    networks:
-#      - infoshare_network
-#    volumes:
-#      - ../mfinance-webapp/target:/opt/jboss/wildfly/standalone/deployments
-#
-#      - /home/milo/mfinance/web-api/config/smtpconfig.json:/home/milo/mfinance/smtpconfig.json
-#      - /home/milo/mfinance/web-api/config/webconfiguration.json:/home/milo/mfinance/webconfiguration.json
-#      - /home/milo/mfinance/web-api/logs:/opt/jboss/wildfly/standalone/log
-#
-#      - /home/milo/mfinance/web-api/data/backup/currencies:/home/milo/mfinance/bossa/backup/currencies
-#      - /home/milo/mfinance/web-api/data/backup/funds:/home/milo/mfinance/bossa/backup/funds
-#      - /home/milo/mfinance/web-api/data/currencies:/home/milo/mfinance/bossa/currencies
-#      - /home/milo/mfinance/web-api/data/funds:/home/milo/mfinance/bossa/funds
 
 networks:
   infoshare_network:

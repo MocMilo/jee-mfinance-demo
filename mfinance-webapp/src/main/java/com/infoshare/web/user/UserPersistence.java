@@ -1,5 +1,6 @@
 package com.infoshare.web.user;
 
+import com.infoshare.web.webconfiguration.WebConfiguration;
 import com.infoshare.web.webconfiguration.WebConfigurationProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 public class UserPersistence implements IUserService {
 
@@ -58,8 +58,9 @@ public class UserPersistence implements IUserService {
     @Transactional
     public void addDefaultAdminUser(){
 
-        WebConfigurationProvider webConfigurationProvider = new WebConfigurationProvider().getConfiguration();
-        String defaultAdminLogin = webConfigurationProvider.getDefaultAdminAccountLogin();
+        WebConfiguration webConfiguration= new WebConfigurationProvider().getWebConfigurationFromResources();
+
+        String defaultAdminLogin = webConfiguration.getDefaultAdminAccountLogin();
 
         if(!this.getUserByEmail(defaultAdminLogin).isEmpty()){
           User user = this.getUserByEmail(defaultAdminLogin).stream()
