@@ -36,8 +36,7 @@ public class LoginServletGoogle extends HttpServlet {
     AppMode appMode;
 
     @Override
-    protected void doPost(HttpServletRequest req,
-                          HttpServletResponse resp)
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
         resp.setContentType("text/html");
