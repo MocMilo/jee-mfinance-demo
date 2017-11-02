@@ -1,10 +1,10 @@
 #### mfinance - JEE demo project
-    This is a DEMO project, containing example usage of some JEE technologies.
+    This is a DEMO project with example usage of Java EE technologies.
     It was originally developed during infoShare Academy Java bootcamp. 
     Project was driven by scrum methodology using JIRA tool, and Git as version control system.
     Release v.2.0 (planned in near future) is an improved version of the original project.
 ##### modules:
-    Project is divided into several modules for flexibility of development.
+    Project is divided into modules for flexibility of development.
     Apache Maven is used for distribution management.
 ##### [mfinance-core]
     This module contains model and business rules, shared to other application modules.
