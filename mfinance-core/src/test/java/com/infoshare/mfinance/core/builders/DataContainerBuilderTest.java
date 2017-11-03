@@ -15,7 +15,7 @@ public class DataContainerBuilderTest {
     @Test
     public void buildDataContainer() {
 
-        // TODO change this test to work with csv files from test/resources
+        // TODO change this test to work with csv files from test/resources not from main/resources
 
         DataContainer container = dataContainerBuilder.getDataContainer();
 

@@ -26,13 +26,13 @@ import java.util.zip.ZipFile;
 public class DataContainerBuilder {
 
     /**
-     * To simplify deployment of DEMO version set property to:
+     * DEMO version (with simple deployment) set property to:
      * IS_DEMO_MODE = true
      * (in this mode application reads csv files from application resources)
      * <p>
      * For production deployment set property to:
      * IS_DEMO_MODE = false
-     * (in this mode application reads csv files from path defined in Configuration.json)
+     * (in this mode application reads csv files from paths defined in Configuration.json)
      */
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DataContainerBuilder.class);
@@ -40,7 +40,7 @@ public class DataContainerBuilder {
     private static final String CURRENCY_DEMO_RESOURCE_PATH = "bossademo/currencies/20170827_omeganbp.zip";
     private static final String FUND_DEMO_RESOURCE_PATH = "bossademo/funds/20170827_omegafun.zip";
 
-    ClassLoader classLoader = getClass().getClassLoader();
+    private ClassLoader classLoader = getClass().getClassLoader();
     private Configuration configuration;
 
 
@@ -108,9 +108,10 @@ public class DataContainerBuilder {
             LOGGER.debug("absolute file path: "+ tempFilePath.toFile().getAbsolutePath());
 
             /* fixme
-             fails when used in mfinance-cli module (when passing args from console)
-             fails exactly in line below, when tries to create zip file from temp file.
+             Fails when used in mfinance-cli module (when passing args from console).
+             Fails exactly in line below, when tries to create zip file from temp zip file.
             */
+
             ZipFile zipFile = new ZipFile(tempFilePath.toFile().getAbsolutePath());
 
             LOGGER.debug("ZipFile size: "+ zipFile.size());
@@ -151,9 +152,10 @@ public class DataContainerBuilder {
             LOGGER.debug("absolute file path: "+ tempFilePath.toFile().getAbsolutePath());
 
             /* fixme
-             fails when used in mfinance-cli module (when passing args from console)
-             fails exactly in line below, when tries to create zip file from temp file.
+             Fails when used in mfinance-cli module (when passing args from console).
+             Fails exactly in line below, when tries to create zip file from temp zip file.
             */
+
             ZipFile zipFile = new ZipFile(tempFilePath.toFile());
 
             LOGGER.debug("ZipFile size: "+ zipFile.size());
