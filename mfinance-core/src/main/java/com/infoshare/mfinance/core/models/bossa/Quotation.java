@@ -11,6 +11,22 @@ public class Quotation implements Comparable<Quotation> {
     private BigDecimal deltaClose;
 
     public Quotation(String name, LocalDate date, BigDecimal close) {
+        if (name == null) {
+            throw new IllegalArgumentException("Quotation name should not be null.");
+        }
+
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException("Quotation name should not be empty.");
+        }
+
+        if (date == null) {
+            throw new IllegalArgumentException("Quotation date should not be null.");
+        }
+
+        if (close == null) {
+            throw new IllegalArgumentException("Quotation close value should not be null.");
+        }
+        
         this.name = name;
         this.date = date;
         this.close = close;
@@ -51,8 +67,8 @@ public class Quotation implements Comparable<Quotation> {
     @Override
     public String toString() {
         return "Quotation [name=" + name + ", date=" + date +
-                ", " + "close=" +close+
-                ", deltaClose="+deltaClose+"%] \n";
+                ", " + "close=" + close +
+                ", deltaClose=" + deltaClose + "%] \n";
 
     }
 
