@@ -30,7 +30,7 @@ class CurrencyBuilder extends InvestmentBuilder {
             currencies.add(new InvestmentCurrency(name, quotationList));
 
         } catch (Exception e) {
-            LOGGER.error("Failed to build InvestmentCurrency:{}", e.getMessage());
+            LOGGER.error("Failed to build InvestmentCurrency form file:{}", e.getMessage());
         }
     }
 
@@ -43,7 +43,7 @@ class CurrencyBuilder extends InvestmentBuilder {
             currencies.add(new InvestmentCurrency(name, quotationList));
 
         } catch (Exception e) {
-            LOGGER.error("Failed to build InvestmentCurrency:{}", e.getMessage());
+            LOGGER.error("Failed to build InvestmentCurrency form stream:{}", e.getMessage());
         }
     }
 }

@@ -117,7 +117,7 @@ public class IndicatorTest {
     }
 
     @Test(expected = NoDataForCriteria.class)
-    public void shouldFailWhenMissingQuotations() throws NoDataForCriteria {
+    public void shouldFailWhenNoQuotationsPresentInInvestments() throws NoDataForCriteria {
 
         container.getInvestments().forEach(x -> x.setQuotations(null));
         IndicatorCriteria criteria = new IndicatorCriteria(investmentName);
@@ -125,7 +125,7 @@ public class IndicatorTest {
     }
 
     @Test(expected = NoDataForCriteria.class)
-    public void shouldFailWhenMissingInvestmentName() throws NoDataForCriteria {
+    public void shouldFailWhenNotExistingInvestmentName() throws NoDataForCriteria {
 
         String notExistingInvestmentName = "XYZ";
         IndicatorCriteria criteria = new IndicatorCriteria(notExistingInvestmentName);

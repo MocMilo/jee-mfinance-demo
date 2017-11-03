@@ -7,9 +7,13 @@ import com.infoshare.mfinance.core.models.bossa.InvestmentFund;
 import com.infoshare.mfinance.core.models.bossa.Investment;
 import com.infoshare.mfinance.core.models.bossa.DataContainer;
 import com.infoshare.mfinance.core.models.configuration.Configuration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -22,20 +26,23 @@ import java.util.zip.ZipFile;
 public class DataContainerBuilder {
 
     /**
-     * To simplify deployment of DEMO version set property to:
+     * DEMO version (with simple deployment) set property to:
+     *
      * IS_DEMO_MODE = true
      * (in this mode application reads csv files from application resources)
-     * <p>
+     *
      * For production deployment set property to:
+     *
      * IS_DEMO_MODE = false
-     * (in this mode application reads csv files from path defined in Configuration.json)
+     * (in this mode application reads csv files from paths defined in Configuration.json)
      */
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(DataContainerBuilder.class);
     private static final boolean IS_DEMO_MODE = true;
     private static final String CURRENCY_DEMO_RESOURCE_PATH = "bossademo/currencies/20170827_omeganbp.zip";
     private static final String FUND_DEMO_RESOURCE_PATH = "bossademo/funds/20170827_omegafun.zip";
 
-    ClassLoader classLoader = getClass().getClassLoader();
+    private ClassLoader classLoader = getClass().getClassLoader();
     private Configuration configuration;
 
 
@@ -90,19 +97,26 @@ public class DataContainerBuilder {
 
             byte[] buffer = new byte[inputStream.available()];
             inputStream.read(buffer);
+            inputStream.close();
 
-            File targetFile = File.createTempFile("tempCurrencies", ".zip");
+            Path tempFilePath = Files.createTempFile("temp",".zip");
 
-            OutputStream outStream = new FileOutputStream(targetFile);
+            OutputStream outStream = new FileOutputStream(tempFilePath.toFile());
             outStream.write(buffer);
+            outStream.close();
+
+            LOGGER.debug("Currencies Zip buffer length: "+ buffer.length);
+            LOGGER.debug("file length bytes: "+ tempFilePath.toFile().length());
+            LOGGER.debug("absolute file path: "+ tempFilePath.toFile().getAbsolutePath());
 
             /* fixme
-             fails when used in mfinance-cli module (when passing args from console)
-             fails exactly in line below, when tries to create zip file from temp file.
+             Fails when used in mfinance-cli module (when passing args from console).
+             Fails exactly in line below, when tries to create zip file from temp zip file.
             */
 
-            ZipFile zipFile = new ZipFile(targetFile);
-            targetFile.deleteOnExit();
+            ZipFile zipFile = new ZipFile(tempFilePath.toFile().getAbsolutePath());
+
+            LOGGER.debug("ZipFile size: "+ zipFile.size());
 
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
             while (entries.hasMoreElements()) {
@@ -117,7 +131,7 @@ public class DataContainerBuilder {
             investments.addAll(currencies);
 
         } catch (IOException e) {
-            throw new RuntimeException("Faild to parse currencies from Zip file:" + e.getMessage());
+            throw new RuntimeException("Failed to parse currencies from Zip file:" + e.getMessage());
         }
     }
 
@@ -127,19 +141,26 @@ public class DataContainerBuilder {
 
             byte[] buffer = new byte[inputStream.available()];
             inputStream.read(buffer);
+            inputStream.close();
 
-            File targetFile = File.createTempFile("tempFunds", ".zip");
+            Path tempFilePath = Files.createTempFile("temp",".zip");
 
-            OutputStream outStream = new FileOutputStream(targetFile);
+            OutputStream outStream = new FileOutputStream(tempFilePath.toFile());
             outStream.write(buffer);
+            outStream.close();
+
+            LOGGER.debug("Funds Zip buffer length: "+ buffer.length);
+            LOGGER.debug("file length bytes: "+ tempFilePath.toFile().length());
+            LOGGER.debug("absolute file path: "+ tempFilePath.toFile().getAbsolutePath());
 
             /* fixme
-             fails when used in mfinance-cli module (when passing args from console)
-             fails exactly in line below, when tries to create zip file from temp file.
+             Fails when used in mfinance-cli module (when passing args from console).
+             Fails exactly in line below, when tries to create zip file from temp zip file.
             */
 
-            ZipFile zipFile = new ZipFile(targetFile);
-            targetFile.deleteOnExit();
+            ZipFile zipFile = new ZipFile(tempFilePath.toFile());
+
+            LOGGER.debug("ZipFile size: "+ zipFile.size());
 
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
             while (entries.hasMoreElements()) {
@@ -155,7 +176,8 @@ public class DataContainerBuilder {
             investments.addAll(investmentFunds);
 
         } catch (IOException e) {
-            throw new RuntimeException("Faild to parse funds from Zip file:" + e.getMessage());
+            throw new RuntimeException("Failed to parse funds from Zip file:" + e.getMessage());
         }
+
     }
 }
