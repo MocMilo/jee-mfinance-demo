@@ -12,10 +12,10 @@ public class QuotationTest {
     private static final String DATE_FORMAT = "yyyyMMdd";
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(DATE_FORMAT);
 
-    String name = "USD";
-    LocalDate date = LocalDate.parse("20160103", FORMATTER);
-    BigDecimal close = new BigDecimal("100");
-    Quotation quotation;
+    private String name = "USD";
+    private LocalDate date = LocalDate.parse("20160103", FORMATTER);
+    private BigDecimal close = new BigDecimal("100");
+    private Quotation quotation;
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowIllegalArgumentExceptionWhenNameIsNullValue() {
