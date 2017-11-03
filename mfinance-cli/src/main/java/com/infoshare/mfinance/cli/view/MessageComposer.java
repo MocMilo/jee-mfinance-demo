@@ -9,8 +9,8 @@ public class MessageComposer {
     public void printValidationMessage(ParserResult parserResult) {
         if (!parserResult.isValid()) {
             System.out.print(ConstantMessagesProvider.WELCOME_MESSAGE
-                    + ConstantMessagesProvider.COMMAND_HELP_MESSAGE
-                    + ConstantMessagesProvider.ANALYSIS_OPTIONS_MESSAGE);
+                    + ConstantMessagesProvider.ANALYSIS_OPTIONS_MESSAGE
+                    + ConstantMessagesProvider.COMMAND_HELP_MESSAGE);
 
             System.out.println(parserResult.getErrorMessage());
         }

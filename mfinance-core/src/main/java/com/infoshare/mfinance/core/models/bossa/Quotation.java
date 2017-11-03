@@ -26,7 +26,7 @@ public class Quotation implements Comparable<Quotation> {
         if (close == null) {
             throw new IllegalArgumentException("Quotation close value should not be null.");
         }
-        
+
         this.name = name;
         this.date = date;
         this.close = close;
