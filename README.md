@@ -1,77 +1,23 @@
-mfinance - JEE demo project
-
-
-#### Webapp Deployment:
-
-##### 1. build application containers
-
-$ cd /docker
-
-$ docker-compose up --build
-
-##### 2. add Google+ registered app domain to your docker host env.
-
-go to this file \etc\hosts
- 
-and add this line:
-
-127.0.0.1 mfinance
-
--------------------------------------------------------------------------------------
-##### 3. Welcome Page (Google+ auth):
- 
-http://mfinance:8080/login.jsp   
-
-------------------------------------------------------------------------------------
-Note!
-Set proper <user_name> in Configuration.json path properties (file inside jar dependency)
-
-------------------------------------------------------------------------------------
-Note!
-Default application directories:
-
-/home/<user_name>/mfinance/bossa/currencies/
-
-/home/<user_name>/mfinance/bossa/funds/
- 
-/home/<user_name>/mfinance/bossa/backup/currencies/  (zip files location)
-
-/home/<user_name>/mfinance/bossa/backup/funds/       (zip files location)
-
-------------------------------------------------------------------------------------
-Note! 
-Add smtpconfig.json file to location: "/home/<user_name>/mfinance/smtpconfig.json"
-Add webconfiguration.json file to location: "/home/<user_name>/mfinance/webconfiguration.json"
-
-------------------------------------------------------------------------------------
-
-------smtpconfig.json file example content:------------------------------------------
-
-{
-  "email":"xxxxx@gmail.com",
-  
-  "login":"xxxxx@gmail.com",
-  
-  "password":"xxxxxxxx",
-  
-  "smtpHost":"smtp.gmail.com",
-  
-  "smtpPort":"465",
-  
-  "targetEmail":"xxxxxx@xxxx.com"
-}
-
-------------------------------------------------------------------------------------
-
-
-------webconfiguration.json file example content:-----------------------------------
-
-{
-  "slave":false,
-  "masterModeAPIServiceTargetURI":"http://localhost:8080/api",
-  "slaveModeAPIServiceTargetURI":"http://192.168.1.104:8080/api",
-  "defaultAdminAccountLogin":"defaultadmin@gmail.com"
-}
-
-------------------------------------------------------------------------------------
-
+#### mfinance - JEE demo project
+    This is a DEMO project with example usage of Java EE technologies.
+    It was originally developed during infoShare Academy Java bootcamp. 
+    Project was driven by scrum methodology using JIRA tool, and Git as version control system.
+    Release v.2.0 (planned in near future) is an improved version of the original project.
+##### modules:
+    Project is divided into modules for flexibility of development.
+    Apache Maven is used for distribution management.
+##### [mfinance-core]
+    This module contains model and business rules, shared to other application modules.
+    Core functionality is package 'Analyzer'. It delivers algorithms, typical for financial application 
+    (eg.'Investment revenue', 'Investment indicators' etc.)
+    Application data is stored 'in memory' using DataContainer object, which is based on csv files from external resource.
+    For more details about jar build, refer to REDME.md, stored inside module.
+##### [mfinance-cli]
+    Module is a 'console application', using mfinance-core functionalities.
+    Application uses 'strategy' design-pattern to control algorithms folow.
+    It also presents 'argument validation' approach in 'console-applications'.
+    For more details about build and run, refer to REDME.md, stored inside module.
+##### [mfinance-webapp]
+    Actually, this module is a servlet-jsp web application with database (deployed in Docker-compose containers).
+    It is planned to be changed into REST API as a back-end, and the foront-end will be changed into java-script based application.
+    For more details about: actual version, build, deployment etc. refer to REDME.md, stored inside module.

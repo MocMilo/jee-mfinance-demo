@@ -21,8 +21,10 @@ public class LoginServlet extends HttpServlet {
 
         //fixme
         // req.setAttribute("appSlaveMode", appMode.isSlave());
-        req.setAttribute("appSlaveMode", false);
-        req.getRequestDispatcher("login.jsp").forward(req, resp);
+        //req.getRequestDispatcher("login.jsp").forward(req, resp);
         //resp.sendRedirect("login.jsp");
+
+        req.setAttribute("appSlaveMode", false);
+        req.getRequestDispatcher("authentication").forward(req, resp);
     }
 }

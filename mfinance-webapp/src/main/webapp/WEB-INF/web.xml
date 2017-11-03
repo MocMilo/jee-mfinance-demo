@@ -22,10 +22,10 @@
         <url-pattern>/auth/adminview/*</url-pattern>
     </filter-mapping>
 
-<!--    <error-page>
+    <error-page>
         <error-code>500</error-code>
         <location>/errorpages/error500.html</location>
-    </error-page>-->
+    </error-page>
 <!--
     <error-page>
         <error-code>404</error-code>

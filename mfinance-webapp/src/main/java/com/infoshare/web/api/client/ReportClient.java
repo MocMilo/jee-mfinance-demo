@@ -34,7 +34,7 @@ public class ReportClient implements ITriggerable {
 
         Client client = ClientBuilder.newClient();
         String uri = webConfigurationProvider
-                .getConfiguration()
+                .getWebConfigurationFromResources()
                 .getSlaveModeAPIServiceTargetURI();
         WebTarget target = client.target(uri.concat("/users/activity"));
 

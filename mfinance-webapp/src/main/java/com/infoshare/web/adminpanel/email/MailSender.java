@@ -74,7 +74,7 @@ public class MailSender implements ITriggerable {
 
     private SmtpProperties getSMTPProps() throws IOException {
 /*        String smtpConfigFilePath = new ConfigurationProvider()
-                .getConfiguration()
+                .getDefaultConfiguration()
                 .getExternalResourceFilePath();*/
 
         String smtpConfigFilePath = "fixme";

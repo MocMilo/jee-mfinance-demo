@@ -55,7 +55,7 @@ public class DataContainerBuilder {
         }
 
         if (!IS_DEMO_MODE) {
-            configuration = new ConfigurationProvider().getConfiguration();
+            configuration = new ConfigurationProvider().getDefaultConfiguration();
             this.buildFunds();
             this.buildCurrencies();
         }
@@ -96,6 +96,11 @@ public class DataContainerBuilder {
             OutputStream outStream = new FileOutputStream(targetFile);
             outStream.write(buffer);
 
+            /* fixme
+             fails when used in mfinance-cli module (when passing args from console)
+             fails exactly in line below, when tries to create zip file from temp file.
+            */
+
             ZipFile zipFile = new ZipFile(targetFile);
             targetFile.deleteOnExit();
 
@@ -127,6 +132,11 @@ public class DataContainerBuilder {
 
             OutputStream outStream = new FileOutputStream(targetFile);
             outStream.write(buffer);
+
+            /* fixme
+             fails when used in mfinance-cli module (when passing args from console)
+             fails exactly in line below, when tries to create zip file from temp file.
+            */
 
             ZipFile zipFile = new ZipFile(targetFile);
             targetFile.deleteOnExit();

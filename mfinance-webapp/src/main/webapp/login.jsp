@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>DMM - logowanie</title>
+    <title>mfinance - logowanie</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -22,7 +22,6 @@
 <tags:appMode  appMode="${applicationScope.appMode}"/>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
-        <a href="#" class="navbar-brand"><p align="middle">DMM-soft</p></a>
         <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
             <span class="glyphicon glyphicon-list"></span>
         </button>
@@ -41,7 +40,7 @@
 </div>
 <footer class="footer">
     <div class="container">
-        <p class="navbar-text"> DMM Financial Application</p>
+        <p class="navbar-text">mfinance</p>
     </div>
 </footer>
 <script>

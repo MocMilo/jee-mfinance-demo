@@ -1,14 +1,27 @@
 package com.infoshare.web.webconfiguration;
 
-import junit.framework.TestCase;
+
+import org.junit.Before;
 import org.junit.Test;
 
-public class WebConfigurationProviderTest extends TestCase {
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
+public class WebConfigurationProviderTest {
+
+    private WebConfiguration webConfiguration;
+
+    @Before
+    public void init() {
+        webConfiguration = new WebConfigurationProvider()
+                .getWebConfigurationFromResources();
+    }
     @Test
-    public void testGetConfiguration() throws Exception {
-/*        WebConfigurationProvider configurationProvider = new WebConfigurationProvider();
-        configurationProvider.getConfiguration();
-        System.out.println("test value isSlave"+configurationProvider.getConfiguration().isSlave());*/
+    public void shouldReturnWebConfigurationFromResourcesJsonFile() {
+
+        assertThat(webConfiguration.getDefaultAdminAccountLogin(), is(equalTo("dmmtest441@gmail.com")));
+        assertThat(webConfiguration.getSlaveModeAPIServiceTargetURI(), is(equalTo("http://localhost:8081/api")));
+        assertThat(webConfiguration.isSlave(), is(equalTo(false)));
     }
 }

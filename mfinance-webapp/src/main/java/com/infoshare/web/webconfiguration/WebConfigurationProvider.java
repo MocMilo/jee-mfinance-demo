@@ -5,7 +5,7 @@ import com.infoshare.web.webconfiguration.utils.ConfigFileReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -13,81 +13,56 @@ public class WebConfigurationProvider {
 
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WebConfigurationProvider.class);
-    private final String CONFIGURATION_FILE_NAME = "webconfiguration.json";
+    private final String WEB_CONFIGURATION_FILE_PATH = "webconfiguration/webconfiguration.json";
+    private final String EXTERNAL_PATH = "/home/milo/mfinance/";
 
-    private String masterModeAPIServiceTargetURI;
-    private String slaveModeAPIServiceTargetURI;
-    private boolean isSlave;
-    private String defaultAdminAccountLogin;
-
-    public String getMasterModeAPIServiceTargetURI() {
-        return masterModeAPIServiceTargetURI;
-    }
-
-    public void setMasterModeAPIServiceTargetURI(String masterModeAPIServiceTargetURI) {
-        this.masterModeAPIServiceTargetURI = masterModeAPIServiceTargetURI;
-    }
-
-    public String getSlaveModeAPIServiceTargetURI() {
-        return slaveModeAPIServiceTargetURI;
-    }
-
-    public void setSlaveModeAPIServiceTargetURI(String slaveModeAPIServiceTargetURI) {
-        this.slaveModeAPIServiceTargetURI = slaveModeAPIServiceTargetURI;
-    }
-
-    public boolean isSlave() {
-        return isSlave;
-    }
-
-    public void setSlave(boolean slave) {
-        isSlave = slave;
-    }
-
-    public String getDefaultAdminAccountLogin() {
-        return defaultAdminAccountLogin;
-    }
-
-    public void setDefaultAdminAccountLogin(String defaultAdminAccountLogin) {
-        this.defaultAdminAccountLogin = defaultAdminAccountLogin;
-    }
-
-
-    public WebConfigurationProvider getConfiguration() {
+    public WebConfiguration getWebConfigurationFromResources() {
         try {
-/*            String externalPath = new ConfigurationProvider()
-                    .getConfiguration()
-                    .getExternalResourceFilePath();*/
-            //fixme read external file path from web resource configuration.json
 
-            String externalPath = "/home/milo/mfinance/";
+            InputStream inputStream = getClass()
+                    .getClassLoader()
+                    .getResourceAsStream(WEB_CONFIGURATION_FILE_PATH);
 
-            Path appModePath = Paths.get(externalPath, CONFIGURATION_FILE_NAME);
+            byte[] buffer = new byte[inputStream.available()];
+            inputStream.read(buffer);
 
-            LOGGER.info("Web configuration path {}", appModePath);
+            File targetFile = File.createTempFile("tempWebConfiguration", ".json");
 
-            String content = new ConfigFileReader(appModePath).getFileAsString();
+            OutputStream outStream = new FileOutputStream(targetFile);
+            outStream.write(buffer);
 
-            LOGGER.info("content{}", content);
+            String content = new ConfigFileReader(Paths.get(targetFile.getAbsolutePath()))
+                    .getFileAsString();
 
-            this.parseJson(content);
+            targetFile.deleteOnExit();
 
-            this.isSlave = parseJson(content).isSlave();
-            this.slaveModeAPIServiceTargetURI = parseJson(content).getSlaveModeAPIServiceTargetURI();
-            this.masterModeAPIServiceTargetURI = parseJson(content).getMasterModeAPIServiceTargetURI();
-            this.defaultAdminAccountLogin = parseJson(content).getDefaultAdminAccountLogin();
+            return this.parseJson(content);
 
         } catch (Exception e) {
-            LOGGER.error("Failed to load webconfiguration.{} {}", e.getMessage(), e.getStackTrace());
-            throw new IllegalStateException();
+            LOGGER.error("Failed to load webconfiguration from resources.{} {}", e.getMessage(), e.getStackTrace());
+            throw new RuntimeException(e.getMessage());
         }
-        return this;
     }
 
-    private WebConfigurationProvider parseJson(String jsonString) throws IOException {
+    public WebConfiguration getWebConfigurationFromExternalSource(){
+        try {
+            Path externalJsonFilePath = Paths.get(EXTERNAL_PATH, WEB_CONFIGURATION_FILE_PATH);
+
+            String content = new ConfigFileReader(externalJsonFilePath)
+                    .getFileAsString();
+
+            return this.parseJson(content);
+
+        }catch (IOException e){
+            LOGGER.error("Failed to load webconfiguration from external path.{} {}", e.getMessage(), e.getStackTrace());
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    private WebConfiguration parseJson(String jsonString) throws IOException {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            return objectMapper.readValue(jsonString, WebConfigurationProvider.class);
+            return objectMapper.readValue(jsonString, WebConfiguration.class);
         } catch (IOException e) {
             LOGGER.error("Failed to mapp webconfiguration json to class.{} {}", e.getMessage(), e.getStackTrace());
             throw new IOException();

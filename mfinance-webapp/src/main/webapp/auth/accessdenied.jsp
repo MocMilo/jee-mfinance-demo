@@ -5,7 +5,7 @@
 </head>
 <body>
 <br>
-<p><b>DMM-Finance</b></p>
+<p><b>mfinance</b></p>
 <p style="color: red"><b>Security: Access Denied!</b></p>
 <br>
 </body>

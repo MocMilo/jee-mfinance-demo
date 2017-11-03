@@ -1,14 +1,13 @@
-mfinance-cli
+#### [mfinance-cli]
 
-#### Build
+##### Build
 Run Maven package command from the project root:
-```bash
-    mvn package
-```
-#### Run
+ 
+    $ mvn package
+ 
+##### Run
 In the compiled artifacts directory `target/`, run:
-```bash
-
-    java -jar mfinance-jar-with-dependencies.jar
-```
+ 
+    $ java -jar mfinance-jar-with-dependencies.jar
+ 
 
