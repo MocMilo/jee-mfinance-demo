@@ -17,7 +17,7 @@ public class ConfigurationProviderTest {
     public void shouldReturnConfigurationFromJsonFile() throws Exception {
 
         ConfigurationProvider configurationProvider = new ConfigurationProvider();
-        Configuration config = configurationProvider.getDefaultConfiguration("configuration/ConfigurationTest.json");
+        Configuration config = configurationProvider.getTestConfiguration("configuration/ConfigurationTest.json");
 
         assertThat(config.getCurrencyFolderPath().getFolderPath(), is(equalTo("/home/milo/mfinance/bossa/currencies/")));
         assertThat(config.getCurrencyBackupFolderPath().getFolderPath(), is(equalTo("/home/milo/mfinance/bossa/backup/currencies/")));

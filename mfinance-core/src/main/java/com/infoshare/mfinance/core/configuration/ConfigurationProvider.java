@@ -25,13 +25,13 @@ public class ConfigurationProvider {
          * @return Provides default Configuration from json file.
          */
 
-        return buildConfiguration(CONFIGURATION_FILE_PATH);
+        return buildConfigurationFromExternalPath(CONFIGURATION_FILE_PATH);
     }
 
-    public Configuration getDefaultConfiguration(String resourcesFilePath){
+    public Configuration getTestConfiguration(String resourcesFilePath){
         /**
-         *@return Provides Configuration from json file.
-         *@param resourcesFilePath Explicit resources file path
+         * @return Provides Configuration from json file.
+         * @param resourcesFilePath Explicit app resources file path
          */
 
         return buildConfigurationFromResources(resourcesFilePath);
@@ -54,7 +54,7 @@ public class ConfigurationProvider {
         return configuration;
     }
 
-    private Configuration buildConfiguration(String configurationFilePath){
+    private Configuration buildConfigurationFromExternalPath(String configurationFilePath){
 
         ResourcesFileReader fileReader = new ResourcesFileReader(configurationFilePath);
         try {

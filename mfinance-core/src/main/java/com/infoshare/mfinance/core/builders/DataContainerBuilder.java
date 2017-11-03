@@ -27,10 +27,12 @@ public class DataContainerBuilder {
 
     /**
      * DEMO version (with simple deployment) set property to:
+     *
      * IS_DEMO_MODE = true
      * (in this mode application reads csv files from application resources)
-     * <p>
+     *
      * For production deployment set property to:
+     *
      * IS_DEMO_MODE = false
      * (in this mode application reads csv files from paths defined in Configuration.json)
      */
