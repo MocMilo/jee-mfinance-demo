@@ -1,11 +1,9 @@
 package com.infoshare.web.analyzer.analysis.investmentrevenue;
 
-import com.infoshare.mfinance.core.analyzer.analyses.revenue.InvestmentRevenue;
+import com.infoshare.mfinance.core.analyzer.revenue.InvestmentRevenue;
 import com.infoshare.mfinance.core.models.analyses.criteria.InvestmentRevenueCriteria;
 import com.infoshare.mfinance.core.models.analyses.results.InvestmentRevenueResult;
 import com.infoshare.mfinance.core.models.exceptions.NoDataForCriteria;
-import com.infoshare.web.analyzer.IFavouriteService;
-import com.infoshare.web.analyzer.analysis.model.PersistedAnalysisCriteria;
 import com.infoshare.web.analyzer.analysis.model.PersistedInvestmentRevenueCriteria;
 import com.infoshare.web.container.IModelContainerService;
 import com.infoshare.web.user.IUserService;

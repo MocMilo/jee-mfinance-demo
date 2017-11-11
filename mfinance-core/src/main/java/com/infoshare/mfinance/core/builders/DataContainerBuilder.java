@@ -1,183 +1,125 @@
 package com.infoshare.mfinance.core.builders;
 
-import com.infoshare.mfinance.core.configuration.ConfigurationProvider;
-import com.infoshare.mfinance.core.file.path.FilePath;
+import com.infoshare.mfinance.core.models.locations.path.FilePath;
 import com.infoshare.mfinance.core.models.bossa.InvestmentCurrency;
 import com.infoshare.mfinance.core.models.bossa.InvestmentFund;
 import com.infoshare.mfinance.core.models.bossa.Investment;
 import com.infoshare.mfinance.core.models.bossa.DataContainer;
 import com.infoshare.mfinance.core.models.configuration.Configuration;
+import com.infoshare.mfinance.core.builders.investment.InvestmentCurrencyListBuilder;
+import com.infoshare.mfinance.core.builders.investment.InvestmentFundListBuilder;
+import com.infoshare.mfinance.core.providers.ConfigurationProvider;
+import com.infoshare.mfinance.core.providers.bossadata.DemoFilesProvider;
+import com.infoshare.mfinance.core.providers.bossadata.FilePathsProvider;
+import com.infoshare.mfinance.core.providers.bossadata.RemoteDataFilesProvider;
+import com.infoshare.mfinance.core.providers.bossadata.ResourcesDataFilesProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
-
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
-
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
-
 
 
 public class DataContainerBuilder {
 
     /**
-     * DEMO version (with simple deployment) set property to:
+     * @return DataContainer  - build from csv files
+     *
+     * Actual Bossa csv files are downloaded from external resource in zip format using URL.
+     *
+     * Note: if external resource is unavailable (eg. internet connection problem),
+     * csv files are fetched from app resources (in this case DataContainer
+     * store data up to day: 2017-08-27)
+     *
+     * DEMO MODE (simple deployment: application stores csv files in temporary folders)
+     * set property to:
      *
      * IS_DEMO_MODE = true
-     * (in this mode application reads csv files from application resources)
      *
-     * For production deployment set property to:
+     * For production mode (requires deployment configuration: application stores csv files
+     * in explicit locations, defined in configuration.json)
+     * set property to:
      *
      * IS_DEMO_MODE = false
-     * (in this mode application reads csv files from paths defined in Configuration.json)
+     *
      */
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DataContainerBuilder.class);
-    private static final boolean IS_DEMO_MODE = true;
-    private static final String CURRENCY_DEMO_RESOURCE_PATH = "bossademo/currencies/20170827_omeganbp.zip";
-    private static final String FUND_DEMO_RESOURCE_PATH = "bossademo/funds/20170827_omegafun.zip";
 
-    private ClassLoader classLoader = getClass().getClassLoader();
+    private static final boolean IS_DEMO_MODE = true;
+    private static final String CONFIGURATION_FILE_PATH = "configuration/configuration.json";
+
     private Configuration configuration;
 
-
-    private DataContainer dataContainer = new DataContainer();
-    private FundBuilder fundBuilder = new FundBuilder();
-    private CurrencyBuilder currencyBuilder = new CurrencyBuilder();
+    private InvestmentFundListBuilder investmentFundBuilder = new InvestmentFundListBuilder();
+    private InvestmentCurrencyListBuilder investmentCurrencyBuilder = new InvestmentCurrencyListBuilder();
 
     private List<InvestmentFund> investmentFunds = new ArrayList<>();
-    private List<InvestmentCurrency> currencies = new ArrayList<>();
+    private List<InvestmentCurrency> investmentCurrencies = new ArrayList<>();
     private List<Investment> investments = new ArrayList<>();
+
+    private List<FilePath> currencyFilePaths = new ArrayList<>();
+    private List<FilePath> fundFilePaths = new ArrayList<>();
+
+    private FilePathsProvider filePathsProvider = new FilePathsProvider();
+
+    public DataContainerBuilder() {
+        configuration = new ConfigurationProvider(CONFIGURATION_FILE_PATH)
+                .getConfiguration();
+    }
+
+    public DataContainerBuilder(String ResourcesFilePath) {
+        configuration = new ConfigurationProvider(ResourcesFilePath)
+                .getConfiguration();
+    }
 
     public DataContainer getDataContainer() {
 
         if (IS_DEMO_MODE) {
-            this.buildCurrenciesFromAppResourcesFiles();
-            this.buildFundsFromAppResourcesFiles();
-        }
 
-        if (!IS_DEMO_MODE) {
-            configuration = new ConfigurationProvider().getDefaultConfiguration();
+            new DemoFilesProvider(configuration).getCSVFiles();
+
+            currencyFilePaths = filePathsProvider.generateTempCurrencyFilePaths();
+            fundFilePaths = filePathsProvider.generateTempFundFilePaths();
+
             this.buildFunds();
             this.buildCurrencies();
         }
 
-        dataContainer.setInvestments(investments);
-        dataContainer.setFundsCount(fundBuilder.getNumberOfFunds());
-        dataContainer.setCurrenciesCount(currencyBuilder.getNumberOfCurrencies());
+        if (!IS_DEMO_MODE) {
 
-        return dataContainer;
+            new RemoteDataFilesProvider(configuration)
+                    .saveFilesInExplicitFolders();
+
+            currencyFilePaths = filePathsProvider.generateCurrencyFilePaths(configuration);
+            fundFilePaths = filePathsProvider.generateFundFilePaths(configuration);
+
+            this.buildFunds();
+            this.buildCurrencies();
+        }
+
+        LOGGER.info("DataContainer - total amount of investments:{}", investments.size());
+
+        return new DataContainer(investmentFundBuilder.getNumberOfFunds(),
+                investmentCurrencyBuilder.getNumberOfCurrencies(),
+                investments);
     }
 
     private void buildCurrencies() {
-        configuration.getCurrencyFilePaths()
-                .forEach((FilePath filePath) -> {
-                    currencyBuilder.createCurrenciesFromFile(filePath.getFilePath());
-                });
-        currencies = currencyBuilder.getCurrencies();
-        investments.addAll(currencies);
+
+        currencyFilePaths.forEach((FilePath filePath) -> {
+            investmentCurrencyBuilder.createCurrenciesFromFile(filePath.getFilePath());
+        });
+        investmentCurrencies = investmentCurrencyBuilder.getCurrencies();
+        investments.addAll(investmentCurrencies);
     }
 
     private void buildFunds() {
-        configuration.getFundFilePaths().forEach((FilePath filePath) -> {
-            fundBuilder.createFundsFromFile(filePath.getFilePath());
+
+        fundFilePaths.forEach((FilePath filePath) -> {
+            investmentFundBuilder.createFundsFromFile(filePath.getFilePath());
         });
-        investmentFunds = fundBuilder.getInvestmentFunds();
+        investmentFunds = investmentFundBuilder.getInvestmentFunds();
         investments.addAll(investmentFunds);
-    }
-
-    private void buildCurrenciesFromAppResourcesFiles() {
-        try {
-            InputStream inputStream = classLoader.getResourceAsStream(CURRENCY_DEMO_RESOURCE_PATH);
-
-            byte[] buffer = new byte[inputStream.available()];
-            inputStream.read(buffer);
-            inputStream.close();
-
-            Path tempFilePath = Files.createTempFile("temp",".zip");
-
-            OutputStream outStream = new FileOutputStream(tempFilePath.toFile());
-            outStream.write(buffer);
-            outStream.close();
-
-            LOGGER.debug("Currencies Zip buffer length: "+ buffer.length);
-            LOGGER.debug("file length bytes: "+ tempFilePath.toFile().length());
-            LOGGER.debug("absolute file path: "+ tempFilePath.toFile().getAbsolutePath());
-
-            /* fixme
-             Fails when used in mfinance-cli module (when passing args from console).
-             Fails exactly in line below, when tries to create zip file from temp zip file.
-            */
-
-            ZipFile zipFile = new ZipFile(tempFilePath.toFile().getAbsolutePath());
-
-            LOGGER.debug("ZipFile size: "+ zipFile.size());
-
-            Enumeration<? extends ZipEntry> entries = zipFile.entries();
-            while (entries.hasMoreElements()) {
-                ZipEntry entry = entries.nextElement();
-                InputStream stream = zipFile.getInputStream(entry);
-
-                currencyBuilder.createCurrenciesFromStream(stream);
-                stream.close();
-            }
-            zipFile.close();
-            currencies = currencyBuilder.getCurrencies();
-            investments.addAll(currencies);
-
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to parse currencies from Zip file:" + e.getMessage());
-        }
-    }
-
-    private void buildFundsFromAppResourcesFiles() {
-        try {
-            InputStream inputStream = classLoader.getResourceAsStream(FUND_DEMO_RESOURCE_PATH);
-
-            byte[] buffer = new byte[inputStream.available()];
-            inputStream.read(buffer);
-            inputStream.close();
-
-            Path tempFilePath = Files.createTempFile("temp",".zip");
-
-            OutputStream outStream = new FileOutputStream(tempFilePath.toFile());
-            outStream.write(buffer);
-            outStream.close();
-
-            LOGGER.debug("Funds Zip buffer length: "+ buffer.length);
-            LOGGER.debug("file length bytes: "+ tempFilePath.toFile().length());
-            LOGGER.debug("absolute file path: "+ tempFilePath.toFile().getAbsolutePath());
-
-            /* fixme
-             Fails when used in mfinance-cli module (when passing args from console).
-             Fails exactly in line below, when tries to create zip file from temp zip file.
-            */
-
-            ZipFile zipFile = new ZipFile(tempFilePath.toFile());
-
-            LOGGER.debug("ZipFile size: "+ zipFile.size());
-
-            Enumeration<? extends ZipEntry> entries = zipFile.entries();
-            while (entries.hasMoreElements()) {
-                ZipEntry entry = entries.nextElement();
-                InputStream stream = zipFile.getInputStream(entry);
-
-                fundBuilder.createFundsFromStream(stream);
-                stream.close();
-            }
-            zipFile.close();
-
-            investmentFunds = fundBuilder.getInvestmentFunds();
-            investments.addAll(investmentFunds);
-
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to parse funds from Zip file:" + e.getMessage());
-        }
-
     }
 }

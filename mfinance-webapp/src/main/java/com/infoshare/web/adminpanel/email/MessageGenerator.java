@@ -68,7 +68,7 @@ public class MessageGenerator {
 
         File tempFilePath = new File(ConstantsProvider.TMP_FILE_NAME);
         String absolutePath = tempFilePath.getAbsolutePath();
-        LOGGER.info("absolute file path {}", absolutePath);
+        LOGGER.info("absolute locations path {}", absolutePath);
 
         DataSource source = new FileDataSource(absolutePath);
         messageBodyPart.setDataHandler(new DataHandler(source));

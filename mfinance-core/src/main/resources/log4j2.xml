@@ -4,27 +4,12 @@
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout
-                    pattern="%highlight{%d | %-10X{system} | %-18marker [%-5level] %-27logger{1.} [%t:%line] %enc{%msg}%n%throwable}{FATAL=white, ERROR=red, WARN=yellow, INFO=white, DEBUG=green, TRACE=cyan}"/>
+                    pattern="%highlight{%d{HH:mm:ss.SSS} [%t] | %-5level %logger{1.} [%line] - %msg%n%throwable}{FATAL=red, ERROR=red, WARN=yellow, INFO=white, DEBUG=green, TRACE=cyan}"/>
         </Console>
-        <File name="MainLogger" fileName="logs/main.log" append="true" bufferedIO="true" bufferSize="8192">
-            <PatternLayout>
-                <Pattern>%highlight{%d | %-18marker [%-5level] %-27logger{1.} [%t:%line]
-                    %enc{%msg}%n%throwable}{FATAL=white, ERROR=red, WARN=yellow, INFO=white, DEBUG=green, TRACE=cyan}
-                </Pattern>
-            </PatternLayout>
-        </File>
     </Appenders>
-
     <Loggers>
-        <Logger name="com.dmmsoft.app.appconfiguration" level="TRACE">
-            <AppenderRef ref="MainLogger"/>
-        </Logger>
-        <Logger name="com.dmmsoft.app.consoleapp.App" level="TRACE">
+        <Root level="info">
             <AppenderRef ref="Console"/>
-        </Logger>
-        <Root level="trace">
-            <AppenderRef ref="Console"/>
-            <AppenderRef ref="MainLogger"/>
         </Root>
     </Loggers>
 </Configuration>
