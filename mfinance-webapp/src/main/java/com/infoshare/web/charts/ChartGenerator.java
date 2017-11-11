@@ -1,7 +1,7 @@
 package com.infoshare.web.charts;
 
 import com.infoshare.mfinance.core.models.exceptions.NoDataForCriteria;
-import com.infoshare.mfinance.core.analyzer.analyses.trend.QuotationSeries;
+import com.infoshare.mfinance.core.analyzer.trend.QuotationSeries;
 import com.infoshare.mfinance.core.models.analyses.criteria.QuotationSeriesCriteria;
 import com.infoshare.mfinance.core.models.analyses.results.QuotationSeriesResult;
 import com.infoshare.mfinance.core.models.bossa.Quotation;

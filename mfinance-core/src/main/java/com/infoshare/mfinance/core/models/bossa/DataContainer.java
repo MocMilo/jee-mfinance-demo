@@ -34,6 +34,12 @@ public class DataContainer {
         this.investments = investments;
     }
 
+    public DataContainer(int fundsCount, int currenciesCount, List<Investment> investments) {
+        this.fundsCount = fundsCount;
+        this.currenciesCount = currenciesCount;
+        this.investments = investments;
+    }
+
     @Override
     public String toString() {
         return "DataContainer{" +

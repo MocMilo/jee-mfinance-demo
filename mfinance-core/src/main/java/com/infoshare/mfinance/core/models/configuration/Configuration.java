@@ -1,11 +1,8 @@
 package com.infoshare.mfinance.core.models.configuration;
 
-import com.infoshare.mfinance.core.file.path.*;
-import com.infoshare.mfinance.core.file.url.CurrencyUrl;
-import com.infoshare.mfinance.core.file.url.FundUrl;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.infoshare.mfinance.core.models.locations.path.*;
+import com.infoshare.mfinance.core.models.locations.url.CurrencyUrl;
+import com.infoshare.mfinance.core.models.locations.url.FundUrl;
 
 public class Configuration {
 
@@ -18,8 +15,6 @@ public class Configuration {
     private FundUrl fundUrl;
     private CurrencyUrl currencyUrl;
 
-    private List<FilePath> fundFilePaths = new ArrayList<>();
-    private List<FilePath> currencyFilePaths = new ArrayList<>();
 
     public FundFolderPath getFundFolderPath() {
         return fundFolderPath;
@@ -45,19 +40,4 @@ public class Configuration {
         return currencyUrl;
     }
 
-    public List<FilePath> getFundFilePaths() {
-        return fundFilePaths;
-    }
-
-    public List<FilePath> getCurrencyFilePaths() {
-        return currencyFilePaths;
-    }
-
-    public void setFundFilePaths(List<FilePath> fundFilePaths) {
-        this.fundFilePaths = fundFilePaths;
-    }
-
-    public void setCurrencyFilePaths(List<FilePath> currencyFilePaths) {
-        this.currencyFilePaths = currencyFilePaths;
-    }
 }

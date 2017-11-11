@@ -21,21 +21,22 @@ public abstract class Investment {
     public void setQuotations(List<Quotation> quotations) {
         this.quotations = quotations;
     }
+
     public Investment(String name, List<Quotation> quotations) {
 
-        if(name==null){
+        if (name == null) {
             throw new IllegalArgumentException("Investment name should not be null");
         }
 
-        if(name.isEmpty()){
+        if (name.isEmpty()) {
             throw new IllegalArgumentException("Investment name should not be empty");
         }
 
-        if(quotations==null){
+        if (quotations == null) {
             throw new IllegalArgumentException("Investment quotations list should not be null");
         }
 
-        if(quotations.isEmpty()){
+        if (quotations.isEmpty()) {
             throw new IllegalArgumentException("Investment quotations list should not be empty");
         }
 

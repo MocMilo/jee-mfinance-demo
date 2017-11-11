@@ -1,6 +1,6 @@
 package com.infoshare.web.analyzer.analysis.investmentindicator;
 
-import com.infoshare.mfinance.core.analyzer.analyses.indicator.Indicator;
+import com.infoshare.mfinance.core.analyzer.indicator.Indicator;
 import com.infoshare.mfinance.core.models.analyses.criteria.IndicatorCriteria;
 import com.infoshare.mfinance.core.models.analyses.results.IndicatorResult;
 import com.infoshare.mfinance.core.models.exceptions.NoDataForCriteria;

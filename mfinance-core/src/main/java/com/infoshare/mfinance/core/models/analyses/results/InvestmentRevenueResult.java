@@ -16,8 +16,6 @@ public class InvestmentRevenueResult extends AnalysisResult {
         return capitalRevenueDeltaPercentValue;
     }
 
-
-
     public InvestmentRevenueResult() {
     }
 

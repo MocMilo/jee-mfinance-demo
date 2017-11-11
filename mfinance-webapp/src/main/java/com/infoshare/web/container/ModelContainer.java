@@ -17,7 +17,7 @@ public class ModelContainer implements IModelContainerService, ITriggerable {
 
     private List<Investment> investments;
     private DataContainer dataContainer;
-    //private RemoteDownloader remoteDownloader = new RemoteDownloader();
+    //private RemoteDataFilesProvider remoteDownloader = new RemoteDataFilesProvider();
     private static final Logger LOGGER = LoggerFactory.getLogger(ModelContainer.class);
 
     public ModelContainer() {
@@ -57,7 +57,7 @@ public class ModelContainer implements IModelContainerService, ITriggerable {
     public void updateModelFileResources() {
 /*        try {
             LOGGER.info("Data models CSV Zip files download initialized...");
-            remoteDownloader.getModelFilesFromRemoteLocation();
+            remoteDownloader.getBossaModelFiles();
         } catch (IOException e) {
             LOGGER.error("Failed to download CSV Zip files from remote location. Model cannot be actualized! {}", e.getMessage());
         }*/
