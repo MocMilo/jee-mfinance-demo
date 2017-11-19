@@ -1,6 +1,7 @@
 package com.infoshare.web.services.validator.strategies;
 
 
+import com.infoshare.mfinance.core.utils.BigDecimalUtil;
 import com.infoshare.web.model.criterias.WebAnalysisCriteria;
 import com.infoshare.web.model.criterias.WebInvestmentRevenueCriteria;
 import com.infoshare.web.model.validation.ValidationResult;
@@ -55,7 +56,8 @@ public class IVRValidationStrategy implements ValidationStrategy {
             return new ValidationResult(violations, req, null);
         }
 
-        BigDecimal investmentCapital = new BigDecimal(capital);
+        BigDecimal investmentCapital = BigDecimalUtil.parseMoney(capital);
+
         LocalDate investmentBuyDate = LocalDate.parse(buyDate, formatter);
         LocalDate investmentSellDate = LocalDate.parse(sellDate, formatter);
 
@@ -68,31 +70,5 @@ public class IVRValidationStrategy implements ValidationStrategy {
         WebAnalysisCriteria webAnalysisCriteria = criteria;
 
         return new ValidationResult(violations, req, criteria);
-
     }
-
-
-/*
-    @Override
-    public WebAnalysisResult getResult(WebAnalysisCriteria criteria, IDataContainerService container) {
-
-        investmentRevenueCriteria = (WebInvestmentRevenueCriteria) criteria;
-
-        InvestmentRevenueCriteria coreCriteria = converter.convertFrom(investmentRevenueCriteria);
-
-        InvestmentRevenue revenue = new InvestmentRevenue(container.getDataContainer(), coreCriteria);
-
-        try {
-            InvestmentRevenueResult revenueResult = revenue.getResult();
-
-            //todo impl Converter
-            webResult = new WebInvestmentRevenueResult(revenueResult.getCapitalRevenueValue(),
-                    revenueResult.getCapitalRevenueDeltaPercentValue());
-
-        } catch (NoDataForCriteria e) {
-
-            LOGGER.error("Failed to get WebAnalysisResult: {}",e.getMessage());
-        }
-        return webResult;
-    }*/
 }

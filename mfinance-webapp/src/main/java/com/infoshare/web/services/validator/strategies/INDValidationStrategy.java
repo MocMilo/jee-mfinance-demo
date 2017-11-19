@@ -42,7 +42,6 @@ public class INDValidationStrategy implements ValidationStrategy {
             return new ValidationResult(violations, req, null);
         }
 
-
         WebIndicatorCriteria criteria = new WebIndicatorCriteria();
         criteria.setInvestmentName(investmentName);
 
