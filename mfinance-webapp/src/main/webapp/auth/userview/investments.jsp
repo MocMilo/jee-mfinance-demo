@@ -8,7 +8,7 @@
     <title>Investments Info</title>
 </head>
 <body>
-<tags:appMode appMode="${applicationScope.appMode}"/>
+<img src="../../resources/icons/banner_top.jpg">
 <tags:userLogin user="${sessionScope.authenticatedUser}"/>
 <jsp:include page="../../partials/backToUserMenu.jsp"/>
 <p><b>Investments Info</b></p>

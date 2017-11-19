@@ -13,7 +13,7 @@ public class WebConfigurationProvider {
 
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WebConfigurationProvider.class);
-    private final String WEB_CONFIGURATION_FILE_PATH = "webconfiguration/webconfiguration.json";
+    private final String WEB_CONFIGURATION_FILE_PATH = "configuration/webconfiguration.json";
     private final String EXTERNAL_PATH = "/home/milo/mfinance/";
 
     public WebConfiguration getWebConfigurationFromResources() {
@@ -39,7 +39,7 @@ public class WebConfigurationProvider {
             return this.parseJson(content);
 
         } catch (Exception e) {
-            LOGGER.error("Failed to load webconfiguration from resources.{} {}", e.getMessage(), e.getStackTrace());
+            LOGGER.error("Failed to load configuration from resources.{} {}", e.getMessage(), e.getStackTrace());
             throw new RuntimeException(e.getMessage());
         }
     }
@@ -54,7 +54,7 @@ public class WebConfigurationProvider {
             return this.parseJson(content);
 
         }catch (IOException e){
-            LOGGER.error("Failed to load webconfiguration from external path.{} {}", e.getMessage(), e.getStackTrace());
+            LOGGER.error("Failed to load configuration from external path.{} {}", e.getMessage(), e.getStackTrace());
             throw new RuntimeException(e.getMessage());
         }
     }
@@ -64,7 +64,7 @@ public class WebConfigurationProvider {
             ObjectMapper objectMapper = new ObjectMapper();
             return objectMapper.readValue(jsonString, WebConfiguration.class);
         } catch (IOException e) {
-            LOGGER.error("Failed to mapp webconfiguration json to class.{} {}", e.getMessage(), e.getStackTrace());
+            LOGGER.error("Failed to mapp configuration json to class.{} {}", e.getMessage(), e.getStackTrace());
             throw new IOException();
         }
     }

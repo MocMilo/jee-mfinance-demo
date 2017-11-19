@@ -7,16 +7,19 @@
     <jsp:include page="../../partials/meta.jsp" />
 </head>
 <body>
-<tags:appMode appMode="${applicationScope.appMode}"/>
+<img src="../../resources/icons/banner_top.jpg">
 <tags:userLogin user="${sessionScope.authenticatedUser}"/>
 <hr>
 <p><b>Menu</b></p>
 <a href="../userview/favouritesmenu">Favourites</a>
 <br>
-<p>Choose your investment analysis:</p>
+<p>Choose your analysis:</p>
+<a href="../userview/analysisCriteria.jsp?strategy=IVR">Investment revenue</a><br>
+<a href="../userview/analysisCriteria.jsp?strategy=IND">Investment indicators</a><br>
+
+<br>
+<%--TODO--%>
 <a href="../userview/investments">Database info</a><br>
-<a href="../userview/investmentrevenue">Investment revenue</a><br>
-<a href="../userview/comparator">Indicator comparator</a><br>
 <a href="../userview/chart.jsp">Charts comparator</a><br>
 <br>
 <jsp:include page="../../partials/footer.jsp" />

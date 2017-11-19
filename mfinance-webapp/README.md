@@ -51,6 +51,6 @@
         
         /home/<user_name>/mfinance/smtpconfig.json
         
-        /home/<user_name>/mfinance/webconfiguration.json
+        /home/<user_name>/mfinance/configuration.json
 
      

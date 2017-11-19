@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ attribute name="contentWrapper" type="com.infoshare.web.analyzer.analysis.wrapper.ComparisonContentWrapper"
+<%@ attribute name="contentWrapper" type="com.infoshare.web.services.analyzer.analysis.wrapper.ComparisonContentWrapper"
               required="true" %>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 

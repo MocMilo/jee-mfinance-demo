@@ -23,9 +23,9 @@ public class DataContainerBuilderTest {
 
         DataContainer container = dataContainerBuilder.getDataContainer();
 
-        LOGGER.info("number of currencies in data container:{}", container.getCurrenciesCount());
-        LOGGER.info("number of funds in data container:{}", container.getFundsCount());
-        LOGGER.info("number of investments in data container:" + container.getInvestments().size());
+        LOGGER.info("number of currencies in data bossa:{}", container.getCurrenciesCount());
+        LOGGER.info("number of funds in data bossa:{}", container.getFundsCount());
+        LOGGER.info("number of investments in data bossa:" + container.getInvestments().size());
 
         assertTrue(container.getCurrenciesCount() > 0);
         assertTrue(container.getFundsCount() > 0);

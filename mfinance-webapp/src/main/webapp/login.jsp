@@ -19,7 +19,7 @@
     <link href="${pageContext.request.contextPath}/resources/css/styles.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-<tags:appMode  appMode="${applicationScope.appMode}"/>
+<img src="../../resources/icons/banner_top.jpg">
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">

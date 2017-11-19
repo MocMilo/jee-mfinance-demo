@@ -7,7 +7,7 @@
     <jsp:include page="../../partials/meta.jsp" />
 </head>
 <body>
-<tags:appMode appMode="${applicationScope.appMode}"/>
+<img src="../../resources/icons/banner_top.jpg">
 <tags:userLogin user="${sessionScope.authenticatedUser}"/>
 <jsp:include page="../../partials/backToUserMenu.jsp"/>
 <p><b>Your Favourites</b></p>

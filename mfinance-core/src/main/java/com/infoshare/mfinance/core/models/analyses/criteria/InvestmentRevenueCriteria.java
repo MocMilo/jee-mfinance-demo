@@ -10,6 +10,19 @@ public class InvestmentRevenueCriteria extends AnalysisCriteria {
     private LocalDate buyDate;
     private LocalDate sellDate;
 
+    private String investmentName;
+
+    public String getInvestmentName() {
+        return this.investmentName;
+    }
+
+    public void setInvestmentName(String investmentName) {
+        this.investmentName = investmentName;
+    }
+
+
+
+
     public BigDecimal getInvestedCapital() {
         return this.investedCapital;
     }

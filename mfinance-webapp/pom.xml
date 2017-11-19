@@ -124,6 +124,16 @@
             <artifactId>jfreechart</artifactId>
             <version>1.0.13</version>
         </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>1.1.1</version>
+        </dependency>
     </dependencies>
 
     <build>
