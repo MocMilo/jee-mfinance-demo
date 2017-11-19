@@ -8,7 +8,7 @@
     <title>Application settings</title>
 </head>
 <body>
-<tags:appMode  appMode="${applicationScope.appMode}"/>
+<img src="../../resources/icons/banner_top.jpg">
 <tags:userLogin user="${sessionScope.authenticatedUser}"/>
 <jsp:include page="../../partials/backToAdminMenu.jsp"/>
 <p><b>Application settings</b></p>

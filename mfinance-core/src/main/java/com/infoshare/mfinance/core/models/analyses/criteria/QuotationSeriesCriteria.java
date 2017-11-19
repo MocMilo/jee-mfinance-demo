@@ -17,12 +17,12 @@ public class QuotationSeriesCriteria extends AnalysisCriteria {
         this.endDate = endDate;
     }
 
-    @Override
+
     public String getInvestmentName() {
         return investmentName;
     }
 
-    @Override
+
     public void setInvestmentName(String investmentName) {
         this.investmentName = investmentName;
     }

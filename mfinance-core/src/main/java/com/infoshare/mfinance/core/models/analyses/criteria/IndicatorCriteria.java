@@ -2,16 +2,22 @@ package com.infoshare.mfinance.core.models.analyses.criteria;
 
 
 public class IndicatorCriteria extends AnalysisCriteria {
-    private String name;
 
-    public String getName() {
-        return name;
+    private String investmentName;
+
+    public String getInvestmentName() {
+        return this.investmentName;
     }
 
-    public IndicatorCriteria(String name) {
-        this.name = name;
+    public void setInvestmentName(String investmentName) {
+        this.investmentName = investmentName;
     }
+
 
     public IndicatorCriteria() {
+    }
+
+    public IndicatorCriteria(String investmentName) {
+        this.investmentName = investmentName;
     }
 }
