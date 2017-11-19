@@ -1,6 +1,7 @@
 package com.infoshare.mfinance.core.builders.quotation;
 
 import com.infoshare.mfinance.core.models.bossa.Quotation;
+import com.infoshare.mfinance.core.utils.BigDecimalUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,7 +59,9 @@ public class QuotationListParser {
             String data[] = scanner.nextLine().split(",");
             String name = data[0];
             LocalDate date = LocalDate.parse(data[1], FORMATTER);
-            BigDecimal close = new BigDecimal(data[5]).setScale(4, HALF_EVEN);
+
+            // BigDecimal close = new BigDecimal(data[5]).setScale(4, HALF_EVEN);
+            BigDecimal close = BigDecimalUtil.parseExchangeRate(data[5]);
 
             quotations.add(new Quotation(name, date, close));
         }
