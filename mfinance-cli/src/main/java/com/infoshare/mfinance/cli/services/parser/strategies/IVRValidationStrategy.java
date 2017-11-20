@@ -4,12 +4,16 @@ package com.infoshare.mfinance.cli.services.parser.strategies;
 import com.infoshare.mfinance.cli.model.arguments.IVRArgs;
 import com.infoshare.mfinance.cli.services.parser.ParserResult;
 import com.infoshare.mfinance.cli.services.parser.analysisNames;
+import com.infoshare.mfinance.cli.utils.ValidatorUtil;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class IVRValidationStrategy implements ValidationStrategy {
@@ -23,12 +27,28 @@ public class IVRValidationStrategy implements ValidationStrategy {
     public ParserResult validate(String[] args) {
 
         if (args.length != 5) {
-            return new ParserResult(false, "\nwrong number of arguments", null);
+            return new ParserResult(false, "Wrong number of arguments.", null);
         }
 
         IVRArgs ivrArgs = new IVRArgs(args);
 
-        try {
+        Validator validator =  ValidatorUtil.getValidator();
+
+        Set<ConstraintViolation<IVRArgs>> constraintViolations =
+                validator.validate(ivrArgs);
+
+        if (constraintViolations.size() > 0) {
+
+            String message = "";
+            for (ConstraintViolation item : constraintViolations){
+               message = message.concat(item.getMessage()) ;
+            }
+        return new ParserResult(false, message, null);
+        }
+
+        return new ParserResult(true, "", ivrArgs);
+
+/*        try {
             analysisNames.valueOf(ivrArgs.getStrategy());
         } catch (NullPointerException e) {
             return new ParserResult(false, "\nanalysis not found!", null);
@@ -69,10 +89,12 @@ public class IVRValidationStrategy implements ValidationStrategy {
         }
 
         return new ParserResult(true, "", ivrArgs);
+
+        */
     }
 
-    private boolean hasMoneyFormat(String evalValue) {
+/*    private boolean hasMoneyFormat(String evalValue) {
         return new Scanner(evalValue).hasNext(Pattern.compile("^(0|0?[1-9]\\d*)\\.\\d\\d$"));
-    }
+    }*/
 
 }
