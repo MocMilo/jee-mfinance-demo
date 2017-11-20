@@ -7,11 +7,11 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="com.infoshare.web" level="trace" additivity="false">
+        <Logger name="com.infoshare.web" level="info" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
 
-        <Root level="trace">
+        <Root level="info">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="MainLogger"/>
         </Root>

@@ -40,7 +40,7 @@ public class IVRValidationStrategyTest {
 
         assertThat(result.isValid(), is(equalTo(false)));
         assertThat(result.getArguments(), is(equalTo(null)));
-        assertThat(result.getErrorMessage(), is(equalTo("\nwrong number of arguments")));
+        assertThat(result.getErrorMessage(), is(equalTo("Wrong number of arguments.")));
     }
 
     @Test
@@ -52,7 +52,7 @@ public class IVRValidationStrategyTest {
 
         assertThat(result.isValid(), is(equalTo(false)));
         assertThat(result.getArguments(), is(equalTo(null)));
-        assertThat(result.getErrorMessage(), is(equalTo("\nwrong number of arguments")));
+        assertThat(result.getErrorMessage(), is(equalTo("Wrong number of arguments.")));
     }
 
     @Test
@@ -62,7 +62,7 @@ public class IVRValidationStrategyTest {
 
         assertThat(result.isValid(), is(equalTo(false)));
         assertThat(result.getArguments(), is(equalTo(null)));
-        assertThat(result.getErrorMessage(), is(equalTo("\nwrong capital argument: should be decimal of format: 1.00")));
+        assertThat(result.getErrorMessage(), is(equalTo("Wrong Investment capital argument: should be decimal of format: 1.00, > 0.00")));
     }
 
     @Test
@@ -72,7 +72,7 @@ public class IVRValidationStrategyTest {
 
         assertThat(result.isValid(), is(equalTo(false)));
         assertThat(result.getArguments(), is(equalTo(null)));
-        assertThat(result.getErrorMessage(), is(equalTo("\nwrong capital argument: should be decimal of format: 1.00")));
+        assertThat(result.getErrorMessage(), is(equalTo("Wrong Investment capital argument: should be decimal of format: 1.00, > 0.00")));
     }
 
     @Test
@@ -82,7 +82,7 @@ public class IVRValidationStrategyTest {
 
         assertThat(result.isValid(), is(equalTo(false)));
         assertThat(result.getArguments(), is(equalTo(null)));
-        assertThat(result.getErrorMessage(), is(equalTo("\nwrong buy date: should be in format yyyy-MM-dd")));
+        assertThat(result.getErrorMessage(), is(equalTo("Wrong buy date format, should be of pattern: YYYY-MM-DD.")));
     }
 
     @Test
@@ -92,7 +92,7 @@ public class IVRValidationStrategyTest {
 
         assertThat(result.isValid(), is(equalTo(false)));
         assertThat(result.getArguments(), is(equalTo(null)));
-        assertThat(result.getErrorMessage(), is(equalTo("\nwrong sell date: should be in format yyyy-MM-dd")));
+        assertThat(result.getErrorMessage(), is(equalTo("Wrong sell date format, should be of pattern: YYYY-MM-DD.")));
     }
 
     @Test
@@ -105,7 +105,7 @@ public class IVRValidationStrategyTest {
 
         assertThat(result.isValid(), is(equalTo(false)));
         assertThat(result.getArguments(), is(equalTo(null)));
-        assertThat(result.getErrorMessage(), is(equalTo("\nwrong dates order: buy date should be before sell date")));
+        assertThat(result.getErrorMessage(), is(equalTo("Wrong dates order: buy date should be before sell date.")));
     }
 
 }

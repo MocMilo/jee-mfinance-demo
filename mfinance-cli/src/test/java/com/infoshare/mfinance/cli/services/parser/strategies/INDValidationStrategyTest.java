@@ -39,7 +39,7 @@ public class INDValidationStrategyTest {
 
         assertThat(result.isValid(), is(equalTo(false)));
         assertThat(result.getArguments(), is(equalTo(null)));
-        assertThat(result.getErrorMessage(), is(equalTo("\nwrong number of arguments")));
+        assertThat(result.getErrorMessage(), is(equalTo("Wrong number of arguments.")));
     }
 
     @Test
@@ -51,7 +51,7 @@ public class INDValidationStrategyTest {
 
         assertThat(result.isValid(), is(equalTo(false)));
         assertThat(result.getArguments(), is(equalTo(null)));
-        assertThat(result.getErrorMessage(), is(equalTo("\nwrong number of arguments")));
+        assertThat(result.getErrorMessage(), is(equalTo("Wrong number of arguments.")));
     }
 
 }
