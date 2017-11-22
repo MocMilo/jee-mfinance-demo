@@ -1,9 +1,9 @@
 package com.infoshare.web.services.administration.email;
 
 import com.infoshare.web.services.administration.agentservice.trigger.ITriggerable;
-import com.infoshare.web.webconfiguration.smtp.SmtpProperties;
-import com.infoshare.web.webconfiguration.utils.ConfigFileReader;
-import com.infoshare.web.webconfiguration.utils.JsonSerializer;
+import com.infoshare.web.model.webconfiguration.SMTPConfiguration;
+import com.infoshare.web.utils.filereaders.ResourceFileReader;
+import com.infoshare.web.utils.serializers.SMTPConfigJsonSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,7 +13,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
 
-import static com.infoshare.web.utils.ConstantsProvider.*;
+import static com.infoshare.web.utils.constants.ConstantsProvider.*;
 
 public class MailSender implements ITriggerable {
 
@@ -59,20 +59,20 @@ public class MailSender implements ITriggerable {
 
     private Properties getEmailAccountProperties() throws IOException {
 
-        SmtpProperties smtpProperties = this.getSMTPProps();
+        SMTPConfiguration SMTPConfiguration = this.getSMTPProps();
 
-        emailProps.put(EMAIL, smtpProperties.getEmail());
-        emailProps.put(PASSWORD, smtpProperties.getPassword());
-        emailProps.put(TARGET_EMAIL, smtpProperties.getTargetEmail());
-        emailProps.put(MAIL_SMTP_HOST, smtpProperties.getSmtpHost());
-        emailProps.put(MAIL_SMTP_SOCKETFACTORY_PORT, smtpProperties.getSmtpPort());
-        emailProps.put(MAIL_SMTP_PORT, smtpProperties.getSmtpPort());
+        emailProps.put(EMAIL, SMTPConfiguration.getEmail());
+        emailProps.put(PASSWORD, SMTPConfiguration.getPassword());
+        emailProps.put(TARGET_EMAIL, SMTPConfiguration.getTargetEmail());
+        emailProps.put(MAIL_SMTP_HOST, SMTPConfiguration.getSmtpHost());
+        emailProps.put(MAIL_SMTP_SOCKETFACTORY_PORT, SMTPConfiguration.getSmtpPort());
+        emailProps.put(MAIL_SMTP_PORT, SMTPConfiguration.getSmtpPort());
         emailProps.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         emailProps.put("mail.smtp.auth", "true");
         return emailProps;
     }
 
-    private SmtpProperties getSMTPProps() throws IOException {
+    private SMTPConfiguration getSMTPProps() throws IOException {
 /*        String smtpConfigFilePath = new ConfigurationProvider()
                 .getDefaultConfiguration()
                 .getExternalResourceFilePath();*/
@@ -80,8 +80,8 @@ public class MailSender implements ITriggerable {
         String smtpConfigFilePath = "fixme";
 
         Path path = Paths.get(smtpConfigFilePath, SMTP_CONFIG_FILE_NAME);
-        String content = new ConfigFileReader(path).getFileAsString();
-        return new JsonSerializer(content).getProperties();
+        String content = new ResourceFileReader(path).getFileAsString();
+        return new SMTPConfigJsonSerializer(content).getProperties();
     }
 
 }

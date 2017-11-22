@@ -1,7 +1,7 @@
 package com.infoshare.web.servlets.administration;
 
 import com.infoshare.web.services.persistence.favourites.IFavouriteService;
-import com.infoshare.web.services.reports.activity.IUserActivityService;
+import com.infoshare.web.services.persistence.user.activityreport.IUserActivityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.inject.Inject;
@@ -16,7 +16,7 @@ import java.io.IOException;
  * Created by milo on 08.06.17.
  */
 
-import static com.infoshare.web.utils.ConstantsProvider.ALL_INV_REV_CRIT;
+import static com.infoshare.web.utils.constants.ConstantsProvider.ALL_INV_REV_CRIT;
 
 @WebServlet(urlPatterns = "/auth/adminview/userstatistics")
 public class UserStatisticsServlet extends HttpServlet {

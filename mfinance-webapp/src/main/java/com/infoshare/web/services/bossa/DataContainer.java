@@ -16,7 +16,6 @@ public class DataContainer implements IDataContainerService, ITriggerable {
 
     private List<Investment> investments;
     private com.infoshare.mfinance.core.models.bossa.DataContainer dataContainer;
-    //private RemoteDataFilesProvider remoteDownloader = new RemoteDataFilesProvider();
     private static final Logger LOGGER = LoggerFactory.getLogger(DataContainer.class);
 
     public DataContainer() {

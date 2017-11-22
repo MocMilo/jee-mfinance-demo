@@ -1,10 +1,10 @@
 package com.infoshare.web.servlets.logic;
 
-import com.infoshare.web.services.analyzer.strategies.AnalysisStrategy;
-import com.infoshare.web.services.analyzer.strategies.INDAnalysisStrategy;
-import com.infoshare.web.services.analyzer.strategies.IVRAnalysisStrategy;
-import com.infoshare.web.model.criterias.WebAnalysisCriteria;
-import com.infoshare.web.model.results.WebAnalysisResult;
+import com.infoshare.web.services.analyzer.AnalysisStrategy;
+import com.infoshare.web.services.analyzer.INDAnalysisStrategy;
+import com.infoshare.web.services.analyzer.IVRAnalysisStrategy;
+import com.infoshare.web.model.analyzer.criterias.WebAnalysisCriteria;
+import com.infoshare.web.model.analyzer.results.WebAnalysisResult;
 import com.infoshare.web.services.bossa.IDataContainerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

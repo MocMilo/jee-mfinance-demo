@@ -1,8 +1,8 @@
 package com.infoshare.web.services.persistence.user;
 
-import com.infoshare.web.model.User;
-import com.infoshare.web.webconfiguration.WebConfiguration;
-import com.infoshare.web.webconfiguration.WebConfigurationProvider;
+import com.infoshare.web.model.user.User;
+import com.infoshare.web.model.webconfiguration.WebConfiguration;
+import com.infoshare.web.services.providers.WebConfigurationProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,7 +50,6 @@ public class UserPersistence implements IUserService {
        User userToUpdate =  em.find(User.class, user.getId());
        userToUpdate.setFavourites(user.getFavourites());
        userToUpdate.setFavouriteInvestmentIndicators(user.getFavouriteInvestmentIndicators());
-       userToUpdate.setComparisonContainers(user.getComparisonContainers());
        userToUpdate.setAdmin(user.getAdmin());
        em.merge(userToUpdate);
     }

@@ -8,7 +8,7 @@ import com.infoshare.web.services.administration.agentservice.trigger.Trigger;
 import com.infoshare.web.services.bossa.DataContainer;
 import com.infoshare.web.services.persistence.favourites.IFavouriteService;
 
-import com.infoshare.web.services.reports.activity.IUserActivityService;
+import com.infoshare.web.services.persistence.user.activityreport.IUserActivityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

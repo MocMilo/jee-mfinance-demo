@@ -26,7 +26,7 @@
 <body>
 <img src="../../resources/icons/banner_top.jpg">
 <tags:userLogin user="${sessionScope.authenticatedUser}"/>
-<jsp:include page="../../partials/backToAdminMenu.jsp"/>
+<jsp:include page="../../partials/navigation/backToAdminMenu.jsp"/>
 
 <p><b>Task Form</b></p>
 <form method="post" action="../adminview/task">

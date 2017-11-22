@@ -1,7 +1,7 @@
 package com.infoshare.web.utils.converters;
 
 import com.infoshare.mfinance.core.models.analyses.criteria.InvestmentRevenueCriteria;
-import com.infoshare.web.model.criterias.WebInvestmentRevenueCriteria;
+import com.infoshare.web.model.analyzer.criterias.WebInvestmentRevenueCriteria;
 import org.modelmapper.ModelMapper;
 
 

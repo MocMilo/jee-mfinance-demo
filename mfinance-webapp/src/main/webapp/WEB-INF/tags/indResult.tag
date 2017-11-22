@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
-<%@ attribute name="analysisResult" type="com.infoshare.web.model.results.WebIndicatorResult"
+<%@ attribute name="analysisResult" type="com.infoshare.web.model.analyzer.results.WebIndicatorResult"
               required="true" %>
 
 <hr>

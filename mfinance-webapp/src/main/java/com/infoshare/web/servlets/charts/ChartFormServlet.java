@@ -3,11 +3,11 @@ package com.infoshare.web.servlets.charts;
 import com.infoshare.mfinance.core.models.exceptions.NoDataForCriteria;
 import com.infoshare.mfinance.core.models.analyses.criteria.QuotationSeriesCriteria;
 import com.infoshare.web.services.bossa.IDataContainerService;
-import com.infoshare.web.model.User;
-import com.infoshare.web.services.reports.charts.ChartGenerator;
-import com.infoshare.web.services.reports.activity.IUserActivityService;
-import com.infoshare.web.services.reports.activity.UserActivity;
-import com.infoshare.web.utils.ConstantsProvider;
+import com.infoshare.web.model.user.User;
+import com.infoshare.web.services.generators.charts.ChartGenerator;
+import com.infoshare.web.services.persistence.user.activityreport.IUserActivityService;
+import com.infoshare.web.services.persistence.user.activityreport.UserActivity;
+import com.infoshare.web.utils.constants.ConstantsProvider;
 import org.jfree.chart.JFreeChart;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +26,7 @@ import java.time.format.DateTimeFormatter;
 @WebServlet(urlPatterns = "/auth/userview/chart")
 public class ChartFormServlet extends HttpServlet {
 
-    private final String USER_ACTIVITY_ANALYSIS_SUBMMIT = "user subbmited: ChartComparison analyses";
+    private final String USER_ACTIVITY_ANALYSIS_SUBMMIT = "menu subbmited: ChartComparison analyses";
     @Inject
     private IDataContainerService container;
 

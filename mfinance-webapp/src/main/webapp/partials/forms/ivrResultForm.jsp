@@ -5,9 +5,7 @@
 <body>
 <div>
     </br>
-    <p><b>Result: </b></p>
-    <%--TODO display analysis criteria used for this result--%>
-
+    <div><b>Investment Revenue analysis results:</b></div>
     <p>Capital Revenue: <b>${analysisResult.capitalRevenueValue}</b> [PLN]</p>
     <%--fixme--%>
     <%--<p>Capital Revenue Delta: <b>${revenueWrapper.result.capitalRevenueDeltaPrecentValue}</b> [%]</p>--%>

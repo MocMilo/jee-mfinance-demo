@@ -1,6 +1,6 @@
 package com.infoshare.web.services.security.webfilters;
 
-import com.infoshare.web.model.User;
+import com.infoshare.web.model.user.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,7 +34,7 @@ public class AdminView implements Filter {
 
             if (user.getAdmin()==true) {
                 filterChain.doFilter(servletRequest, servletResponse);
-             //   LOGGER.info("User access verification success. Role isAdmin:{} ", user.getAdmin());
+             //   LOGGER.info("User access verification success. Role isAdmin:{} ", menu.getAdmin());
             } else {
                 req.getRequestDispatcher("/auth/accessdenied.jsp").forward(req, resp);
                 LOGGER.warn("User access verification failure! Role isAdmin:{} ", user.getAdmin());
