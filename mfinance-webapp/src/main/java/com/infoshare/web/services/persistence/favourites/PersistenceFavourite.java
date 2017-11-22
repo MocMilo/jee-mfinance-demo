@@ -1,6 +1,5 @@
 package com.infoshare.web.services.persistence.favourites;
-import com.infoshare.web.services.analyzer.analysis.comparison.AnalysisComparisonContainer;
-import com.infoshare.web.model.criterias.WebInvestmentRevenueCriteria;
+import com.infoshare.web.model.analyzer.criterias.WebInvestmentRevenueCriteria;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,15 +30,6 @@ public class PersistenceFavourite implements IFavouriteService {
     public List<WebInvestmentRevenueCriteria> getAllRevenueCriteria() {
         List<WebInvestmentRevenueCriteria> list = em
                 .createQuery("select m from WebInvestmentRevenueCriteria m left join fetch m.user", WebInvestmentRevenueCriteria.class)
-                .getResultList();
-        return list;
-    }
-
-    @Override
-    public List<AnalysisComparisonContainer> getAllUserFavouriteAnalysisContainers(long UserId) {
-        List<AnalysisComparisonContainer> list = em
-                .createQuery("select m from AnalysisComparisonContainer m left join fetch m.user t WHERE t.id=:Id AND m.isFavouriteChecked=true", AnalysisComparisonContainer.class)
-                .setParameter("Id", UserId)
                 .getResultList();
         return list;
     }

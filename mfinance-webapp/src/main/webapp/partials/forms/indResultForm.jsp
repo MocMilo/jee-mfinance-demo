@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
+<div><b>Investment Indicators analysis results:</b></div>
 <div>
     <table style="width:100%">
         <tr align="left">

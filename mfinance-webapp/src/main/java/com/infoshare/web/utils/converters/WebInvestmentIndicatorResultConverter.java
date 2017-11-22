@@ -3,7 +3,7 @@ package com.infoshare.web.utils.converters;
 
 import com.infoshare.mfinance.core.models.analyses.results.IndicatorResult;
 
-import com.infoshare.web.model.results.WebIndicatorResult;
+import com.infoshare.web.model.analyzer.results.WebIndicatorResult;
 import org.modelmapper.ModelMapper;
 
 public class WebInvestmentIndicatorResultConverter {

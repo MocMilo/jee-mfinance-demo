@@ -11,7 +11,9 @@
 <tags:userLogin user="${sessionScope.authenticatedUser}"/>
 <hr>
 <p><b>Menu</b></p>
-<a href="../userview/favouritesmenu">Favourites</a>
+<form action="../userview/userfavourites" method="post">
+    <button type="submit" name="your_name" value="your_value" class="btn-link">My Favourites</button>
+</form>
 <br>
 <p>Choose your analysis:</p>
 <a href="../userview/analysisCriteria.jsp?strategy=IVR">Investment revenue</a><br>

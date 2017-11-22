@@ -1,8 +1,8 @@
 package com.infoshare.web.services.listeners;
 
-import com.infoshare.web.model.User;
-import com.infoshare.web.services.reports.activity.IUserActivityService;
-import com.infoshare.web.services.reports.activity.UserActivity;
+import com.infoshare.web.model.user.User;
+import com.infoshare.web.services.persistence.user.activityreport.IUserActivityService;
+import com.infoshare.web.services.persistence.user.activityreport.UserActivity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +12,7 @@ import javax.servlet.http.*;
 import java.time.Instant;
 import java.time.LocalDateTime;
 
-import static com.infoshare.web.utils.ConstantsProvider.AUTH_USER;
+import static com.infoshare.web.utils.constants.ConstantsProvider.AUTH_USER;
 import static java.time.ZoneOffset.UTC;
 
 @WebListener
@@ -30,7 +30,7 @@ public class UserSessionListner implements HttpSessionListener, HttpSessionAttri
             User user = (User) httpSessionBindingEvent.getSession().getAttribute(AUTH_USER);
             LOGGER.info("User added to session (login):{}", user.getLogin());
         } else {
-            LOGGER.warn("Not authenticated user session opening attempt! {}",
+            LOGGER.warn("Not authenticated menu session opening attempt! {}",
                     httpSessionBindingEvent
                             .getSession()
                             .getServletContext()

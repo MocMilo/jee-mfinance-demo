@@ -10,7 +10,7 @@
 <body>
 <img src="../../resources/icons/banner_top.jpg">
 <tags:userLogin user="${sessionScope.authenticatedUser}"/>
-<jsp:include page="../../partials/backToUserMenu.jsp"/>
+<jsp:include page="../../partials/navigation/backToUserMenu.jsp"/>
 <p><b>Investments Info</b></p>
 <br>
 <p>In our service you have available quotation data:</p>

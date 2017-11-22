@@ -1,6 +1,6 @@
 package com.infoshare.web.model.validation;
 
-import com.infoshare.web.model.criterias.WebAnalysisCriteria;
+import com.infoshare.web.model.analyzer.criterias.WebAnalysisCriteria;
 import com.infoshare.web.model.validation.forms.CriteriaForm;
 
 import javax.servlet.http.HttpServletRequest;

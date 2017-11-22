@@ -2,7 +2,7 @@ package com.infoshare.web.servlets.administration;
 
 import com.infoshare.web.services.bossa.IDataContainerService;
 
-import com.infoshare.web.utils.ConstantsProvider;
+import com.infoshare.web.utils.constants.ConstantsProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

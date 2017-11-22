@@ -10,7 +10,7 @@
 <body>
 <img src="../../resources/icons/banner_top.jpg">
 <tags:userLogin user="${sessionScope.authenticatedUser}"/>
-<jsp:include page="../../partials/backToUserMenu.jsp"/>
+<jsp:include page="../../partials/navigation/backToUserMenu.jsp"/>
 <p><b> Analysis: Result</b></p>
 <br>
 <c:set var="analysisResult" value="${analysisResult}" scope="request"/>

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.infoshare.web.utils.ConstantsProvider.CONTENT_WRAPPER;
+import static com.infoshare.web.utils.constants.ConstantsProvider.CONTENT_WRAPPER;
 
 @WebServlet(urlPatterns = "/auth/adminview/emailsender")
 public class AgentServlet extends HttpServlet {

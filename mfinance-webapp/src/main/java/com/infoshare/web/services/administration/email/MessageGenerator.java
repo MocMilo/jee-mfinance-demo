@@ -1,7 +1,7 @@
 package com.infoshare.web.services.administration.email;
 
-import com.infoshare.web.model.criterias.WebInvestmentRevenueCriteria;
-import com.infoshare.web.utils.ConstantsProvider;
+import com.infoshare.web.model.analyzer.criterias.WebInvestmentRevenueCriteria;
+import com.infoshare.web.utils.constants.ConstantsProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

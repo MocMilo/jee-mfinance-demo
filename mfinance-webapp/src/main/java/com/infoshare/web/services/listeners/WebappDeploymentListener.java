@@ -28,9 +28,9 @@ public final class WebappDeploymentListener implements ServletContextListener {
 
         /**
          *
-         * When Webapp deployment takes place, default user with Admin role is added to database.
-         * Default user with admin role is added by IUserService.
-         * Properties of default Admin user are stored in /resources/configuration/webconfiguration.json
+         * When Webapp deployment takes place, default menu with Admin role is added to database.
+         * Default menu with admin role is added by IUserService.
+         * Properties of default Admin menu are stored in /resources/configuration/webconfiguration.json
          * (this file should be configured before application build and deployment).
          *
          */

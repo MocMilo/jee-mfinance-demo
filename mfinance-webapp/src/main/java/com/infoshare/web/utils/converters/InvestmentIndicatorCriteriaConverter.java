@@ -1,7 +1,7 @@
 package com.infoshare.web.utils.converters;
 
 import com.infoshare.mfinance.core.models.analyses.criteria.IndicatorCriteria;
-import com.infoshare.web.model.criterias.WebIndicatorCriteria;
+import com.infoshare.web.model.analyzer.criterias.WebIndicatorCriteria;
 import org.modelmapper.ModelMapper;
 
 public class InvestmentIndicatorCriteriaConverter {

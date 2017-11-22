@@ -1,9 +1,9 @@
 package com.infoshare.web.servlets.logic;
 
-import com.infoshare.web.services.validator.strategies.INDValidationStrategy;
-import com.infoshare.web.services.validator.strategies.IVRValidationStrategy;
+import com.infoshare.web.services.validators.INDValidationStrategy;
+import com.infoshare.web.services.validators.IVRValidationStrategy;
 import com.infoshare.web.model.validation.ValidationResult;
-import com.infoshare.web.services.validator.strategies.ValidationStrategy;
+import com.infoshare.web.services.validators.ValidationStrategy;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +46,11 @@ public class ValidationStrategiesServlet extends HttpServlet {
         }
 
         req.setAttribute("criteria", validationResult.getCriteria());
-        req.getRequestDispatcher("/auth/userview/analysis").forward(req, resp);
+
+
+        req.getRequestDispatcher("/auth/userview/favourites").forward(req, resp);
+
+       /* req.getRequestDispatcher("/auth/userview/analysis").forward(req, resp);*/
 
     }
 

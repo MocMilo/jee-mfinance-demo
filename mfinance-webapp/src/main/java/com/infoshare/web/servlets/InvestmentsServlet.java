@@ -1,7 +1,7 @@
 package com.infoshare.web.servlets;
 
 import com.infoshare.web.services.bossa.IDataContainerService;
-import com.infoshare.web.utils.ConstantsProvider;
+import com.infoshare.web.utils.constants.ConstantsProvider;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;

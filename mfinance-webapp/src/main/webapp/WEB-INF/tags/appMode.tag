@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@attribute name="appMode" type="com.infoshare.web.webconfiguration.AppMode" required="true" %>
+<%@attribute name="appMode" type="com.infoshare.web.model.webconfiguration.AppMode" required="true" %>
 <c:choose>
     <c:when test="${appMode.slave}">
         <img src="../../resources/icons/banner_top_gray.jpg">

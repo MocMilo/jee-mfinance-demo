@@ -1,6 +1,4 @@
 {
-  "slave":false,
-  "slaveModeAPIServiceTargetURI":"http://localhost:8081/api",
   "defaultAdminAccountLogin":"dmmtest441@gmail.com"
 }
 

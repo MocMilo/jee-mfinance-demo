@@ -1,6 +1,6 @@
 package com.infoshare.web.services.persistence.user;
 
-import com.infoshare.web.model.User;
+import com.infoshare.web.model.user.User;
 
 import java.util.List;
 
