@@ -1,8 +1,0 @@
-{
-  "email":"example@gmail.com",
-  "login":"example@gmail.com",
-  "password":"examplepassword",
-  "smtpHost":"smtp.gmail.com",
-  "smtpPort":"465",
-  "targetEmail":"target@wp.pl"
-}
