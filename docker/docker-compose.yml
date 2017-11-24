@@ -10,8 +10,6 @@ services:
       - 3307:3306
     networks:
       - infoshare_network
-    volumes:
-      - /home/milo/mfinance/web-app/db-files:/var/lib/mysql
 
   web-app:
     container_name: "web-app"
@@ -23,7 +21,7 @@ services:
     networks:
       - infoshare_network
     volumes:
-      - ../mfinance-webapp/target:/opt/jboss/wildfly/standalone/deployments
+      - ../webapp/target:/opt/jboss/wildfly/standalone/deployments
 
 networks:
   infoshare_network:

@@ -1,13 +1,14 @@
 .idea/
 
-mfinance-cli/target/
-mfinance-core/target/
-mfinance-webapp/target
+cli/target/
+core/target/
 
-mfinance-core/logs/
-mfinance-core/src/test/java/_experimental/
+webapp/target
 
-mfinance-webapp/logs
+core/logs/
+core/src/test/java/_experimental/
+
+webapp/logs
 
 *.iml
 *.log
