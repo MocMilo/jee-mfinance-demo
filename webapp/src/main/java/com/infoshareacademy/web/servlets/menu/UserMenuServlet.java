@@ -22,7 +22,7 @@ public class UserMenuServlet extends HttpServlet {
 
         User user = (User) req.getSession().getAttribute(ConstantsProvider.AUTH_USER);
         resp.sendRedirect("usermenu.jsp");
-        LOGGER.info("menu from session:{}", user.getLogin());
+        LOGGER.info("user from session:{}", user.getLogin());
     }
 
     @Override
@@ -30,6 +30,6 @@ public class UserMenuServlet extends HttpServlet {
 
         User user = (User) req.getSession().getAttribute(ConstantsProvider.AUTH_USER);
         resp.sendRedirect("usermenu.jsp");
-        LOGGER.info("menu from session:{}", user.getLogin());
+        LOGGER.info("user from session:{}", user.getLogin());
     }
 }

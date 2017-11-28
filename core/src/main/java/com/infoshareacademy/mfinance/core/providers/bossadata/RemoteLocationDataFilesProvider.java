@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
-public class RemoteLocationDataFilesProvider implements BossaDataFilesProvider {
+public class RemoteLocationDataFilesProvider implements DataFilesProvider {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RemoteLocationDataFilesProvider.class);
     private final String DATE_PATTERN = "yyyyMMdd";
@@ -45,14 +45,14 @@ public class RemoteLocationDataFilesProvider implements BossaDataFilesProvider {
         fundURL = configuration.getFundUrl().getFileUrl();
     }
 
-    public boolean saveDataFilesInTempFolders() {
+    public void saveDataFilesInTempFolders() {
         this.setFilesTargetLocationInTempFolders();
-        return getBossaDataFiles();
+        this.getBossaDataFiles();
     }
 
-    public boolean saveDataFilesInExplicitFolders() {
+    public void saveDataFilesInExplicitFolders() {
         this.setFilesTargetLocationInExplicitFolders();
-        return getBossaDataFiles();
+        this.getBossaDataFiles();
     }
 
     private void setFilesTargetLocationInTempFolders() {
@@ -91,19 +91,16 @@ public class RemoteLocationDataFilesProvider implements BossaDataFilesProvider {
                 .getFolderPath();
     }
 
-    private boolean getBossaDataFiles() {
+    private void getBossaDataFiles() {
         try {
-
             Path currencyZipFilePath = this.download(currencyURL, currencyZipFolderPath);
             Path fundZipFilePath = this.download(fundURL, fundZipFolderPath);
 
             UnzipUtil.saveZipFileContent(currencyZipFilePath, currencyUnzipTargetPath);
             UnzipUtil.saveZipFileContent(fundZipFilePath, fundUnzipTargetPath);
-            return true;
-
         } catch (IOException e) {
+            e.printStackTrace();
             LOGGER.error("Failed to update Bossa csv files from remote location (resources unavailable).");
-            return false;
         }
     }
 
@@ -129,7 +126,6 @@ public class RemoteLocationDataFilesProvider implements BossaDataFilesProvider {
     }
 
     private String getFileNameWithDate(String defaultFileName) {
-
         LocalDate localDate = LocalDate.now();
         formatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
 

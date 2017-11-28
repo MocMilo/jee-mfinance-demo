@@ -2,6 +2,7 @@ package com.infoshareacademy.web.services.persistence.user;
 
 import com.infoshareacademy.web.model.user.User;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface IUserService {
@@ -16,6 +17,8 @@ public interface IUserService {
 
   List<User> getAllUsers();
 
-  public void addDefaultAdminUser();
+  void addDefaultAdminUser();
+
+  void authorize(String email, HttpServletRequest req);
 
 }
