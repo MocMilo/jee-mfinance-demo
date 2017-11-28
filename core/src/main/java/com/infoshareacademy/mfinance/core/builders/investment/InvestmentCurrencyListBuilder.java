@@ -22,7 +22,6 @@ public class InvestmentCurrencyListBuilder extends InvestmentListBuilder {
     }
 
     public void createCurrenciesFromFile(String filePath) {
-
         try {
             List<Quotation> quotationList = this.getQuotationsList(filePath);
             String name = quotationList.get(0).getName();

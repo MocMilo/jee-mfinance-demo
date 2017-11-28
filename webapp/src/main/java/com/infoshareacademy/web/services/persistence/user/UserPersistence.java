@@ -8,12 +8,15 @@ import org.slf4j.LoggerFactory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import java.util.List;
 
 public class UserPersistence implements IUserService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserPersistence.class);
+
+    private static final String AUTH_USER = "authenticatedUser";
 
     @PersistenceContext
     private EntityManager em;
@@ -47,31 +50,31 @@ public class UserPersistence implements IUserService {
     @Override
     @Transactional
     public void update(User user) {
-       User userToUpdate =  em.find(User.class, user.getId());
-       userToUpdate.setFavouritesIVR(user.getFavouritesIVR());
-       userToUpdate.setFavouritesIND(user.getFavouritesIND());
-       userToUpdate.setAdmin(user.getAdmin());
-       em.merge(userToUpdate);
+        User userToUpdate = em.find(User.class, user.getId());
+        userToUpdate.setFavouritesIVR(user.getFavouritesIVR());
+        userToUpdate.setFavouritesIND(user.getFavouritesIND());
+        userToUpdate.setAdmin(user.getAdmin());
+        em.merge(userToUpdate);
     }
 
     @Override
     @Transactional
-    public void addDefaultAdminUser(){
+    public void addDefaultAdminUser() {
 
         /**
          * User with Admin role is added from properties in WebConfiguration.json file.
          */
 
-        WebConfiguration webConfiguration= new WebConfigurationProvider().getWebConfigurationFromResources();
+        WebConfiguration webConfiguration = new WebConfigurationProvider().getWebConfigurationFromResources();
 
         String defaultAdminLogin = webConfiguration.getDefaultAdminAccountLogin();
 
-        if(!this.getUserByEmail(defaultAdminLogin).isEmpty()){
-          User user = this.getUserByEmail(defaultAdminLogin).stream()
-                  .findAny()
-                  .orElseThrow(NullPointerException::new);
-          user.setAdmin(true);
-          this.update(user);
+        if (!this.getUserByEmail(defaultAdminLogin).isEmpty()) {
+            User user = this.getUserByEmail(defaultAdminLogin).stream()
+                    .findAny()
+                    .orElseThrow(NullPointerException::new);
+            user.setAdmin(true);
+            this.update(user);
 
         } else {
             User user = new User();
@@ -79,5 +82,22 @@ public class UserPersistence implements IUserService {
             user.setAdmin(true);
             this.add(user);
         }
+    }
+
+    @Override
+    @Transactional
+    public void authorize(String email, HttpServletRequest req) {
+        User user = new User();
+        if (this.getUserByEmail(email).isEmpty()) {
+            user.setLogin(email);
+            user.setAdmin(false);
+            this.add(user);
+        } else {
+            user = this.getUserByEmail(email)
+                    .stream()
+                    .findAny()
+                    .orElseThrow(NullPointerException::new);
+        }
+        req.getSession(true).setAttribute(AUTH_USER, user);
     }
 }

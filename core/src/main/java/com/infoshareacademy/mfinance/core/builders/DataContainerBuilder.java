@@ -9,7 +9,7 @@ import com.infoshareacademy.mfinance.core.models.configuration.Configuration;
 import com.infoshareacademy.mfinance.core.builders.investment.InvestmentCurrencyListBuilder;
 import com.infoshareacademy.mfinance.core.builders.investment.InvestmentFundListBuilder;
 import com.infoshareacademy.mfinance.core.providers.ConfigurationProvider;
-import com.infoshareacademy.mfinance.core.providers.bossadata.BossaDataFilesProvidersLogic;
+import com.infoshareacademy.mfinance.core.providers.bossadata.BossaDataFilesProvider;
 import com.infoshareacademy.mfinance.core.providers.bossadata.locations.FilePathsProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,25 +22,19 @@ public class DataContainerBuilder {
 
     /**
      * @return DataContainer  - build from csv files
-     * <p>
      * Note:
      * The most actual Bossa csv files are downloaded from external resource in zip format by URL.
      * If external resource is unavailable (eg. internet connection problem),
      * csv files are fetched from app resources (in such case DataContainer stores data
      * up to day: 2017-08-27).
-     * <p>
      * Note:
      * DataContainerBuilder works in two modes: 'demo' and 'production'
-     * <p>
      * DEMO MODE (simple deployment: application uses temporary folders)
      * set property to:
-     * <p>
      * IS_DEMO_MODE = true
-     * <p>
      * For production mode (requires deployment configuration: application uses folders
      * in explicit locations, defined in configuration.json)
      * set property to:
-     * <p>
      * IS_DEMO_MODE = false
      */
 
@@ -68,14 +62,14 @@ public class DataContainerBuilder {
                 .getConfiguration();
     }
 
-    public DataContainerBuilder(String ResourcesFilePath) {
-        configuration = new ConfigurationProvider(ResourcesFilePath)
+    public DataContainerBuilder(String resourcesFilePath) {
+        configuration = new ConfigurationProvider(resourcesFilePath)
                 .getConfiguration();
     }
 
     public DataContainer getDataContainer() {
 
-        new BossaDataFilesProvidersLogic(configuration, IS_DEMO_MODE).getFilesInFailSafeMode();
+        new BossaDataFilesProvider(configuration, IS_DEMO_MODE).getCSVFiles();
 
         if (IS_DEMO_MODE) {
             currencyFilePaths = filePathsProvider.generateTempCurrencyFilePaths();

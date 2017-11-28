@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
 import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +14,11 @@ import java.util.List;
 @Singleton
 public class DataContainer implements IDataContainerService {
 
-    private List<Investment> investments;
-    private com.infoshareacademy.mfinance.core.models.bossa.DataContainer dataContainer;
-    private static final Logger LOGGER = LoggerFactory.getLogger(DataContainer.class);
 
-    public DataContainer() {
-        this.investments = new ArrayList<>();
-    }
+    private com.infoshareacademy.mfinance.core.models.bossa.DataContainer dataContainer;
+
+
+
 
     @PostConstruct
     public void onPostConstruct() {
@@ -27,13 +26,11 @@ public class DataContainer implements IDataContainerService {
     }
 
     @Override
-    public void reload() {
+
+    public void  reload() {
     dataContainer = new DataContainerBuilder().getDataContainer();
     }
-
-    public List<Investment> getInvestments() {
-        return investments;
-    }
+    // public void synchronized reload() { dataContainer = new DataContainerBuilder().getDataContainer();
 
     public com.infoshareacademy.mfinance.core.models.bossa.DataContainer getDataContainer() {
         return dataContainer;

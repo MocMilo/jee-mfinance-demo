@@ -12,7 +12,7 @@ public class QuotationListBuilder {
 
     private final String filePath;
 
-    public List<Quotation> getQuotations(){
+    public List<Quotation> getQuotations() {
         QuotationListCSVParser quotationData = new QuotationListCSVParser(filePath);
         quotationData.parseQuotationsFromFile();
 
@@ -30,7 +30,7 @@ public class QuotationListBuilder {
     }
 
     private void deltaValueOfClose(List<Quotation> quotations) {
-               for (Quotation quotation : quotations) {
+        for (Quotation quotation : quotations) {
             if ((quotations.indexOf(quotation) > 0 && quotations.indexOf(quotation) < quotations.size())) {
 
                 BigDecimal previousValue = quotations.get(quotations.indexOf(quotation) - 1).getClose()
