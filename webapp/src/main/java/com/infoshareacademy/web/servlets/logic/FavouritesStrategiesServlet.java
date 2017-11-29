@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(urlPatterns = "/auth/userview/favourites")
+@WebServlet(urlPatterns = "/favourite")
 public class FavouritesStrategiesServlet extends HttpServlet {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FavouritesStrategiesServlet.class);
@@ -53,7 +53,7 @@ public class FavouritesStrategiesServlet extends HttpServlet {
                 webAnalysisCriteria.getUserCustomName());
 
         req.setAttribute("criteria", webAnalysisCriteria);
-        req.getRequestDispatcher("/auth/userview/analysis").forward(req, resp);
+        req.getRequestDispatcher("/analysis").forward(req, resp);
     }
 
     private void persist(WebAnalysisCriteria webAnalysisCriteria) {

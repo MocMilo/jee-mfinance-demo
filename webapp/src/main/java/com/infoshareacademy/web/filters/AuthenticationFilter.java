@@ -1,4 +1,4 @@
-package com.infoshareacademy.web.services.security.webfilters;
+package com.infoshareacademy.web.filters;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter(filterName = "isUserAuthenticated")
-public class UserAuthentication implements Filter {
+@WebFilter(filterName = "authenticationFilter")
+public class AuthenticationFilter implements Filter {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserAuthentication.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AuthenticationFilter.class);
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -24,23 +24,15 @@ public class UserAuthentication implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
 
-        String path = req.getRequestURI();
-
-        LOGGER.info("login filter request path: {}", path);
-        if (path.startsWith("/auth/logout")) {
-            filterChain.doFilter(servletRequest, servletResponse);
-        } else {
             if (req.getSession().getAttribute("authenticatedUser") == null) {
-                req.getRequestDispatcher("/auth/accessdenied.jsp").forward(req, resp);
-                LOGGER.warn("Access denied! Not authenticated menu request!");
+                req.getRequestDispatcher("/accessdenied.jsp").forward(req, resp);
+                LOGGER.warn("Access denied! Not authenticated request!");
             } else {
                 filterChain.doFilter(servletRequest, servletResponse);
             }
-        }
     }
 
     @Override
     public void destroy() {
-
     }
 }

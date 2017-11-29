@@ -4,24 +4,24 @@
 <html>
 <head>
     <title>Menu</title>
-    <jsp:include page="../../partials/meta.jsp" />
+    <jsp:include page="partials/meta.jsp" />
 </head>
 <body>
-<img src="../../resources/icons/banner_top.jpg">
+<img src="resources/icons/banner_top.jpg">
 <tags:userLogin user="${sessionScope.authenticatedUser}"/>
 <hr>
 <p><b>Menu</b></p>
-<form action="../userview/userfavourites" method="post">
+<form action="/favourites" method="post">
     <button type="submit" name="your_name" value="your_value" class="btn-link">My Favourites</button>
 </form>
 <br>
-<a href="../userview/investments">Database info</a><br>
+<a href="/investments">Database info</a><br>
 <br>
 <p>Choose your analysis:</p>
-<a href="../userview/analysisCriteria.jsp?strategy=IVR">Investment revenue</a><br>
-<a href="../userview/analysisCriteria.jsp?strategy=IND">Investment indicators</a><br>
+<a href="analysisCriteria.jsp?strategy=IVR">Investment revenue</a><br>
+<a href="analysisCriteria.jsp?strategy=IND">Investment indicators</a><br>
 <br>
 <br>
-<jsp:include page="../../partials/footer.jsp" />
+<jsp:include page="partials/footer.jsp" />
 </body>
 </html>

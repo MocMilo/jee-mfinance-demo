@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/auth/adminview/appsettings")
+@WebServlet(urlPatterns = "/admin/settings")
 public class AppSettingsServlet extends HttpServlet {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AppSettingsServlet.class);
@@ -27,7 +27,7 @@ public class AppSettingsServlet extends HttpServlet {
 
         req.setAttribute(ConstantsProvider.CURRENCY_COUNT, container.getDataContainer().getCurrenciesCount());
         req.setAttribute(ConstantsProvider.FUND_COUNT, container.getDataContainer().getFundsCount());
-        req.getRequestDispatcher("../adminview/appSettings.jsp").forward(req, resp);
+        req.getRequestDispatcher("/admin/settings.jsp").forward(req, resp);
     }
 
     @Override
@@ -48,6 +48,6 @@ public class AppSettingsServlet extends HttpServlet {
 
             LOGGER.error("FATAL ERROR: Failed to manually reload data models CSV files! {}", ex.getMessage());
         }
-        req.getRequestDispatcher("../adminview/appSettings.jsp").forward(req, resp);
+        req.getRequestDispatcher("/admin/settings.jsp").forward(req, resp);
     }
 }

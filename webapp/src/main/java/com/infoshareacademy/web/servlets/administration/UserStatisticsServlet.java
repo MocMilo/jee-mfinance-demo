@@ -18,7 +18,7 @@ import java.io.IOException;
 
 import static com.infoshareacademy.web.utils.constants.ConstantsProvider.ALL_INV_REV_CRIT;
 
-@WebServlet(urlPatterns = "/auth/adminview/userstatistics")
+@WebServlet(urlPatterns = "/admin/statistics")
 public class UserStatisticsServlet extends HttpServlet {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserStatisticsServlet.class);
@@ -30,14 +30,14 @@ public class UserStatisticsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         req.setAttribute(ALL_INV_REV_CRIT , favouriteService.getAllRevenueCriteria());
-        req.getRequestDispatcher("../adminview/userStatistics.jsp").forward(req, resp);
+        req.getRequestDispatcher("/admin/statistics.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         req.setAttribute(ALL_INV_REV_CRIT , favouriteService.getAllRevenueCriteria());
-        req.getRequestDispatcher("../adminview/userStatistics.jsp").forward(req, resp);
+        req.getRequestDispatcher("/admin/statistics.jsp").forward(req, resp);
     }
 }
 

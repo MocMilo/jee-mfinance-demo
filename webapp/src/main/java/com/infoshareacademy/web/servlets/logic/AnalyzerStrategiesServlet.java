@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@WebServlet(urlPatterns = "/auth/userview/analysis")
+@WebServlet(urlPatterns = "/analysis")
 public class AnalyzerStrategiesServlet extends HttpServlet {
 
     @Inject
@@ -47,12 +47,12 @@ public class AnalyzerStrategiesServlet extends HttpServlet {
         if (webAnalysisResult.getErrorMessage() != null) {
             req.setAttribute("strategy", webAnalysisResult.getStrategy());
             req.setAttribute("errorMessage", webAnalysisResult.getErrorMessage());
-            req.getRequestDispatcher("../userview/analysisCriteria.jsp").forward(req, resp);
+            req.getRequestDispatcher("/analysisCriteria.jsp").forward(req, resp);
             return;
         }
 
         req.setAttribute("analysisResult", webAnalysisResult);
-        req.getRequestDispatcher("../userview/analysisResult.jsp").forward(req, resp);
+        req.getRequestDispatcher("/analysisResult.jsp").forward(req, resp);
     }
 
     private WebAnalysisResult getResult(WebAnalysisCriteria criteria) {

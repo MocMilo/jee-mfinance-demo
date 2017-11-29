@@ -5,16 +5,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>User Management</title>
+    <title>User Statistics</title>
 </head>
 <body>
-<img src="../../resources/icons/banner_top.jpg">
+<img src="../resources/icons/banner_top.jpg">
 <tags:userLogin user="${sessionScope.authenticatedUser}"/>
-<jsp:include page="../../partials/navigation/backToAdminMenu.jsp"/>
-<p><b>User Management</b></p>
-
-<tags:userTable allUsers="${allUsers}"/>
-
-<jsp:include page="../../partials/footer.jsp"/>
+<jsp:include page="../partials/navigation/backToAdminMenu.jsp"/>
+<p><b>User Statistics</b></p>
+<br>
+<tags:invRevCritTable allInvRevCrit="${allInvRevCrit}"/>
+<br>
+<br>
+<jsp:include page="../partials/footer.jsp"/>
 </body>
 </html>

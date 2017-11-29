@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 
-@WebServlet(urlPatterns = "/auth/userview/userfavourites")
+@WebServlet(urlPatterns = "/favourites")
 public class FavouritesServlet extends HttpServlet {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FavouritesServlet.class);
@@ -59,7 +59,7 @@ public class FavouritesServlet extends HttpServlet {
         }
 
         req.setAttribute("analysisResults", favouritesResults);
-        req.getRequestDispatcher("../userview/userFavourites.jsp").forward(req, resp);
+        req.getRequestDispatcher("/favourites.jsp").forward(req, resp);
     }
 
     private WebAnalysisResult getResult(WebAnalysisCriteria criteria) {

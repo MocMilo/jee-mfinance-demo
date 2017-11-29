@@ -8,22 +8,22 @@
     <title>Application settings</title>
 </head>
 <body>
-<img src="../../resources/icons/banner_top.jpg">
+<img src="../resources/icons/banner_top.jpg">
 <tags:userLogin user="${sessionScope.authenticatedUser}"/>
-<jsp:include page="../../partials/navigation/backToAdminMenu.jsp"/>
+<jsp:include page="../partials/navigation/backToAdminMenu.jsp"/>
 <p><b>Application settings</b></p>
 <br>
 <p>Data from CSV files:</p>
 <p>Total Number of Funds: <b>${fundCount}</b></p>
 <p>Total Number of Currencies: <b>${currencyCount}</b></p>
 <br>
-<form action="../adminview/appsettings" method="post">
+<form action="../admin/settings" method="post">
     <button type="submit">Press to reload bossa csv files...</button>
 </form>
 </br>
 <br>
 </br>
-<jsp:include page="../../partials/footer.jsp"/>
+<jsp:include page="../partials/footer.jsp"/>
 </body>
 </html>
 

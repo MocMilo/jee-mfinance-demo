@@ -8,7 +8,7 @@
 <p><b>mfinance</b></p>
 <p style="color:green"><b>Goodbye! Now you are logout.</b></p>
 <br>
-<a href="http://localhost:8080/login">login page</a>
+<a href="index.html">login page</a>
 </body>
 </html>
 

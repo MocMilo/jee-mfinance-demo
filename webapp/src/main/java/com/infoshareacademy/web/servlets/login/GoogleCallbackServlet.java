@@ -79,11 +79,11 @@ public class GoogleCallbackServlet extends HttpServlet {
             LOGGER.info("UserAuthenticated: Id:{} login:{} role isAdmin:{}", user.getId(), user.getLogin(), user.getAdmin());
 
             if (!user.getAdmin()) {
-                req.getRequestDispatcher("auth/userview/usermenu").forward(req, resp);
+                req.getRequestDispatcher("main").forward(req, resp);
             } else if (user.getAdmin()) {
-                req.getRequestDispatcher("auth/adminview/adminmenu").forward(req, resp);
+                req.getRequestDispatcher("admin/panel").forward(req, resp);
             } else {
-                req.getRequestDispatcher("auth/accessdenied.jsp").forward(req, resp);
+                req.getRequestDispatcher("accessdenied.jsp").forward(req, resp);
             }
         } catch (ServletException | IOException e) {
             e.printStackTrace();

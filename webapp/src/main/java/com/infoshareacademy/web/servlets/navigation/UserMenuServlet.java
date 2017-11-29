@@ -1,4 +1,4 @@
-package com.infoshareacademy.web.servlets.menu;
+package com.infoshareacademy.web.servlets.navigation;
 
 import com.infoshareacademy.web.model.user.User;
 import com.infoshareacademy.web.utils.constants.ConstantsProvider;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/auth/userview/usermenu")
+@WebServlet(urlPatterns = "/main")
 public class UserMenuServlet extends HttpServlet {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserMenuServlet.class);
@@ -21,7 +21,7 @@ public class UserMenuServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         User user = (User) req.getSession().getAttribute(ConstantsProvider.AUTH_USER);
-        resp.sendRedirect("usermenu.jsp");
+        resp.sendRedirect("main.jsp");
         LOGGER.info("user from session:{}", user.getLogin());
     }
 
@@ -29,7 +29,7 @@ public class UserMenuServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         User user = (User) req.getSession().getAttribute(ConstantsProvider.AUTH_USER);
-        resp.sendRedirect("usermenu.jsp");
+        resp.sendRedirect("main.jsp");
         LOGGER.info("user from session:{}", user.getLogin());
     }
 }

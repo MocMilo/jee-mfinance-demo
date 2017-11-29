@@ -13,18 +13,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/auth/adminview/usermanagement")
+@WebServlet(urlPatterns = "/admin/users")
 public class UserMenagementServlet extends HttpServlet {
 
-        private static final Logger LOGGER = LoggerFactory.getLogger(UserMenagementServlet.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserMenagementServlet.class);
 
-        @Inject
-        IUserService userService;
+    @Inject
+    IUserService userService;
 
-        @Override
-        protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute(ConstantsProvider.ALL_USERS, userService.getAllUsers());
+        req.getRequestDispatcher("/admin/users.jsp").forward(req, resp);
+    }
 
-            req.setAttribute(ConstantsProvider.ALL_USERS, userService.getAllUsers());
-            req.getRequestDispatcher("../adminview/userManagement.jsp").forward(req, resp);
-        }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute(ConstantsProvider.ALL_USERS, userService.getAllUsers());
+        req.getRequestDispatcher("/admin/users.jsp").forward(req, resp);
+    }
 }

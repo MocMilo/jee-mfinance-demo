@@ -8,12 +8,12 @@
     <title><b>User Management details</b></title>
 </head>
 <body>
-<img src="../../resources/icons/banner_top.jpg">
+<img src="../resources/icons/banner_top.jpg">
 <tags:userLogin user="${sessionScope.authenticatedUser}"/>
-<jsp:include page="../../partials/navigation/backToAdminMenu.jsp"/>
+<jsp:include page="../partials/navigation/backToAdminMenu.jsp"/>
 
 <p><b>User Details</b></p>
-<form method="post" action="../adminview/userdetails">
+<form method="post" action="/admin/user">
     <p>Id:<b>${contentWrapper.id}</b></p>
     <p><input name="id" value="${contentWrapper.id}" hidden/></p>
     <p>login: <b>${contentWrapper.login}</b></p>
@@ -33,6 +33,6 @@
     </p>
 </form>
 
-<jsp:include page="../../partials/footer.jsp"/>
+<jsp:include page="../partials/footer.jsp"/>
 </body>
 </html>

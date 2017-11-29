@@ -8,9 +8,9 @@
     <title>Investments Info</title>
 </head>
 <body>
-<img src="../../resources/icons/banner_top.jpg">
+<img src="resources/icons/banner_top.jpg">
 <tags:userLogin user="${sessionScope.authenticatedUser}"/>
-<jsp:include page="../../partials/navigation/backToUserMenu.jsp"/>
+<jsp:include page="partials/navigation/backToUserMenu.jsp"/>
 <p><b>Investments Info</b></p>
 <br>
 <p>In our service you have available quotation data:</p>
@@ -22,6 +22,6 @@ List of investment names:
     ${investment.name},
 </c:forEach>
 
-<jsp:include page="../../partials/footer.jsp"/>
+<jsp:include page="partials/footer.jsp"/>
 </body>
 </html>

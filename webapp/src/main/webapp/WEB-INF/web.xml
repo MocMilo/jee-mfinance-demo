@@ -1,25 +1,31 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-
-<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
-         version="2.4">
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
 
-<!--    <filter-mapping>
-        <filter-name>loginAccessPoint</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>-->
+    <filter>
+        <filter-name>authenticationFilter</filter-name>
+        <filter-class>com.infoshareacademy.web.filters.AuthenticationFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>adminFilter</filter-name>
+        <filter-class>com.infoshareacademy.web.filters.AdminFilter</filter-class>
+    </filter>
+
     <filter-mapping>
-        <filter-name>isUserAuthenticated</filter-name>
-        <url-pattern>/auth/*</url-pattern>
+        <filter-name>authenticationFilter</filter-name>
+        <url-pattern>/favourites</url-pattern>
+        <url-pattern>/main.jsp</url-pattern>
+        <url-pattern>/investments</url-pattern>
+        <url-pattern>/validation</url-pattern>
+        <url-pattern>/analysisResult.jsp</url-pattern>
+        <url-pattern>/analysisCriteria.jsp</url-pattern>
+        <url-pattern>/admin/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
-        <filter-name>userView</filter-name>
-        <url-pattern>/auth/userview/*</url-pattern>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>adminView</filter-name>
-        <url-pattern>/auth/adminview/*</url-pattern>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
     </filter-mapping>
 
     <error-page>

@@ -20,7 +20,7 @@
     </script>
 </head>
 <body>
-<form method="post" action="../userview/validation">
+<form method="post" action="/validation">
     <input type="hidden" value="IVR" name="strategy"/>
     <p><b>Investment Revenue form:</b></p>
     <p>1. Investment name (eg."CHF"):</p>

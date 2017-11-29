@@ -24,7 +24,7 @@ public class UserSessionListener implements HttpSessionListener, HttpSessionAttr
             User user = (User) httpSessionBindingEvent.getSession().getAttribute(AUTH_USER);
             LOGGER.info("User added to session (login):{}", user.getLogin());
         } else {
-            LOGGER.warn("Not authenticated menu session opening attempt! {}",
+            LOGGER.warn("Not authenticated navigation session opening attempt! {}",
                     httpSessionBindingEvent
                             .getSession()
                             .getServletContext()

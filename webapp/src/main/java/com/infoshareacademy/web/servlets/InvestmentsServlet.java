@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/auth/userview/investments")
+@WebServlet(urlPatterns = "/investments")
 public class InvestmentsServlet extends HttpServlet {
 
     @Inject
-    IDataContainerService container;
+    private IDataContainerService container;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,6 +24,6 @@ public class InvestmentsServlet extends HttpServlet {
         req.setAttribute(ConstantsProvider.FUND_COUNT, container.getDataContainer().getFundsCount());
         req.setAttribute(ConstantsProvider.ALL_INVESTMENTS, container.getDataContainer().getInvestments());
 
-        req.getRequestDispatcher("../userview/investments.jsp").forward(req, resp);
+        req.getRequestDispatcher("/investments.jsp").forward(req, resp);
     }
 }

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/auth/adminview/userdetails")
+@WebServlet(urlPatterns ="/admin/user")
 public class UserDetailsServlet extends HttpServlet {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserDetailsServlet.class);
@@ -29,7 +29,7 @@ public class UserDetailsServlet extends HttpServlet {
         User user = userService.get(Id);
 
         req.setAttribute(ConstantsProvider.CONTENT_WRAPPER, user);
-        req.getRequestDispatcher("../adminview/userDetails.jsp").forward(req, resp);
+        req.getRequestDispatcher("/admin/user.jsp").forward(req, resp);
     }
 
     @Override
@@ -48,6 +48,6 @@ public class UserDetailsServlet extends HttpServlet {
         }
 
         req.setAttribute(ConstantsProvider.ALL_USERS, userService.getAllUsers());
-        req.getRequestDispatcher("../adminview/userManagement.jsp").forward(req, resp);
+        req.getRequestDispatcher("/admin/users").forward(req, resp);
     }
 }

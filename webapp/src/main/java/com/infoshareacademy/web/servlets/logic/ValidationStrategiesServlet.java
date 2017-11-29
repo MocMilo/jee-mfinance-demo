@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@WebServlet(urlPatterns = "/auth/userview/validation")
+@WebServlet(urlPatterns = "/validation")
 public class ValidationStrategiesServlet extends HttpServlet {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ValidationStrategiesServlet.class);
@@ -43,7 +43,7 @@ public class ValidationStrategiesServlet extends HttpServlet {
                     //validationResult.getCriteria().getStrategy());
 
             req = validationResult.getReq();
-            req.getRequestDispatcher("../userview/analysisCriteria.jsp").forward(req, resp);
+            req.getRequestDispatcher("/analysisCriteria.jsp").forward(req, resp);
             return;
         }
 
@@ -52,7 +52,7 @@ public class ValidationStrategiesServlet extends HttpServlet {
                 //validationResult.getCriteria().getStrategy());
 
         req.setAttribute("criteria", validationResult.getCriteria());
-        req.getRequestDispatcher("/auth/userview/favourites").forward(req, resp);
+        req.getRequestDispatcher("/favourite").forward(req, resp);
     }
 
     private ValidationResult getValidationResult(HttpServletRequest req) {

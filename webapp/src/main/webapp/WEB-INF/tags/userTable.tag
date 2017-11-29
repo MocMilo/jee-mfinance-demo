@@ -22,7 +22,7 @@
             <th>${user.lastLoginDateTime}</th>
             <th>${user.lastUpdateDateTime}</th>
             <th>
-                <form action="../adminview/userdetails" method="get">
+                <form action="../admin/user" method="get">
                     <input type="hidden" name="id" value="${user.id}"/></p>
                     <button type="submit">edit</button>
                 </form>
