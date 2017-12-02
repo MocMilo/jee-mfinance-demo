@@ -1,6 +1,5 @@
 package com.infoshareacademy.web.services.analyzer;
 
-
 import com.infoshareacademy.mfinance.core.analyzer.InvestmentIndicator;
 import com.infoshareacademy.mfinance.core.models.analyzer.criteria.IndicatorCriteria;
 import com.infoshareacademy.mfinance.core.models.exceptions.NoDataForCriteria;
@@ -9,40 +8,30 @@ import com.infoshareacademy.web.model.analyzer.criterias.WebIndicatorCriteria;
 import com.infoshareacademy.web.model.analyzer.results.WebAnalysisResult;
 import com.infoshareacademy.web.model.analyzer.results.WebIndicatorResult;
 import com.infoshareacademy.web.services.bossa.IDataContainerService;
-import com.infoshareacademy.web.utils.converters.InvestmentIndicatorCriteriaConverter;
-import com.infoshareacademy.web.utils.converters.WebInvestmentIndicatorResultConverter;
+import com.infoshareacademy.web.utils.converters.InvestmentIndicatorCriteriaConverterUtil;
+import com.infoshareacademy.web.utils.converters.WebInvestmentIndicatorResultConverterUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class INDAnalysisStrategy implements AnalysisStrategy {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(INDAnalysisStrategy.class);
-
-    private WebIndicatorCriteria webIndicatorCriteria;
-    private InvestmentIndicatorCriteriaConverter webINDCriteriaConverter = new InvestmentIndicatorCriteriaConverter();
-    private WebInvestmentIndicatorResultConverter webINDResultConverter = new WebInvestmentIndicatorResultConverter();
-    private WebIndicatorResult webResult;
 
     @Override
     public WebAnalysisResult getResult(WebAnalysisCriteria criteria, IDataContainerService container) {
+        final WebIndicatorCriteria webIndicatorCriteria = (WebIndicatorCriteria) criteria;
+        final IndicatorCriteria coreCriteria = InvestmentIndicatorCriteriaConverterUtil
+                .convertFrom(webIndicatorCriteria);
 
-        webIndicatorCriteria = (WebIndicatorCriteria) criteria;
-
-        IndicatorCriteria coreCriteria = webINDCriteriaConverter.convertFrom(webIndicatorCriteria);
-
-        LOGGER.info(coreCriteria.getInvestmentName());
-
+        WebIndicatorResult webResult;
         try {
-            webResult = webINDResultConverter.convertFrom(
-                    new InvestmentIndicator(container.getDataContainer(), coreCriteria)
-                            .getResult());
-
+            InvestmentIndicator investmentIndicator = new InvestmentIndicator(container
+                    .getDataContainer(), coreCriteria);
+            webResult = WebInvestmentIndicatorResultConverterUtil
+                    .convertFrom(investmentIndicator.getResult());
         } catch (NoDataForCriteria e) {
-
-            LOGGER.error("Failed to get WebAnalysisResult: InvestmentIndicator {}", e.getMessage());
-
             webResult = new WebIndicatorResult();
             webResult.setErrorMessage("No data for current criteria, try again with different criteria.");
+            LOGGER.error("Failed to get WebAnalysisResult: InvestmentIndicator {}", e.getMessage());
         }
         return webResult;
     }

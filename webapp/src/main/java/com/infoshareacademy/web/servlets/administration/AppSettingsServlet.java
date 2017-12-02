@@ -24,7 +24,6 @@ public class AppSettingsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         req.setAttribute(ConstantsProvider.CURRENCY_COUNT, container.getDataContainer().getCurrenciesCount());
         req.setAttribute(ConstantsProvider.FUND_COUNT, container.getDataContainer().getFundsCount());
         req.getRequestDispatcher("/admin/settings.jsp").forward(req, resp);
@@ -33,21 +32,16 @@ public class AppSettingsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        try {
-            LOGGER.info("Administrator Main Container manual reloading initialized...");
+        LOGGER.info("Administrator Main Container manual reloading initialized...");
 
-            container.reload();
-            req.setAttribute(ConstantsProvider.CURRENCY_COUNT, container.getDataContainer().getCurrenciesCount());
-            req.setAttribute(ConstantsProvider.FUND_COUNT, container.getDataContainer().getFundsCount());
+        container.reload();
+        req.setAttribute(ConstantsProvider.CURRENCY_COUNT, container.getDataContainer().getCurrenciesCount());
+        req.setAttribute(ConstantsProvider.FUND_COUNT, container.getDataContainer().getFundsCount());
 
-            LOGGER.info("Main Container reloaded!Currencies items:{} Funds items:{}",
-                    container.getDataContainer().getCurrenciesCount(),
-                    container.getDataContainer().getFundsCount());
+        LOGGER.info("Main Container reloaded!Currencies items:{} Funds items:{}",
+                container.getDataContainer().getCurrenciesCount(),
+                container.getDataContainer().getFundsCount());
 
-        } catch (RuntimeException ex) {
-
-            LOGGER.error("FATAL ERROR: Failed to manually reload data models CSV files! {}", ex.getMessage());
-        }
         req.getRequestDispatcher("/admin/settings.jsp").forward(req, resp);
     }
 }

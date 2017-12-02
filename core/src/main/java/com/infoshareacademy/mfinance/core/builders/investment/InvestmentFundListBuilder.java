@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InvestmentFundListBuilder extends InvestmentListBuilder {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(InvestmentFundListBuilder.class);
     private List<InvestmentFund> investmentFunds = new ArrayList<>();
 
@@ -26,9 +25,7 @@ public class InvestmentFundListBuilder extends InvestmentListBuilder {
         try {
             List<Quotation> quotationList = this.getQuotationsList(filePath);
             String name = quotationList.get(0).getName();
-
             investmentFunds.add(new InvestmentFund(name, quotationList));
-
         } catch (Exception e) {
             LOGGER.error("Failed to build InvestmentFund:{}", e.getMessage());
         }

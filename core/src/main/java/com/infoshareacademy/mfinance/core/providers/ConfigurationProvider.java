@@ -18,17 +18,14 @@ public class ConfigurationProvider {
     }
 
     public Configuration getConfiguration() {
-
         /**
          * @return Provides Configuration from json file locations.
          *
          */
-
         return this.getConfigurationFromFile();
     }
 
     private Configuration getConfigurationFromFile() {
-
         ResourcesFileReader fileReader = new ResourcesFileReader(configurationFilePath);
         try {
             String fileContent = fileReader.getFileAsString();
@@ -39,5 +36,4 @@ public class ConfigurationProvider {
         }
         return configuration;
     }
-
 }

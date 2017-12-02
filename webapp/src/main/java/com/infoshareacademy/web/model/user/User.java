@@ -9,7 +9,6 @@ import java.util.*;
 
 @Entity
 public class User {
-
     @Id
     @GeneratedValue
     private long id;
@@ -21,20 +20,20 @@ public class User {
     private LocalDateTime lastUpdateDateTime;
 
     @PrePersist
-    private void onCreate(){
-        creationDateTime=LocalDateTime.now();
+    private void onCreate() {
+        creationDateTime = LocalDateTime.now();
     }
 
     @PreUpdate
-    private void onUpdate(){
-        lastUpdateDateTime=LocalDateTime.now();
+    private void onUpdate() {
+        lastUpdateDateTime = LocalDateTime.now();
     }
 
-    @OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinColumn(name = "user_id")
     private Set<WebInvestmentRevenueCriteria> favouritesIVR = new LinkedHashSet<>();
 
-    @OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinColumn(name = "user_id")
     private Set<WebIndicatorCriteria> favouritesIND = new LinkedHashSet<>();
 
@@ -102,11 +101,11 @@ public class User {
         this.favouritesIND = favouriteInvestmentIndicators;
     }
 
-
     public User() {
     }
+
     public User(long id) {
-        this.id=id;
+        this.id = id;
     }
 
 }

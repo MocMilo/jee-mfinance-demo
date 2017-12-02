@@ -1,7 +1,6 @@
 package com.infoshareacademy.mfinance.core.models.locations.path;
 
 public abstract class FolderPath {
-
     private String folderPath;
 
     public String getFolderPath() {
@@ -11,5 +10,4 @@ public abstract class FolderPath {
     public void setFolderPath(String folderPath) {
         this.folderPath = folderPath;
     }
-
 }

@@ -3,13 +3,10 @@ package com.infoshareacademy.mfinance.core.models.analyzer.criteria;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-
 public class InvestmentRevenueCriteria extends AnalysisCriteria {
-
     private BigDecimal investedCapital;
     private LocalDate buyDate;
     private LocalDate sellDate;
-
     private String investmentName;
 
     public String getInvestmentName() {
@@ -19,9 +16,6 @@ public class InvestmentRevenueCriteria extends AnalysisCriteria {
     public void setInvestmentName(String investmentName) {
         this.investmentName = investmentName;
     }
-
-
-
 
     public BigDecimal getInvestedCapital() {
         return this.investedCapital;
@@ -50,13 +44,12 @@ public class InvestmentRevenueCriteria extends AnalysisCriteria {
     public InvestmentRevenueCriteria() {
     }
 
-    public InvestmentRevenueCriteria(BigDecimal investedCapital, LocalDate buyDate, LocalDate sellDate, String investmentName) {
-
+/*    public InvestmentRevenueCriteria(BigDecimal investedCapital, LocalDate buyDate, LocalDate sellDate, String investmentName) {
         this.investmentName = investmentName;
         this.investedCapital = investedCapital;
         this.buyDate = buyDate;
         this.sellDate = sellDate;
-    }
+    }*/
 }
 
 

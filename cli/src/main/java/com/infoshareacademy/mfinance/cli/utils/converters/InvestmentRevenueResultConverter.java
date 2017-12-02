@@ -6,11 +6,8 @@ import org.modelmapper.ModelMapper;
 
 
 public class InvestmentRevenueResultConverter {
-
     private ModelMapper modelMapper = new ModelMapper();
-
     public IVRResult convertFrom(InvestmentRevenueResult result) {
-
         return modelMapper.map(result, IVRResult.class);
     }
 }

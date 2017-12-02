@@ -25,7 +25,6 @@ import java.util.concurrent.ExecutionException;
 
 @WebServlet(urlPatterns = "callback")
 public class GoogleCallbackServlet extends HttpServlet {
-
     private static final String PROTECTED_RESOURCE_URL = "https://www.googleapis.com/oauth2/v2/userinfo";
     private static final Logger LOGGER = LoggerFactory.getLogger(GoogleCallbackServlet.class);
 
@@ -40,11 +39,9 @@ public class GoogleCallbackServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         final String code = req.getParameter(CODE);
         final String secretState = req.getParameter(STATE);
         final String value = (String) req.getSession().getAttribute(SECRET_STATE);
-
         if (!secretState.equals(value)) {
             LOGGER.error("Secret state values don't match! Expected:{}, got:{}", secretState, value);
             resp.sendRedirect("/index.html");

@@ -7,18 +7,17 @@ import java.util.List;
 
 public interface IUserService {
 
-  void  add(User user);
+    void add(User user);
 
-  User get(long userId);
+    User get(long userId);
 
-  List<User> getUserByEmail(String userEmail);
+    List<User> getUserByEmail(String userEmail);
 
-  void update(User user);
+    void update(User user);
 
-  List<User> getAllUsers();
+    List<User> getAllUsers();
 
-  void addDefaultAdminUser();
+    void addDefaultAdminUser();
 
-  void authorize(String email, HttpServletRequest req);
-
+    void authorize(String email, HttpServletRequest req);
 }

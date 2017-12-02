@@ -1,7 +1,6 @@
 package com.infoshareacademy.web.model.webconfiguration;
 
 public class WebConfiguration {
-
     private String defaultAdminAccountLogin;
 
     public String getDefaultAdminAccountLogin() {

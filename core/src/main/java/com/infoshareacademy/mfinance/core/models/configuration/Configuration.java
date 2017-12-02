@@ -1,6 +1,5 @@
 package com.infoshareacademy.mfinance.core.models.configuration;
 
-
 import com.infoshareacademy.mfinance.core.models.locations.url.CurrencyUrl;
 import com.infoshareacademy.mfinance.core.models.locations.url.FundUrl;
 import com.infoshareacademy.mfinance.core.models.locations.path.CurrencyBackupFolderPath;
@@ -9,7 +8,6 @@ import com.infoshareacademy.mfinance.core.models.locations.path.FundBackupFolder
 import com.infoshareacademy.mfinance.core.models.locations.path.FundFolderPath;
 
 public class Configuration {
-
     private FundFolderPath fundFolderPath;
     private CurrencyFolderPath currencyFolderPath;
 
@@ -18,7 +16,6 @@ public class Configuration {
 
     private FundUrl fundUrl;
     private CurrencyUrl currencyUrl;
-
 
     public FundFolderPath getFundFolderPath() {
         return fundFolderPath;
@@ -43,5 +40,4 @@ public class Configuration {
     public CurrencyUrl getCurrencyUrl() {
         return currencyUrl;
     }
-
 }

@@ -3,11 +3,8 @@ package com.infoshareacademy.mfinance.cli.model.results;
 import java.math.BigDecimal;
 
 public class IVRResult extends AnalysisResult {
-
-
     private BigDecimal capitalRevenueValue;
     private BigDecimal capitalRevenueDeltaPercentValue;
-
 
     public BigDecimal getCapitalRevenueValue() {
         return capitalRevenueValue;

@@ -13,17 +13,14 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/investments")
 public class InvestmentsServlet extends HttpServlet {
-
     @Inject
     private IDataContainerService container;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         req.setAttribute(ConstantsProvider.CURRENCY_COUNT, container.getDataContainer().getCurrenciesCount());
         req.setAttribute(ConstantsProvider.FUND_COUNT, container.getDataContainer().getFundsCount());
         req.setAttribute(ConstantsProvider.ALL_INVESTMENTS, container.getDataContainer().getInvestments());
-
         req.getRequestDispatcher("/investments.jsp").forward(req, resp);
     }
 }

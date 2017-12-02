@@ -1,7 +1,6 @@
 package com.infoshareacademy.web.model.analyzer.results;
 
 public class WebIndicatorResult extends WebAnalysisResult {
-
     private static final String STRATEGY = "IND";
     private String name;
     private WebQuotation firstQuotation;

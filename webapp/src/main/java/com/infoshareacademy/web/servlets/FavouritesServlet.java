@@ -1,6 +1,5 @@
 package com.infoshareacademy.web.servlets;
 
-
 import com.infoshareacademy.web.model.analyzer.criterias.WebAnalysisCriteria;
 import com.infoshareacademy.web.model.analyzer.results.WebAnalysisResult;
 import com.infoshareacademy.web.model.user.User;
@@ -24,12 +23,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 @WebServlet(urlPatterns = "/favourites")
 public class FavouritesServlet extends HttpServlet {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(FavouritesServlet.class);
     private static Map<String, AnalysisStrategy> analysisStrategies = new HashMap<>();
+
     static {
         analysisStrategies.put("IVR", new IVRAnalysisStrategy());
         analysisStrategies.put("IND", new INDAnalysisStrategy());
@@ -43,12 +41,9 @@ public class FavouritesServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        User user = (User) req.getSession().getAttribute(ConstantsProvider.AUTH_USER);
         favouritesCriterias = new ArrayList<>();
         favouritesResults = new ArrayList<>();
-
-        User user = (User) req.getSession().getAttribute(ConstantsProvider.AUTH_USER);
-
         favouritesCriterias.addAll(user.getFavouritesIVR());
         favouritesCriterias.addAll(user.getFavouritesIND());
 
@@ -57,15 +52,12 @@ public class FavouritesServlet extends HttpServlet {
         for (WebAnalysisCriteria item : favouritesCriterias) {
             favouritesResults.add(this.getResult(item));
         }
-
         req.setAttribute("analysisResults", favouritesResults);
         req.getRequestDispatcher("/favourites.jsp").forward(req, resp);
     }
 
     private WebAnalysisResult getResult(WebAnalysisCriteria criteria) {
-
         String strategy = criteria.getStrategy();
-
         return analysisStrategies.get(strategy)
                 .getResult(criteria, container);
     }

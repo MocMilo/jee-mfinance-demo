@@ -12,9 +12,7 @@ import com.infoshareacademy.mfinance.core.models.bossa.DataContainer;
 import java.util.HashMap;
 import java.util.Map;
 
-
-public class CoreAnalyzer {
-
+public class AnalyzerLogic {
     private static Map<String, AnalysisStrategy> analysisStrategies = new HashMap<>();
 
     static {
@@ -23,10 +21,8 @@ public class CoreAnalyzer {
     }
 
     public AnalysisResult getResult(ParserResult result) {
-
         DataContainer container = new DataContainerBuilder().getDataContainer();
         String analysisCommandName = result.getArguments().getStrategy();
-
         return analysisStrategies.get(analysisCommandName)
                 .getResult(result, container);
     }

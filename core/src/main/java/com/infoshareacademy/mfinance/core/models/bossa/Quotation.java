@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Quotation implements Comparable<Quotation> {
-
     private String name;
     private LocalDate date;
     private BigDecimal close;
@@ -31,22 +30,6 @@ public class Quotation implements Comparable<Quotation> {
     }
 
     public Quotation(String name, LocalDate date, BigDecimal close) {
-        if (name == null) {
-            throw new IllegalArgumentException("Quotation name should not be null.");
-        }
-
-        if (name.isEmpty()) {
-            throw new IllegalArgumentException("Quotation name should not be empty.");
-        }
-
-        if (date == null) {
-            throw new IllegalArgumentException("Quotation date should not be null.");
-        }
-
-        if (close == null) {
-            throw new IllegalArgumentException("Quotation close value should not be null.");
-        }
-
         this.name = name;
         this.date = date;
         this.close = close;

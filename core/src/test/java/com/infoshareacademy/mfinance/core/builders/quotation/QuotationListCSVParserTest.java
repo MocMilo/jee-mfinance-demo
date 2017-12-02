@@ -7,9 +7,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -25,7 +27,6 @@ public class QuotationListCSVParserTest {
 
     @Before
     public void loadQuotations() {
-
         String filePath = resourcesDirectory.getAbsolutePath();
         quotationListCSVParser = new QuotationListCSVParser(filePath);
         quotationListCSVParser.parseQuotationsFromFile();
@@ -33,19 +34,16 @@ public class QuotationListCSVParserTest {
 
     @Test
     public void shouldReturnNumberOfQuotations() throws Exception {
-
         int loadedNumberOfQuotations = quotationListCSVParser.getNumberOfQuotations();
         assertThat(loadedNumberOfQuotations, is(equalTo(NUMBER_OF_ROWS)));
     }
 
     @Test
     public void shouldReturnQuotation() {
-
         Quotation quotation = quotationListCSVParser.getQuotation(0);
         LocalDate expectedDate = LocalDateUtil.parseForm("1999-01-01");
         String expectedName = "EUR";
         BigDecimal expectedValue = new BigDecimal("4.0925");
-
         assertThat(quotation, not(equalTo(nullValue())));
         assertThat(quotation.getName(), not(equalTo(nullValue())));
         assertThat(quotation.getClose(), not(equalTo(nullValue())));
@@ -53,11 +51,5 @@ public class QuotationListCSVParserTest {
         assertThat(quotation.getName(), is(equalTo(expectedName)));
         assertThat(quotation.getDate(), is(equalTo(expectedDate)));
         assertThat(quotation.getClose(), is(equalTo(expectedValue)));
-    }
-
-    @Test(expected = Exception.class)
-    public void shouldFailWhenFileNotFound() {
-        String notExistingFilePath = "/notexistingfilepath";
-        new QuotationListCSVParser(notExistingFilePath).parseQuotationsFromFile();
     }
 }

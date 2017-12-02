@@ -12,7 +12,6 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 public class InvestmentRevenueResultConverterTest {
-
     private BigDecimal moneyValue = new BigDecimal("100.00");
     private BigDecimal deltaValue = new BigDecimal("10.00");
 
@@ -23,12 +22,10 @@ public class InvestmentRevenueResultConverterTest {
     @Before
     public void init() {
         revenueResult = new InvestmentRevenueResult(moneyValue, deltaValue);
-
     }
 
     @Test
     public void convertFrom() throws Exception {
-
         ivrResult = converter.convertFrom(revenueResult);
         assertThat(ivrResult.getCapitalRevenueValue(), is(equalTo(moneyValue)));
         assertThat(ivrResult.getCapitalRevenueDeltaPrecentValue(), is(equalTo(deltaValue)));

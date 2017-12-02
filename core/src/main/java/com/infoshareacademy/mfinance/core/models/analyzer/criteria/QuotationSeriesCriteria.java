@@ -3,7 +3,6 @@ package com.infoshareacademy.mfinance.core.models.analyzer.criteria;
 import java.time.LocalDate;
 
 public class QuotationSeriesCriteria extends AnalysisCriteria {
-
     private String investmentName;
     private LocalDate startDate;
     private LocalDate endDate;
@@ -17,11 +16,9 @@ public class QuotationSeriesCriteria extends AnalysisCriteria {
         this.endDate = endDate;
     }
 
-
     public String getInvestmentName() {
         return investmentName;
     }
-
 
     public void setInvestmentName(String investmentName) {
         this.investmentName = investmentName;

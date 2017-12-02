@@ -4,7 +4,6 @@ import com.github.scribejava.apis.GoogleApi20;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.oauth.OAuth20Service;
 
-import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +17,6 @@ import java.util.Random;
 
 @WebServlet(urlPatterns = "login")
 public class GoogleLoginServlet extends HttpServlet {
-
     private final static String CLIENT_ID = "122677138693-qfl08kemnppv52asvi3s7tra2dptn2mr.apps.googleusercontent.com";
     private final static String CLIENT_SECRET = "7wVONyV2eLAyegLFJvip3Lp3";
     private static final String OAUTH_SERVICE = "OAuth20Service";
@@ -36,9 +34,7 @@ public class GoogleLoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         final String secretState = SECRET + new Random().nextInt(999_999);
-
         final OAuth20Service service = new ServiceBuilder(CLIENT_ID)
                 .apiSecret(CLIENT_SECRET)
                 .scope(SCOPE_PROFILE)

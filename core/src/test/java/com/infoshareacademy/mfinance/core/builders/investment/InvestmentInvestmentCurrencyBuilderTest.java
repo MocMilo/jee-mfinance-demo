@@ -27,38 +27,23 @@ public class InvestmentInvestmentCurrencyBuilderTest {
     }
 
     @Test
-    public void shouldCreateCurrenciesFromCSVFiles() throws Exception {
-
+    public void shouldCreateCurrenciesFromCSVFiles() {
         int expected = 1;
         int evaluated = investmentCurrencyBuilder.getNumberOfCurrencies();
-
         assertThat(investmentCurrency, not(equalTo(nullValue())));
         assertThat(evaluated, is(equalTo(expected)));
     }
 
     @Test
-    public void shouldCurrencyContainLoadedData() throws Exception {
-
+    public void shouldCurrencyContainLoadedData() {
         String expectedName = "CHF";
-
         assertThat(investmentCurrency.getName(), is(equalTo(expectedName)));
         assertThat(investmentCurrency.getQuotations(), not(equalTo(nullValue())));
     }
 
     @Test
-    public void shouldCurrencyContainLoadedQuotationData() throws Exception {
-
+    public void shouldCurrencyContainLoadedQuotationData() {
         int numberOfQuotations = investmentCurrencyBuilder.getCurrencies().get(0).getQuotations().size();
-
         assertThat(NUMBER_OF_ROWS, is(numberOfQuotations));
-    }
-
-    // @Test (expected = Exception.class)
-    public void shouldFailWhenFileNotFound(){
-
-        // fixme (should throw exception)
-
-        String notExistingFilePath = "/NotExistingFilePath";
-        new InvestmentCurrencyListBuilder().createCurrenciesFromFile(notExistingFilePath);
     }
 }

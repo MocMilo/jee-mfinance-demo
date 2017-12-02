@@ -8,11 +8,9 @@ import javax.validation.ConstraintViolation;
 import java.util.Set;
 
 public class ValidationResult {
-
     private Set<ConstraintViolation<CriteriaForm>> violations;
     private HttpServletRequest req;
     private WebAnalysisCriteria criteria;
-
 
     public Set<ConstraintViolation<CriteriaForm>> getViolations() {
         return violations;

@@ -12,7 +12,6 @@ import java.io.IOException;
 
 @WebFilter(filterName = "adminFilter")
 public class AdminFilter extends AuthenticationFilter implements Filter {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(AdminFilter.class);
 
     @Override
@@ -31,7 +30,7 @@ public class AdminFilter extends AuthenticationFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
             req.getRequestDispatcher("/accessdenied.jsp").forward(req, resp);
-            LOGGER.warn("User access verification failure! Role isAdmin:{} ", user.getAdmin());
+            LOGGER.warn("User authorization failure! Role isAdmin:{} ", user.getAdmin());
         }
     }
 

@@ -14,12 +14,10 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/main")
 public class UserMenuServlet extends HttpServlet {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(UserMenuServlet.class);
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         User user = (User) req.getSession().getAttribute(ConstantsProvider.AUTH_USER);
         resp.sendRedirect("main.jsp");
         LOGGER.info("user from session:{}", user.getLogin());
@@ -27,7 +25,6 @@ public class UserMenuServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         User user = (User) req.getSession().getAttribute(ConstantsProvider.AUTH_USER);
         resp.sendRedirect("main.jsp");
         LOGGER.info("user from session:{}", user.getLogin());

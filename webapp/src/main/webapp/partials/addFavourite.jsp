@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +17,6 @@
 </script>
 </head>
 <body>
-
 <p><input type="checkbox" name="isFavourite" id="isFavourite"/> add to favourites
     <input type="text" class="customNameField" name="userCustomName" width="300" hidden
            placeholder="my analysis custom name"/></p>

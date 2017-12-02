@@ -7,9 +7,7 @@ import com.infoshareacademy.mfinance.core.models.locations.path.FundBackupFolder
 import com.infoshareacademy.mfinance.core.models.locations.path.FundFolderPath;
 
 public final class TemporaryFoldersProviderUtil {
-
     private static TemporaryFoldersProviderUtil instance;
-
     private static CurrencyFolderPath currencyFolderPath = new CurrencyFolderPath();
     private static FundFolderPath fundFolderPath = new FundFolderPath();
     private static CurrencyBackupFolderPath currencyBackupFolderPath = new CurrencyBackupFolderPath();
@@ -30,6 +28,7 @@ public final class TemporaryFoldersProviderUtil {
     public static FundBackupFolderPath getFundBackupFolderPath() {
         return fundBackupFolderPath;
     }
+
     static {
         try {
             instance = new TemporaryFoldersProviderUtil();
@@ -39,7 +38,6 @@ public final class TemporaryFoldersProviderUtil {
     }
 
     private TemporaryFoldersProviderUtil() {
-
         String currencyFolder = Files.createTempDir()
                 .getAbsolutePath()
                 .concat("/");

@@ -3,7 +3,6 @@ package com.infoshareacademy.mfinance.cli.model;
 import com.infoshareacademy.mfinance.cli.model.arguments.ApplicationArguments;
 
 public class ParserResult {
-
     private boolean isValid;
     private String errorMessage;
     private ApplicationArguments arguments;

@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuotationSeriesResult extends AnalysisResult {
-
-    List<Quotation> quotationList = new ArrayList<>();
+    private List<Quotation> quotationList = new ArrayList<>();
 
     public QuotationSeriesResult(List<Quotation> quotationList) {
         this.quotationList = quotationList;

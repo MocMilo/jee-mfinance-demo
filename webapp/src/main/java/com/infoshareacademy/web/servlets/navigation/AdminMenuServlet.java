@@ -14,7 +14,6 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/admin/panel")
 public class AdminMenuServlet extends HttpServlet {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(AdminMenuServlet.class);
 
     @Override
