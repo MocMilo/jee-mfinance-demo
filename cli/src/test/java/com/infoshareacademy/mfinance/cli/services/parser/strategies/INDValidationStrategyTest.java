@@ -24,9 +24,7 @@ public class INDValidationStrategyTest {
 
     @Test
     public void shouldBeValidAllArgsCorrect() {
-
         result = strategy.validate(args);
-
         assertThat(result.isValid(), is(equalTo(true)));
         assertThat(result.getArguments(), not(equalTo(nullValue())));
         assertThat(result.getErrorMessage(), is(equalTo("")));
@@ -34,9 +32,7 @@ public class INDValidationStrategyTest {
 
     @Test
     public void shouldBeNotValidWrongNumberOfArgsLessThanNedded() {
-
         result = strategy.validate(ArrayUtils.remove(args, 1));
-
         assertThat(result.isValid(), is(equalTo(false)));
         assertThat(result.getArguments(), is(equalTo(null)));
         assertThat(result.getErrorMessage(), is(equalTo("Wrong number of arguments.")));
@@ -44,11 +40,8 @@ public class INDValidationStrategyTest {
 
     @Test
     public void shouldBeNotValidWrongNumberOfArgsTooMany() {
-
         String[] tooManyArgs = new String[3];
-
         result = strategy.validate(tooManyArgs);
-
         assertThat(result.isValid(), is(equalTo(false)));
         assertThat(result.getArguments(), is(equalTo(null)));
         assertThat(result.getErrorMessage(), is(equalTo("Wrong number of arguments.")));

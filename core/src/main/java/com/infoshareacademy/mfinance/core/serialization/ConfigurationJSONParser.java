@@ -7,8 +7,8 @@ import com.infoshareacademy.mfinance.core.models.exceptions.ConfigurationExcepti
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ConfigurationJSONParser {
-
     private final String json;
+
     public ConfigurationJSONParser(String jsonString) {
         this.json = jsonString;
     }

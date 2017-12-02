@@ -4,14 +4,10 @@ import com.infoshareacademy.mfinance.core.models.analyzer.criteria.IndicatorCrit
 import com.infoshareacademy.web.model.analyzer.criterias.WebIndicatorCriteria;
 import org.modelmapper.ModelMapper;
 
-public class InvestmentIndicatorCriteriaConverter {
+public class InvestmentIndicatorCriteriaConverterUtil {
+    private static ModelMapper modelMapper = new ModelMapper();
 
-
-    private ModelMapper modelMapper = new ModelMapper();
-
-    public IndicatorCriteria convertFrom(WebIndicatorCriteria webCriteria) {
-
+    public static IndicatorCriteria convertFrom(WebIndicatorCriteria webCriteria) {
         return modelMapper.map(webCriteria, IndicatorCriteria.class);
     }
-
 }

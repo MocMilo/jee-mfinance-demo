@@ -5,10 +5,9 @@
          
 ## Information ##          
 
-[core] module contains data model and business rules, shared to other application modules. Core functionality is package 'analyzer'. It delivers algorithms typical for financial application (eg.'Investment revenue', 'Investment indicators' etc.)
-Application data is stored 'in memory' using DataContainer object. DataContainer is build from csv files, downloaded from external resource.
- 
-Application downloads csv files in Zip format. CSV files used by application are available at:
+[core] module contains data model and business rules, shared to other application modules. Core functionality is package 'analyzer'. It provides algorithms typical for financial application (eg.'Investment revenue', 'Investment indicators' etc.)
+For 'in memory' data storage module uses DataContainer object. DataContainer is build from csv files, downloaded from external resource.
+Downloaded csv files (in ZIP format) are available at:
 
     http://bossa.pl/notowania/pliki/eod/omega/
     

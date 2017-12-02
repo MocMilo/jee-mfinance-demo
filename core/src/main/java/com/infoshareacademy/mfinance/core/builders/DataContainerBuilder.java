@@ -39,12 +39,10 @@ public class DataContainerBuilder {
      */
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DataContainerBuilder.class);
-
     private static final boolean IS_DEMO_MODE = true;
     private static final String CONFIGURATION_FILE_PATH = "configuration/configuration.json";
 
     private Configuration configuration;
-
     private InvestmentFundListBuilder investmentFundBuilder = new InvestmentFundListBuilder();
     private InvestmentCurrencyListBuilder investmentCurrencyBuilder = new InvestmentCurrencyListBuilder();
 
@@ -68,9 +66,7 @@ public class DataContainerBuilder {
     }
 
     public DataContainer getDataContainer() {
-
         new BossaDataFilesProvider(configuration, IS_DEMO_MODE).getCSVFiles();
-
         if (IS_DEMO_MODE) {
             currencyFilePaths = filePathsProvider.generateTempCurrencyFilePaths();
             fundFilePaths = filePathsProvider.generateTempFundFilePaths();
@@ -78,18 +74,13 @@ public class DataContainerBuilder {
             currencyFilePaths = filePathsProvider.generateCurrencyFilePaths(configuration);
             fundFilePaths = filePathsProvider.generateFundFilePaths(configuration);
         }
-
         this.buildFunds();
         this.buildCurrencies();
-
-        LOGGER.info("DataContainer - total amount of investments:{}", investments.size());
-
         return new DataContainer(investmentFundBuilder.getNumberOfFunds(),
                 investmentCurrencyBuilder.getNumberOfCurrencies(), investments);
     }
 
     private void buildCurrencies() {
-
         currencyFilePaths.forEach((FilePath filePath) -> {
             investmentCurrencyBuilder.createCurrenciesFromFile(filePath.getFilePath());
         });
@@ -98,7 +89,6 @@ public class DataContainerBuilder {
     }
 
     private void buildFunds() {
-
         fundFilePaths.forEach((FilePath filePath) -> {
             investmentFundBuilder.createFundsFromFile(filePath.getFilePath());
         });

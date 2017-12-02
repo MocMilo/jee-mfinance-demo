@@ -5,10 +5,10 @@ import com.infoshareacademy.mfinance.core.utils.ResourcesFileReader;
 import com.infoshareacademy.web.model.webconfiguration.WebConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.io.*;
 
 public class WebConfigurationProvider {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(WebConfigurationProvider.class);
     private static final String WEB_CONFIGURATION_FILE_PATH = "configuration/webconfiguration.json";
 

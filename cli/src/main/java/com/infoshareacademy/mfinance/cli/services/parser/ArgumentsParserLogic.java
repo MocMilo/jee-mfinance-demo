@@ -8,18 +8,16 @@ import com.infoshareacademy.mfinance.cli.services.parser.strategies.ValidationSt
 import java.util.HashMap;
 import java.util.Map;
 
-public class ApplicationArgumentsParser {
+public class ArgumentsParserLogic {
 
     private static Map<String, ValidationStrategy> validationStratiegies = new HashMap<>();
 
     static {
-
         validationStratiegies.put(analysisNames.IVR.toString(), new IVRValidationStrategy());
         validationStratiegies.put(analysisNames.IND.toString(), new INDValidationStrategy());
     }
 
     public ParserResult parse(String[] args) {
-
         if (args.length > 0) {
             String analysisCommandName = args[0];
             return validationStratiegies.get(analysisCommandName).validate(args);

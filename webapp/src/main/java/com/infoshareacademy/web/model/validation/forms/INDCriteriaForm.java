@@ -6,7 +6,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class INDCriteriaForm extends CriteriaForm {
-
     private String investmentName;
 
     @NotNull(message = "Investment name cannot be empty")

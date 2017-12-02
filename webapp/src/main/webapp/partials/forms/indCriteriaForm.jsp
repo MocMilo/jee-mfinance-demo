@@ -8,7 +8,7 @@
 <p>Enter name of investment: </p>
 <form method="post" action="/validation">
     <input type="hidden" value="IND" name="strategy"/>
-    <p>Investment name (eg."CHF"):<input type="text" name="investmentName" value="${investmentName}" required/></p>
+    <p>Investment name (eg."CHF"):<input type="text" name="investmentName" value="${criteriaForm.investmentName}" required/></p>
     <jsp:include page="/partials/addFavourite.jsp"/>
     <button type="submit">Submit</button>
 </form>

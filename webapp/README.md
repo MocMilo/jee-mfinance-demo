@@ -6,18 +6,18 @@
 ## Requirements ##
 
 * docker-compose 1.8.0
-* Google+ profile (to login)
+* Google profile (to login)
          
 ## Structure ##          
 
-[webapp] module is a servlet-jsp web application. It is using [core] module features to provide financial analysis results for criteria submitted by user. To authenticate user application uses Google+ Auth 2.0 service. 
+[webapp] module is a servlet-jsp web application. It is using [core] module features to provide financial analysis results for criteria submitted by user. For user authentication application uses Google OAuth 2.0 service. 
 
 used technologies:
 
 * Java EE 1.7
-* Wildfly 10 web server
+* JBoss WildFly 10.1 application server
 * JPA 1.0.2 with MySQL 6.0
-* Docker 1.8.0
+* Docker Compose 1.8
 
 All dependencies and plugins configurations are in pom.xml file.
 

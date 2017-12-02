@@ -5,9 +5,6 @@ import com.infoshareacademy.web.services.validators.IVRValidationStrategy;
 import com.infoshareacademy.web.model.validation.ValidationResult;
 import com.infoshareacademy.web.services.validators.ValidationStrategy;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,15 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-
 import java.util.HashMap;
 import java.util.Map;
 
 
 @WebServlet(urlPatterns = "/validation")
 public class ValidationStrategiesServlet extends HttpServlet {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(ValidationStrategiesServlet.class);
     private static Map<String, ValidationStrategy> validationStrategies = new HashMap<>();
 
     static {
@@ -33,30 +27,17 @@ public class ValidationStrategiesServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         ValidationResult validationResult = this.getValidationResult(req);
-
         if (!validationResult.getViolations().isEmpty()) {
-
-           // LOGGER.info("Violations in criteria form, redirect back to criteria. UserCustomName:{} strategy {}",
-                    //validationResult.getCriteria().getUserCustomName(),
-                    //validationResult.getCriteria().getStrategy());
-
             req = validationResult.getReq();
             req.getRequestDispatcher("/analysisCriteria.jsp").forward(req, resp);
             return;
         }
-
-       // LOGGER.info("No violations redirect to favourites{} strategy {}",
-               // validationResult.getCriteria().getUserCustomName(),
-                //validationResult.getCriteria().getStrategy());
-
         req.setAttribute("criteria", validationResult.getCriteria());
         req.getRequestDispatcher("/favourite").forward(req, resp);
     }
 
     private ValidationResult getValidationResult(HttpServletRequest req) {
-
         String strategy = req.getParameter("strategy");
         return validationStrategies.get(strategy).getValidationResult(req);
     }

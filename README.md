@@ -14,9 +14,9 @@ Each module has it's own POM file with necessary meta information.
 
 * Open JDK 1.8.0
 * Apache Maven 3.3.9
-* docker-compose 1.8.0
+* Docker Compose 1.8.0
 
 ## Build and run ##
 
-Each of modules has its own build and run instructions inside it's own README.md file.
+Each of modules has it's own 'build and run' instructions inside it's own README.md file.
 

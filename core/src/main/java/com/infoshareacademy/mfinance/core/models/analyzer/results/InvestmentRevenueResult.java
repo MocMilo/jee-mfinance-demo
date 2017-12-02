@@ -3,10 +3,8 @@ package com.infoshareacademy.mfinance.core.models.analyzer.results;
 import java.math.BigDecimal;
 
 public class InvestmentRevenueResult extends AnalysisResult {
-
     private BigDecimal capitalRevenueValue;
     private BigDecimal capitalRevenueDeltaPercentValue;
-
 
     public BigDecimal getCapitalRevenueValue() {
         return capitalRevenueValue;
@@ -14,6 +12,14 @@ public class InvestmentRevenueResult extends AnalysisResult {
 
     public BigDecimal getCapitalRevenueDeltaPercentValue() {
         return capitalRevenueDeltaPercentValue;
+    }
+
+    public void setCapitalRevenueValue(BigDecimal capitalRevenueValue) {
+        this.capitalRevenueValue = capitalRevenueValue;
+    }
+
+    public void setCapitalRevenueDeltaPercentValue(BigDecimal capitalRevenueDeltaPercentValue) {
+        this.capitalRevenueDeltaPercentValue = capitalRevenueDeltaPercentValue;
     }
 
     public InvestmentRevenueResult() {

@@ -1,7 +1,6 @@
 package com.infoshareacademy.web.model.analyzer.results;
 
 public abstract class WebAnalysisResult {
-
     protected String strategy;
     protected String errorMessage;
 

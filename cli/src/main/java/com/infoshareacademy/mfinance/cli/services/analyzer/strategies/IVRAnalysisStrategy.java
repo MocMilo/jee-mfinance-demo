@@ -10,21 +10,16 @@ import com.infoshareacademy.mfinance.cli.model.results.IVRResult;
 import com.infoshareacademy.mfinance.cli.utils.converters.InvestmentRevenueResultConverter;
 import com.infoshareacademy.mfinance.cli.model.ParserResult;
 
-public class IVRAnalysisStrategy implements AnalysisStrategy{
-
+public class IVRAnalysisStrategy implements AnalysisStrategy {
     private IVRResult ivrResult;
     private InvestmentRevenueCriteriaConverter criteriaConverter = new InvestmentRevenueCriteriaConverter();
     private InvestmentRevenueResultConverter resultConverter = new InvestmentRevenueResultConverter();
 
-
     @Override
     public AnalysisResult getResult(ParserResult result, DataContainer container) {
-
         IVRArgs args = (IVRArgs) result.getArguments();
-
         InvestmentRevenue revenue =
                 new InvestmentRevenue(container, criteriaConverter.convertFrom(args));
-
         try {
             ivrResult = resultConverter.convertFrom(revenue.getResult());
         } catch (NoDataForCriteria e) {

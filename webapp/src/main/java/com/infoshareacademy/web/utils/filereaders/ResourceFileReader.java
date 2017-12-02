@@ -7,13 +7,10 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class ResourceFileReader {
-
     public Path resourceFilePath;
-
     public ResourceFileReader(Path filePath) {
         this.resourceFilePath = filePath;
     }
-
     public String getFileAsString() throws IOException {
         List<String> fileContent = Files.readAllLines(resourceFilePath, StandardCharsets.UTF_8);
         StringBuilder stringBuilder = new StringBuilder();

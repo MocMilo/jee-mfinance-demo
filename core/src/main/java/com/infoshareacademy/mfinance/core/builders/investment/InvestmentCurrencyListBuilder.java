@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InvestmentCurrencyListBuilder extends InvestmentListBuilder {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(InvestmentCurrencyListBuilder.class);
     private List<InvestmentCurrency> currencies = new ArrayList<>();
 
     public int getNumberOfCurrencies() {
@@ -22,15 +20,8 @@ public class InvestmentCurrencyListBuilder extends InvestmentListBuilder {
     }
 
     public void createCurrenciesFromFile(String filePath) {
-        try {
             List<Quotation> quotationList = this.getQuotationsList(filePath);
             String name = quotationList.get(0).getName();
-
             currencies.add(new InvestmentCurrency(name, quotationList));
-
-        } catch (Exception e) {
-            LOGGER.error("Failed to build InvestmentCurrency form locations:{}", e.getMessage());
-        }
     }
-
 }

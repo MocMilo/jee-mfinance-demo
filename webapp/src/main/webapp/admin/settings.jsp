@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,9 +19,9 @@
 <form action="../admin/settings" method="post">
     <button type="submit">Press to reload bossa csv files...</button>
 </form>
-</br>
 <br>
-</br>
+<br>
+<br>
 <jsp:include page="../partials/footer.jsp"/>
 </body>
 </html>

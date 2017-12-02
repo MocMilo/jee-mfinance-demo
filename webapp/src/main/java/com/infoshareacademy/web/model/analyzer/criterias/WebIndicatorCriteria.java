@@ -1,32 +1,25 @@
 package com.infoshareacademy.web.model.analyzer.criterias;
 
 import com.infoshareacademy.web.model.user.User;
+import com.infoshareacademy.web.model.validation.forms.INDCriteriaForm;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 public class WebIndicatorCriteria extends WebAnalysisCriteria {
-
     private static final String STRATEGY = "IND";
 
     @ManyToOne
     private User user;
-
     @Id
     @GeneratedValue
     private long id;
     private String investmentName;
-
     private LocalDateTime creationDateTime;
     private LocalDateTime lastUpdateDateTime;
     private String userCustomName;
-
     private boolean isFavourite;
-
-    public WebIndicatorCriteria() {
-        this.strategy = STRATEGY;
-    }
 
     public long getId() {
         return id;
@@ -86,7 +79,16 @@ public class WebIndicatorCriteria extends WebAnalysisCriteria {
         lastUpdateDateTime = LocalDateTime.now();
     }
 
+    public WebIndicatorCriteria() {
+        this.strategy = STRATEGY;
+    }
 
+    public WebIndicatorCriteria(INDCriteriaForm form, String userCustomName, boolean isFavourite) {
+        this.strategy=STRATEGY;
+        this.investmentName = form.getInvestmentName();
+        this.userCustomName = userCustomName;
+        this.isFavourite = isFavourite;
+    }
 }
 
 

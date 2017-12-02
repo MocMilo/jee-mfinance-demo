@@ -19,7 +19,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class InvestmentIndicatorResultConverterTest {
-
     private IndicatorResultConverter converter = new IndicatorResultConverter();
 
     private Quotation coreQuotation;

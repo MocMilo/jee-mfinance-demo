@@ -1,11 +1,9 @@
 package com.infoshareacademy.mfinance.cli.view;
 
-
 import com.infoshareacademy.mfinance.cli.model.results.AnalysisResult;
 import com.infoshareacademy.mfinance.cli.model.ParserResult;
 
 public class MessageComposer {
-
     public void printValidationMessage(ParserResult parserResult) {
         if (!parserResult.isValid()) {
             System.out.print(ConstantMessagesProvider.WELCOME_MESSAGE
@@ -21,6 +19,4 @@ public class MessageComposer {
             System.out.println(analysisResult.toString());
         }
     }
-
-
 }

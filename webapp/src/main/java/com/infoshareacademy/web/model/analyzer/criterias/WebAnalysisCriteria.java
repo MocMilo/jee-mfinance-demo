@@ -6,7 +6,6 @@ public abstract class WebAnalysisCriteria {
     protected String userCustomName;
     protected boolean isFavourite;
 
-
     public String getStrategy() {
         return strategy;
     }

@@ -3,7 +3,6 @@ package com.infoshareacademy.mfinance.core.models.analyzer.results;
 import com.infoshareacademy.mfinance.core.models.bossa.Quotation;
 
 public class IndicatorResult extends AnalysisResult {
-
     private String name;
     private Quotation firstQuotation;
     private Quotation lastQuotation;
@@ -12,7 +11,6 @@ public class IndicatorResult extends AnalysisResult {
     private Quotation maxDeltaPlus;
     private Quotation maxDeltaMinus;
     private Quotation actualValue;
-
 
     public Quotation getFirstQuotation() {
         return firstQuotation;

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns ="/admin/user")
+@WebServlet(urlPatterns = "/admin/user")
 public class UserDetailsServlet extends HttpServlet {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserDetailsServlet.class);
@@ -34,19 +34,15 @@ public class UserDetailsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         boolean isAdmin = req.getParameter("isAdmin") != null;
-
         User user = userService.get(Long.parseLong(req.getParameter("id")));
-        if(user!=null) {
+        if (user != null) {
             user.setAdmin(isAdmin);
             userService.update(user);
-        }
-        else {
+        } else {
             LOGGER.error("Failed to update user. User doesn't exists.");
             throw new NullPointerException();
         }
-
         req.setAttribute(ConstantsProvider.ALL_USERS, userService.getAllUsers());
         req.getRequestDispatcher("/admin/users").forward(req, resp);
     }

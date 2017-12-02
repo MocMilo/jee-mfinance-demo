@@ -1,7 +1,6 @@
 package com.infoshareacademy.mfinance.core.models.locations.path;
 
 public class FilePath {
-
     private String filePath;
 
     public String getFilePath() {
@@ -11,5 +10,4 @@ public class FilePath {
     public FilePath(String filePath) {
         this.filePath = filePath;
     }
-
 }

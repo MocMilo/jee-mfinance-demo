@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -9,6 +8,7 @@
 <tags:userLogin user="${sessionScope.authenticatedUser}"/>
 <jsp:include page="partials/navigation/backToUserMenu.jsp"/>
 <br>
+<c:set var="criteriaForm" value="${criteriaForm}" scope="request"/>
 <c:choose>
     <c:when test="${param.strategy=='IVR'}">
         <jsp:include page="partials/forms/ivrCriteriaForm.jsp"/>

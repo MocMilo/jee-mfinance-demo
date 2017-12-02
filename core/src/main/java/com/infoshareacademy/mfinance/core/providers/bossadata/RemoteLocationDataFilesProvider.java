@@ -1,9 +1,8 @@
 package com.infoshareacademy.mfinance.core.providers.bossadata;
 
-
 import com.infoshareacademy.mfinance.core.models.configuration.Configuration;
 import com.infoshareacademy.mfinance.core.utils.TemporaryFoldersProviderUtil;
-import com.infoshareacademy.mfinance.core.utils.UnzipUtil;
+import com.infoshareacademy.mfinance.core.utils.ZipUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +17,6 @@ import java.time.format.DateTimeFormatter;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 public class RemoteLocationDataFilesProvider implements DataFilesProvider {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(RemoteLocationDataFilesProvider.class);
     private final String DATE_PATTERN = "yyyyMMdd";
     private DateTimeFormatter formatter;
@@ -32,15 +30,13 @@ public class RemoteLocationDataFilesProvider implements DataFilesProvider {
     private String currencyURL;
     private String fundURL;
 
+    private URL url;
     private Path targetPath;
 
     private Configuration configuration;
 
-
     public RemoteLocationDataFilesProvider(Configuration configuration) {
-
         this.configuration = configuration;
-
         currencyURL = configuration.getCurrencyUrl().getFileUrl();
         fundURL = configuration.getFundUrl().getFileUrl();
     }
@@ -92,21 +88,14 @@ public class RemoteLocationDataFilesProvider implements DataFilesProvider {
     }
 
     private void getBossaDataFiles() {
-        try {
             Path currencyZipFilePath = this.download(currencyURL, currencyZipFolderPath);
             Path fundZipFilePath = this.download(fundURL, fundZipFolderPath);
-
-            UnzipUtil.saveZipFileContent(currencyZipFilePath, currencyUnzipTargetPath);
-            UnzipUtil.saveZipFileContent(fundZipFilePath, fundUnzipTargetPath);
-        } catch (IOException e) {
-            e.printStackTrace();
-            LOGGER.error("Failed to update Bossa csv files from remote location (resources unavailable).");
-        }
+            ZipUtil.saveZipFileContent(currencyZipFilePath, currencyUnzipTargetPath);
+            ZipUtil.saveZipFileContent(fundZipFilePath, fundUnzipTargetPath);
     }
 
-    private Path download(String sourceURL, String targetDirectory) throws IOException {
-        URL url = new URL(sourceURL);
-
+    private Path download(String sourceURL, String targetDirectory) {
+        url = this.getURL(sourceURL);
         try (InputStream stream = url.openStream()) {
             String fileName = sourceURL.substring(sourceURL.lastIndexOf('/') + 1, sourceURL.length());
             targetPath = new File(targetDirectory
@@ -115,25 +104,29 @@ public class RemoteLocationDataFilesProvider implements DataFilesProvider {
                     .toPath();
 
             Files.copy(stream, targetPath, REPLACE_EXISTING);
-
             LOGGER.info("File saved: source:{}, target location:{}", sourceURL, targetPath);
         } catch (IOException e) {
             LOGGER.error("Failed to download files from remote location:{}", sourceURL);
-            throw new IOException();
         }
-
         return targetPath;
     }
 
     private String getFileNameWithDate(String defaultFileName) {
         LocalDate localDate = LocalDate.now();
         formatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
-
         String formattedDate = localDate.format(formatter);
-
         return formattedDate
                 .concat("_")
                 .concat(defaultFileName);
+    }
+
+    private URL getURL(String urlString) {
+        try {
+            url = new URL(urlString);
+        } catch (IOException e) {
+            LOGGER.error("Failed to get URL from String",e.getMessage());
+        }
+        return url;
     }
 }
 

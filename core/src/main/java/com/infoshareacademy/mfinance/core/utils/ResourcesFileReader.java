@@ -9,7 +9,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class ResourcesFileReader {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(ResourcesFileReader.class);
     private InputStream inputStream;
     private String resourceFileName;
@@ -19,12 +18,9 @@ public class ResourcesFileReader {
     }
 
     public String getFileAsString() {
-
         StringBuilder stringBuilder = new StringBuilder();
-
         try {
             inputStream = getClass().getClassLoader().getResourceAsStream(resourceFileName);
-
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
             while ((line = bufferedReader.readLine()) != null) {

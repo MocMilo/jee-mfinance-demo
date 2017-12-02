@@ -1,6 +1,9 @@
 package com.infoshareacademy.web.model.analyzer.criterias;
 
+import com.infoshareacademy.mfinance.core.utils.BigDecimalUtil;
+import com.infoshareacademy.mfinance.core.utils.LocalDateUtil;
 import com.infoshareacademy.web.model.user.User;
+import com.infoshareacademy.web.model.validation.forms.IVRCriteriaForm;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -9,27 +12,21 @@ import java.time.LocalDateTime;
 
 @Entity
 public class WebInvestmentRevenueCriteria extends WebAnalysisCriteria {
-
     private static final String STRATEGY = "IVR";
 
     @Id
     @GeneratedValue
     private long id;
-
     private String investmentName;
     private BigDecimal investedCapital;
     private LocalDate buyDate;
     private LocalDate sellDate;
-
     @ManyToOne
     private User user;
-
     private String userCustomName;
     private LocalDateTime creationDateTime;
     private LocalDateTime lastUpdateDateTime;
-    private LocalDate testLocalDate;
     private boolean isFavourite;
-
 
     @PrePersist
     private void onCreate() {
@@ -40,7 +37,6 @@ public class WebInvestmentRevenueCriteria extends WebAnalysisCriteria {
     private void onUpdate() {
         lastUpdateDateTime = LocalDateTime.now();
     }
-    
 
     public String getInvestmentName() {
         return investmentName;
@@ -106,18 +102,6 @@ public class WebInvestmentRevenueCriteria extends WebAnalysisCriteria {
         return lastUpdateDateTime;
     }
 
-    public LocalDate getTestLocalDate() {
-        return testLocalDate;
-    }
-
-    public void setTestLocalDate(LocalDate testLocalDate) {
-        this.testLocalDate = testLocalDate;
-    }
-
-    public WebInvestmentRevenueCriteria() {
-        this.strategy = STRATEGY;
-    }
-
     public void setFavourite(boolean favourite) {
         isFavourite = favourite;
     }
@@ -126,4 +110,17 @@ public class WebInvestmentRevenueCriteria extends WebAnalysisCriteria {
         return isFavourite;
     }
 
+    public WebInvestmentRevenueCriteria() {
+        this.strategy = STRATEGY;
+    }
+
+    public WebInvestmentRevenueCriteria(IVRCriteriaForm form, String userCustomName, boolean isFavourite) {
+        this.strategy = STRATEGY;
+        this.investmentName = form.getInvestmentName();
+        this.investedCapital = BigDecimalUtil.parseMoney(form.getCapital());
+        this.buyDate = LocalDateUtil.parseForm(form.getBuyDate());
+        this.sellDate = LocalDateUtil.parseForm(form.getSellDate());
+        this.userCustomName = userCustomName;
+        this.isFavourite = isFavourite;
+    }
 }

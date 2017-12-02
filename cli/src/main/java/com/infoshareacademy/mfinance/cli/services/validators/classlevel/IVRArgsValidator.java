@@ -10,12 +10,10 @@ public class IVRArgsValidator implements ConstraintValidator<ValidIVRArgs, IVRAr
 
     @Override
     public void initialize(ValidIVRArgs constraintAnnotation) {
-
     }
 
     @Override
     public boolean isValid(IVRArgs ivrArgs, ConstraintValidatorContext constraintValidatorContext) {
-
         return LocalDateUtil.parseForm(ivrArgs.getStartDate())
                 .isBefore(LocalDateUtil.parseForm(ivrArgs.getEndDate()));
     }

@@ -1,11 +1,9 @@
 package com.infoshareacademy.web.utils.converters;
 
-
 import com.infoshareacademy.mfinance.core.models.analyzer.criteria.InvestmentRevenueCriteria;
 import com.infoshareacademy.web.model.analyzer.criterias.WebInvestmentRevenueCriteria;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -14,9 +12,9 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
-public class InvestmentRevenueCriteriaConverterTest {
+public class InvestmentRevenueCriteriaConverterUtilTest {
 
-    private InvestmentRevenueCriteriaConverter converter = new InvestmentRevenueCriteriaConverter();
+    private InvestmentRevenueCriteriaConverterUtil converter = new InvestmentRevenueCriteriaConverterUtil();
     WebInvestmentRevenueCriteria webCriteria;
     private final BigDecimal capital = new BigDecimal(10000.00);
     private final DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
@@ -35,12 +33,10 @@ public class InvestmentRevenueCriteriaConverterTest {
 
     @Test
     public void shouldReturnConvertedInvestmentRevenueCriteria() {
-
         InvestmentRevenueCriteria investmentRevenueCriteria = converter.convertFrom(webCriteria);
         assertThat(investmentRevenueCriteria.getInvestmentName() ,is(equalTo(investmentName)));
         assertThat(investmentRevenueCriteria.getInvestedCapital(),is(equalTo(capital)));
         assertThat(investmentRevenueCriteria.getBuyDate(),is(equalTo(BUY_DATE)));
         assertThat(investmentRevenueCriteria.getSellDate(),is(equalTo(SELL_DATE)));
     }
-
 }

@@ -2,10 +2,8 @@ package com.infoshareacademy.mfinance.cli.model.results;
 
 import com.infoshareacademy.mfinance.cli.model.results.embeded.CLIQuotation;
 
-public class INDResult extends AnalysisResult  {
-
+public class INDResult extends AnalysisResult {
     private String name;
-
     private CLIQuotation firstQuotation;
     private CLIQuotation lastQuotation;
     private CLIQuotation maxValueQuotation;

@@ -32,7 +32,6 @@ public class IVRCriteriaForm extends CriteriaForm {
     @Pattern(regexp = "^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$", groups = FieldsCheck.class, message = "Wrong sell date format, should be of pattern: YYYY-MM-DD.")
     private String sellDate;
 
-
     public String getInvestmentName() {
         return investmentName;
     }

@@ -23,10 +23,8 @@ import java.util.Map;
 
 @WebServlet(urlPatterns = "/favourite")
 public class FavouritesStrategiesServlet extends HttpServlet {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(FavouritesStrategiesServlet.class);
     private static Map<String, FavouritesPersistence> persistenceStrategies = new HashMap<>();
-
     private User user;
 
     @Inject
@@ -39,30 +37,24 @@ public class FavouritesStrategiesServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         WebAnalysisCriteria webAnalysisCriteria = (WebAnalysisCriteria) req.getAttribute("criteria");
         user = (User) req.getSession().getAttribute(ConstantsProvider.AUTH_USER);
-
         if (webAnalysisCriteria.isFavourite()) {
             this.persist(webAnalysisCriteria);
         }
-
         LOGGER.info("Redirect to analyzer servlet. isFavourite{}, strategy:{}, userCustomName:{}",
                 webAnalysisCriteria.isFavourite(),
                 webAnalysisCriteria.getStrategy(),
                 webAnalysisCriteria.getUserCustomName());
-
         req.setAttribute("criteria", webAnalysisCriteria);
         req.getRequestDispatcher("/analysis").forward(req, resp);
     }
 
     private void persist(WebAnalysisCriteria webAnalysisCriteria) {
-
         LOGGER.info("Criteria to persist: isFavourite:{} strategy:{} custom name:{}",
                 webAnalysisCriteria.isFavourite(),
                 webAnalysisCriteria.getStrategy(),
                 webAnalysisCriteria.getUserCustomName());
-
         String strategy = webAnalysisCriteria.getStrategy();
         persistenceStrategies.get(strategy).persist(webAnalysisCriteria, user, userService);
     }

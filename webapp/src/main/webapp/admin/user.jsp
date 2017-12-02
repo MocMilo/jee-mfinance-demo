@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +10,6 @@
 <img src="../resources/icons/banner_top.jpg">
 <tags:userLogin user="${sessionScope.authenticatedUser}"/>
 <jsp:include page="../partials/navigation/backToAdminMenu.jsp"/>
-
 <p><b>User Details</b></p>
 <form method="post" action="/admin/user">
     <p>Id:<b>${contentWrapper.id}</b></p>
@@ -32,7 +30,6 @@
         <button type="submit">Update!</button>
     </p>
 </form>
-
 <jsp:include page="../partials/footer.jsp"/>
 </body>
 </html>

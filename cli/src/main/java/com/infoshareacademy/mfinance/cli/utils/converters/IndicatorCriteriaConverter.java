@@ -1,13 +1,14 @@
-
 package com.infoshareacademy.mfinance.cli.utils.converters;
 
 import com.infoshareacademy.mfinance.core.models.analyzer.criteria.IndicatorCriteria;
 import com.infoshareacademy.mfinance.cli.model.arguments.INDArgs;
+import org.modelmapper.ModelMapper;
 
 public class IndicatorCriteriaConverter {
 
-    public IndicatorCriteria convertFrom(INDArgs indArgs) {
+    private ModelMapper mapper = new ModelMapper();
 
-        return new IndicatorCriteria(indArgs.getInvestmentName());
+    public IndicatorCriteria convertFrom(INDArgs indArgs) {
+        return mapper.map(indArgs, IndicatorCriteria.class);
     }
 }

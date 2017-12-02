@@ -1,8 +1,5 @@
 package com.infoshareacademy.mfinance.cli.services.validators.classlevel;
 
-
-
-
 import java.lang.annotation.*;
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -12,7 +9,6 @@ import javax.validation.Payload;
 @Constraint(validatedBy = IVRArgsValidator.class)
 @Documented
 public @interface ValidIVRArgs {
-
         String message () default "Wrong dates order: buy date should be before sell date.";
         Class<?>[] groups () default {};
         Class<? extends Payload>[] payload () default {};

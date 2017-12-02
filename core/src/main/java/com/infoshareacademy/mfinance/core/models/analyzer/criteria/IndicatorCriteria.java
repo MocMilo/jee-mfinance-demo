@@ -1,8 +1,6 @@
 package com.infoshareacademy.mfinance.core.models.analyzer.criteria;
 
-
 public class IndicatorCriteria extends AnalysisCriteria {
-
     private String investmentName;
 
     public String getInvestmentName() {
@@ -12,7 +10,6 @@ public class IndicatorCriteria extends AnalysisCriteria {
     public void setInvestmentName(String investmentName) {
         this.investmentName = investmentName;
     }
-
 
     public IndicatorCriteria() {
     }

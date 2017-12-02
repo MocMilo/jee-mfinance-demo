@@ -8,16 +8,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class IVRFavouriteStrategy implements FavouritesPersistence {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(IVRFavouriteStrategy.class);
 
     @Override
     public void persist(WebAnalysisCriteria criteria, User user, IUserService userService) {
-
         WebInvestmentRevenueCriteria ivrCriteria = (WebInvestmentRevenueCriteria) criteria;
-
         LOGGER.info("Save IVR criteria: isFavourite:{} custom name:{}", criteria.isFavourite(), criteria.getUserCustomName());
-
         user.getFavouritesIVR().add(ivrCriteria);
         userService.update(user);
     }

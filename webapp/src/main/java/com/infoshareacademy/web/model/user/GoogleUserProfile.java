@@ -3,7 +3,6 @@ package com.infoshareacademy.web.model.user;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GoogleUserProfile {
-
     private String id;
     private String email;
     private String name;

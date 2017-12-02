@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class CLIQuotation {
-
     private String name;
     private LocalDate date;
     private BigDecimal close;
@@ -17,7 +16,6 @@ public class CLIQuotation {
         this.name = name;
         this.date = date;
         this.close = close;
-
     }
 
     public String getName() {
@@ -51,5 +49,4 @@ public class CLIQuotation {
     public void setDeltaClose(BigDecimal deltaClose) {
         this.deltaClose = deltaClose;
     }
-
 }

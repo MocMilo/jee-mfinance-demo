@@ -27,38 +27,23 @@ public class InvestmentInvestmentFundBuilderTest {
     }
 
     @Test
-    public void CreateFundFromFile() throws Exception {
-
+    public void CreateFundFromFile() {
         int expected = 1;
         int evaluated = investmentFundBuilder.getNumberOfFunds();
-
         assertThat(investmentFund, not(equalTo(nullValue())));
         assertThat(evaluated, is(equalTo(expected)));
     }
 
     @Test
-    public void FundContainsLoadedData() throws Exception {
-
+    public void FundContainsLoadedData() {
         String expectedName = "AGI001";
-
         assertThat(investmentFund.getName(), is(equalTo(expectedName)));
         assertThat(investmentFund.getQuotations(), not(equalTo(nullValue())));
     }
 
     @Test
-    public void FundContainsLoadedQuotationsData() throws Exception {
-
+    public void FundContainsLoadedQuotationsData() {
         int numberOfQuotations = investmentFundBuilder.getInvestmentFunds().get(0).getQuotations().size();
-
         assertThat(NUMBER_OF_ROWS, is(numberOfQuotations));
-    }
-
-    // @Test(expected = Exception.class)
-    public void shouldFailWhenFileNotFound(){
-
-        //fixme (should throw exception)
-
-        String notExistingFilePath = "/NotExistingFilePath";
-        new InvestmentFundListBuilder().createFundsFromFile(notExistingFilePath);
     }
 }

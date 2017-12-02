@@ -4,15 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataContainer {
-
     private int fundsCount = 0;
     private int currenciesCount = 0;
-
     private List<Investment> investments = new ArrayList<>();
-
-    public List<Investment> getInvestments() {
-        return investments;
-    }
 
     public int getFundsCount() {
         return fundsCount;
@@ -28,6 +22,10 @@ public class DataContainer {
 
     public void setCurrenciesCount(int currenciesCount) {
         this.currenciesCount = currenciesCount;
+    }
+
+    public List<Investment> getInvestments() {
+        return investments;
     }
 
     public void setInvestments(List<Investment> investments) {
