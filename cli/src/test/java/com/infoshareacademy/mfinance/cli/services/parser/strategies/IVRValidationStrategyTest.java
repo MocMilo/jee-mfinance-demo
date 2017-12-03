@@ -1,7 +1,6 @@
 package com.infoshareacademy.mfinance.cli.services.parser.strategies;
 
 import com.infoshareacademy.mfinance.cli.model.ParserResult;
-import org.apache.logging.log4j.core.util.ArrayUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,6 +13,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class IVRValidationStrategyTest {
 
     private String[] args = {"IVR", "USD", "1000.25", "2015-09-07", "2015-09-08"};
+    private String[] argsWrongNumber = {"IVR", "USD", "1000.25", "2015-09-07"};
     private IVRValidationStrategy strategy;
     private ParserResult result;
 
@@ -32,7 +32,7 @@ public class IVRValidationStrategyTest {
 
     @Test
     public void shouldBeNotValidWrongNumberOfArgsLessThanNedded() {
-        result = strategy.validate(ArrayUtils.remove(args, 1));
+        result = strategy.validate(argsWrongNumber);
         assertThat(result.isValid(), is(equalTo(false)));
         assertThat(result.getArguments(), is(equalTo(null)));
         assertThat(result.getErrorMessage(), is(equalTo("Wrong number of arguments.")));

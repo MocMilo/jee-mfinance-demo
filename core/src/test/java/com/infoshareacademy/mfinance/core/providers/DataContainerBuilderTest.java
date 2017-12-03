@@ -3,8 +3,6 @@ package com.infoshareacademy.mfinance.core.providers;
 import com.infoshareacademy.mfinance.core.builders.DataContainerBuilder;
 import com.infoshareacademy.mfinance.core.models.bossa.DataContainer;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
