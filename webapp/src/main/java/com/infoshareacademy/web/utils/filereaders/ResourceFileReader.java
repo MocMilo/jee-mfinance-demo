@@ -1,13 +1,13 @@
 package com.infoshareacademy.web.utils.filereaders;
 
-import java.io.IOException;
+/*import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
+import java.util.List;*/
 
 public class ResourceFileReader {
-    public Path resourceFilePath;
+/*    public Path resourceFilePath;
     public ResourceFileReader(Path filePath) {
         this.resourceFilePath = filePath;
     }
@@ -17,6 +17,6 @@ public class ResourceFileReader {
         for (String item : fileContent) {
             stringBuilder.append(item);
         }
-        return stringBuilder.toString();
-    }
+        return stringBuilder.toString();*/
+   // }
 }

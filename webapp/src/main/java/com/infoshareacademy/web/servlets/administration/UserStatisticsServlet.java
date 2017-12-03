@@ -23,14 +23,12 @@ public class UserStatisticsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         req.setAttribute(ALL_INV_REV_CRIT, favouriteService.getAllRevenueCriteria());
         req.getRequestDispatcher("/admin/statistics.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         req.setAttribute(ALL_INV_REV_CRIT, favouriteService.getAllRevenueCriteria());
         req.getRequestDispatcher("/admin/statistics.jsp").forward(req, resp);
     }

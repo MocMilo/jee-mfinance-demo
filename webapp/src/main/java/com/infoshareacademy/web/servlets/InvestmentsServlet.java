@@ -1,6 +1,6 @@
 package com.infoshareacademy.web.servlets;
 
-import com.infoshareacademy.web.services.bossa.IDataContainerService;
+import com.infoshareacademy.web.services.bossa.DataContainerService;
 import com.infoshareacademy.web.utils.constants.ConstantsProvider;
 
 import javax.inject.Inject;
@@ -14,7 +14,7 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/investments")
 public class InvestmentsServlet extends HttpServlet {
     @Inject
-    private IDataContainerService container;
+    private DataContainerService container;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

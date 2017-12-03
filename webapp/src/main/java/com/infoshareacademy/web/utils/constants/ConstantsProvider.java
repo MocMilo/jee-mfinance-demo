@@ -1,14 +1,8 @@
 package com.infoshareacademy.web.utils.constants;
 
 public class ConstantsProvider {
-
-    private ConstantsProvider() {
-    }
-
-    public static final String AUTH_USER = "authenticatedUser";
     public static final String CONTENT_WRAPPER = "contentWrapper";
     public static final String USER_FAVOURITE_CUSTOM_NAME = "userCustomName";
-    public static final String DATE_PATTERN = "yyyy-MM-dd";
     public static final String INVESTMENT_NAME = "investmentName";
     public static final String CAPITAL = "capital";
     public static final String BUY_DATE = "buyDate";
@@ -21,5 +15,8 @@ public class ConstantsProvider {
     public static final String ALL_INVESTMENTS = "allInvestments";
     public static final String CRITERIA_FORM = "criteriaForm";
     public static final String VIOLATIONS = "violations";
+
+    private ConstantsProvider() {
+    }
 }
 

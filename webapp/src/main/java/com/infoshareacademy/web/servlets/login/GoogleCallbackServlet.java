@@ -5,6 +5,7 @@ import com.github.scribejava.core.model.OAuthRequest;
 import com.github.scribejava.core.model.Response;
 import com.github.scribejava.core.model.Verb;
 import com.github.scribejava.core.oauth.OAuth20Service;
+import com.infoshareacademy.web.model.session.SessionContainer;
 import com.infoshareacademy.web.model.user.GoogleUserProfile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,17 +26,18 @@ import java.util.concurrent.ExecutionException;
 
 @WebServlet(urlPatterns = "callback")
 public class GoogleCallbackServlet extends HttpServlet {
-    private static final String PROTECTED_RESOURCE_URL = "https://www.googleapis.com/oauth2/v2/userinfo";
     private static final Logger LOGGER = LoggerFactory.getLogger(GoogleCallbackServlet.class);
-
+    private static final String PROTECTED_RESOURCE_URL = "https://www.googleapis.com/oauth2/v2/userinfo";
     private static final String OAUTH_SERVICE = "OAuth20Service";
     private static final String SECRET_STATE = "secretState";
-    private static final String AUTH_USER = "authenticatedUser";
     private static final String STATE = "state";
     private static final String CODE = "code";
 
     @Inject
     private IUserService userService;
+
+    @Inject
+    private SessionContainer sessionContainer;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -43,8 +45,9 @@ public class GoogleCallbackServlet extends HttpServlet {
         final String secretState = req.getParameter(STATE);
         final String value = (String) req.getSession().getAttribute(SECRET_STATE);
         if (!secretState.equals(value)) {
-            LOGGER.error("Secret state values don't match! Expected:{}, got:{}", secretState, value);
-            resp.sendRedirect("/index.html");
+            resp.sendRedirect("accessdenied.jsp");
+            LOGGER.error("Failed to match secret state values (expected:{}, received:{}).",
+                    secretState, value);
         }
         OAuth20Service service = (OAuth20Service) req.getSession()
                 .getAttribute(OAUTH_SERVICE);
@@ -56,25 +59,25 @@ public class GoogleCallbackServlet extends HttpServlet {
             service.signRequest(accessToken, request);
             final Response response = service.execute(request);
 
-            if (response.getCode() < 200 && response.getCode() > 299) {
-                LOGGER.error("Problem in accessing Google user profile:{}" + response.getCode());
-                resp.sendRedirect("/index.html");
+            if (response.getCode() < 200 || response.getCode() > 299) {
+                resp.sendRedirect("accessdenied.jsp");
+                LOGGER.error("Failed to access Google user profile:{}" + response.getCode());
             }
-            GoogleUserProfile googleUserProfile = new ObjectMapper()
+            final GoogleUserProfile googleUserProfile = new ObjectMapper()
                     .readValue(response.getBody(), GoogleUserProfile.class);
 
             userService.authorize(googleUserProfile.getEmail(), req);
             this.userRedirection(req, resp);
         } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
+            resp.sendRedirect("accessdenied.jsp");
+            LOGGER.error("Failed process callback authentication request {}", e.getMessage());
         }
     }
 
-    private void userRedirection(HttpServletRequest req, HttpServletResponse resp) {
+    private void userRedirection(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         try {
-            User user = (User) req.getSession().getAttribute(AUTH_USER);
+            final User user = sessionContainer.getUser();
             LOGGER.info("UserAuthenticated: Id:{} login:{} role isAdmin:{}", user.getId(), user.getLogin(), user.getAdmin());
-
             if (!user.getAdmin()) {
                 req.getRequestDispatcher("main").forward(req, resp);
             } else if (user.getAdmin()) {
@@ -82,8 +85,9 @@ public class GoogleCallbackServlet extends HttpServlet {
             } else {
                 req.getRequestDispatcher("accessdenied.jsp").forward(req, resp);
             }
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
+        } catch (ServletException e) {
+            resp.sendRedirect("accessdenied.jsp");
+            LOGGER.error("Failed process callback authentication request {}", e.getMessage());
         }
     }
 }

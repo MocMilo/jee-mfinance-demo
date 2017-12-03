@@ -4,7 +4,7 @@ import com.infoshareacademy.web.model.analyzer.criterias.WebInvestmentRevenueCri
 import com.infoshareacademy.web.model.validation.ValidationResult;
 import com.infoshareacademy.web.model.validation.forms.CriteriaForm;
 import com.infoshareacademy.web.model.validation.forms.IVRCriteriaForm;
-import com.infoshareacademy.web.utils.converters.IVRCriteriaFormParserUtil;
+import com.infoshareacademy.web.utils.parsers.IVRCriteriaFormParserUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;

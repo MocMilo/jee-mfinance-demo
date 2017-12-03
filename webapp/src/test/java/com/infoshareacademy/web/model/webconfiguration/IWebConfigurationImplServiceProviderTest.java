@@ -1,6 +1,6 @@
 package com.infoshareacademy.web.model.webconfiguration;
 
-import com.infoshareacademy.web.services.providers.WebConfigurationProvider;
+import com.infoshareacademy.web.services.webconfiguration.provider.WebConfigurationProvider;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,7 +9,7 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNot.not;
 
-public class WebConfigurationProviderTest {
+public class IWebConfigurationImplServiceProviderTest {
     private WebConfiguration webConfiguration;
 
     @Before

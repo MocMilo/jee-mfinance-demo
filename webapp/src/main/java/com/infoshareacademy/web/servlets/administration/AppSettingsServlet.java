@@ -1,6 +1,6 @@
 package com.infoshareacademy.web.servlets.administration;
 
-import com.infoshareacademy.web.services.bossa.IDataContainerService;
+import com.infoshareacademy.web.services.bossa.DataContainerService;
 
 import com.infoshareacademy.web.utils.constants.ConstantsProvider;
 import org.slf4j.Logger;
@@ -20,7 +20,7 @@ public class AppSettingsServlet extends HttpServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger(AppSettingsServlet.class);
 
     @Inject
-    private IDataContainerService container;
+    private DataContainerService container;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

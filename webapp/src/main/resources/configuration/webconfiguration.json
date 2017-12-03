@@ -1,4 +1,7 @@
 {
-  "defaultAdminAccountLogin":"mfinancetest44@gmail.com"
+  "defaultAdminAccountLogin":"mmociewicz@gmail.com",
+  "clientId":"122677138693-qfl08kemnppv52asvi3s7tra2dptn2mr.apps.googleusercontent.com",
+  "clientSecret":"7wVONyV2eLAyegLFJvip3Lp3",
+  "callbackURL":"http://localhost:8080/callback"
 }
 

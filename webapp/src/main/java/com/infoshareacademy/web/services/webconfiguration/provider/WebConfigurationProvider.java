@@ -1,4 +1,4 @@
-package com.infoshareacademy.web.services.providers;
+package com.infoshareacademy.web.services.webconfiguration.provider;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.infoshareacademy.mfinance.core.utils.ResourcesFileReader;

@@ -1,9 +1,10 @@
 package com.infoshareacademy.web.services.persistence.user;
 
+import com.infoshareacademy.web.model.session.SessionContainer;
 import com.infoshareacademy.web.model.user.User;
-import com.infoshareacademy.web.model.webconfiguration.WebConfiguration;
-import com.infoshareacademy.web.services.providers.WebConfigurationProvider;
+import com.infoshareacademy.web.services.webconfiguration.WebConfigurationService;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpServletRequest;
@@ -11,8 +12,10 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 public class UserPersistence implements IUserService {
-    private static final String AUTH_USER = "authenticatedUser";
-
+    @Inject
+    private WebConfigurationService configurationService;
+    @Inject
+    private SessionContainer sessionContainer;
     @PersistenceContext
     private EntityManager em;
 
@@ -29,8 +32,6 @@ public class UserPersistence implements IUserService {
 
     @Override
     public List<User> getUserByEmail(String userEmail) {
-
-        // TODO implement criteria
         return em.createQuery("select distinct m from User m where m.login=:login", User.class)
                 .setParameter("login", userEmail)
                 .getResultList();
@@ -58,8 +59,9 @@ public class UserPersistence implements IUserService {
         /**
          * User with Admin role is added from properties in WebConfiguration.json file.
          */
-        WebConfiguration webConfiguration = new WebConfigurationProvider().getWebConfigurationFromResources();
-        String defaultAdminLogin = webConfiguration.getDefaultAdminAccountLogin();
+        String defaultAdminLogin = configurationService.get()
+                .getDefaultAdminAccountLogin();
+
         if (!this.getUserByEmail(defaultAdminLogin).isEmpty()) {
             User user = this.getUserByEmail(defaultAdminLogin).stream()
                     .findAny()
@@ -88,6 +90,7 @@ public class UserPersistence implements IUserService {
                     .findAny()
                     .orElseThrow(NullPointerException::new);
         }
-        req.getSession(true).setAttribute(AUTH_USER, user);
+        sessionContainer.setUser(user);
+        sessionContainer.setAuthenticated(true);
     }
 }
