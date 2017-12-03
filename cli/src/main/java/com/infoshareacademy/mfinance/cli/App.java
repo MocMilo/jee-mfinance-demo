@@ -8,12 +8,16 @@ import com.infoshareacademy.mfinance.cli.view.MessageComposer;
 
 public class App {
     public static void main(String[] args) {
-        ParserResult parserResult = new ArgumentsParserLogic().parse(args);
-        new MessageComposer().printValidationMessage(parserResult);
-        if (!parserResult.isValid()) {
-            return;
+        try {
+            ParserResult parserResult = new ArgumentsParserLogic().parse(args);
+            new MessageComposer().printValidationMessage(parserResult);
+            if (!parserResult.isValid()) {
+                return;
+            }
+            AnalysisResult analysisResult = new AnalyzerLogic().getResult(parserResult);
+            new MessageComposer().printResultMessage(analysisResult);
+        } catch (Exception e) {
+            System.out.println("Something went wrong. Exiting application.");
         }
-        AnalysisResult analysisResult = new AnalyzerLogic().getResult(parserResult);
-        new MessageComposer().printResultMessage(analysisResult);
     }
 }

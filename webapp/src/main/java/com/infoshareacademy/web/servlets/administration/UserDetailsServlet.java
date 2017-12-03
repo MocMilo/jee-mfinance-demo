@@ -1,6 +1,6 @@
 package com.infoshareacademy.web.servlets.administration;
 
-import com.infoshareacademy.web.services.persistence.user.IUserService;
+import com.infoshareacademy.web.services.persistence.user.UserService;
 import com.infoshareacademy.web.model.user.User;
 import com.infoshareacademy.web.utils.constants.ConstantsProvider;
 import org.slf4j.Logger;
@@ -20,7 +20,7 @@ public class UserDetailsServlet extends HttpServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserDetailsServlet.class);
 
     @Inject
-    private IUserService userService;
+    private UserService userService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

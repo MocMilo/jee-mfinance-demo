@@ -1,6 +1,6 @@
 package com.infoshareacademy.web.servlets.administration;
 
-import com.infoshareacademy.web.services.persistence.favourites.IFavouriteService;
+import com.infoshareacademy.web.services.persistence.favourites.FavouriteService;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -10,16 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by milo on 08.06.17.
- */
-
 import static com.infoshareacademy.web.utils.constants.ConstantsProvider.ALL_INV_REV_CRIT;
 
 @WebServlet(urlPatterns = "/admin/statistics")
 public class UserStatisticsServlet extends HttpServlet {
     @Inject
-    private IFavouriteService favouriteService;
+    private FavouriteService favouriteService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -19,9 +19,8 @@ public class INDValidationStrategy implements ValidationStrategy {
         Validator validator = ValidatorUtil.getValidator();
         Set<ConstraintViolation<INDArgs>> constraintViolations =
                 validator.validate(indArgs);
-
+        String message = "";
         if (!constraintViolations.isEmpty()) {
-            String message = "";
             for (ConstraintViolation item : constraintViolations) {
                 message = message.concat(item.getMessage());
             }

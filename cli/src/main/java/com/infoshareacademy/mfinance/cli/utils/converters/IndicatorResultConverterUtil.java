@@ -4,10 +4,10 @@ import com.infoshareacademy.mfinance.core.models.analyzer.results.IndicatorResul
 import com.infoshareacademy.mfinance.cli.model.results.INDResult;
 import org.modelmapper.ModelMapper;
 
-public class IndicatorResultConverter {
-    private ModelMapper mapper = new ModelMapper();
+public class IndicatorResultConverterUtil {
+    private static ModelMapper mapper = new ModelMapper();
 
-    public INDResult convertFrom(IndicatorResult result) {
+    public static INDResult convertFrom(IndicatorResult result) {
         return mapper.map(result, INDResult.class);
     }
 }

@@ -8,7 +8,6 @@ import com.infoshareacademy.web.services.analyzer.AnalysisStrategy;
 import com.infoshareacademy.web.services.analyzer.INDAnalysisStrategy;
 import com.infoshareacademy.web.services.analyzer.IVRAnalysisStrategy;
 import com.infoshareacademy.web.services.bossa.DataContainerService;
-import com.infoshareacademy.web.utils.constants.ConstantsProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,14 +36,12 @@ public class FavouritesServlet extends HttpServlet {
     private SessionContainer sessionContainer;
     @Inject
     private DataContainerService container;
-    private List<WebAnalysisCriteria> favouritesCriterias;
-    private List<WebAnalysisResult> favouritesResults;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = sessionContainer.getUser();
-        favouritesCriterias = new ArrayList<>();
-        favouritesResults = new ArrayList<>();
+        List<WebAnalysisCriteria> favouritesCriterias = new ArrayList<>();
+        List<WebAnalysisResult> favouritesResults = new ArrayList<>();
         favouritesCriterias.addAll(user.getFavouritesIVR());
         favouritesCriterias.addAll(user.getFavouritesIND());
         LOGGER.info("Number of user favourites criterias:{}", favouritesCriterias.size());

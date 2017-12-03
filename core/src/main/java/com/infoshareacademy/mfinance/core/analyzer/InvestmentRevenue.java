@@ -7,9 +7,6 @@ import com.infoshareacademy.mfinance.core.models.exceptions.NoDataForCriteria;
 
 import com.infoshareacademy.mfinance.core.models.bossa.Investment;
 import com.infoshareacademy.mfinance.core.models.bossa.Quotation;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -33,7 +30,6 @@ public class InvestmentRevenue extends Analysis implements IResult {
         Quotation sellQuot = getSellQuotation(quotations);
         checkQuotationOrder(buyQuot, sellQuot);
         return getInvestmentRevenueResult(buyQuot, sellQuot);
-
     }
 
     private Investment getInvestment() throws NoDataForCriteria {
@@ -88,6 +84,4 @@ public class InvestmentRevenue extends Analysis implements IResult {
             throw new NoDataForCriteria("Failed to calculate InvestmentRevenue.");
         }
     }
-
-
 }

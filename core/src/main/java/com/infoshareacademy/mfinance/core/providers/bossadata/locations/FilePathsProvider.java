@@ -3,15 +3,12 @@ package com.infoshareacademy.mfinance.core.providers.bossadata.locations;
 import com.infoshareacademy.mfinance.core.models.configuration.Configuration;
 import com.infoshareacademy.mfinance.core.models.locations.path.FilePath;
 import com.infoshareacademy.mfinance.core.utils.TemporaryFoldersProviderUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FilePathsProvider {
-    private static final Logger LOGGER = LoggerFactory.getLogger(FilePathsProvider.class);
 
     public List<FilePath> generateTempCurrencyFilePaths() {
         String folderPath = TemporaryFoldersProviderUtil
@@ -20,9 +17,6 @@ public class FilePathsProvider {
 
         List<String> fileNames = getFileNameList(folderPath);
         List<FilePath> filePathList = generateFilePaths(folderPath, fileNames);
-        for (FilePath item : filePathList) {
-            LOGGER.trace("Provided file path:{}", item.getFilePath());
-        }
         return filePathList;
     }
 
@@ -33,9 +27,6 @@ public class FilePathsProvider {
 
         List<String> fileNames = getFileNameList(folderPath);
         List<FilePath> filePathList = generateFilePaths(folderPath, fileNames);
-        for (FilePath item : filePathList) {
-            LOGGER.trace("Provided file path:{}", item.getFilePath());
-        }
         return filePathList;
     }
 
@@ -54,8 +45,8 @@ public class FilePathsProvider {
     private List<String> getFileNameList(String folderPath) {
         List<String> fileNames = new ArrayList<>();
         File[] files = new File(folderPath).listFiles();
-        for (File file : files) {
-            if (file.isFile()) {
+        if (files != null) {
+            for (File file : files) {
                 fileNames.add(file.getName());
             }
         }

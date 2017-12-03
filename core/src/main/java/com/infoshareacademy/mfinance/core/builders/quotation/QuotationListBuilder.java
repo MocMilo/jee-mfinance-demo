@@ -3,6 +3,7 @@ package com.infoshareacademy.mfinance.core.builders.quotation;
 import com.infoshareacademy.mfinance.core.models.bossa.Quotation;
 import com.infoshareacademy.mfinance.core.serialization.QuotationListCSVParser;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class QuotationListBuilder {
         this.filePath = filePath;
     }
 
-    public List<Quotation> getQuotations() {
+    public List<Quotation> getQuotations() throws IOException {
         QuotationListCSVParser quotationData = new QuotationListCSVParser(filePath);
         quotationData.parseQuotationsFromFile();
         List<Quotation> quotations = new ArrayList<>();

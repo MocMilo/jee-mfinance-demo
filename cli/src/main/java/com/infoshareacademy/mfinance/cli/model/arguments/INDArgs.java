@@ -28,6 +28,4 @@ public class INDArgs extends ApplicationArguments implements Serializable {
         this.strategy = args[0];
         this.investmentName = args[1];
     }
-
-
 }

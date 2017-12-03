@@ -1,7 +1,7 @@
 package com.infoshareacademy.web.services.listeners;
 
 import com.infoshareacademy.web.services.bossa.DataContainerService;
-import com.infoshareacademy.web.services.persistence.user.IUserService;
+import com.infoshareacademy.web.services.persistence.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,20 +15,19 @@ import java.util.TimeZone;
 public final class WebappDeploymentListener implements ServletContextListener {
     private static final Logger LOGGER = LoggerFactory.getLogger(WebappDeploymentListener.class);
     private static final String DEFAULT_TIMEZONE = "UTC";
-
     @Inject
     private DataContainerService container;
     @Inject
-    private IUserService userService;
+    private UserService userService;
 
+    /**
+     * When ServletContextEvent is initialized,
+     * default account with Admin role is added to database by UserService.
+     * Properties of default Admin account are stored in /resources/configuration/webconfiguration.json
+     * (this file should be configured before application build and deployment).
+     */
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        /**
-         * When Webapp deployment takes place, default account with Admin role is added to database.
-         * Default account with admin role is added by IUserService.
-         * Properties of default Admin account are stored in /resources/configuration/webconfiguration.json
-         * (this file should be configured before application build and deployment).
-         */
         LOGGER.info("Application context Initialized.");
         this.setApplicationDefaultTimeZone(DEFAULT_TIMEZONE);
         this.loadDataContainer();

@@ -4,6 +4,7 @@ import com.infoshareacademy.mfinance.core.models.bossa.InvestmentFund;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.nio.file.Paths;
 
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -20,7 +21,7 @@ public class InvestmentInvestmentFundBuilderTest {
     private InvestmentFundListBuilder investmentFundBuilder;
 
     @Before
-    public void init() {
+    public void init() throws IOException{
         investmentFundBuilder = new InvestmentFundListBuilder();
         investmentFundBuilder.createFundsFromFile(TEST_FILE_PATH);
         investmentFund = investmentFundBuilder.getInvestmentFunds().get(0);

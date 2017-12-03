@@ -11,10 +11,11 @@ import org.modelmapper.TypeMap;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class InvestmentRevenueCriteriaConverter {
-    private ModelMapper modelMapper = new ModelMapper();
+public class InvestmentRevenueCriteriaConverterUtil {
+    private static ModelMapper modelMapper = new ModelMapper();
 
-    public InvestmentRevenueCriteria convertFrom(IVRArgs ivrArgs) {
+    public static InvestmentRevenueCriteria convertFrom(IVRArgs ivrArgs) {
+
         Converter<String, LocalDate> stringToLocalDate =
                 c -> c.getSource() == null ? null : LocalDateUtil.parseForm(c.getSource());
 

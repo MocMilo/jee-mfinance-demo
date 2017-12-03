@@ -43,13 +43,6 @@ public class InvestmentRevenueCriteria extends AnalysisCriteria {
 
     public InvestmentRevenueCriteria() {
     }
-
-/*    public InvestmentRevenueCriteria(BigDecimal investedCapital, LocalDate buyDate, LocalDate sellDate, String investmentName) {
-        this.investmentName = investmentName;
-        this.investedCapital = investedCapital;
-        this.buyDate = buyDate;
-        this.sellDate = sellDate;
-    }*/
 }
 
 

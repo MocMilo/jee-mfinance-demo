@@ -26,7 +26,7 @@ public class INDValidationStrategy implements ValidationStrategy {
         Set<ConstraintViolation<CriteriaForm>> violations = validator.validate(form);
         if (!violations.isEmpty()) {
             req.setAttribute(CRITERIA_FORM, form);
-            req.setAttribute("violations", violations);
+            req.setAttribute(VIOLATIONS, violations);
             return new ValidationResult(violations, req, null);
         }
         WebIndicatorCriteria criteria = new WebIndicatorCriteria(form,

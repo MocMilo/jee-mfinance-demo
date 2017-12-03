@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @Entity
 public class WebInvestmentRevenueCriteria extends WebAnalysisCriteria {
     private static final String STRATEGY = "IVR";
-
     @Id
     @GeneratedValue
     private long id;

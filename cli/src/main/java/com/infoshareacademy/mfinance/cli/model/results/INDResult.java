@@ -74,30 +74,30 @@ public class INDResult extends AnalysisResult {
     @Override
     public String toString() {
         return "INDResult{" +
-                "\nname='" + name + '\'' +
-                ", \nfirstQuotation=" + firstQuotation.getClose() +
-                ", \nfirstQuotation=" + firstQuotation.getDate() +
-                ", \nfirstQuotation=" + firstQuotation.getDeltaClose() +
+                "\ninvestmentName='" + name + '\'' +
+                ", \nfirstQuotationDate=" + firstQuotation.getDate() +
+                ", \nfirstQuotationValue=" + firstQuotation.getClose() +
+                ", \nfirstQuotationDeltaValue=" + firstQuotation.getDeltaClose() +
 
-                ", \nlastQuotation=" + lastQuotation.getClose() +
-                ", \nlastQuotation=" + lastQuotation.getDate() +
-                ", \nlastQuotation=" + lastQuotation.getDeltaClose() +
+                ", \nlastQuotationDate=" + lastQuotation.getDate() +
+                ", \nlastQuotationValue=" + lastQuotation.getClose() +
+                ", \nlastQuotationDeltaValue=" + lastQuotation.getDeltaClose() +
 
-                ", \nmaxValueQuotation=" + maxValueQuotation.getClose() +
-                ", \nmaxValueQuotation=" + maxValueQuotation.getDate() +
-                ", \nmaxValueQuotation=" + maxValueQuotation.getDeltaClose() +
+                ", \nmaxValueQuotationDate=" + maxValueQuotation.getDate() +
+                ", \nmaxValueQuotationValue=" + maxValueQuotation.getClose() +
+                ", \nmaxValueDeltaQuotationDeltaValue=" + maxValueQuotation.getDeltaClose() +
 
-                ", \nminValueQuotation=" + minValueQuotation.getClose() +
-                ", \nminValueQuotation=" + minValueQuotation.getDate() +
-                ", \nminValueQuotation=" + minValueQuotation.getDeltaClose() +
+                ", \nminValueQuotationDate=" + minValueQuotation.getDate() +
+                ", \nminValueQuotationValue=" + minValueQuotation.getClose() +
+                ", \nminValueQuotationDeltaValue=" + minValueQuotation.getDeltaClose() +
 
-                ", \nmaxDeltaPlus=" + maxDeltaPlus.getClose() +
-                ", \nmaxDeltaPlus=" + maxDeltaPlus.getDate() +
-                ", \nmaxDeltaPlus=" + maxDeltaPlus.getDeltaClose() +
+                ", \nmaxDeltaPlusDate=" + maxDeltaPlus.getDate() +
+                ", \nmaxDeltaPlusValue=" + maxDeltaPlus.getClose() +
+                ", \nmaxDeltaPlusDeltaValue=" + maxDeltaPlus.getDeltaClose() +
 
-                ", \nmaxDeltaMinus=" + maxDeltaMinus.getClose() +
-                ", \nmaxDeltaMinus=" + maxDeltaMinus.getDate() +
-                ", \nmaxDeltaMinus=" + maxDeltaMinus.getDeltaClose() +
+                ", \nmaxDeltaMinusDate=" + maxDeltaMinus.getDate() +
+                ", \nmaxDeltaMinusValue=" + maxDeltaMinus.getClose() +
+                ", \nmaxDeltaMinusDeltaValue=" + maxDeltaMinus.getDeltaClose() +
                 '}';
     }
 }

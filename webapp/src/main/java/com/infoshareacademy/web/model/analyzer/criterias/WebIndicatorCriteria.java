@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 @Entity
 public class WebIndicatorCriteria extends WebAnalysisCriteria {
     private static final String STRATEGY = "IND";
-
     @ManyToOne
     private User user;
     @Id
@@ -84,7 +83,7 @@ public class WebIndicatorCriteria extends WebAnalysisCriteria {
     }
 
     public WebIndicatorCriteria(INDCriteriaForm form, String userCustomName, boolean isFavourite) {
-        this.strategy=STRATEGY;
+        this.strategy = STRATEGY;
         this.investmentName = form.getInvestmentName();
         this.userCustomName = userCustomName;
         this.isFavourite = isFavourite;

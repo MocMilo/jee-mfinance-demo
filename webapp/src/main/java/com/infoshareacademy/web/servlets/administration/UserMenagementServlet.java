@@ -1,6 +1,6 @@
 package com.infoshareacademy.web.servlets.administration;
 
-import com.infoshareacademy.web.services.persistence.user.IUserService;
+import com.infoshareacademy.web.services.persistence.user.UserService;
 import com.infoshareacademy.web.utils.constants.ConstantsProvider;
 
 import javax.inject.Inject;
@@ -14,7 +14,7 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/admin/users")
 public class UserMenagementServlet extends HttpServlet {
     @Inject
-    private IUserService userService;
+    private UserService userService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

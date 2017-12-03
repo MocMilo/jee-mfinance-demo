@@ -9,7 +9,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class ResourcesFileReader {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ResourcesFileReader.class);
     private InputStream inputStream;
     private String resourceFileName;
 
@@ -17,7 +16,7 @@ public class ResourcesFileReader {
         this.resourceFileName = resourceFileName;
     }
 
-    public String getFileAsString() {
+    public String getFileAsString() throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
         try {
             inputStream = getClass().getClassLoader().getResourceAsStream(resourceFileName);
@@ -26,13 +25,11 @@ public class ResourcesFileReader {
             while ((line = bufferedReader.readLine()) != null) {
                 stringBuilder.append(line);
             }
-        } catch (IOException e) {
-            LOGGER.error("Failed to parse file as string.");
         } finally {
             try {
                 inputStream.close();
             } catch (IOException e) {
-                LOGGER.error("Failed to close input stream from ClassLoader resource.");
+                throw e;
             }
         }
         return stringBuilder.toString();

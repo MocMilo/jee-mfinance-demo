@@ -23,13 +23,5 @@ public abstract class Investment {
         this.name = name;
         this.quotations = quotations;
     }
-
-    @Override
-    public String toString() {
-        return "models{" +
-                ", name='" + name + '\'' +
-                ", quotations=" + quotations +
-                '}';
-    }
 }
 

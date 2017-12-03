@@ -9,15 +9,6 @@ public class CLIQuotation {
     private BigDecimal close;
     private BigDecimal deltaClose;
 
-    public CLIQuotation() {
-    }
-
-    public CLIQuotation(String name, LocalDate date, BigDecimal close) {
-        this.name = name;
-        this.date = date;
-        this.close = close;
-    }
-
     public String getName() {
         return name;
     }

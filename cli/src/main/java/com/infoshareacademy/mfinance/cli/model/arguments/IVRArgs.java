@@ -35,15 +35,15 @@ public class IVRArgs extends ApplicationArguments implements Serializable {
     @Pattern(regexp = "^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$", groups = FieldsCheck.class, message = "Wrong sell date format, should be of pattern: YYYY-MM-DD.")
     private String endDate;
 
+    public IVRArgs() {
+    }
+
     public IVRArgs(String[] args) {
         this.setStrategy(args[0]);
         this.investmentName = args[1];
         this.capital = args[2];
         this.startDate = args[3];
         this.endDate = args[4];
-    }
-
-    public IVRArgs() {
     }
 
     public String getCapital() {

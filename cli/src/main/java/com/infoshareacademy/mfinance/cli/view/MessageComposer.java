@@ -2,15 +2,16 @@ package com.infoshareacademy.mfinance.cli.view;
 
 import com.infoshareacademy.mfinance.cli.model.results.AnalysisResult;
 import com.infoshareacademy.mfinance.cli.model.ParserResult;
+import static com.infoshareacademy.mfinance.cli.view.ConstantMessagesProvider.*;
 
 public class MessageComposer {
     public void printValidationMessage(ParserResult parserResult) {
         if (!parserResult.isValid()) {
-            System.out.print(ConstantMessagesProvider.WELCOME_MESSAGE
-                    + ConstantMessagesProvider.ANALYSIS_OPTIONS_MESSAGE
-                    + ConstantMessagesProvider.COMMAND_HELP_MESSAGE);
-
-            System.out.println(parserResult.getErrorMessage());
+            System.out.print(WELCOME_MESSAGE
+                    + ANALYSIS_OPTIONS_MESSAGE
+                    + COMMAND_HELP_MESSAGE);
+            System.out.println(HORIZONTAL_LINE);
+            System.out.println(parserResult.getErrorMessage().concat("\n"));
         }
     }
 

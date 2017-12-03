@@ -10,7 +10,7 @@ import com.infoshareacademy.web.model.user.GoogleUserProfile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.infoshareacademy.web.model.user.User;
-import com.infoshareacademy.web.services.persistence.user.IUserService;
+import com.infoshareacademy.web.services.persistence.user.UserService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,18 +24,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import static com.infoshareacademy.web.utils.constants.ConstantsProvider.*;
+
 @WebServlet(urlPatterns = "callback")
 public class GoogleCallbackServlet extends HttpServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger(GoogleCallbackServlet.class);
     private static final String PROTECTED_RESOURCE_URL = "https://www.googleapis.com/oauth2/v2/userinfo";
-    private static final String OAUTH_SERVICE = "OAuth20Service";
-    private static final String SECRET_STATE = "secretState";
-    private static final String STATE = "state";
-    private static final String CODE = "code";
-
     @Inject
-    private IUserService userService;
-
+    private UserService userService;
     @Inject
     private SessionContainer sessionContainer;
 

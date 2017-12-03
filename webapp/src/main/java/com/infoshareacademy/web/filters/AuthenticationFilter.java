@@ -31,9 +31,9 @@ public class AuthenticationFilter implements Filter {
         if (!sessionContainer.isAuthenticated()) {
             req.getRequestDispatcher("/accessdenied.jsp").forward(req, resp);
             LOGGER.warn("Access denied! Not authenticated request!");
-            } else {
-                filterChain.doFilter(servletRequest, servletResponse);
-            }
+        } else {
+            filterChain.doFilter(servletRequest, servletResponse);
+        }
     }
 
     @Override

@@ -16,16 +16,15 @@ public class IVRValidationStrategy implements ValidationStrategy {
             return new ParserResult(false, "Wrong number of arguments.", null);
         }
         IVRArgs ivrArgs = new IVRArgs(args);
-        Validator validator =  ValidatorUtil.getValidator();
+        Validator validator = ValidatorUtil.getValidator();
         Set<ConstraintViolation<IVRArgs>> constraintViolations =
                 validator.validate(ivrArgs);
-
         if (!constraintViolations.isEmpty()) {
             String message = "";
-            for (ConstraintViolation item : constraintViolations){
-               message = message.concat(item.getMessage()) ;
+            for (ConstraintViolation item : constraintViolations) {
+                message = message.concat(item.getMessage());
             }
-        return new ParserResult(false, message, null);
+            return new ParserResult(false, message, null);
         }
         return new ParserResult(true, "", ivrArgs);
     }

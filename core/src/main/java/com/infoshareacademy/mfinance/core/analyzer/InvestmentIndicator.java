@@ -7,8 +7,6 @@ import com.infoshareacademy.mfinance.core.models.exceptions.NoDataForCriteria;
 import com.infoshareacademy.mfinance.core.models.bossa.Investment;
 import com.infoshareacademy.mfinance.core.models.bossa.DataContainer;
 import com.infoshareacademy.mfinance.core.models.bossa.Quotation;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 
@@ -29,14 +27,15 @@ public class InvestmentIndicator extends Analysis implements IResult {
     public IndicatorResult getResult() throws NoDataForCriteria {
         Investment filteredInvestment = this.getInvestment();
         List<Quotation> quotations = this.getQuotations(filteredInvestment);
+
         IndicatorResult result = new IndicatorResult();
-        result.setName(this.getMaxValue(quotations).getName());
-        result.setMaxValueQuotation(this.getMaxValue(quotations));
-        result.setMinValueQuotation(this.getMinValue(quotations));
-        result.setMaxDeltaPlus(this.getMaxDeltaPlusValue(quotations));
-        result.setMaxDeltaMinus(this.getMaxDeltaMinusValue(quotations));
-        result.setFirstQuotation(this.getFirst(quotations));
-        result.setLastQuotation(this.getLast(quotations));
+        result.setName(getMaxValue(quotations).getName());
+        result.setMaxValueQuotation(getMaxValue(quotations));
+        result.setMinValueQuotation(getMinValue(quotations));
+        result.setMaxDeltaPlus(getMaxDeltaPlusValue(quotations));
+        result.setMaxDeltaMinus(getMaxDeltaMinusValue(quotations));
+        result.setFirstQuotation(getFirst(quotations));
+        result.setLastQuotation(getLast(quotations));
         return result;
     }
 

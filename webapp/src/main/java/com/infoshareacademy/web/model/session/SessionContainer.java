@@ -27,6 +27,4 @@ public class SessionContainer implements Serializable {
     public void setAuthenticated(boolean authenticated) {
         isAuthenticated = authenticated;
     }
-
-
 }

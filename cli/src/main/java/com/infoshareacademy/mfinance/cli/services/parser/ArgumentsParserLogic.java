@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ArgumentsParserLogic {
-
     private static Map<String, ValidationStrategy> validationStratiegies = new HashMap<>();
 
     static {

@@ -5,9 +5,9 @@ import com.infoshareacademy.mfinance.core.models.analyzer.results.InvestmentReve
 import org.modelmapper.ModelMapper;
 
 
-public class InvestmentRevenueResultConverter {
-    private ModelMapper modelMapper = new ModelMapper();
-    public IVRResult convertFrom(InvestmentRevenueResult result) {
+public class InvestmentRevenueResultConverterUtil {
+    private static ModelMapper modelMapper = new ModelMapper();
+    public static IVRResult convertFrom(InvestmentRevenueResult result) {
         return modelMapper.map(result, IVRResult.class);
     }
 }

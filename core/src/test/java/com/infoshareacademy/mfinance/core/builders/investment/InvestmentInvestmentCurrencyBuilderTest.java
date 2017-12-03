@@ -4,6 +4,7 @@ import com.infoshareacademy.mfinance.core.models.bossa.InvestmentCurrency;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.nio.file.Paths;
 
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -20,7 +21,7 @@ public class InvestmentInvestmentCurrencyBuilderTest {
     private InvestmentCurrencyListBuilder investmentCurrencyBuilder;
 
     @Before
-    public void init() {
+    public void init() throws IOException {
         investmentCurrencyBuilder = new InvestmentCurrencyListBuilder();
         investmentCurrencyBuilder.createCurrenciesFromFile(TEST_FILE_PATH);
         investmentCurrency = investmentCurrencyBuilder.getCurrencies().get(0);

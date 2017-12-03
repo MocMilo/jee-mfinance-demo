@@ -17,18 +17,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import static com.infoshareacademy.web.utils.constants.ConstantsProvider.*;
+
+
 @WebServlet(urlPatterns = "login")
 public class GoogleLoginServlet extends HttpServlet {
-    private static final String OAUTH_SERVICE = "OAuth20Service";
-    private static final String SECRET_STATE = "secretState";
-    private final static String SECRET = "secret";
-    private final static String SCOPE_PROFILE = "profile";
-    private final static String SCOPE_EMAIL = "email";
-    private final static String ACCESS_TYPE = "access_type";
-    private final static String OFFLINE = "offline";
-    private final static String PROMPT = "prompt";
-    private final static String CONSENT = "consent";
-
     @Inject
     private WebConfigurationService webConfig;
 

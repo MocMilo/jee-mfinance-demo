@@ -37,11 +37,4 @@ public class DataContainer {
         this.currenciesCount = currenciesCount;
         this.investments = investments;
     }
-
-    @Override
-    public String toString() {
-        return "DataContainer{" +
-                "investments=" + investments +
-                '}';
-    }
 }

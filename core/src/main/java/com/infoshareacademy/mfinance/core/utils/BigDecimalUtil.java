@@ -1,7 +1,5 @@
 package com.infoshareacademy.mfinance.core.utils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -9,33 +7,28 @@ import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 
 public class BigDecimalUtil {
-    private static final Logger LOGGER = LoggerFactory.getLogger(BigDecimalUtil.class);
     private static final String BIG_DECIMAL_PATTERN = "#0.0#";
     private static BigDecimal parsedByFormatter;
-    private static BigDecimal exchangeRate;
-    private static BigDecimal money;
     private static DecimalFormat decimalFormat;
 
     public static BigDecimal parseExchangeRate(String value) {
-        setDecimalFormat();
         try {
+            setDecimalFormat();
             parsedByFormatter = (BigDecimal) decimalFormat.parse(value);
-            exchangeRate = parsedByFormatter.setScale(4);
+            return parsedByFormatter.setScale(4);
         } catch (ParseException e) {
-            LOGGER.error("Failed to parse ExchangeRate String:{} to BigDecimal. {}", value, e.getMessage());
+            throw new IllegalArgumentException();
         }
-        return exchangeRate;
     }
 
     public static BigDecimal parseMoney(String value) {
-        setDecimalFormat();
         try {
+            setDecimalFormat();
             parsedByFormatter = (BigDecimal) decimalFormat.parse(value);
-            money = parsedByFormatter.setScale(2);
+            return parsedByFormatter.setScale(2);
         } catch (ParseException e) {
-            LOGGER.error("Failed to parse Money String:{} to BigDecimal. {}", value, e.getMessage());
+            throw new IllegalArgumentException();
         }
-        return money;
     }
 
     private static void setDecimalFormat() {

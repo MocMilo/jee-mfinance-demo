@@ -1,8 +1,6 @@
 package com.infoshareacademy.web.servlets.navigation;
 
 import com.infoshareacademy.web.model.session.SessionContainer;
-import com.infoshareacademy.web.model.user.User;
-import com.infoshareacademy.web.utils.constants.ConstantsProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

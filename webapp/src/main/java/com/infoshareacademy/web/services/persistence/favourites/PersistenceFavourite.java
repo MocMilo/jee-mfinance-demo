@@ -7,18 +7,18 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Default
-public class PersistenceFavourite implements IFavouriteService {
+public class PersistenceFavourite implements FavouriteService {
     @PersistenceContext
     private EntityManager em;
 
-    @Override
+/*    @Override
     public List<WebInvestmentRevenueCriteria> getAllFavouriteRevenueCriteria(long UserId) {
         List<WebInvestmentRevenueCriteria> list = em
                 .createQuery("select m from WebInvestmentRevenueCriteria m left join fetch m.user t where t.id=:Id AND m.isFavourite=true", WebInvestmentRevenueCriteria.class)
                 .setParameter("Id", UserId)
                 .getResultList();
         return list;
-    }
+    }*/
 
     @Override
     public List<WebInvestmentRevenueCriteria> getAllRevenueCriteria() {

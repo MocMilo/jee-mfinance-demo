@@ -18,8 +18,8 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class InvestmentIndicatorResultConverterTest {
-    private IndicatorResultConverter converter = new IndicatorResultConverter();
+public class InvestmentIndicatorResultConverterUtilTest {
+    private IndicatorResultConverterUtil converter = new IndicatorResultConverterUtil();
 
     private Quotation coreQuotation;
     private CLIQuotation cliQuotation;

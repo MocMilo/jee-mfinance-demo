@@ -1,7 +1,6 @@
 package com.infoshareacademy.web.servlets.administration;
 
 import com.infoshareacademy.web.services.bossa.DataContainerService;
-
 import com.infoshareacademy.web.utils.constants.ConstantsProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +15,6 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/admin/settings")
 public class AppSettingsServlet extends HttpServlet {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(AppSettingsServlet.class);
 
     @Inject
@@ -31,9 +29,7 @@ public class AppSettingsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         LOGGER.info("Administrator Main Container manual reloading initialized...");
-
         container.reload();
         req.setAttribute(ConstantsProvider.CURRENCY_COUNT, container.getDataContainer().getCurrenciesCount());
         req.setAttribute(ConstantsProvider.FUND_COUNT, container.getDataContainer().getFundsCount());

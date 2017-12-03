@@ -16,6 +16,19 @@ public class ConstantsProvider {
     public static final String CRITERIA_FORM = "criteriaForm";
     public static final String VIOLATIONS = "violations";
 
+    public static final String OAUTH_SERVICE = "OAuth20Service";
+    public static final String SECRET_STATE = "secretState";
+    public static final String SECRET = "secret";
+    public static final String SCOPE_PROFILE = "profile";
+    public static final String SCOPE_EMAIL = "email";
+    public static final String ACCESS_TYPE = "access_type";
+    public static final String OFFLINE = "offline";
+    public static final String PROMPT = "prompt";
+    public static final String CONSENT = "consent";
+    public static final String STATE = "state";
+    public static final String CODE = "code";
+
+
     private ConstantsProvider() {
     }
 }

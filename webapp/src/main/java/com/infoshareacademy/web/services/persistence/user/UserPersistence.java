@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import java.util.List;
 
-public class UserPersistence implements IUserService {
+public class UserPersistence implements UserService {
     @Inject
     private WebConfigurationService configurationService;
     @Inject

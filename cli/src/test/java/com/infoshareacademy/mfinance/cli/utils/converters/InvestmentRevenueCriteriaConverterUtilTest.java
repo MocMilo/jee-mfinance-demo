@@ -12,9 +12,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 
-public class InvestmentRevenueCriteriaConverterTest {
+public class InvestmentRevenueCriteriaConverterUtilTest {
     private IVRArgs ivrArgs;
-    private InvestmentRevenueCriteriaConverter converter = new InvestmentRevenueCriteriaConverter();
+    private InvestmentRevenueCriteriaConverterUtil converter = new InvestmentRevenueCriteriaConverterUtil();
     private String[] args = {"IVR", "USD", "1000.00", "2015-09-08", "2015-09-07"};
     private String investmentName = "USD";
     private BigDecimal investmentValue = new BigDecimal("1000.00");

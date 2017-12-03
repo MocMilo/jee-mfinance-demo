@@ -13,6 +13,7 @@ import static java.time.ZoneOffset.UTC;
 @WebListener
 public class UserSessionListener implements HttpSessionListener, HttpSessionAttributeListener {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserSessionListener.class);
+
     @Override
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {
         Instant instant = Instant.ofEpochMilli(httpSessionEvent.getSession().getCreationTime());

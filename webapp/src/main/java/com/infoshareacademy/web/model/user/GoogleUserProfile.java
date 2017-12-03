@@ -6,16 +6,12 @@ public class GoogleUserProfile {
     private String id;
     private String email;
     private String name;
-
     @JsonProperty("verified_email")
     private String vierifiedEmail;
-
     @JsonProperty("given_name")
     private String givenName;
-
     @JsonProperty("family_name")
     private String familyName;
-
     @JsonProperty("picture")
     private String pictureURL;
 

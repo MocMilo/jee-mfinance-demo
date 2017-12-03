@@ -5,7 +5,7 @@ import com.infoshareacademy.web.model.user.User;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-public interface IUserService {
+public interface UserService {
 
     void add(User user);
 

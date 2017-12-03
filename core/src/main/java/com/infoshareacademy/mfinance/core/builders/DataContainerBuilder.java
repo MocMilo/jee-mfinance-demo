@@ -11,22 +11,16 @@ import com.infoshareacademy.mfinance.core.builders.investment.InvestmentFundList
 import com.infoshareacademy.mfinance.core.providers.ConfigurationProvider;
 import com.infoshareacademy.mfinance.core.providers.bossadata.BossaDataFilesProvider;
 import com.infoshareacademy.mfinance.core.providers.bossadata.locations.FilePathsProvider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class DataContainerBuilder {
-
     /**
-     * @return DataContainer  - build from csv files
-     * Note:
+     * returns: DataContainer  - build from csv files
      * The most actual Bossa csv files are downloaded from external resource in zip format by URL.
-     * If external resource is unavailable (eg. internet connection problem),
-     * csv files are fetched from app resources (in such case DataContainer stores data
-     * up to day: 2017-08-27).
      * Note:
      * DataContainerBuilder works in two modes: 'demo' and 'production'
      * DEMO MODE (simple deployment: application uses temporary folders)
@@ -37,8 +31,6 @@ public class DataContainerBuilder {
      * set property to:
      * IS_DEMO_MODE = false
      */
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(DataContainerBuilder.class);
     private static final boolean IS_DEMO_MODE = true;
     private static final String CONFIGURATION_FILE_PATH = "configuration/configuration.json";
 
@@ -55,17 +47,17 @@ public class DataContainerBuilder {
 
     private FilePathsProvider filePathsProvider = new FilePathsProvider();
 
-    public DataContainerBuilder() {
+    public DataContainerBuilder() throws IOException {
         configuration = new ConfigurationProvider(CONFIGURATION_FILE_PATH)
                 .getConfiguration();
     }
 
-    public DataContainerBuilder(String resourcesFilePath) {
+    public DataContainerBuilder(String resourcesFilePath) throws IOException {
         configuration = new ConfigurationProvider(resourcesFilePath)
                 .getConfiguration();
     }
 
-    public DataContainer getDataContainer() {
+    public DataContainer getDataContainer() throws IOException {
         new BossaDataFilesProvider(configuration, IS_DEMO_MODE).getCSVFiles();
         if (IS_DEMO_MODE) {
             currencyFilePaths = filePathsProvider.generateTempCurrencyFilePaths();
@@ -80,18 +72,18 @@ public class DataContainerBuilder {
                 investmentCurrencyBuilder.getNumberOfCurrencies(), investments);
     }
 
-    private void buildCurrencies() {
-        currencyFilePaths.forEach((FilePath filePath) -> {
+    private void buildCurrencies() throws IOException {
+        for (FilePath filePath : currencyFilePaths) {
             investmentCurrencyBuilder.createCurrenciesFromFile(filePath.getFilePath());
-        });
+        }
         investmentCurrencies = investmentCurrencyBuilder.getCurrencies();
         investments.addAll(investmentCurrencies);
     }
 
-    private void buildFunds() {
-        fundFilePaths.forEach((FilePath filePath) -> {
+    private void buildFunds() throws IOException {
+        for (FilePath filePath : fundFilePaths) {
             investmentFundBuilder.createFundsFromFile(filePath.getFilePath());
-        });
+        }
         investmentFunds = investmentFundBuilder.getInvestmentFunds();
         investments.addAll(investmentFunds);
     }

@@ -36,13 +36,6 @@ public class Quotation implements Comparable<Quotation> {
     }
 
     @Override
-    public String toString() {
-        return "Quotation [name=" + name + ", date=" + date +
-                ", " + "close=" + close +
-                ", deltaClose=" + deltaClose + "%] \n";
-    }
-
-    @Override
     public int compareTo(Quotation o) {
         if (getDate() == null || o.getDate() == null)
             return 0;

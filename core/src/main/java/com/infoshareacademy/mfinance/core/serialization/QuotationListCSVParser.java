@@ -2,23 +2,17 @@ package com.infoshareacademy.mfinance.core.serialization;
 
 import com.infoshareacademy.mfinance.core.models.bossa.Quotation;
 import com.infoshareacademy.mfinance.core.utils.BigDecimalUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.infoshareacademy.mfinance.core.utils.LocalDateUtil;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class QuotationListCSVParser {
-    private static final Logger LOGGER = LoggerFactory.getLogger(QuotationListCSVParser.class);
-    private static final String DATE_FORMAT = "yyyyMMdd";
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(DATE_FORMAT);
     private final String filepath;
 
     private List<Quotation> quotations = new ArrayList<>();
@@ -35,12 +29,10 @@ public class QuotationListCSVParser {
         return quotations.get(i);
     }
 
-    public void parseQuotationsFromFile() {
+    public void parseQuotationsFromFile() throws IOException {
         try (FileReader fileReader = new FileReader(filepath);
              Scanner scanner = new Scanner(fileReader)) {
             this.parseQuotations(scanner);
-        } catch (IOException e) {
-            LOGGER.error("Failed to parse quotations, locations:{}, {}", filepath, e.getMessage());
         }
     }
 
@@ -49,7 +41,7 @@ public class QuotationListCSVParser {
         while (scanner.hasNextLine()) {
             String data[] = scanner.nextLine().split(",");
             String name = data[0];
-            LocalDate date = LocalDate.parse(data[1], FORMATTER);
+            LocalDate date = LocalDateUtil.parseCSV(data[1]);
             BigDecimal close = BigDecimalUtil.parseExchangeRate(data[5]);
             quotations.add(new Quotation(name, date, close));
         }

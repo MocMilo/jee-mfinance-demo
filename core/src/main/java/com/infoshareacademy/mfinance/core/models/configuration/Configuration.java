@@ -10,7 +10,6 @@ import com.infoshareacademy.mfinance.core.models.locations.path.FundFolderPath;
 public class Configuration {
     private FundFolderPath fundFolderPath;
     private CurrencyFolderPath currencyFolderPath;
-
     private FundBackupFolderPath fundBackupFolderPath;
     private CurrencyBackupFolderPath currencyBackupFolderPath;
 

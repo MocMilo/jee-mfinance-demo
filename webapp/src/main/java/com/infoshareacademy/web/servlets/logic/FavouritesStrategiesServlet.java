@@ -1,14 +1,12 @@
 package com.infoshareacademy.web.servlets.logic;
 
-
 import com.infoshareacademy.web.model.session.SessionContainer;
 import com.infoshareacademy.web.model.user.User;
 import com.infoshareacademy.web.model.analyzer.criterias.WebAnalysisCriteria;
 import com.infoshareacademy.web.services.persistence.favourites.strategies.INDFavouriteStrategy;
-import com.infoshareacademy.web.services.persistence.user.IUserService;
+import com.infoshareacademy.web.services.persistence.user.UserService;
 import com.infoshareacademy.web.services.persistence.favourites.strategies.FavouritesPersistence;
 import com.infoshareacademy.web.services.persistence.favourites.strategies.IVRFavouriteStrategy;
-import com.infoshareacademy.web.utils.constants.ConstantsProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +29,7 @@ public class FavouritesStrategiesServlet extends HttpServlet {
     private SessionContainer sessionContainer;
 
     @Inject
-    private IUserService userService;
+    private UserService userService;
 
     static {
         persistenceStrategies.put("IVR", new IVRFavouriteStrategy());

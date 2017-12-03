@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -26,7 +25,7 @@ public class QuotationListCSVParserTest {
     private QuotationListCSVParser quotationListCSVParser;
 
     @Before
-    public void loadQuotations() {
+    public void loadQuotations() throws IOException, ParseException {
         String filePath = resourcesDirectory.getAbsolutePath();
         quotationListCSVParser = new QuotationListCSVParser(filePath);
         quotationListCSVParser.parseQuotationsFromFile();

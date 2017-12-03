@@ -4,11 +4,10 @@ import com.infoshareacademy.mfinance.core.models.analyzer.criteria.IndicatorCrit
 import com.infoshareacademy.mfinance.cli.model.arguments.INDArgs;
 import org.modelmapper.ModelMapper;
 
-public class IndicatorCriteriaConverter {
+public class IndicatorCriteriaConverterUtil {
+    private static ModelMapper mapper = new ModelMapper();
 
-    private ModelMapper mapper = new ModelMapper();
-
-    public IndicatorCriteria convertFrom(INDArgs indArgs) {
+    public static IndicatorCriteria convertFrom(INDArgs indArgs) {
         return mapper.map(indArgs, IndicatorCriteria.class);
     }
 }

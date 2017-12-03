@@ -1,8 +1,7 @@
 package com.infoshareacademy.mfinance.core.providers.bossadata;
 
 import com.infoshareacademy.mfinance.core.models.configuration.Configuration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.IOException;
 
 public class BossaDataFilesProvider {
     private Configuration configuration;
@@ -13,7 +12,7 @@ public class BossaDataFilesProvider {
         this.tempTargetFolders = tempTargetFolders;
     }
 
-    public void getCSVFiles() {
+    public void getCSVFiles() throws IOException{
         if (tempTargetFolders) {
             new RemoteLocationDataFilesProvider(configuration)
                     .saveDataFilesInTempFolders();

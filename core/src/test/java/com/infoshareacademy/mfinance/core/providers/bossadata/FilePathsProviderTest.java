@@ -6,6 +6,8 @@ import com.infoshareacademy.mfinance.core.providers.bossadata.locations.FilePath
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
+
 import static junit.framework.TestCase.assertTrue;
 
 public class FilePathsProviderTest {
@@ -14,7 +16,7 @@ public class FilePathsProviderTest {
     private Configuration configuration;
 
     @Before
-    public void init() {
+    public void init() throws IOException {
         configuration = new ConfigurationProvider(CONFIGURATION_TEST_FILE_PATH).getConfiguration();
         RemoteLocationDataFilesProvider remoteLocationDataFilesProvider = new RemoteLocationDataFilesProvider(configuration);
         remoteLocationDataFilesProvider.saveDataFilesInTempFolders();

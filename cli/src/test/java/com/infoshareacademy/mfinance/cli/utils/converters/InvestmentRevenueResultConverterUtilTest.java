@@ -11,11 +11,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 
-public class InvestmentRevenueResultConverterTest {
+public class InvestmentRevenueResultConverterUtilTest {
     private BigDecimal moneyValue = new BigDecimal("100.00");
     private BigDecimal deltaValue = new BigDecimal("10.00");
 
-    private InvestmentRevenueResultConverter converter = new InvestmentRevenueResultConverter();
+    private InvestmentRevenueResultConverterUtil converter = new InvestmentRevenueResultConverterUtil();
     private IVRResult ivrResult;
     private InvestmentRevenueResult revenueResult;
 

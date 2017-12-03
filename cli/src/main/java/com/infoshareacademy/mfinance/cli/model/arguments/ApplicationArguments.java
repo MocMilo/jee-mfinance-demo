@@ -1,7 +1,6 @@
 package com.infoshareacademy.mfinance.cli.model.arguments;
 
 public abstract class ApplicationArguments {
-
     protected String strategy;
 
     public String getStrategy() {
@@ -11,5 +10,4 @@ public abstract class ApplicationArguments {
     public void setStrategy(String strategy) {
         this.strategy = strategy;
     }
-
 }

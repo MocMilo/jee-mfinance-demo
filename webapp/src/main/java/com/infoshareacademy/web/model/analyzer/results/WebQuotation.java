@@ -3,7 +3,7 @@ package com.infoshareacademy.web.model.analyzer.results;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class WebQuotation  {
+public class WebQuotation {
     private String name;
     private LocalDate date;
     private BigDecimal close;
