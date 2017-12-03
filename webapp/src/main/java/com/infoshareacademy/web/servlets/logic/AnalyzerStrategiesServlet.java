@@ -5,7 +5,7 @@ import com.infoshareacademy.web.services.analyzer.INDAnalysisStrategy;
 import com.infoshareacademy.web.services.analyzer.IVRAnalysisStrategy;
 import com.infoshareacademy.web.model.analyzer.criterias.WebAnalysisCriteria;
 import com.infoshareacademy.web.model.analyzer.results.WebAnalysisResult;
-import com.infoshareacademy.web.services.bossa.IDataContainerService;
+import com.infoshareacademy.web.services.bossa.DataContainerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +25,7 @@ public class AnalyzerStrategiesServlet extends HttpServlet {
     private static Map<String, AnalysisStrategy> analysisStrategies = new HashMap<>();
 
     @Inject
-    private IDataContainerService dataContainer;
+    private DataContainerService dataContainer;
 
     static {
         analysisStrategies.put("IVR", new IVRAnalysisStrategy());

@@ -1,6 +1,7 @@
 package com.infoshareacademy.web.servlets.logic;
 
 
+import com.infoshareacademy.web.model.session.SessionContainer;
 import com.infoshareacademy.web.model.user.User;
 import com.infoshareacademy.web.model.analyzer.criterias.WebAnalysisCriteria;
 import com.infoshareacademy.web.services.persistence.favourites.strategies.INDFavouriteStrategy;
@@ -26,6 +27,8 @@ public class FavouritesStrategiesServlet extends HttpServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger(FavouritesStrategiesServlet.class);
     private static Map<String, FavouritesPersistence> persistenceStrategies = new HashMap<>();
     private User user;
+    @Inject
+    private SessionContainer sessionContainer;
 
     @Inject
     private IUserService userService;
@@ -38,7 +41,7 @@ public class FavouritesStrategiesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         WebAnalysisCriteria webAnalysisCriteria = (WebAnalysisCriteria) req.getAttribute("criteria");
-        user = (User) req.getSession().getAttribute(ConstantsProvider.AUTH_USER);
+        user = sessionContainer.getUser();
         if (webAnalysisCriteria.isFavourite()) {
             this.persist(webAnalysisCriteria);
         }

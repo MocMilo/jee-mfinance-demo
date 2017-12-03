@@ -9,7 +9,7 @@ import com.infoshareacademy.web.model.analyzer.criterias.WebAnalysisCriteria;
 import com.infoshareacademy.web.model.analyzer.criterias.WebInvestmentRevenueCriteria;
 import com.infoshareacademy.web.model.analyzer.results.WebAnalysisResult;
 import com.infoshareacademy.web.model.analyzer.results.WebInvestmentRevenueResult;
-import com.infoshareacademy.web.services.bossa.IDataContainerService;
+import com.infoshareacademy.web.services.bossa.DataContainerService;
 import com.infoshareacademy.web.utils.converters.WebInvestmentRevenueResultConverterUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +18,7 @@ public class IVRAnalysisStrategy implements AnalysisStrategy {
     private static final Logger LOGGER = LoggerFactory.getLogger(IVRAnalysisStrategy.class);
 
     @Override
-    public WebAnalysisResult getResult(WebAnalysisCriteria criteria, IDataContainerService container) {
+    public WebAnalysisResult getResult(WebAnalysisCriteria criteria, DataContainerService container) {
         final WebInvestmentRevenueCriteria investmentRevenueCriteria = (WebInvestmentRevenueCriteria) criteria;
         final InvestmentRevenueCriteria coreCriteria = InvestmentRevenueCriteriaConverterUtil
                 .convertFrom(investmentRevenueCriteria);

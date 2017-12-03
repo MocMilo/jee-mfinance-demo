@@ -1,4 +1,4 @@
-package com.infoshareacademy.web.utils.converters;
+package com.infoshareacademy.web.utils.parsers;
 
 import com.infoshareacademy.web.model.validation.forms.IVRCriteriaForm;
 

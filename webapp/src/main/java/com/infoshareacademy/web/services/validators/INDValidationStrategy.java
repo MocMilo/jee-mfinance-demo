@@ -4,7 +4,7 @@ import com.infoshareacademy.web.model.analyzer.criterias.WebIndicatorCriteria;
 import com.infoshareacademy.web.model.validation.ValidationResult;
 import com.infoshareacademy.web.model.validation.forms.CriteriaForm;
 import com.infoshareacademy.web.model.validation.forms.INDCriteriaForm;
-import com.infoshareacademy.web.utils.converters.INDCriteriaFormParserUtil;
+import com.infoshareacademy.web.utils.parsers.INDCriteriaFormParserUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;

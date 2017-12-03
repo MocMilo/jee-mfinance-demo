@@ -1,6 +1,6 @@
 package com.infoshareacademy.web.services.listeners;
 
-import com.infoshareacademy.web.services.bossa.IDataContainerService;
+import com.infoshareacademy.web.services.bossa.DataContainerService;
 import com.infoshareacademy.web.services.persistence.user.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +17,7 @@ public final class WebappDeploymentListener implements ServletContextListener {
     private static final String DEFAULT_TIMEZONE = "UTC";
 
     @Inject
-    private IDataContainerService container;
+    private DataContainerService container;
     @Inject
     private IUserService userService;
 
