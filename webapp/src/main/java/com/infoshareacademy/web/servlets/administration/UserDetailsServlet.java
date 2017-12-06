@@ -41,7 +41,6 @@ public class UserDetailsServlet extends HttpServlet {
             userService.update(user);
         } else {
             LOGGER.error("Failed to update user. User doesn't exists.");
-            throw new NullPointerException();
         }
         req.setAttribute(ConstantsProvider.ALL_USERS, userService.getAllUsers());
         req.getRequestDispatcher("/admin/users").forward(req, resp);

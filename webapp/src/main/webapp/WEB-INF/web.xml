@@ -12,7 +12,6 @@
         <filter-name>adminFilter</filter-name>
         <filter-class>com.infoshareacademy.web.filters.AdminFilter</filter-class>
     </filter>
-
     <filter-mapping>
         <filter-name>authenticationFilter</filter-name>
         <url-pattern>/favourites</url-pattern>
@@ -27,7 +26,6 @@
         <filter-name>adminFilter</filter-name>
         <url-pattern>/admin/*</url-pattern>
     </filter-mapping>
-
     <error-page>
         <error-code>500</error-code>
         <location>/errorpages/error500.html</location>

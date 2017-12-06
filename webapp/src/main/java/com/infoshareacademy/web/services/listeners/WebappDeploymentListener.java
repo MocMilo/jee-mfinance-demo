@@ -19,16 +19,17 @@ public final class WebappDeploymentListener implements ServletContextListener {
     private DataContainerService container;
     @Inject
     private UserService userService;
-
     /**
-     * When ServletContextEvent is initialized,
-     * default account with Admin role is added to database by UserService.
-     * Properties of default Admin account are stored in /resources/configuration/webconfiguration.json
-     * (this file should be configured before application build and deployment).
+     * Properties of default Administrator account are stored in:
+     * resources/configuration/webconfiguration.json
+     * (this file should be configured before application deployment).
+     * When ServletContext is initialized, default Administrator account
+     * is added to database (if current account login (e-mail address)
+     * is not already present in db).
      */
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        LOGGER.info("Application context Initialized.");
+        LOGGER.info("Servlet context Initialized.");
         this.setApplicationDefaultTimeZone(DEFAULT_TIMEZONE);
         this.loadDataContainer();
         userService.addDefaultAdminUser();
@@ -36,18 +37,18 @@ public final class WebappDeploymentListener implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        LOGGER.info("Application Servlet Context Destroyed.");
+        LOGGER.info("Servlet Context Destroyed.");
     }
 
     private void loadDataContainer() {
         try {
-            LOGGER.info("Data models CSV files loading initialized...");
+            LOGGER.info("CSV files loading initialized...");
             container.getDataContainer();
-            LOGGER.info("Currencies items:{} Funds items:{}",
+            LOGGER.info("Loaded to Data Container: Currencies items:{} Funds items:{}",
                     container.getDataContainer().getCurrenciesCount(),
                     container.getDataContainer().getFundsCount());
         } catch (RuntimeException ex) {
-            LOGGER.error("Failed to load data models CSV files! {}", ex.getMessage());
+            LOGGER.error("Failed to load data model CSV files! {}", ex.getMessage());
         }
     }
 

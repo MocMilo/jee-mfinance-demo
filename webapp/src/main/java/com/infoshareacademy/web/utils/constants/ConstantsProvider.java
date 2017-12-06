@@ -16,6 +16,13 @@ public class ConstantsProvider {
     public static final String CRITERIA_FORM = "criteriaForm";
     public static final String VIOLATIONS = "violations";
 
+    public static final String IVR = "IVR";
+    public static final String IND = "IND";
+    public static final String CRITERIA = "criteria";
+    public static final String STRATEGY = "strategy";
+    public static final String ERR_MESSAGE = "errorMessage";
+    public static final String ANALYSIS_RESULT = "analysisResult";
+
     public static final String OAUTH_SERVICE = "OAuth20Service";
     public static final String SECRET_STATE = "secretState";
     public static final String SECRET = "secret";
@@ -27,8 +34,7 @@ public class ConstantsProvider {
     public static final String CONSENT = "consent";
     public static final String STATE = "state";
     public static final String CODE = "code";
-
-
+    
     private ConstantsProvider() {
     }
 }

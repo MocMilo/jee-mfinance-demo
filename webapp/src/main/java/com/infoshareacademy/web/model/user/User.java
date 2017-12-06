@@ -107,5 +107,4 @@ public class User {
     public User(long id) {
         this.id = id;
     }
-
 }

@@ -2,11 +2,11 @@ package com.infoshareacademy.mfinance.core.models.exceptions;
 
 public class NoDataForCriteria extends Exception {
     /**
-     * This custom exception is checked exception. User is not aware
-     * of possible quotation data unavailability in DataContainer (Bossa csv files).
-     * For example: user analysis criteria may contain dates out of range
-     * (current investment had no quotations in current period, but user defined
-     * this period in his analysis criteria - not being aware of data unavailability).
+     * This exception is 'checked'.
+     * business example: "It is normal that current investment may not have
+     * quotations in some periods of time". User analysis criteria
+     * may contain dates 'out of range' and user is 'not aware'
+     * of data unavailability for chosen period of time).
      */
     private final static String message = "No data for current criteria.";
 

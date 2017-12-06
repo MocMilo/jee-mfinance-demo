@@ -81,8 +81,8 @@ public class RemoteLocationDataFilesProvider implements DataFilesProvider {
     private void getBossaDataFiles() throws IOException {
         Path currencyZipFilePath = this.download(currencyURL, currencyZipFolderPath);
         Path fundZipFilePath = this.download(fundURL, fundZipFolderPath);
-        ZipUtil.saveZipFileContent(currencyZipFilePath, currencyUnzipTargetPath);
-        ZipUtil.saveZipFileContent(fundZipFilePath, fundUnzipTargetPath);
+        ZipUtil.unZip(currencyZipFilePath, currencyUnzipTargetPath);
+        ZipUtil.unZip(fundZipFilePath, fundUnzipTargetPath);
     }
 
     private Path download(String sourceURL, String targetDirectory) throws IOException {

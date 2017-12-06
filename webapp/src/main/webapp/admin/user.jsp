@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title><b>User Management details</b></title>
+    <title>User Management details</title>
+    <jsp:include page="../partials/meta.jsp"/>
 </head>
 <body>
 <img src="../resources/icons/banner_top.jpg">

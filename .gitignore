@@ -2,14 +2,9 @@
 
 cli/target/
 core/target/
-
 webapp/target
 
-core/logs/
-core/src/test/java/_experimental/
-
 webapp/logs
-
 *.iml
 *.log
 

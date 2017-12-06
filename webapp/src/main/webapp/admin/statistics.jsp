@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>User Statistics</title>
+    <jsp:include page="../partials/meta.jsp"/>
 </head>
 <body>
 <img src="../resources/icons/banner_top.jpg">

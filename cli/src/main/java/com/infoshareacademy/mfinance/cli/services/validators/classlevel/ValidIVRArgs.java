@@ -9,7 +9,7 @@ import javax.validation.Payload;
 @Constraint(validatedBy = IVRArgsValidator.class)
 @Documented
 public @interface ValidIVRArgs {
-        String message () default "Wrong dates order: buy date should be before sell date.";
+        String message () default "Wrong dates order: buy date should be before sell date.\n";
         Class<?>[] groups () default {};
         Class<? extends Payload>[] payload () default {};
 }

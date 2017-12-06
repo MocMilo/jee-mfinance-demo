@@ -4,6 +4,7 @@ import com.infoshareacademy.mfinance.core.models.analyzer.criteria.InvestmentRev
 import com.infoshareacademy.web.model.analyzer.criterias.WebInvestmentRevenueCriteria;
 import org.junit.Before;
 import org.junit.Test;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -13,14 +14,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 public class InvestmentRevenueCriteriaConverterUtilTest {
-
-    private InvestmentRevenueCriteriaConverterUtil converter = new InvestmentRevenueCriteriaConverterUtil();
-    WebInvestmentRevenueCriteria webCriteria;
     private final BigDecimal capital = new BigDecimal(10000.00);
     private final DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
     private final LocalDate BUY_DATE = LocalDate.parse("20090910", formatter);
     private final LocalDate SELL_DATE = LocalDate.parse("20090912", formatter);
     private final String investmentName = "CHF";
+    private WebInvestmentRevenueCriteria webCriteria;
 
     @Before
     public void init() {
@@ -33,10 +32,10 @@ public class InvestmentRevenueCriteriaConverterUtilTest {
 
     @Test
     public void shouldReturnConvertedInvestmentRevenueCriteria() {
-        InvestmentRevenueCriteria investmentRevenueCriteria = converter.convertFrom(webCriteria);
-        assertThat(investmentRevenueCriteria.getInvestmentName() ,is(equalTo(investmentName)));
-        assertThat(investmentRevenueCriteria.getInvestedCapital(),is(equalTo(capital)));
-        assertThat(investmentRevenueCriteria.getBuyDate(),is(equalTo(BUY_DATE)));
-        assertThat(investmentRevenueCriteria.getSellDate(),is(equalTo(SELL_DATE)));
+        InvestmentRevenueCriteria investmentRevenueCriteria = InvestmentRevenueCriteriaConverterUtil.convertFrom(webCriteria);
+        assertThat(investmentRevenueCriteria.getInvestmentName(), is(equalTo(investmentName)));
+        assertThat(investmentRevenueCriteria.getInvestedCapital(), is(equalTo(capital)));
+        assertThat(investmentRevenueCriteria.getBuyDate(), is(equalTo(BUY_DATE)));
+        assertThat(investmentRevenueCriteria.getSellDate(), is(equalTo(SELL_DATE)));
     }
 }

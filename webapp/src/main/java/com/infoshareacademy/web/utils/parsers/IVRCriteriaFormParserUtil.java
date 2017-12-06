@@ -2,9 +2,10 @@ package com.infoshareacademy.web.utils.parsers;
 
 import com.infoshareacademy.web.model.validation.forms.IVRCriteriaForm;
 
+import javax.servlet.http.HttpServletRequest;
+
 import static com.infoshareacademy.web.utils.constants.ConstantsProvider.*;
 
-import javax.servlet.http.HttpServletRequest;
 
 public class IVRCriteriaFormParserUtil {
 

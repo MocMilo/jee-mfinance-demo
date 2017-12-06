@@ -9,12 +9,25 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class ArgumentsParserLogicTest {
     private ArgumentsParserLogic parser = new ArgumentsParserLogic();
-    private String[] args = {"IVR"};
 
     @Test
-    public void noAnalysisArgumentsParsingValidation() {
+    public void shouldReturnNotValidResultWhenNoArguments() {
+        final String[] args = {};
         ParserResult result = parser.parse(args);
         assertThat(result.isValid(), is(equalTo(false)));
     }
 
+    @Test
+    public void shouldReturnNodValidResultWhenNoAnalysisIVRArguments() {
+        final String[] args = {"IVR"};
+        ParserResult result = parser.parse(args);
+        assertThat(result.isValid(), is(equalTo(false)));
+    }
+
+    @Test
+    public void shouldReturnNotValidResultWhenNoAnalysisINDArguments() {
+        final String[] args = {"IND"};
+        ParserResult result = parser.parse(args);
+        assertThat(result.isValid(), is(equalTo(false)));
+    }
 }

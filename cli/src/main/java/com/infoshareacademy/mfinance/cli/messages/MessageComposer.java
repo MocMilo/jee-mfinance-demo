@@ -1,8 +1,8 @@
-package com.infoshareacademy.mfinance.cli.view;
+package com.infoshareacademy.mfinance.cli.messages;
 
 import com.infoshareacademy.mfinance.cli.model.results.AnalysisResult;
 import com.infoshareacademy.mfinance.cli.model.ParserResult;
-import static com.infoshareacademy.mfinance.cli.view.ConstantMessagesProvider.*;
+import static com.infoshareacademy.mfinance.cli.messages.ConstantMessagesProvider.*;
 
 public class MessageComposer {
     public void printValidationMessage(ParserResult parserResult) {

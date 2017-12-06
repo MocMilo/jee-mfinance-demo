@@ -1,2 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<footer>Copyright mfinance 2017</footer>
+<br>
+<hr>
+<footer>mfinance-demo Release 2.0, Copyright 2017</footer>

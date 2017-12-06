@@ -34,7 +34,7 @@ public class AdminFilter extends AuthenticationFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
             req.getRequestDispatcher("/accessdenied.jsp").forward(req, resp);
-            LOGGER.warn("User authorization failure! Role isAdmin:{} ", user.getAdmin());
+            LOGGER.warn("User authorization rejected! Role isAdmin:{} ", user.getAdmin());
         }
     }
 

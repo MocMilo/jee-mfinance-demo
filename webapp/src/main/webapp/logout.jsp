@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>logout page</title>
+    <jsp:include page="/partials/meta.jsp"/>
 </head>
 <body>
 <br>

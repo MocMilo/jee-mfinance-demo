@@ -15,14 +15,15 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.infoshareacademy.web.utils.constants.ConstantsProvider.*;
 
 @WebServlet(urlPatterns = "/validation")
 public class ValidationStrategiesServlet extends HttpServlet {
     private static Map<String, ValidationStrategy> validationStrategies = new HashMap<>();
 
     static {
-        validationStrategies.put("IVR", new IVRValidationStrategy());
-        validationStrategies.put("IND", new INDValidationStrategy());
+        validationStrategies.put(IVR, new IVRValidationStrategy());
+        validationStrategies.put(IND, new INDValidationStrategy());
     }
 
     @Override
@@ -33,12 +34,12 @@ public class ValidationStrategiesServlet extends HttpServlet {
             req.getRequestDispatcher("/analysisCriteria.jsp").forward(req, resp);
             return;
         }
-        req.setAttribute("criteria", validationResult.getCriteria());
+        req.setAttribute(CRITERIA, validationResult.getCriteria());
         req.getRequestDispatcher("/favourite").forward(req, resp);
     }
 
     private ValidationResult getValidationResult(HttpServletRequest req) {
-        String strategy = req.getParameter("strategy");
+        String strategy = req.getParameter(STRATEGY);
         return validationStrategies.get(strategy).getValidationResult(req);
     }
 }

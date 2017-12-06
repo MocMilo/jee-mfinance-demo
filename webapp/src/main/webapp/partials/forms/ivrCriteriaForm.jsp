@@ -24,8 +24,8 @@
     <p><b>Investment Revenue form:</b></p>
     <p>1. Investment name (eg."CHF"):</p>
     <p><input type="text" name="investmentName" id="inputForm" value="${criteriaForm.investmentName}"/></p>
-    <p>2. Invested capital (eg."1000"):</p>
-    <p><input type="text" pattern="[0-9]*" name="capital" value="${criteriaForm.capital}"/></p>
+    <p>2. Invested capital (eg."1500.25"):</p>
+    <p><input type="text" name="capital" value="${criteriaForm.capital}"/></p>
     <p>3. Date of buy (eg."2015-01-05"):</p>
     <p><input type="text" class="datePicker" name="buyDate" value="${criteriaForm.buyDate}"/></p>
     <p>4. Date of sell (eg."2017-01-25"):</p>

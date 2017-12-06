@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>mfinance</title>
+    <jsp:include page="/partials/meta.jsp"/>
 </head>
 <body>
 <br>

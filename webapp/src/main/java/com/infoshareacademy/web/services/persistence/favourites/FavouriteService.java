@@ -4,7 +4,5 @@ import com.infoshareacademy.web.model.analyzer.criterias.WebInvestmentRevenueCri
 import java.util.List;
 
 public interface FavouriteService {
-  /*  List<WebInvestmentRevenueCriteria> getAllFavouriteRevenueCriteria(long UserId);*/
-
-    List<WebInvestmentRevenueCriteria> getAllRevenueCriteria();
+     List<WebInvestmentRevenueCriteria> getAllRevenueCriteria();
 }

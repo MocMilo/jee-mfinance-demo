@@ -20,7 +20,7 @@ public class InvestmentRevenueCriteriaConverterUtil {
                 c -> c.getSource() == null ? null : LocalDateUtil.parseForm(c.getSource());
 
         Converter<String, BigDecimal> stringToBigDecimal =
-                c -> c.getSource() == null ? null : BigDecimalUtil.parseMoney(c.getSource());
+                c -> c.getSource() == null ? null : BigDecimalUtil.parseFormMoney(c.getSource());
 
         TypeMap<IVRArgs, InvestmentRevenueCriteria> typeMap = modelMapper.createTypeMap(IVRArgs.class, InvestmentRevenueCriteria.class);
         typeMap.addMappings(mapper -> mapper.using(stringToBigDecimal).map(IVRArgs::getCapital, InvestmentRevenueCriteria::setInvestedCapital));

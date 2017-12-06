@@ -20,6 +20,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.infoshareacademy.web.utils.constants.ConstantsProvider.*;
+
+
 @WebServlet(urlPatterns = "/favourite")
 public class FavouritesStrategiesServlet extends HttpServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger(FavouritesStrategiesServlet.class);
@@ -27,18 +30,17 @@ public class FavouritesStrategiesServlet extends HttpServlet {
     private User user;
     @Inject
     private SessionContainer sessionContainer;
-
     @Inject
     private UserService userService;
 
     static {
-        persistenceStrategies.put("IVR", new IVRFavouriteStrategy());
-        persistenceStrategies.put("IND", new INDFavouriteStrategy());
+        persistenceStrategies.put(IVR, new IVRFavouriteStrategy());
+        persistenceStrategies.put(IND, new INDFavouriteStrategy());
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        WebAnalysisCriteria webAnalysisCriteria = (WebAnalysisCriteria) req.getAttribute("criteria");
+        WebAnalysisCriteria webAnalysisCriteria = (WebAnalysisCriteria) req.getAttribute(CRITERIA);
         user = sessionContainer.getUser();
         if (webAnalysisCriteria.isFavourite()) {
             this.persist(webAnalysisCriteria);
@@ -47,7 +49,7 @@ public class FavouritesStrategiesServlet extends HttpServlet {
                 webAnalysisCriteria.isFavourite(),
                 webAnalysisCriteria.getStrategy(),
                 webAnalysisCriteria.getUserCustomName());
-        req.setAttribute("criteria", webAnalysisCriteria);
+        req.setAttribute(CRITERIA, webAnalysisCriteria);
         req.getRequestDispatcher("/analysis").forward(req, resp);
     }
 

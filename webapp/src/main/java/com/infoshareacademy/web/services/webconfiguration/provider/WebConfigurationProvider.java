@@ -20,7 +20,7 @@ public class WebConfigurationProvider {
             ObjectMapper objectMapper = new ObjectMapper();
             webConfiguration = objectMapper.readValue(fileContent, WebConfiguration.class);
         } catch (IOException e) {
-            LOGGER.error("Failed to create webconfiguration." + e.getMessage());
+            LOGGER.error("Failed to create WebConfiguration object:" + e.getMessage());
         }
         return webConfiguration;
     }

@@ -7,15 +7,15 @@ Used technologies and APIs:
 * Java EE 1.7
 * JBoss WildFly 10.1.0 application server
 * JPA 1.0.2 with MySQL 6.0
-* Docker Compose 1.8
+* Docker Compose 1.8.0
 
 All dependencies and plugin configuration are in pom.xml file.
 
 ## Requirements ##
 
-* docker-compose 1.8.0
 * Google profile (to login)
 * internet connection (for csv data download and user authentication)
+* Docker Compose 1.8.0
 
 ## Build and deployment ##
 

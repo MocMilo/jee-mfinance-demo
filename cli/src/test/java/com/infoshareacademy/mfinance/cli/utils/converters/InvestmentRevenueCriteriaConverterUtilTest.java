@@ -14,21 +14,23 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class InvestmentRevenueCriteriaConverterUtilTest {
     private IVRArgs ivrArgs;
-    private InvestmentRevenueCriteriaConverterUtil converter = new InvestmentRevenueCriteriaConverterUtil();
-    private String[] args = {"IVR", "USD", "1000.00", "2015-09-08", "2015-09-07"};
-    private String investmentName = "USD";
-    private BigDecimal investmentValue = new BigDecimal("1000.00");
-    private LocalDate buyDate = LocalDate.parse("2015-09-08");
-    private LocalDate sellDate = LocalDate.parse("2015-09-07");
 
     @Before
     public void init() {
+        final String[] args = {"IVR", "USD", "1000.00", "2015-09-08", "2015-09-07"};
         ivrArgs = new IVRArgs(args);
     }
 
     @Test
     public void convertFrom() throws Exception {
-        InvestmentRevenueCriteria criteria = converter.convertFrom(ivrArgs);
+        String investmentName = "USD";
+        BigDecimal investmentValue = new BigDecimal("1000.00");
+        LocalDate buyDate = LocalDate.parse("2015-09-08");
+        LocalDate sellDate = LocalDate.parse("2015-09-07");
+
+        InvestmentRevenueCriteria criteria = InvestmentRevenueCriteriaConverterUtil
+                .convertFrom(ivrArgs);
+
         assertThat(criteria.getInvestmentName(), is(equalTo(investmentName)));
         assertThat(criteria.getInvestedCapital(), is(equalTo(investmentValue)));
         assertThat(criteria.getBuyDate(), is(equalTo(buyDate)));

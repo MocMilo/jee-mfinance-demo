@@ -13,8 +13,8 @@ public class IVRFavouriteStrategy implements FavouritesPersistence {
     @Override
     public void persist(WebAnalysisCriteria criteria, User user, UserService userService) {
         WebInvestmentRevenueCriteria ivrCriteria = (WebInvestmentRevenueCriteria) criteria;
-        LOGGER.info("Save IVR criteria: isFavourite:{} custom name:{}", criteria.isFavourite(), criteria.getUserCustomName());
         user.getFavouritesIVR().add(ivrCriteria);
         userService.update(user);
+        LOGGER.info("Saved IVR criteria: custom name:{}", criteria.getUserCustomName());
     }
 }

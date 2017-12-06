@@ -4,13 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Investments Info</title>
+    <title>Investment info</title>
+    <jsp:include page="/partials/meta.jsp"/>
 </head>
 <body>
 <img src="resources/icons/banner_top.jpg">
 <tags:userLogin user="${sessionScope.authenticatedUser}"/>
 <jsp:include page="partials/navigation/backToUserMenu.jsp"/>
-<p><b>Investments Info</b></p>
+<p><b>Investment info</b></p>
 <br>
 <p>In our service you have available quotation data:</p>
 <p>Currencies: <b>${currencyCount}</b> items</p>

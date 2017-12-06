@@ -19,7 +19,6 @@ import java.util.Random;
 
 import static com.infoshareacademy.web.utils.constants.ConstantsProvider.*;
 
-
 @WebServlet(urlPatterns = "login")
 public class GoogleLoginServlet extends HttpServlet {
     @Inject

@@ -10,7 +10,6 @@ import static junit.framework.TestCase.assertTrue;
 
 public class DataContainerBuilderTest {
 
-
     @Test
     public void buildDataContainer() throws IOException {
         DataContainerBuilder dataContainerBuilder = new DataContainerBuilder();

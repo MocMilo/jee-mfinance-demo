@@ -27,17 +27,13 @@ public class InvestmentIndicatorTest {
     private DataContainer container;
     private List<Investment> investments = new ArrayList<>();
     private List<Quotation> quotations = new ArrayList<>();
-    private Quotation quotation1;
-    private Quotation quotation2;
-    private Quotation quotation3;
-    private InvestmentCurrency investmentCurrency;
     private final String investmentName = "CHF";
 
     @Before
     public void init() {
-        quotation1 = new Quotation("CHF", LocalDateUtil.parseCSV("20090910"), BigDecimal.valueOf(4.50));
-        quotation2 = new Quotation("CHF", LocalDateUtil.parseCSV("20090911"), BigDecimal.valueOf(4.70));
-        quotation3 = new Quotation("CHF", LocalDateUtil.parseCSV("20090912"), BigDecimal.valueOf(4.60));
+        Quotation quotation1 = new Quotation("CHF", LocalDateUtil.parseCSV("20090910"), BigDecimal.valueOf(4.50));
+        Quotation  quotation2 = new Quotation("CHF", LocalDateUtil.parseCSV("20090911"), BigDecimal.valueOf(4.70));
+        Quotation  quotation3 = new Quotation("CHF", LocalDateUtil.parseCSV("20090912"), BigDecimal.valueOf(4.60));
         quotation1.setDeltaClose(BigDecimal.valueOf(0.0000));
         quotation2.setDeltaClose(BigDecimal.valueOf(0.0425));
         quotation3.setDeltaClose(BigDecimal.valueOf(-0.0212));
@@ -45,7 +41,7 @@ public class InvestmentIndicatorTest {
         quotations.add(quotation1);
         quotations.add(quotation2);
         quotations.add(quotation3);
-        investmentCurrency = new InvestmentCurrency("CHF", quotations);
+        InvestmentCurrency investmentCurrency = new InvestmentCurrency("CHF", quotations);
         investments.add(investmentCurrency);
         container = new DataContainer(0, 1, investments);
     }

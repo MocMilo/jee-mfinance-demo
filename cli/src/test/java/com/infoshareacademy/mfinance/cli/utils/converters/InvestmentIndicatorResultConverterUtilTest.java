@@ -19,27 +19,20 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class InvestmentIndicatorResultConverterUtilTest {
-    private IndicatorResultConverterUtil converter = new IndicatorResultConverterUtil();
-
-    private Quotation coreQuotation;
-    private CLIQuotation cliQuotation;
     private IndicatorResult coreIndicatorResult;
-    private INDResult cliIndicatorResult;
-
-    private String name = "USD";
-    private LocalDate date = LocalDate.parse("2015-09-08");
-    private BigDecimal moneyValue = new BigDecimal("100.00");
 
     @Before
     public void init() {
-
-        coreQuotation = mock(Quotation.class);
+        final String name = "USD";
+        LocalDate date = LocalDate.parse("2015-09-08");
+        BigDecimal moneyValue = new BigDecimal("100.00");
+        Quotation coreQuotation = mock(Quotation.class);
         when(coreQuotation.getName()).thenReturn(name);
         when(coreQuotation.getDate()).thenReturn(date);
         when(coreQuotation.getClose()).thenReturn(moneyValue);
         when(coreQuotation.getDeltaClose()).thenReturn(moneyValue);
 
-        cliQuotation = mock(CLIQuotation.class);
+        CLIQuotation cliQuotation = mock(CLIQuotation.class);
         when(cliQuotation.getName()).thenReturn(name);
         when(cliQuotation.getDate()).thenReturn(date);
         when(cliQuotation.getClose()).thenReturn(moneyValue);
@@ -58,7 +51,7 @@ public class InvestmentIndicatorResultConverterUtilTest {
 
     @Test
     public void doConvert() {
-        cliIndicatorResult = converter.convertFrom(coreIndicatorResult);
+        INDResult cliIndicatorResult = IndicatorResultConverterUtil.convertFrom(coreIndicatorResult);
         assertThat(cliIndicatorResult.getName(), is(equalTo(coreIndicatorResult.getName())));
         assertThat(cliIndicatorResult.getFirstQuotation().getName(), is(equalTo(coreIndicatorResult.getFirstQuotation().getName())));
 

@@ -19,34 +19,35 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.infoshareacademy.web.utils.constants.ConstantsProvider.*;
+
 @WebServlet(urlPatterns = "/analysis")
 public class AnalyzerStrategiesServlet extends HttpServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger(AnalyzerStrategiesServlet.class);
     private static Map<String, AnalysisStrategy> analysisStrategies = new HashMap<>();
-
     @Inject
     private DataContainerService dataContainer;
 
     static {
-        analysisStrategies.put("IVR", new IVRAnalysisStrategy());
-        analysisStrategies.put("IND", new INDAnalysisStrategy());
+        analysisStrategies.put(IVR, new IVRAnalysisStrategy());
+        analysisStrategies.put(IND, new INDAnalysisStrategy());
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        WebAnalysisCriteria criteria = (WebAnalysisCriteria) req.getAttribute("criteria");
+        WebAnalysisCriteria criteria = (WebAnalysisCriteria) req.getAttribute(CRITERIA);
         LOGGER.info("req getAttribute criteria strategy:" + criteria.getStrategy());
 
         WebAnalysisResult webAnalysisResult = this.getResult(criteria);
         LOGGER.info("req setAttribute result strategy:" + webAnalysisResult.getStrategy());
 
         if (webAnalysisResult.getErrorMessage() != null) {
-            req.setAttribute("strategy", webAnalysisResult.getStrategy());
-            req.setAttribute("errorMessage", webAnalysisResult.getErrorMessage());
+            req.setAttribute(STRATEGY, webAnalysisResult.getStrategy());
+            req.setAttribute(ERR_MESSAGE, webAnalysisResult.getErrorMessage());
             req.getRequestDispatcher("/analysisCriteria.jsp").forward(req, resp);
             return;
         }
-        req.setAttribute("analysisResult", webAnalysisResult);
+        req.setAttribute(ANALYSIS_RESULT, webAnalysisResult);
         req.getRequestDispatcher("/analysisResult.jsp").forward(req, resp);
     }
 

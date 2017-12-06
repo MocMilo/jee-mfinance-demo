@@ -42,7 +42,7 @@ public class QuotationListCSVParser {
             String data[] = scanner.nextLine().split(",");
             String name = data[0];
             LocalDate date = LocalDateUtil.parseCSV(data[1]);
-            BigDecimal close = BigDecimalUtil.parseExchangeRate(data[5]);
+            BigDecimal close = BigDecimalUtil.parseCSV(data[5]);
             quotations.add(new Quotation(name, date, close));
         }
     }

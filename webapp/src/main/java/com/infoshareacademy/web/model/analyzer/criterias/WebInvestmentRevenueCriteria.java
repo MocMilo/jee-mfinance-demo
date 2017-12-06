@@ -116,7 +116,7 @@ public class WebInvestmentRevenueCriteria extends WebAnalysisCriteria {
     public WebInvestmentRevenueCriteria(IVRCriteriaForm form, String userCustomName, boolean isFavourite) {
         this.strategy = STRATEGY;
         this.investmentName = form.getInvestmentName();
-        this.investedCapital = BigDecimalUtil.parseMoney(form.getCapital());
+        this.investedCapital = BigDecimalUtil.parseFormMoney(form.getCapital());
         this.buyDate = LocalDateUtil.parseForm(form.getBuyDate());
         this.sellDate = LocalDateUtil.parseForm(form.getSellDate());
         this.userCustomName = userCustomName;

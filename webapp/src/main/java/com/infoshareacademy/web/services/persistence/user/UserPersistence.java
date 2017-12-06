@@ -57,7 +57,8 @@ public class UserPersistence implements UserService {
     @Transactional
     public void addDefaultAdminUser() {
         /**
-         * User with Admin role is added from properties in WebConfiguration.json file.
+         * User with Administrator role is added using properties from
+         * resources/configuration/webconfiguration.json file.
          */
         String defaultAdminLogin = configurationService.get()
                 .getDefaultAdminAccountLogin();

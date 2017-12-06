@@ -3,10 +3,15 @@
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <title>Analysis criteria</title>
+    <jsp:include page="/partials/meta.jsp"/>
+</head>
 <body>
 <img src="resources/icons/banner_top.jpg">
 <tags:userLogin user="${sessionScope.authenticatedUser}"/>
 <jsp:include page="partials/navigation/backToUserMenu.jsp"/>
+<p><b>Analysis criteria</b></p>
 <br>
 <c:set var="criteriaForm" value="${criteriaForm}" scope="request"/>
 <c:choose>
@@ -25,3 +30,4 @@
 <br>
 </body>
 </html>
+

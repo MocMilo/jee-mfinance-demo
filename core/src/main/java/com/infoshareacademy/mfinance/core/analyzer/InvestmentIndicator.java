@@ -15,7 +15,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public class InvestmentIndicator extends Analysis implements IResult {
+public class InvestmentIndicator extends Analysis implements Result {
     private IndicatorCriteria indicatorCriteria;
 
     public InvestmentIndicator(DataContainer dataContainer, IndicatorCriteria indicatorCriteria) {

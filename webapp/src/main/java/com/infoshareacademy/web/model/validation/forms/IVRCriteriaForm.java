@@ -1,6 +1,7 @@
 package com.infoshareacademy.web.model.validation.forms;
 
 import javax.validation.GroupSequence;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -20,6 +21,8 @@ public class IVRCriteriaForm extends CriteriaForm {
 
     @NotNull(message = "Investment capital cannot be empty")
     @NotBlank(message = "Investment capital cannot be blank")
+    @Pattern(regexp = "^(0|0?[1-9]\\d*)\\.\\d\\d$", message = "Wrong Investment capital argument: should be decimal of format:\"1.00\"")
+    @DecimalMin(value = "0.01", message = "Capital value must be > 0.00\n")
     private String capital;
 
     @NotNull(message = "Buy date cannot be empty", groups = FieldsCheck.class)

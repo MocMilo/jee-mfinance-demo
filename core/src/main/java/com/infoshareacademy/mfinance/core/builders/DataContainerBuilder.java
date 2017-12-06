@@ -16,21 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class DataContainerBuilder {
-    /**
-     * returns: DataContainer  - build from csv files
-     * The most actual Bossa csv files are downloaded from external resource in zip format by URL.
-     * Note:
-     * DataContainerBuilder works in two modes: 'demo' and 'production'
-     * DEMO MODE (simple deployment: application uses temporary folders)
-     * set property to:
-     * IS_DEMO_MODE = true
-     * For production mode (requires deployment configuration: application uses folders
-     * in explicit locations, defined in configuration.json)
-     * set property to:
-     * IS_DEMO_MODE = false
-     */
     private static final boolean IS_DEMO_MODE = true;
     private static final String CONFIGURATION_FILE_PATH = "configuration/configuration.json";
 
@@ -56,7 +42,15 @@ public class DataContainerBuilder {
         configuration = new ConfigurationProvider(resourcesFilePath)
                 .getConfiguration();
     }
-
+    /**
+     * @return DataContainer - build from csv files
+     * (zip archives downloaded from URL).
+     * *
+     * set property of DataContainerBuilder:
+     * IS_DEMO_MODE = true (simple deployment: application uses temporary folders)
+     * IS_DEMO_MODE = false (advanced deployment: requires configuration of explicit
+     * work-folders, defined in resources/configuration.json file)
+     */
     public DataContainer getDataContainer() throws IOException {
         new BossaDataFilesProvider(configuration, IS_DEMO_MODE).getCSVFiles();
         if (IS_DEMO_MODE) {

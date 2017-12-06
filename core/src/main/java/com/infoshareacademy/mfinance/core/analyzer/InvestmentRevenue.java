@@ -14,7 +14,7 @@ import java.util.Optional;
 
 import static java.math.RoundingMode.HALF_EVEN;
 
-public class InvestmentRevenue extends Analysis implements IResult {
+public class InvestmentRevenue extends Analysis implements Result {
     private InvestmentRevenueCriteria inputCriteria;
 
     public InvestmentRevenue(DataContainer dataContainer, InvestmentRevenueCriteria inputCriteria) {

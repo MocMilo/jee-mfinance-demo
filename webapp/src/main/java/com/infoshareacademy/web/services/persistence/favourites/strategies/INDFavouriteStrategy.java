@@ -14,7 +14,7 @@ public class INDFavouriteStrategy implements FavouritesPersistence {
     public void persist(WebAnalysisCriteria criteria, User user, UserService userService) {
         WebIndicatorCriteria indCriteria = (WebIndicatorCriteria) criteria;
         user.getFavouritesIND().add(indCriteria);
-        LOGGER.info("Save IND criteria: isFavourite:{} custom name:{}", criteria.isFavourite(), criteria.getUserCustomName());
         userService.update(user);
+        LOGGER.info("Saved IND criteria: custom name:{}", criteria.getUserCustomName());
     }
 }

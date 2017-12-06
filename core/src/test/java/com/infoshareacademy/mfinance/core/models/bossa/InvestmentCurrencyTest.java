@@ -8,13 +8,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.equalTo;
+
 public class InvestmentCurrencyTest {
-    private String name = "USD";
-    private LocalDate date = LocalDateUtil.parseCSV("20160103");
-    private BigDecimal close = new BigDecimal("100");
-    private Quotation quotation;
+    private final String name = "USD";
+    private final LocalDate date = LocalDateUtil.parseCSV("20160103");
+    private final BigDecimal close = new BigDecimal("100");
     private List<Quotation> quotationList = new ArrayList<>();
-    private InvestmentCurrency investmentCurrency;
 
     @Before
     public void init(){
@@ -24,6 +27,7 @@ public class InvestmentCurrencyTest {
 
     @Test
     public void shouldInstantiateValidInvestmentCurrency(){
-        investmentCurrency = new InvestmentCurrency(name, quotationList);
+        InvestmentCurrency investmentCurrency = new InvestmentCurrency(name, quotationList);
+        assertThat(investmentCurrency, not(equalTo(nullValue())));
     }
 }

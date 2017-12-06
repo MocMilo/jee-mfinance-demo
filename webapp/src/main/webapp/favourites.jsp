@@ -4,13 +4,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title><b>Favourites</b></title>
+    <title>Favourites</title>
+    <jsp:include page="/partials/meta.jsp"/>
 </head>
 <body>
 <img src="resources/icons/banner_top.jpg">
 <tags:userLogin user="${sessionScope.authenticatedUser}"/>
 <jsp:include page="partials/navigation/backToUserMenu.jsp"/>
-<p><b> User Favourites</b></p>
+<p><b>Favourites</b></p>
 <br>
 <c:forEach var="analysisResult" items="${analysisResults}">
     <c:set var="analysisResult" value="${analysisResult}" scope="request"/>

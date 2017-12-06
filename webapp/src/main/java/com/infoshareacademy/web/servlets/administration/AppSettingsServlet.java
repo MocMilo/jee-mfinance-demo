@@ -29,12 +29,12 @@ public class AppSettingsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LOGGER.info("Administrator Main Container manual reloading initialized...");
+        LOGGER.info("Administrator DataContainer manual reloading initialized...");
         container.reload();
         req.setAttribute(ConstantsProvider.CURRENCY_COUNT, container.getDataContainer().getCurrenciesCount());
         req.setAttribute(ConstantsProvider.FUND_COUNT, container.getDataContainer().getFundsCount());
 
-        LOGGER.info("Main Container reloaded!Currencies items:{} Funds items:{}",
+        LOGGER.info("DataContainer reloaded!Currencies items:{} Funds items:{}",
                 container.getDataContainer().getCurrenciesCount(),
                 container.getDataContainer().getFundsCount());
 
