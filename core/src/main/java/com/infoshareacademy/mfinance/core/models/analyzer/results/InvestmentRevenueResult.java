@@ -6,6 +6,11 @@ public class InvestmentRevenueResult extends AnalysisResult {
     private BigDecimal capitalRevenueValue;
     private BigDecimal capitalRevenueDeltaPercentValue;
 
+    public InvestmentRevenueResult(BigDecimal capitalRevenueValue, BigDecimal capitalRevenueDeltaPercentValue) {
+        this.capitalRevenueValue = capitalRevenueValue;
+        this.capitalRevenueDeltaPercentValue = capitalRevenueDeltaPercentValue;
+    }
+
     public BigDecimal getCapitalRevenueValue() {
         return capitalRevenueValue;
     }
@@ -14,19 +19,4 @@ public class InvestmentRevenueResult extends AnalysisResult {
         return capitalRevenueDeltaPercentValue;
     }
 
-    public void setCapitalRevenueValue(BigDecimal capitalRevenueValue) {
-        this.capitalRevenueValue = capitalRevenueValue;
-    }
-
-    public void setCapitalRevenueDeltaPercentValue(BigDecimal capitalRevenueDeltaPercentValue) {
-        this.capitalRevenueDeltaPercentValue = capitalRevenueDeltaPercentValue;
-    }
-
-    public InvestmentRevenueResult() {
-    }
-
-    public InvestmentRevenueResult(BigDecimal capitalRevenueValue, BigDecimal capitalRevenueDeltaPercentValue) {
-        this.capitalRevenueValue = capitalRevenueValue;
-        this.capitalRevenueDeltaPercentValue = capitalRevenueDeltaPercentValue;
-    }
 }

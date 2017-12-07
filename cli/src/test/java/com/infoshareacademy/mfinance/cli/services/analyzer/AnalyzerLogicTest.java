@@ -19,7 +19,6 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class AnalyzerLogicTest {
     private AnalyzerLogic analyzerLogic;
-    private INDArgs indArgs;
 
     @Before
     public void init() {
@@ -27,14 +26,12 @@ public class AnalyzerLogicTest {
         DataContainer container;
         container = new DataContainer(1, 1, investmentList);
         analyzerLogic = new AnalyzerLogic(container);
-
     }
 
     @Test
     public void shouldReturnsAnalysisResult() throws IOException {
-        indArgs = new INDArgs();
-        indArgs.setStrategy("IND");
-        indArgs.setInvestmentName("USD");
+        String[] args = {"IND", "USD"};
+        INDArgs indArgs = new INDArgs(args);
         ParserResult parserResult = new ParserResult(true, "", indArgs);
         AnalysisResult result = analyzerLogic.getResult(parserResult);
         assertThat(result, not(equalTo(nullValue())));

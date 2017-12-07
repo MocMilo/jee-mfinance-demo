@@ -27,6 +27,16 @@ public class WebInvestmentRevenueCriteria extends WebAnalysisCriteria {
     private LocalDateTime lastUpdateDateTime;
     private boolean isFavourite;
 
+    public WebInvestmentRevenueCriteria(IVRCriteriaForm form, String userCustomName, boolean isFavourite) {
+        this.strategy = STRATEGY;
+        this.investmentName = form.getInvestmentName();
+        this.investedCapital = BigDecimalUtil.parseFormMoney(form.getCapital());
+        this.buyDate = LocalDateUtil.parseForm(form.getBuyDate());
+        this.sellDate = LocalDateUtil.parseForm(form.getSellDate());
+        this.userCustomName = userCustomName;
+        this.isFavourite = isFavourite;
+    }
+
     @PrePersist
     private void onCreate() {
         creationDateTime = LocalDateTime.now();
@@ -113,13 +123,5 @@ public class WebInvestmentRevenueCriteria extends WebAnalysisCriteria {
         this.strategy = STRATEGY;
     }
 
-    public WebInvestmentRevenueCriteria(IVRCriteriaForm form, String userCustomName, boolean isFavourite) {
-        this.strategy = STRATEGY;
-        this.investmentName = form.getInvestmentName();
-        this.investedCapital = BigDecimalUtil.parseFormMoney(form.getCapital());
-        this.buyDate = LocalDateUtil.parseForm(form.getBuyDate());
-        this.sellDate = LocalDateUtil.parseForm(form.getSellDate());
-        this.userCustomName = userCustomName;
-        this.isFavourite = isFavourite;
-    }
+
 }

@@ -12,6 +12,9 @@ public class IndicatorResult extends AnalysisResult {
     private Quotation maxDeltaMinus;
     private Quotation actualValue;
 
+    public IndicatorResult() {
+    }
+
     public Quotation getFirstQuotation() {
         return firstQuotation;
     }
@@ -76,8 +79,6 @@ public class IndicatorResult extends AnalysisResult {
         this.minValueQuotation = minValueQuotation;
     }
 
-    public IndicatorResult() {
-    }
 
     @Override
     public String toString() {

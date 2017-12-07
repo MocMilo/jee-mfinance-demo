@@ -20,6 +20,13 @@ public class WebIndicatorCriteria extends WebAnalysisCriteria {
     private String userCustomName;
     private boolean isFavourite;
 
+    public WebIndicatorCriteria(INDCriteriaForm form, String userCustomName, boolean isFavourite) {
+        this.strategy = STRATEGY;
+        this.investmentName = form.getInvestmentName();
+        this.userCustomName = userCustomName;
+        this.isFavourite = isFavourite;
+    }
+
     public long getId() {
         return id;
     }
@@ -80,13 +87,6 @@ public class WebIndicatorCriteria extends WebAnalysisCriteria {
 
     public WebIndicatorCriteria() {
         this.strategy = STRATEGY;
-    }
-
-    public WebIndicatorCriteria(INDCriteriaForm form, String userCustomName, boolean isFavourite) {
-        this.strategy = STRATEGY;
-        this.investmentName = form.getInvestmentName();
-        this.userCustomName = userCustomName;
-        this.isFavourite = isFavourite;
     }
 }
 

@@ -28,7 +28,7 @@ public class InvestmentRevenue extends Analysis implements Result {
         List<Quotation> quotations = getQuotations(filteredInvestment);
         Quotation buyQuot = getBuyQuotation(quotations);
         Quotation sellQuot = getSellQuotation(quotations);
-        checkQuotationOrder(buyQuot, sellQuot);
+        isQuotationOrderCorrect(buyQuot, sellQuot);
         return getInvestmentRevenueResult(buyQuot, sellQuot);
     }
 
@@ -60,28 +60,27 @@ public class InvestmentRevenue extends Analysis implements Result {
         return quotation.orElseThrow(NoDataForCriteria::new);
     }
 
-    private void checkQuotationOrder(Quotation buyQuot, Quotation sellQuot) throws NoDataForCriteria {
+    private void isQuotationOrderCorrect(Quotation buyQuot, Quotation sellQuot) throws NoDataForCriteria {
         if (sellQuot.getDate().isBefore(buyQuot.getDate())) {
             throw new NoDataForCriteria("Wrong input data. Quotation BuyDate must be before Quotation SellDate.");
         }
     }
 
     private InvestmentRevenueResult getInvestmentRevenueResult(Quotation buyQuot, Quotation sellQuot) throws NoDataForCriteria {
-        if (buyQuot != null && sellQuot != null) {
-            BigDecimal deltaPrice = ((sellQuot.getClose()
-                    .subtract(buyQuot.getClose()))
-                    .divide(buyQuot.getClose(), 6, HALF_EVEN))
-                    .multiply(new BigDecimal(100.0));
-
-            BigDecimal deltaPriceRounded = deltaPrice.setScale(4, HALF_EVEN);
-            BigDecimal revenueValue = ((deltaPriceRounded
-                    .divide(new BigDecimal(100.0), 2, HALF_EVEN))
-                    .multiply(inputCriteria.getInvestedCapital()))
-                    .setScale(2, HALF_EVEN);
-
-            return new InvestmentRevenueResult(revenueValue, deltaPriceRounded);
-        } else {
+        if (buyQuot == null || sellQuot == null) {
             throw new NoDataForCriteria("Failed to calculate InvestmentRevenue.");
         }
+        BigDecimal deltaPrice = ((sellQuot.getClose()
+                .subtract(buyQuot.getClose()))
+                .divide(buyQuot.getClose(), 6, HALF_EVEN))
+                .multiply(new BigDecimal(100.0));
+
+        BigDecimal deltaPriceRounded = deltaPrice.setScale(4, HALF_EVEN);
+        BigDecimal revenueValue = ((deltaPriceRounded
+                .divide(new BigDecimal(100.0), 2, HALF_EVEN))
+                .multiply(inputCriteria.getInvestedCapital()))
+                .setScale(2, HALF_EVEN);
+
+        return new InvestmentRevenueResult(revenueValue, deltaPriceRounded);
     }
 }

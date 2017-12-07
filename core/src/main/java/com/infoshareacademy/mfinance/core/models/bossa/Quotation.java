@@ -9,6 +9,12 @@ public class Quotation implements Comparable<Quotation> {
     private BigDecimal close;
     private BigDecimal deltaClose;
 
+    public Quotation(String name, LocalDate date, BigDecimal close) {
+        this.name = name;
+        this.date = date;
+        this.close = close;
+    }
+
     public String getName() {
         return name;
     }
@@ -29,11 +35,6 @@ public class Quotation implements Comparable<Quotation> {
         this.deltaClose = deltaClose;
     }
 
-    public Quotation(String name, LocalDate date, BigDecimal close) {
-        this.name = name;
-        this.date = date;
-        this.close = close;
-    }
 
     @Override
     public int compareTo(Quotation o) {

@@ -12,6 +12,13 @@ public class ValidationResult {
     private HttpServletRequest req;
     private WebAnalysisCriteria criteria;
 
+    public ValidationResult(Set<ConstraintViolation<CriteriaForm>> violations,
+                            HttpServletRequest req, WebAnalysisCriteria criteria) {
+        this.violations = violations;
+        this.criteria = criteria;
+        this.req = req;
+    }
+
     public Set<ConstraintViolation<CriteriaForm>> getViolations() {
         return violations;
     }
@@ -22,12 +29,5 @@ public class ValidationResult {
 
     public WebAnalysisCriteria getCriteria() {
         return criteria;
-    }
-
-    public ValidationResult(Set<ConstraintViolation<CriteriaForm>> violations,
-                            HttpServletRequest req, WebAnalysisCriteria criteria) {
-        this.violations = violations;
-        this.criteria = criteria;
-        this.req = req;
     }
 }

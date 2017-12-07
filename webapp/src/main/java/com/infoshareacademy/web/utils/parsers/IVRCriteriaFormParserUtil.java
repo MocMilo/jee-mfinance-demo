@@ -6,9 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import static com.infoshareacademy.web.utils.constants.ConstantsProvider.*;
 
-
 public class IVRCriteriaFormParserUtil {
-
     public static IVRCriteriaForm parse(HttpServletRequest req) {
         IVRCriteriaForm form = new IVRCriteriaForm();
         form.setInvestmentName(req.getParameter(INVESTMENT_NAME));

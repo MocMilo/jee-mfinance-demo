@@ -7,6 +7,12 @@ public class ParserResult {
     private String errorMessage;
     private ApplicationArguments arguments;
 
+    public ParserResult(boolean isValid, String errorMessage, ApplicationArguments arguments) {
+        this.isValid = isValid;
+        this.errorMessage = errorMessage;
+        this.arguments = arguments;
+    }
+
     public boolean isValid() {
         return isValid;
     }
@@ -17,11 +23,5 @@ public class ParserResult {
 
     public ApplicationArguments getArguments() {
         return arguments;
-    }
-
-    public ParserResult(boolean isValid, String errorMessage, ApplicationArguments arguments) {
-        this.isValid = isValid;
-        this.errorMessage = errorMessage;
-        this.arguments = arguments;
     }
 }

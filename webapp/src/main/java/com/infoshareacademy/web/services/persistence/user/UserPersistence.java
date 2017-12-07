@@ -70,9 +70,7 @@ public class UserPersistence implements UserService {
             user.setAdmin(true);
             this.update(user);
         } else {
-            User user = new User();
-            user.setLogin(defaultAdminLogin);
-            user.setAdmin(true);
+            User user = new User(defaultAdminLogin, true);
             this.add(user);
         }
     }

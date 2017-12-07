@@ -7,6 +7,11 @@ public abstract class Investment {
     private String name;
     private List<Quotation> quotations = new ArrayList<>();
 
+    public Investment(String name, List<Quotation> quotations) {
+        this.name = name;
+        this.quotations = quotations;
+    }
+
     public String getName() {
         return name;
     }
@@ -19,9 +24,5 @@ public abstract class Investment {
         this.quotations = quotations;
     }
 
-    public Investment(String name, List<Quotation> quotations) {
-        this.name = name;
-        this.quotations = quotations;
-    }
 }
 

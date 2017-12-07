@@ -19,6 +19,18 @@ public class User {
     private LocalDateTime lastLoginDateTime;
     private LocalDateTime lastUpdateDateTime;
 
+    public User() {
+    }
+
+    public User(String login, boolean isAdmin) {
+        this.login = login;
+        this.isAdmin = isAdmin;
+    }
+
+    public User(long id) {
+        this.id = id;
+    }
+
     @PrePersist
     private void onCreate() {
         creationDateTime = LocalDateTime.now();
@@ -99,12 +111,5 @@ public class User {
 
     public void setFavouritesIND(Set<WebIndicatorCriteria> favouriteInvestmentIndicators) {
         this.favouritesIND = favouriteInvestmentIndicators;
-    }
-
-    public User() {
-    }
-
-    public User(long id) {
-        this.id = id;
     }
 }

@@ -18,5 +18,4 @@ public class PersistenceFavourite implements FavouriteService {
                 .getResultList();
         return list;
     }
-
 }

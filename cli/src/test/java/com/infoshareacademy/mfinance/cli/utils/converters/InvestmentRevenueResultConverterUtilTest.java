@@ -18,8 +18,6 @@ public class InvestmentRevenueResultConverterUtilTest {
 
     @Before
     public void init() {
-
-
         revenueResult = new InvestmentRevenueResult(moneyValue, deltaValue);
     }
 

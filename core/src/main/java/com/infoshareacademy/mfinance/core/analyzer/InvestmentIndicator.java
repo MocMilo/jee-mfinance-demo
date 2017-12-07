@@ -62,11 +62,10 @@ public class InvestmentIndicator extends Analysis implements Result {
                 .filter(maxValuePredicate)
                 .findAny();
 
-        if (quotation.isPresent()) {
-            return quotation.get();
-        } else {
+        if (!quotation.isPresent()) {
             throw new NoDataForCriteria();
         }
+        return quotation.get();
     }
 
     private Quotation getMinValue(List<Quotation> quotations) throws NoDataForCriteria {

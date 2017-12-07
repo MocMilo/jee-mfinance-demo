@@ -13,15 +13,7 @@ public abstract class WebAnalysisCriteria {
         return userCustomName;
     }
 
-    public void setUserCustomName(String userCustomName) {
-        this.userCustomName = userCustomName;
-    }
-
     public boolean isFavourite() {
         return isFavourite;
-    }
-
-    public void setFavourite(boolean favourite) {
-        isFavourite = favourite;
     }
 }

@@ -9,6 +9,9 @@ public class InvestmentRevenueCriteria extends AnalysisCriteria {
     private LocalDate sellDate;
     private String investmentName;
 
+    public InvestmentRevenueCriteria() {
+    }
+
     public String getInvestmentName() {
         return this.investmentName;
     }
@@ -39,9 +42,6 @@ public class InvestmentRevenueCriteria extends AnalysisCriteria {
 
     public void setBuyDate(LocalDate buyDate) {
         this.buyDate = buyDate;
-    }
-
-    public InvestmentRevenueCriteria() {
     }
 }
 

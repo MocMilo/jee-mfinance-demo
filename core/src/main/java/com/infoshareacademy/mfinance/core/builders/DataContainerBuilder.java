@@ -16,6 +16,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * set property of DataContainerBuilder:
+ * IS_DEMO_MODE = true (simple deployment: application uses temporary folders)
+ * IS_DEMO_MODE = false (advanced deployment: requires configuration of explicit
+ * work-folders, defined in resources/configuration.json file)
+ */
 public class DataContainerBuilder {
     private static final boolean IS_DEMO_MODE = true;
     private static final String CONFIGURATION_FILE_PATH = "configuration/configuration.json";
@@ -24,10 +30,7 @@ public class DataContainerBuilder {
     private InvestmentFundListBuilder investmentFundBuilder = new InvestmentFundListBuilder();
     private InvestmentCurrencyListBuilder investmentCurrencyBuilder = new InvestmentCurrencyListBuilder();
 
-    private List<InvestmentFund> investmentFunds = new ArrayList<>();
-    private List<InvestmentCurrency> investmentCurrencies = new ArrayList<>();
     private List<Investment> investments = new ArrayList<>();
-
     private List<FilePath> currencyFilePaths = new ArrayList<>();
     private List<FilePath> fundFilePaths = new ArrayList<>();
 
@@ -42,17 +45,13 @@ public class DataContainerBuilder {
         configuration = new ConfigurationProvider(resourcesFilePath)
                 .getConfiguration();
     }
+
     /**
-     * @return DataContainer - build from csv files
-     * (zip archives downloaded from URL).
-     * *
-     * set property of DataContainerBuilder:
-     * IS_DEMO_MODE = true (simple deployment: application uses temporary folders)
-     * IS_DEMO_MODE = false (advanced deployment: requires configuration of explicit
-     * work-folders, defined in resources/configuration.json file)
+     * @return DataContainer - build from csv files (zip archives downloaded from URL).
      */
     public DataContainer getDataContainer() throws IOException {
-        new BossaDataFilesProvider(configuration, IS_DEMO_MODE).getCSVFiles();
+        BossaDataFilesProvider.getCSVFiles(configuration, IS_DEMO_MODE);
+
         if (IS_DEMO_MODE) {
             currencyFilePaths = filePathsProvider.generateTempCurrencyFilePaths();
             fundFilePaths = filePathsProvider.generateTempFundFilePaths();
@@ -62,6 +61,7 @@ public class DataContainerBuilder {
         }
         this.buildFunds();
         this.buildCurrencies();
+
         return new DataContainer(investmentFundBuilder.getNumberOfFunds(),
                 investmentCurrencyBuilder.getNumberOfCurrencies(), investments);
     }
@@ -70,7 +70,7 @@ public class DataContainerBuilder {
         for (FilePath filePath : currencyFilePaths) {
             investmentCurrencyBuilder.createCurrenciesFromFile(filePath.getFilePath());
         }
-        investmentCurrencies = investmentCurrencyBuilder.getCurrencies();
+        List<InvestmentCurrency> investmentCurrencies = investmentCurrencyBuilder.getCurrencies();
         investments.addAll(investmentCurrencies);
     }
 
@@ -78,7 +78,7 @@ public class DataContainerBuilder {
         for (FilePath filePath : fundFilePaths) {
             investmentFundBuilder.createFundsFromFile(filePath.getFilePath());
         }
-        investmentFunds = investmentFundBuilder.getInvestmentFunds();
+        List<InvestmentFund> investmentFunds = investmentFundBuilder.getInvestmentFunds();
         investments.addAll(investmentFunds);
     }
 }

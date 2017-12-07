@@ -40,12 +40,12 @@ public class FavouritesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = sessionContainer.getUser();
-        List<WebAnalysisCriteria> favouritesCriterias = new ArrayList<>();
+        List<WebAnalysisCriteria> favouritesCriteriaList = new ArrayList<>();
         List<WebAnalysisResult> favouritesResults = new ArrayList<>();
-        favouritesCriterias.addAll(user.getFavouritesIVR());
-        favouritesCriterias.addAll(user.getFavouritesIND());
-        LOGGER.info("Number of user favourites criterias:{}", favouritesCriterias.size());
-        for (WebAnalysisCriteria item : favouritesCriterias) {
+        favouritesCriteriaList.addAll(user.getFavouritesIVR());
+        favouritesCriteriaList.addAll(user.getFavouritesIND());
+        LOGGER.info("Number of user favourites criteria:{}", favouritesCriteriaList.size());
+        for (WebAnalysisCriteria item : favouritesCriteriaList) {
             favouritesResults.add(this.getResult(item));
         }
         req.setAttribute("analysisResults", favouritesResults);

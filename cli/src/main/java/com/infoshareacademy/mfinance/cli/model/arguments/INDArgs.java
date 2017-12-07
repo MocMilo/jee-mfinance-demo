@@ -13,19 +13,12 @@ public class INDArgs extends ApplicationArguments implements Serializable {
     @Size(min = 3, max = 8, message = "Name needs to be at least 3 characters long but not longer than 8")
     private String investmentName;
 
-    public String getInvestmentName() {
-        return investmentName;
-    }
-
-    public void setInvestmentName(String investmentName) {
-        this.investmentName = investmentName;
-    }
-
-    public INDArgs() {
-    }
-
     public INDArgs(String[] args) {
         this.strategy = args[0];
         this.investmentName = args[1];
+    }
+
+    public String getInvestmentName() {
+        return investmentName;
     }
 }

@@ -12,13 +12,9 @@ public class ConfigurationProvider {
         this.configurationFilePath = configurationFilePath;
     }
     /**
-     * @return Provides Configuration from json file.
+     * @return Configuration from json file.
      */
     public Configuration getConfiguration() throws IOException {
-        return this.getConfigurationFromFile();
-    }
-
-    private Configuration getConfigurationFromFile() throws IOException {
         ResourcesFileReader fileReader = new ResourcesFileReader(configurationFilePath);
         String fileContent = fileReader.getFileAsString();
         ConfigurationJSONParser configurationJsonMapper = new ConfigurationJSONParser(fileContent);

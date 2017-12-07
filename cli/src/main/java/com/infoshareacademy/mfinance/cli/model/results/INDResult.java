@@ -67,10 +67,6 @@ public class INDResult extends AnalysisResult {
         this.maxDeltaMinus = maxDeltaMinus;
     }
 
-
-    public INDResult() {
-    }
-
     @Override
     public String toString() {
         return "INDResult{" +

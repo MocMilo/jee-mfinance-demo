@@ -22,9 +22,6 @@ public class IVRResult extends AnalysisResult {
         this.capitalRevenueDeltaPercentValue = capitalRevenueDeltaPercentValue;
     }
 
-    public IVRResult() {
-    }
-
     @Override
     public String toString() {
         return "IVRResult{" +

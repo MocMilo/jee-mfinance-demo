@@ -8,33 +8,21 @@ public class DataContainer {
     private int currenciesCount = 0;
     private List<Investment> investments = new ArrayList<>();
 
-    public int getFundsCount() {
-        return fundsCount;
-    }
-
-    public void setFundsCount(int fundsCount) {
-        this.fundsCount = fundsCount;
-    }
-
-    public int getCurrenciesCount() {
-        return currenciesCount;
-    }
-
-    public void setCurrenciesCount(int currenciesCount) {
-        this.currenciesCount = currenciesCount;
-    }
-
-    public List<Investment> getInvestments() {
-        return investments;
-    }
-
-    public void setInvestments(List<Investment> investments) {
-        this.investments = investments;
-    }
-
     public DataContainer(int fundsCount, int currenciesCount, List<Investment> investments) {
         this.fundsCount = fundsCount;
         this.currenciesCount = currenciesCount;
         this.investments = investments;
     }
+    public int getFundsCount() {
+        return fundsCount;
+    }
+
+    public int getCurrenciesCount() {
+        return currenciesCount;
+    }
+    
+    public List<Investment> getInvestments() {
+        return investments;
+    }
+
 }

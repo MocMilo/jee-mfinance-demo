@@ -7,6 +7,10 @@ public class WebInvestmentRevenueResult extends WebAnalysisResult {
     private BigDecimal capitalRevenueValue;
     private BigDecimal capitalRevenueDeltaPercentValue;
 
+    public WebInvestmentRevenueResult() {
+        this.strategy = STRATEGY;
+    }
+
     public BigDecimal getCapitalRevenueValue() {
         return capitalRevenueValue;
     }
@@ -20,16 +24,6 @@ public class WebInvestmentRevenueResult extends WebAnalysisResult {
     }
 
     public void setCapitalRevenueDeltaPercentValue(BigDecimal capitalRevenueDeltaPercentValue) {
-        this.capitalRevenueDeltaPercentValue = capitalRevenueDeltaPercentValue;
-    }
-
-    public WebInvestmentRevenueResult() {
-        this.strategy = STRATEGY;
-    }
-
-    public WebInvestmentRevenueResult(BigDecimal capitalRevenueValue, BigDecimal capitalRevenueDeltaPercentValue) {
-        this.strategy = STRATEGY;
-        this.capitalRevenueValue = capitalRevenueValue;
         this.capitalRevenueDeltaPercentValue = capitalRevenueDeltaPercentValue;
     }
 }
