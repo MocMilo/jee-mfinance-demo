@@ -2,14 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <title>Analysis criteria</title>
     <jsp:include page="/partials/meta.jsp"/>
 </head>
 <body>
 <img src="resources/icons/banner_top.jpg">
-<tags:userLogin user="${sessionScope.authenticatedUser}"/>
+<tags:userLogin user="${sessionContainer.user}"/>
 <jsp:include page="partials/navigation/backToUserMenu.jsp"/>
 <p><b>Analysis criteria</b></p>
 <br>

@@ -8,7 +8,7 @@
 </head>
 <body>
 <img src="resources/icons/banner_top.jpg">
-<tags:userLogin user="${sessionScope.authenticatedUser}"/>
+<tags:userLogin user="${sessionContainer.user}"/>
 <hr>
 <p><b>Menu</b></p>
 <form action="/favourites" method="post">

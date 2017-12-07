@@ -6,7 +6,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 
-@Named
+@Named()
 @SessionScoped
 public class SessionContainer implements Serializable {
     private User user;

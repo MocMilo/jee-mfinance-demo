@@ -9,7 +9,7 @@
 </head>
 <body>
 <img src="resources/icons/banner_top.jpg">
-<tags:userLogin user="${sessionScope.authenticatedUser}"/>
+<tags:userLogin user="${sessionContainer.user}"/>
 <jsp:include page="partials/navigation/backToUserMenu.jsp"/>
 <p><b>Investment info</b></p>
 <br>
