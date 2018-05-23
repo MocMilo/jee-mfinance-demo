@@ -1,0 +1,8 @@
+rootProject.name = 'mfinance'
+include ':cli'
+include ':core'
+include ':webapp'
+
+project(':cli').projectDir = "$rootDir/cli" as File
+project(':core').projectDir = "$rootDir/core" as File
+project(':webapp').projectDir = "$rootDir/webapp" as File

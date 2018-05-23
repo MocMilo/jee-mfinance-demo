@@ -17,13 +17,6 @@ It also uses class-level bean validation to validate parsed arguments.
 $ mvn package
 ```
 
-2. run application with Java:
-
- 
-```bash
-$ java -jar target/mfinance-jar-with-dependencies.jar
-```    
-
 
 1. build application with Gradle:
 
@@ -32,12 +25,21 @@ $ java -jar target/mfinance-jar-with-dependencies.jar
 $ gradle build
 ```
 
+
 2. run application with Java:
 
  
 ```bash
-$ java -jar build/libs/cli-all-2.0-SNAPSHOT.jar
+$ java -jar target/mfinance-jar-with-dependencies.jar
 ```    
+
+1. build application with Maven:
+
+ 
+```bash
+$ mvn package
+```
+
 
 ## CLI commands ##
 
