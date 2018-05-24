@@ -21,7 +21,7 @@ services:
     networks:
       - infoshare_network
     volumes:
-      - ../webapp/target:/opt/jboss/wildfly/standalone/deployments
+      - ../webapp/build/libs:/opt/jboss/wildfly/standalone/deployments
 
 networks:
   infoshare_network:

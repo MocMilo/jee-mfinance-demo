@@ -6,18 +6,18 @@ Release 2.0 is a simplified and refactored version of the original project.
           
 ## Structure ##          
 
-For Flexibility of development project is divided into Maven modules:<br>
+For Flexibility of development project is divided into modules:<br>
 * [core](core/README.md)<br> 
 * [cli](cli/README.md)<br> 
 * [webapp](webapp/README.md)<br>
 
-All dependencies and plugins configurations are in pom.xml files.
-Each module has it's own POM file with necessary meta information. 
+All dependencies and plugins configurations are in gradle.build files.
+Each module has it's own gradle.build file with necessary meta information. 
 
 ## Requirements ##
 
 * Open JDK 1.8.0
-* Apache Maven 3.3.9
+* Gradle Build Tool 2.10
 * Docker Compose 1.8.0
 
 ## Build and run ##

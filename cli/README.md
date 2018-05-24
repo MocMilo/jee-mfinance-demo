@@ -10,19 +10,20 @@ It also uses class-level bean validation to validate parsed arguments.
 
 ## Build and run ##
 
-1. build application with Maven:
+1. build application with Gradle:
 
  
 ```bash
-$ mvn package
+$ gradle build
 ```
 
 2. run application with Java:
 
  
 ```bash
-$ java -jar target/mfinance-jar-with-dependencies.jar
+$ java -jar build/libs/cli-2.0-SNAPSHOT.jar
 ```    
+
 
 ## CLI commands ##
 
@@ -30,7 +31,7 @@ When CLI application is run with no arguments all available commands and example
 
 *example command (application returns quotations indicators of CHF currency):*    
 ```bash
-$ java -jar target/mfinance-jar-with-dependencies.jar IND CHF
+$ java -jar build/libs/cli-2.0-SNAPSHOT.jar IND CHF
 ```    
 
 

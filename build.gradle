@@ -1,0 +1,13 @@
+allprojects  {
+  group = 'com.infoshareacademy'
+  version = '2.0-SNAPSHOT'
+}
+
+subprojects {
+  apply plugin: 'java'
+  sourceCompatibility = 1.8
+  targetCompatibility = 1.8
+  repositories {
+    maven { url "https://repo.maven.apache.org/maven2" }
+  }  
+}

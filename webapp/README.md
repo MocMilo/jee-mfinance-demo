@@ -9,8 +9,6 @@ Used technologies and APIs:
 * JPA 1.0.2 with MySQL 6.0
 * Docker Compose 1.8.0
 
-All dependencies and plugin configuration are in pom.xml file.
-
 ## Requirements ##
 
 * Google profile (to login)
@@ -22,7 +20,7 @@ All dependencies and plugin configuration are in pom.xml file.
 1. build and install application using Maven command
  
 ```bash
-$ mvn clean install
+$ gradle build
 ```
 2. deploy application in Docker containers using docker-compose (run command inside /docker folder)
  
